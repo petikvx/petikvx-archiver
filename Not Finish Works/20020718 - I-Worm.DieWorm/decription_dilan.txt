@@ -1,0 +1,9 @@
+Worm.Dilan coded by PetiK in win32asm.
+
+Spread via HTML file and infected other HTM/HTML files in these folders:
+
+    - WINDOWS
+    - WINDOWS\SYSTEM
+    - WINDOWS\TEMP
+    - DESKTOP
+    - MY DOCUMENTS

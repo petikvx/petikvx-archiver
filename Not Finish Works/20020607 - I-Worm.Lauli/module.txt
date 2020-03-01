@@ -1,0 +1,6 @@
+Attribute VB_Name = "LauLi"
+
+Sub AutoOpen()
+On Error Resume Next
+MsgBox "Infected by my new virii/worm",vbinformation,"LauLi"
+End Sub

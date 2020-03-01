@@ -1,0 +1,4 @@
+IMPORTS
+
+SHLWAPI.SHSetValueA
+SHELL32.SHGetSpecialFolderPathA
