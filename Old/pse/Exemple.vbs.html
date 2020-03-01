@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>PSE - Exemple</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Normal VBS File
+</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"This is my first VBS file encrypter"</span><span class="sc6">,</span><span class="sc7">vbcritical</span><span class="sc6">,</span><span class="sc4">"PetiK's Script Encrypt"</span><span class="sc0">
+</span><span class="sc7">WScript.Quit</span><span class="sc0">
+
+</span><span class="sc1">' Crypt VBS File
+</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc7">Execute</span><span class="sc0"> </span><span class="sc7">Y</span><span class="sc6">(</span><span class="sc4">"Ïî Åòòïò Òåóõíå ÎåøôŠŠÍóçÂïø ¢Ôèéó éó íù æéòóô ÖÂÓ æéìå åîãòùðôåò¢¬öâãòéôéãáì¬¢ÐåôéË§ó Óãòéðô Åîãòùðô¢Š×Óãòéðô®Ñõéô"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Function</span><span class="sc0"> </span><span class="sc7">Y</span><span class="sc6">(</span><span class="sc7">ajuo</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">W</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">to</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">ajuo</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">Y</span><span class="sc6">=</span><span class="sc7">Y</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">Chr</span><span class="sc6">(</span><span class="sc7">Asc</span><span class="sc6">(</span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">ajuo</span><span class="sc6">,</span><span class="sc7">W</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">))</span><span class="sc0"> </span><span class="sc3">Xor</span><span class="sc0"> </span><span class="sc2">128</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc7">Function</span></div></body>
+</html>

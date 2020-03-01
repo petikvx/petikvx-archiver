@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"This freeware will help you to delete the I-Worm.Anthrax"</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc4">"Remove Petik Tool (I-Worm.Anthrax)"</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sys</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc7">ws.RegDelete</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Microsoft System"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">fso.FileExists</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\MsSys32.exe"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">fso.DeleteFile</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\MsSys32.exe"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Your computer is infected by I-Worm.Anthrax"</span><span class="sc6">,</span><span class="sc7">vbcritical</span><span class="sc6">,</span><span class="sc4">"Remove Petik Tool (I-Worm.Anthrax)"</span><span class="sc0">
+</span><span class="sc3">Else</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Your computer doesn't have I-Worm.Anthrax"</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc4">"Remove Petik Tool (I-Worm.Anthrax)"</span><span class="sc0">
+</span><span class="sc7">wscript.quit</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+
+</span><span class="sc7">desk</span><span class="sc6">=</span><span class="sc7">ws.RegRead</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc4">"HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Desktop"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">fso.FileExists</span><span class="sc6">(</span><span class="sc7">desk&amp;</span><span class="sc4">"\Anthrax_Info.url"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">fso.DeleteFile</span><span class="sc6">(</span><span class="sc7">desk&amp;</span><span class="sc4">"\Anthrax_Info.url"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">fso.FileExists</span><span class="sc6">(</span><span class="sc4">"C:\Anthrax_Info.url"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">fso.DeleteFile</span><span class="sc6">(</span><span class="sc4">"C:\Anthrax_Info.url"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Your computer is now clean. Have a nice day."</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc4">"Remove Petik Tool (I-Worm.Anthrax)"</span></div></body>
+</html>

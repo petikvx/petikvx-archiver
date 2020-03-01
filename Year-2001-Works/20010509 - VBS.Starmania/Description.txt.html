@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc0"> Name : VBS.Starmania.A
+ Author : PetiK
+ Date : May 09th 2001
+ Size : 4566 bytes
+ Action : It copies itself to %windir%\Hwinfo.vbs and to %systemroot%\Issetup.vbs.
+ It adds to values. The first in the Run key and the second in the RunServices
+ key. Then it infects all *.vbs and *.vbe files in differents folder :
+
+    C:\WINDOWS          \
+    C:\WINDOWS\SYSTEM       |
+    C:\WINDOWS\TEMP         |_
+    C:\WINDOWS\SAMPLES\WSH      |- All those name are by default
+    C:\WINDOWS\DEKTOP       |
+    C:\MY DOCUMENTS         /
+ The virus adds his code at the start of the file.
+
+ After it creates a script.ini file to C:\mirc folder. When the current day is
+ 15th, the worm displays a message, changes the RegisteredOwner and Registered-
+ Organization by “Starmania” and “PetiK Corpor@tion” and adds some values to
+ display a message when the computer start. It changes all days the Start Page
+ of Internet Explorer between five differents adresses :
+
+    http://www.symantec.com
+    http://www.pandasoftware.com
+    http://www.avp.ch
+    http://www.cia.gov
+    http://www.fbi.gov 
+
+ At the end, it spreads with Outlook. There are three differents subject, body
+ and attachments :
+
+First : Subject : New Picture for you !
+        Body : Look at this nice picture attached
+        Attacged : NewPic__Cool.jpg.vbs
+
+Second :    Subject : LoveLetter Fix
+        Body : Protect you against VBS.LoveLetter.Variant
+        Attacged : LoveFix.vbs
+
+Third : Subject : How to win a holiday in Paris
+        Body : Play at this game attached and win a holiday in Paris
+        Attacged : Win_A_Holiday.vbs
+</span></div></body>
+</html>

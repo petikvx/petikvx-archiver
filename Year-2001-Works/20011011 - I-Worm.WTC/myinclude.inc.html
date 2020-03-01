@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc4 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc5 {
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc5">SYSTIME</span><span class="sc0">     </span><span class="sc9">STRUCT</span><span class="sc0">
+</span><span class="sc5">wMonth</span><span class="sc0">      </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wDayOfWeek</span><span class="sc0">  </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wDay</span><span class="sc0">        </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wHour</span><span class="sc0">       </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMinute</span><span class="sc0">     </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wSecond</span><span class="sc0">     </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">wMillisecond</span><span class="sc0">    </span><span class="sc10">WORD</span><span class="sc0"> </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">SYSTIME</span><span class="sc0">     </span><span class="sc9">ENDS</span><span class="sc0">
+
+</span><span class="sc5">MAX_PATH</span><span class="sc0">        </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+</span><span class="sc5">WIN32_FIND_DATA</span><span class="sc0">     </span><span class="sc9">STRUC</span><span class="sc0">
+  </span><span class="sc5">dwFileAttributes</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">ftCreationTime</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc4">,</span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">ftLastAccessTime</span><span class="sc0">    </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc4">,</span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">ftLastWriteTime</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc4">,</span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">nFileSizeHigh</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">nFileSizeLow</span><span class="sc0">        </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">dwReserved0</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">dwReserved1</span><span class="sc0">         </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+  </span><span class="sc5">cFileName</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc5">MAX_PATH</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+  </span><span class="sc5">cAlternateFileName</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc2">14</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc4">(</span><span class="sc10">?</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">WIN32_FIND_DATA</span><span class="sc0">     </span><span class="sc9">ENDS</span><span class="sc0">
+
+
+</span><span class="sc5">STARTUPINFO</span><span class="sc0">     </span><span class="sc9">STRUCT</span><span class="sc0">
+    </span><span class="sc5">cb</span><span class="sc0">      </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">lpReserved</span><span class="sc0">  </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">lpDesktop</span><span class="sc0">   </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">lpTitle</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwX</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwY</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwXSize</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwYSize</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwXCountChars</span><span class="sc0">   </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwYCountChars</span><span class="sc0">   </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwFillAttribute</span><span class="sc0"> </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwFlags</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">wShowWindow</span><span class="sc0"> </span><span class="sc10">WORD</span><span class="sc0">    </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">cbReserved2</span><span class="sc0"> </span><span class="sc10">WORD</span><span class="sc0">    </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">lpReserved2</span><span class="sc0"> </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">hStdInput</span><span class="sc0">   </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">hStdOutput</span><span class="sc0">  </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">hStdError</span><span class="sc0">   </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">STARTUPINFO</span><span class="sc0">     </span><span class="sc9">ENDS</span><span class="sc0">
+
+</span><span class="sc5">PROCESS_INFORMATION</span><span class="sc0"> </span><span class="sc9">STRUCT</span><span class="sc0">
+    </span><span class="sc5">hProcess</span><span class="sc0">    </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">hThread</span><span class="sc0">     </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwProcessId</span><span class="sc0"> </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+    </span><span class="sc5">dwThreadId</span><span class="sc0">  </span><span class="sc10">DWORD</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">PROCESS_INFORMATION</span><span class="sc0"> </span><span class="sc9">ENDS</span><span class="sc0">
+
+</span><span class="sc5">SystemTime</span><span class="sc0">      </span><span class="sc5">SYSTIME</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+</span><span class="sc5">Search</span><span class="sc0">      </span><span class="sc5">WIN32_FIND_DATA</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+</span><span class="sc5">sInfo</span><span class="sc0">       </span><span class="sc5">STARTUPINFO</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+</span><span class="sc5">pInfo</span><span class="sc0">       </span><span class="sc5">PROCESS_INFORMATION</span><span class="sc0"> </span><span class="sc4">&lt;&gt;</span><span class="sc0">
+</span></div></body>
+</html>

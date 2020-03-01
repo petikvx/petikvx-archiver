@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Introduction">
+		<param name="Local" value="Intro.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="PetiK's HomePage">
+		<param name="Local" value="site_web.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Year 2000 Works">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20000831 - DOS.Dwarf">
+			<param name="Local" value="20000831%20-%20DOS.Dwarf.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20000909 - DOS.Dwarf.259">
+			<param name="Local" value="20000909%20-%20DOS.Dwarf.259.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20000912 - DOS.Dwarf7">
+			<param name="Local" value="20000912%20-%20DOS.Dwarf7.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001003 - W32.Panda3">
+			<param name="Local" value="20001003%20-%20W32.Panda3.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001012 - W32.PandaKiller.A">
+			<param name="Local" value="20001012%20-%20W32.PandaKiller.A.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001014 - W32.PandaKiller.B">
+			<param name="Local" value="20001014%20-%20W32.PandaKiller.B.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001017 - W32.PandaKiller.C">
+			<param name="Local" value="20001017%20-%20W32.PandaKiller.C.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001101 - W95.PandaKiller">
+			<param name="Local" value="20001101%20-%20W95.PandaKiller.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001125 - I-Worm.MadCow">
+			<param name="Local" value="20001125%20-%20I-Worm.MadCow.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001206 - DOS.Dwarf4">
+			<param name="Local" value="20001206%20-%20DOS.Dwarf4.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001208 - VBS.Judge">
+			<param name="Local" value="20001208%20-%20VBS.Judge.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001210 - VBS.ShortCut">
+			<param name="Local" value="20001210%20-%20VBS.ShortCut.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001212 - VBS.Noel">
+			<param name="Local" value="20001212%20-%20VBS.Noel.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001220 - W32.Twin">
+			<param name="Local" value="20001220%20-%20W32.TWIN.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20001229 - VBS.NetWork">
+			<param name="Local" value="20001229%20-%20VBS.NetWork.vbs.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Year 2001 Works">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010106 - VBS.Kadosh">
+			<param name="Local" value="20010106%20-%20VBS.Kadosh.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010117 - VBS.ShowVar">
+			<param name="Local" value="20010117%20-%20VBS.ShowVar.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010130 - VBS.PetiK.A">
+			<param name="Local" value="20010130%20-%20VBS.PetiK.A.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010207 - I-Worm.PetiK">
+			<param name="Local" value="20010207%20-%20I-Worm.PetiK.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010215 - VBS.Study">
+			<param name="Local" value="20010215%20-%20VBS.Study.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010423 - DOS.Bastille">
+			<param name="Local" value="20010423%20-%20DOS.Bastille.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010509 - VBS.Starmania">
+			<param name="Local" value="20010509%20-%20VBS.Starmania.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010513 - HTML.Bother">
+			<param name="Local" value="20010513%20-%20HTML.Bother.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010515 - I-Worm.Friends">
+			<param name="Local" value="20010515%20-%20I-Worm.Friends.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010527 - I-Worm.Mustard">
+			<param name="Local" value="20010527%20-%20I-Worm.Mustard.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010529 - HTML.Embargo">
+			<param name="Local" value="20010529%20-%20HTML.Embargo.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010601 - W97M.Maya">
+			<param name="Local" value="20010601%20-%20W97M.Maya.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010602 - JScript.Germinal">
+			<param name="Local" value="20010602%20-%20JScript.Germinal.js.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010605 - W97M.Kodak">
+			<param name="Local" value="20010605%20-%20W97M.Kodak.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010609 - I-Worm.Gamma">
+			<param name="Local" value="20010609%20-%20I-Worm.Gamma.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010615 - I-Worm.Winmine">
+			<param name="Local" value="20010615%20-%20I-Worm.Winmine.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010616 - VBS.Seven">
+			<param name="Local" value="20010616%20-%20VBS.Seven.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010622 - I-Worm.Loft">
+			<param name="Local" value="20010622%20-%20I-Worm.Loft.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010628 - VBS.Delirious">
+			<param name="Local" value="20010628%20-%20VBS.Delirious.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010701 - I-Worm.Bush">
+			<param name="Local" value="20010701%20-%20I-Worm.Bush.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010706 - I-Worm.MaLoTeYa">
+			<param name="Local" value="20010706%20-%20I-Worm.MaLoTeYa.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010803 - I-Worm.XFW">
+			<param name="Local" value="20010803%20-%20I-Worm.XFW.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010816 - I-Worm.Kevlar">
+			<param name="Local" value="20010816%20-%20I-Worm.Kevlar.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010824 - I-Worm.Casper">
+			<param name="Local" value="20010824%20-%20I-Worm.Casper.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010902 - I-Worm.Rush">
+			<param name="Local" value="20010902%20-%20I-Worm.Rush.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20010908 - I-Worm.Passion">
+			<param name="Local" value="20010908%20-%20I-Worm.Passion.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20011011 - I-Worm.WTC">
+			<param name="Local" value="20011011%20-%20I-Worm.WTC.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20011106 - I-Worm.Anthrax">
+			<param name="Local" value="20011106%20-%20I-Worm.Anthrax.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20011210 - W32.HLLW.Last">
+			<param name="Local" value="20011210%20-%20W32.HLLW.Last.cpp.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20011229 - Trojan.PetiK">
+			<param name="Local" value="20011229%20-%20Trojan.PetiK.cpp.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Year 2002 Works">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020123 - W32.HLLW.SingLung">
+			<param name="Local" value="20020123%20-%20W32.HLLW.SingLung.cpp.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020201 - W97M-W32.Twin">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Word VBA Part">
+				<param name="Local" value="20020201%20-%20W97M-W32.Twin.bas.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Win32 Assembler Part">
+				<param name="Local" value="20020201%20-%20W97M-W32.Twin.asm.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020203 - W32.HLLW.Essence">
+			<param name="Local" value="20020203%20-%20W32.HLLW.Essence.cpp.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020204 - I-Worm.Extract">
+			<param name="Local" value="20020204%20-%20I-Worm.Extract.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020208 - I-Worm.Falken">
+			<param name="Local" value="20020208%20-%20I-Worm.Falken.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020213 - W32.Linda">
+			<param name="Local" value="20020213%20-%20W32.Linda.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020222 - W32.HLLW.WarGames">
+			<param name="Local" value="20020222%20-%20W32.HLLW.WarGames.cpp.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020224 - HTML.Linda">
+			<param name="Local" value="20020224%20-%20HTML.Linda.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020225 - W97M.Wolf">
+			<param name="Local" value="20020225%20-%20W97M.Wolf.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020302 - VBS_W97M.Doublet">
+			<param name="Local" value="20020302%20-%20VBS_W97M.Doublet.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020310 - W32.HLLW.LiTeLo">
+			<param name="Local" value="20020310%20-%20W32.HLLW.LiTeLo.cpp.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020315 - I-Worm.Together">
+			<param name="Local" value="20020315%20-%20I-Worm.Together.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020401 - W32.HLLW.SelfWorm">
+			<param name="Local" value="20020401%20-%20W32.HLLW.SelfWorm.c.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020427 - VBS.Xchange.A">
+			<param name="Local" value="20020427%20-%20VBS.Xchange.A.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020505 - VBS.Xchange.B">
+			<param name="Local" value="20020505%20-%20VBS.Xchange.B.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020508 - HTML.Welcome">
+			<param name="Local" value="20020508%20-%20HTML.Welcome.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020509 - W97M.AutoSpread">
+			<param name="Local" value="20020509%20-%20W97M.AutoSpread.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020511 - W32.HLLW.Archiver">
+			<param name="Local" value="20020511%20-%20W32.HLLW.Archiver.cpp.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020514 - W97M.ApiWord">
+			<param name="Local" value="20020514%20-%20W97M.ApiWord.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020519 - W32.HLLW.Visual">
+			<param name="Local" value="20020519%20-%20W32.HLLW.Visual.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020531 - W32.HLLW.Lili">
+			<param name="Local" value="20020531%20-%20W32.HLLW.Lili.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020601 - I-Worm.Haram">
+			<param name="Local" value="20020601%20-%20I-Worm.Haram.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020618 - W97M.Blood">
+			<param name="Local" value="20020618%20-%20W97M.Blood.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020619 - VBS.Cachemire">
+			<param name="Local" value="20020619%20-%20VBS.Cachemire.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020620 - W32.HLLW.Mars">
+			<param name="Local" value="20020620%20-%20W32.HLLW.Mars.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020622 - W32.HLLW.DocTor">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Visual Basic Part">
+				<param name="Local" value="20020622%20-%20W32.HLLW.DocTor-VB.bas.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Word VBA Part">
+				<param name="Local" value="20020622%20-%20W32.HLLW.DocTor-VBA.bas.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020624 - VBS.Park">
+			<param name="Local" value="20020624%20-%20VBS.Park.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020625 - Worm.Dilan">
+			<param name="Local" value="20020625%20-%20Worm.Dilan.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020629 - VBS.Hatred">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Decrypt Part">
+				<param name="Local" value="20020629%20-%20VBS.Hatred-decrypt.vbs.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Crypt Part">
+				<param name="Local" value="20020629%20-%20VBS.Hatred-crypt.vbs.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020702 - W32.HLLW.Brigada">
+			<param name="Local" value="20020702%20-%20W32.HLLW.Brigada.bas.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Not Finish Works">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20011107 - I-Worm.Dandelion">
+			<param name="Local" value="Not%20Finish%20-%2020011107%20-%20I-Worm.Dandelion.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20011201 - VBS.GoodBye">
+			<param name="Local" value="Not%20Finish%20-%2020011201%20-%20VBS.GoodBye.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020607 - I-Worm.Lauli">
+			<param name="Local" value="Not%20Finish%20-%2020020607%20-%20I-Worm.Lauli.asm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020625 - W97M.Calli">
+			<param name="Local" value="Not%20Finish%20-%2020020625%20-%20W97M.Calli.bas.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="20020718 - I-Worm.DieWorm">
+			<param name="Local" value="Not%20Finish%20-%2020020718%20-%20I-Worm.DieWorm.asm.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Articles">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to spread a worm">
+			<param name="Local" value="Articles%20-%2020010917%20-%20How%20to%20spread%20a%20worm.txt.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Some Practice Technics">
+			<param name="Local" value="Articles%20-%2020020210%20-%20Some%20Practice%20Technics.txt.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="VBS Tutorial">
+			<param name="Local" value="Articles%20-%2020020505%20-%20VBS%20tutorial.txt.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Three Ways of spreading">
+			<param name="Local" value="Articles%20-%2020020520%20-%20Three%20Ways%20of%20spreading.txt.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="What language for which work">
+			<param name="Local" value="Articles%20-%2020020602%20-%20What%20language%20for%20which%20work.txt.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="VBS-HTML multi-infection">
+			<param name="Local" value="Articles%20-%2020020619%20-%20VBS-HTML%20multi-infection.txt.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tools">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PetiK's HTML Virus Generator">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="PHTMLVG - Code Source">
+				<param name="Local" value="phtmlvg/PHTMLVG.frm.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="New HTML Virus">
+				<param name="Local" value="phtmlvg/EMM.htm.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PetiK's Protect VBS Worm">
+			<param name="Local" value="ppvbsw/PPVBSW.vbs.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PetiK's Script Encrypt">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="PSE - Code Source">
+				<param name="Local" value="pse/PSE.vbp.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Exemple">
+				<param name="Local" value="pse/Exemple.vbs.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PetiK's Script Viewer">
+			<param name="Local" value="psw/PSW.frm.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PetiK's VBS Worm Generator">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="PVBSWG - Code Source">
+				<param name="Local" value="pvbswg/PVBSWG.frm.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="New VBS Worm">
+				<param name="Local" value="pvbswg/VBS.EMM.vbs.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="VBS Hex Convert">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Code Source">
+				<param name="Local" value="vbshexconvert/VBSHexConvert.vbp.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Crypt VBS File">
+				<param name="Local" value="vbshexconvert/vbshex.vbs.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Normal VBS File">
+				<param name="Local" value="vbshexconvert/Essai.vbs.html">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Interviews">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Interview - 20020407">
+			<param name="Local" value="Interview%20-%2020020407.txt.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Extras">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Useful.inc">
+			<param name="Local" value="Extra%20-%20USEFUL.INC.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="myinclude.inc">
+			<param name="Local" value="Extra%20-%20myinclude.inc.html">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>
