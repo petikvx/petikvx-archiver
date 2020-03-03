@@ -1,0 +1,10 @@
+IMPORTS
+
+SHELL32.SHGetSpecialFolderPathA
+WININET.InternetGetConnectedState
+WININET.InternetOpenA
+WININET.InternetOpenUrlA
+WININET.InternetReadFile
+WININET.InternetCloseHandle
+SHLWAPI.SHSetValueA
+SHLWAPI.SHGetValueA

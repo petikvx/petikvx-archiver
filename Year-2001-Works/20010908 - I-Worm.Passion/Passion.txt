@@ -1,0 +1,9 @@
+[Date et Heure]
+Date=Thu, 06 Sep 2001
+Heure=19:01:44
+
+[Information systême]
+Nom d'enregistrement=Etienne KRAEMER
+Nom de l'entreprise=Munster
+Numéro de la clé Windows=RFVG9-Y23Y4-R89B4-HFQVQ-7P2FB
+Pays=Germany

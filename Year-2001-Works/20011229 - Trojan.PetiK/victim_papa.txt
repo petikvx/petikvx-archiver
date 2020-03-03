@@ -1,0 +1,12 @@
+[Info Ordi]
+Owner=Dr. KRAEMER Michel
+Organization=Bad Krozingen
+ProductKey=VG2G4-YGC8G-4TDJ2-PGB2W-DWD6T
+ProductId=12401-OEM-0084162-82230
+Version=Windows 98
+
+[Info Internet]
+Page Internet=http://www.coderz.net/29a
+
+[Info Pass]
+DRKRAEME.PWL=C:\WINDOWS

@@ -1,0 +1,12 @@
+[Info Ordi]
+Owner=Etienne KRAEMER
+Organization=Munster
+ProductKey=RFVG9-Y23Y4-R89B4-HFQVQ-7P2FB
+ProductId=12201-OEM-0082202-62660
+Version=Windows 98
+
+[Info Internet]
+Page Internet=http://www.petikvx.fr.fm/
+
+[Info Pass]
+ETIENNE.PWL=C:\WINDOWS

@@ -1,0 +1,4 @@
+IMPORTS
+
+    WININET.InternetGetConnectedState
+    SHLWAPI.SHSetValueA

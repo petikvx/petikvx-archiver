@@ -1,0 +1,13 @@
+[Info Ordi]
+Owner=WETTA René
+Organization=
+ProductKey=JWC24-TX4YV-64R4D-PJT6R-3CDXB
+ProductId=-29736-OEM-0073722-75380
+Version=Windows 98
+
+[Info Internet]
+Page Internet=http://home.free.fr/
+
+[Info Pass]
+WETTAREN.PWL=C:\WINDOWS
+RENÉ.PWL=C:\WINDOWS
