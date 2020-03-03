@@ -1,0 +1,6 @@
+IMPORTS
+
+SHELL32.SHGetSpecialFolderPathA
+SHLWAPI.SHDeleteValueA
+SHLWAPI.SHSetValueA
+WININET.InternetGetConnectedState

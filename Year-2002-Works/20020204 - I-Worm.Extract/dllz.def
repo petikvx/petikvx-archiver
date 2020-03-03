@@ -1,0 +1,4 @@
+IMPORTS
+
+SHELL32.SHGetSpecialFolderPathA
+WININET.InternetGetConnectedState
