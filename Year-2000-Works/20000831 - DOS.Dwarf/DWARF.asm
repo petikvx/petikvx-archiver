@@ -1,5 +1,5 @@
 ;TAILLE : 475 OCTETS                                            31/08/00
-;DWARF crée un fichier dwarf.vbs qui ajoutera une cl� afin
+;DWARF crée un fichier dwarf.vbs qui ajoutera une clé afin
 ;que l'ordinateur s'éteigne au démarrage
 .model small
 .code
