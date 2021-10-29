@@ -83,6 +83,6 @@ You will find Tools I developped.
 - <img src="./img/vb.png" width="32" height="32">[20020620 - VB.Mars.Worm]()
 - <img src="./img/vb.png" width="32" height="32">[20020622 - VB.DocTor.Worm]()
 - <img src="./img/vbs.png" width="32" height="32">[20020624 - VBS.Park]()
-- [20020625 - Worm.Dilan]()
+- <img src="./img/asm.png" width="32" height="32">[20020625 - Worm.Dilan]()
 - <img src="./img/vbs.png" width="32" height="32">[20020629 - VBS.Hatred]()
 - <img src="./img/vb.png" width="32" height="32">[20020702 - VB.Brigada.Worm]()
