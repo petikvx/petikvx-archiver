@@ -1,0 +1,2 @@
+Login : apiinfo@lycos.fr
+Password : apiword
