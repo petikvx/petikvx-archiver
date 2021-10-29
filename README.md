@@ -24,24 +24,24 @@ You will find Tools I developped.
 - <img src="./img/vbs.png" width="32" height="32">[20001229 - VBS.NetWork](Year-2000-Works/20001229%20-%20VBS.NetWork)
 
 # 2001 Works
-- 20010106 - VBS.Kadosh
-- 20010117 - VBS.ShowVar
-- 20010130 - VBS.PetiK
-- 20010207 - I-Worm.PetiK
-- 20010215 - VBS.Study
-- 20010423 - DOS.Bastille
-- 20010509 - VBS.Starmania
-- 20010513 - HTML.Bother
-- 20010515 - I-Worm.Friends
-- 20010527 - I-Worm.Mustard
-- 20010529 - HTML.Embargo
-- 20010601 - W97M.Kodak
-- 20010602 - JS.Germinal
-- 20010605 - W97M.Maya
-- 20010609 - I-Worm.Gamma
-- 20010615 - I-Worm.Winmine
-- 20010616 - VBS.Seven
-- 20010622 - I-Worm.Loft
+- <img src="./img/vbs.png" width="32" height="32">[20010106 - VBS.Kadosh](Year-2001-Works/20010106%20-%20VBS.Kadosh)
+- <img src="./img/vbs.png" width="32" height="32">[20010117 - VBS.ShowVar](Year-2001-Works/20010117%20-%20VBS.ShowVar)
+- <img src="./img/vbs.png" width="32" height="32">[20010130 - VBS.PetiK](Year-2001-Works/20010130%20-%20VBS.PetiK)
+- <img src="./img/asm.png" width="32" height="32">[20010207 - I-Worm.PetiK](Year-2001-Works/20010207%20-%20I-Worm.PetiK)
+- <img src="./img/vbs.png" width="32" height="32">[20010215 - VBS.Study](Year-2001-Works/20010215%20-%20VBS.Study)
+- <img src="./img/asm.png" width="32" height="32">[20010423 - DOS.Bastille](Year-2001-Works/20010423%20-%20DOS.Bastille)
+- <img src="./img/vbs.png" width="32" height="32">[20010509 - VBS.Starmania](Year-2001-Works/20010509%20-%20VBS.Starmania)
+- [20010513 - HTML.Bother](Year-2001-Works/20010513%20-%20HTML.Bother)
+- <img src="./img/asm.png" width="32" height="32">[20010515 - I-Worm.Friends](Year-2001-Works/20010515%20-%20I-Worm.Friends)
+- <img src="./img/asm.png" width="32" height="32">[20010527 - I-Worm.Mustard](Year-2001-Works/20010527%20-%20I-Worm.Mustard)
+- [20010529 - HTML.Embargo](Year-2001-Works/20010529%20-%20HTML.Embargo)
+- <img src="./img/doc.png" width="32" height="32">[20010601 - W97M.Kodak](Year-2001-Works/20010601%20-%20W97M.Kodak)
+- [20010602 - JS.Germinal](Year-2001-Works/20010602%20-%20JS.Germinal)
+- <img src="./img/doc.png" width="32" height="32">[20010605 - W97M.Maya](Year-2001-Works/20010605%20-%20W97M.Maya)
+- <img src="./img/asm.png" width="32" height="32">[20010609 - I-Worm.Gamma](Year-2001-Works/20010609%20-%20I-Worm.Gamma)
+- <img src="./img/asm.png" width="32" height="32">[20010615 - I-Worm.Winmine](Year-2001-Works/20010615%20-%20I-Worm.Winmine)
+- <img src="./img/vbs.png" width="32" height="32">[20010616 - VBS.Seven](Year-2001-Works/20010616%20-%20VBS.Seven)
+- <img src="./img/asm.png" width="32" height="32">[20010622 - I-Worm.Loft](Year-2001-Works/20010622%20-%20I-Worm.Loft)
 - 20010628 - VBS.Delirious
 - 20010701 - I-Worm.Bush
 - 20010706 - I-Worm.MaLoTeYa
