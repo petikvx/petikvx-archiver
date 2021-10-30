@@ -56,7 +56,7 @@ You will find Tools I developped.
 - <img src="./img/cpp.ico">[20011229 - Trojan.PetiK](Year-2001-Works/20011229%20-%20Trojan.PetiK)
 
 # 2002 Works
-- <img src="./img/cpp.ico">[20020123 - W32.HLLW.SingLung](Year-2002-Works/20020123%20-%20W32.HLLW.SingLung)
+- <img src="./img/cpp.ico">[20020123 - W32.HLLW.SingLung](Year-2002-Works/20020123%20-%20W32.HLLW.SingLung) - [VT](https://www.virustotal.com/gui/file/22849ec7055723021053d033aab3e22ee63c4174468aac1e4f70886b0a0f2cf9)
 - <img src="./img/vb.ico"><img src="./img/vbs.ico">[20020201 - W32-W97M.Twin](Year-2002-Works/20020201%20-%20W32-W97M.Twin)
 - <img src="./img/cpp.ico">[20020203 - W32.HLLW.Essence](Year-2002-Works/20020203%20-%20W32.HLLW.Essence)
 - <img src="./img/asm.png" width="32" height="32">[20020204 - I-Worm.Extract](Year-2002-Works/20020204%20-%20I-Worm.Extract)
