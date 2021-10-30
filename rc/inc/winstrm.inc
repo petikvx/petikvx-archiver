@@ -1,0 +1,11 @@
+; ..\LIB\WINSTRM.LIB PROTOTYPES
+; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+OpenStream PROTO :DWORD
+getmsg PROTO :DWORD,:DWORD,:DWORD,:DWORD
+poll PROTO :DWORD,:DWORD,:DWORD
+putmsg PROTO :DWORD,:DWORD,:DWORD,:DWORD
+s_ioctl PROTO :DWORD,:DWORD,:DWORD
+s_open PROTO :DWORD,:DWORD,:DWORD
+s_perror PROTO :DWORD,:DWORD
+

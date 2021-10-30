@@ -1,0 +1,7 @@
+; ..\LIB\DLCAPI.LIB PROTOTYPES
+; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+AcsLan PROTO :DWORD,:DWORD
+DlcCallDriver PROTO :DWORD,:DWORD,:DWORD,:DWORD,:DWORD,:DWORD
+NtAcsLan PROTO :DWORD,:DWORD,:DWORD,:DWORD
+
