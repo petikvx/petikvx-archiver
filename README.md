@@ -24,7 +24,7 @@ You will find Tools I developped.
 - <img src="./img/vbs.ico">[20001229 - VBS.NetWork](Year-2000-Works/20001229%20-%20VBS.NetWork)
 
 # 2001 Works
-- <img src="./img/vbs.ico">[20010106 - VBS.Kadosh](Year-2001-Works/20010106%20-%20VBS.Kadosh)
+- <img src="./img/vbs.ico">[20010106 - VBS.Kadosh](Year-2001-Works/20010106%20-%20VBS.Kadosh) - [VT](https://www.virustotal.com/gui/file/81cc7d413b725e992ea347f493f2284b0943ca8c1333932e5b4142d532825cec)
 - <img src="./img/vbs.ico">[20010117 - VBS.ShowVar](Year-2001-Works/20010117%20-%20VBS.ShowVar)
 - <img src="./img/vbs.ico">[20010130 - VBS.PetiK](Year-2001-Works/20010130%20-%20VBS.PetiK)
 - <img src="./img/asm.png" width="32" height="32">[20010207 - I-Worm.PetiK](Year-2001-Works/20010207%20-%20I-Worm.PetiK)
