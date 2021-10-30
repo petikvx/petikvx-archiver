@@ -1,0 +1,50 @@
+Infos System :
+
+Operating System : Windows 95/98 4.10 ,Build : 1
+Windows Version : Windows 98 4.10.2222
+Reg Name : Michel Kraemer
+Reg Organization : Munster
+User Name : Michel Kraemer
+Computer Name : MICHEL KRAEMER
+Id. Number : 15002-OEM-0082202-62660
+Key Number : RFVG9-Y23Y4-R89B4-HFQVQ-7P2FB
+
+Processor : AMD-K6(tm) 3D processor
+Number of procesor : 1
+Processor : 586
+Low memory address : 4194304
+High memory address : 2147483647
+Total Memory : 124 MB
+Resolution : 800 X 600
+Total Number Of Bytes:8 430 829 568 bytes
+Total Free Bytes:7 526 227 968 bytes
+Total Space Used :904 601 600 bytes
+
+WinDir : C:\WINDOWS
+SysDir : C:\WINDOWS\SYSTEM
+TmpDir : C:\WINDOWS\TEMP\
+IE Page : http://www.aol.fr
+Date & Time : 13/06/02 18:33:15
+System started 96 minutes ago
+
+15 Active Process (13/06/02 18:33:31)
+C:\PROGRAMME\MICROSOFT OFFICE\OFFICE\1031\MSOFFICE.EXE
+C:\PROGRAMME\SYSTEM TOOLS\INFOSYS.EXE
+C:\WINDOWS\EXPLORER.EXE
+C:\WINDOWS\SYSTEM\DDHELP.EXE
+C:\WINDOWS\SYSTEM\KERNEL32.DLL
+C:\WINDOWS\SYSTEM\mmtask.tsk
+C:\WINDOWS\SYSTEM\MPREXE.EXE
+C:\WINDOWS\SYSTEM\MSGSRV32.EXE
+C:\WINDOWS\SYSTEM\MSTASK.EXE
+C:\WINDOWS\SYSTEM\SPOOL32.EXE
+C:\WINDOWS\SYSTEM\STIMON.EXE
+C:\WINDOWS\SYSTEM\SYSTRAY.EXE
+C:\WINDOWS\SYSTEM\WMIEXE.EXE
+C:\WINDOWS\TASKMON.EXE
+
+Internet Connection State :
+
+System Connected
+Local system uses a local area network to connect to the Internet.
+Local system has RAS installed.

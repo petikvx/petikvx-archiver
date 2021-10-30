@@ -1,0 +1,59 @@
+Infos System :
+
+Operating System : Windows NT 5.1 ,Build : 2
+Windows Version :  
+Reg Name : 
+Reg Organization : 
+User Name : PetiKVX
+Computer Name : PROGRAMMATION
+Id. Number : 55639-OEM-0011903-00199
+Key Number : 
+
+Processor : x86 Family 6 Model 11 Stepping 1
+Number of procesor : 1
+Processor : 586
+Low memory address : 65536
+High memory address : 2147418111
+Total Memory : 257 MB
+Resolution : 1024 X 768
+Total Number Of Bytes:38 140 620 800 bytes
+Total Free Bytes:23 990 726 656 bytes
+Total Space Used :14 149 894 144 bytes
+
+WinDir : C:\WINDOWS
+SysDir : C:\WINDOWS\System32
+TmpDir : C:\DOCUME~1\PetiKVX\LOCALS~1\Temp\
+IE Page : http://www.petikvx.fr.fm/
+Date & Time : 14/06/2002 06:41:25
+System started 1106 minutes ago
+
+25 Active Process (14/06/2002 06:41:46)
+csrss.exe
+DAP.exe
+Directcd.exe
+dllhost.exe
+explorer.exe
+infosys.exe
+lsass.exe
+msdtc.exe
+msmsgs.exe
+Navapsvc.exe
+Navapw32.exe
+services.exe
+slserv.exe
+smss.exe
+spoolsv.exe
+svchost.exe
+svchost.exe
+svchost.exe
+svchost.exe
+System
+wanmpsvc.exe
+winlogon.exe
+wmplayer.exe
+[System Process]
+
+Internet Connection State :
+
+System Not Connected
+Local system has RAS installed.
