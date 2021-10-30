@@ -1,3 +1,5 @@
+## Link doesn't Work
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -148,7 +150,7 @@ div.Section1
  </o:shapelayout></xml><![endif]-->
 <meta name=description
 content="French VX Coderz. All my codes of worms and virus.">
-<meta name=keywords content="vxcoderzfr, PetiK, virus français">
+<meta name=keywords content="vxcoderzfr, PetiK, virus franÃ§ais">
 <meta name=author content=PetiK>
 </head>
 
@@ -197,7 +199,7 @@ lang=EN-GB style='mso-ansi-language:EN-GB'><br>
 July 2<sup>nd</sup> : Add a new link : <a href="http://www.spth.de.vu/">Second
 Part To Hell</a><br>
 June 29<sup>th</sup> : Add my new tool : <a
-href="http://membres.lycos.fr/petikvx/source/vbshexconv.zip">PetiK’s VBS Hex
+href="http://membres.lycos.fr/petikvx/source/vbshexconv.zip">PetiKâ€™s VBS Hex
 Convert</a> and add my last full spread VBS worm : </span><span lang=EN-GB
 style='color:lime;mso-ansi-language:EN-GB'>VBS.Hatred</span><span lang=EN-GB
 style='mso-ansi-language:EN-GB'><br>
@@ -293,7 +295,7 @@ February 10<sup>th</sup> : Can download my last worm. Add my second article : <a
 href="http://membres.lycos.fr/petikvx/technics.zip">Technics</a><br>
 February 7<sup>th</sup> : Finish my last worm : </span><span lang=EN-GB
 style='color:lime;mso-ansi-language:EN-GB'>I-Worm.Falken</span><span
-lang=EN-GB style='mso-ansi-language:EN-GB'> (can’t download immediately)<br>
+lang=EN-GB style='mso-ansi-language:EN-GB'> (canâ€™t download immediately)<br>
 February 4<sup>th</sup> : Add new worm : </span><span lang=EN-GB
 style='color:lime;mso-ansi-language:EN-GB'>I-Worm.Extract</span><span
 lang=EN-GB style='mso-ansi-language:EN-GB'><br>
@@ -309,7 +311,7 @@ program contains all the sources of my works.<br>
 January 10<sup>th</sup> : Add an old <a
 href="http://membres.lycos.fr/petikvx/spread.zip">article about Worm Spreading</a>
 written by me on September 19<sup>th</sup>.<br>
-January 1<sup>st</sup> : <span style='mso-tab-count:1'>  </span>HAPPY NEW YEAR.
+January 1<sup>st</sup> : <span style='mso-tab-count:1'>Â  </span>HAPPY NEW YEAR.
 I DECIDED TO STOP TO CODE VIRII AND WORM. </span><span lang=EN-GB
 style='color:red;mso-ansi-language:EN-GB'>GOOD BYE</span><span lang=EN-GB
 style='mso-ansi-language:EN-GB'><br>
@@ -318,7 +320,7 @@ style='mso-ansi-language:EN-GB'><br>
 December 10<sup>th</sup> : Add my last worm : </span><span lang=EN-GB
 style='color:lime;mso-ansi-language:EN-GB'>W32.HLLW.Last</span><span
 lang=EN-GB style='mso-ansi-language:EN-GB'><br>
-November<span style="mso-spacerun: yes">  </span>6<sup>th</sup> : </span><span
+November<span style="mso-spacerun: yes">Â  </span>6<sup>th</sup> : </span><span
 lang=EN-GB style='color:lime;mso-ansi-language:EN-GB'>I-Worm.Anthrax</span><span
 lang=EN-GB style='mso-ansi-language:EN-GB'><br>
 October 12<sup>th</sup> : </span><span lang=EN-GB style='color:lime;mso-ansi-language:
@@ -424,7 +426,7 @@ different worms that I create :<br>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'>&nbsp;AVP :
   IRC.Worm.PetiK<br>
-  <span style="mso-spacerun: yes"> </span>TM : <a
+  <span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=BAT_PETIK.A&amp;VSect=T">Bat.PetiK.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -446,7 +448,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span></span><span style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span></span><span style='font-size:10.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Lucida Console"'><a
   href="http://www.symantec.com/avcenter/venc/data/irc.becky.a.html"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>IRC.Becky.A</span></a></span><span
@@ -497,7 +499,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span></span><span style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span></span><span style='font-size:10.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Lucida Console"'><a
   href="http://www.symantec.com/avcenter/venc/data/html.bother.3180.html"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>HTML.Bother.3180</span></a></span><span
@@ -505,8 +507,8 @@ different worms that I create :<br>
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><br>
-  <span style="mso-spacerun: yes"> </span>AVP : VBS.Both<br>
-  <span style="mso-spacerun: yes"> </span>TM : <a
+  <span style="mso-spacerun: yes">Â </span>AVP : VBS.Both<br>
+  <span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=HTML_BOTHER.A&amp;VSect=T">HTML.Bother.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -532,7 +534,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>VBS.Embaro.A.Intd<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>VBS.Embaro.A.Intd<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -573,8 +575,8 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>HTML.Prepend<br>
-  <span style="mso-spacerun: yes"> </span>Panda : HTML/Mage<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>HTML.Prepend<br>
+  <span style="mso-spacerun: yes">Â </span>Panda : HTML/Mage<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -597,10 +599,10 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>VBS.Manu@mm<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>VBS.Manu@mm<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>TM : <a
+  style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.trendmicro.com/vinfo/virusencyclo/default5.asp?VName=VBS_PETIK.G">VBS.PATIK.G</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -625,16 +627,16 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
   mso-ansi-language:EN-GB'><span style="mso-spacerun:
-  yes"> </span>W95.Pet_Tick.gen<o:p></o:p></span></p>
+  yes">Â </span>W95.Pet_Tick.gen<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM : </span><span
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM : </span><span
   lang=IT style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:
   IT'><a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_PETTICK.A&amp;VSect=T"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>Worm.Pettick.A</span></a></span><span
   lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:
   EN-GB'><br>
-  <span style="mso-spacerun: yes"> </span>Sophos : W32/Petick-A<o:p></o:p></span></p>
+  <span style="mso-spacerun: yes">Â </span>Sophos : W32/Petick-A<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -657,9 +659,9 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
   mso-ansi-language:EN-GB'><span style="mso-spacerun:
-  yes"> </span>W95.Pet_Tick.E@mm<br>
+  yes">Â </span>W95.Pet_Tick.E@mm<br>
   <br>
-  <span style="mso-spacerun: yes"> </span>AVP : I-Worm.PetiK.e</span><span
+  <span style="mso-spacerun: yes">Â </span>AVP : I-Worm.PetiK.e</span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
   </td>
@@ -682,12 +684,12 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>TM : <a
+  style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_CASPER.A&amp;VSect=T">Worm.Capser.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
-  font-family:"Lucida Console";mso-ansi-language:EN-GB'>It‘s a utility which
+  font-family:"Lucida Console";mso-ansi-language:EN-GB'>Itâ€˜s a utility which
   detect Happy99 and Icecubes. Uses MAPI. Perhaps bugz.<o:p></o:p></span></p>
   </td>
  </tr>
@@ -724,14 +726,14 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>Panda : </span><span style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span>Panda : </span><span style='font-size:10.0pt;
   font-family:"Lucida Console"'><a
   href="http://service.pandasoftware.es/library/virusCard.jsp?Virus=W32/Extract"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>W32/Extract</span></a></span><span
   lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:
   EN-GB'><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM&nbsp;: <a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM&nbsp;: <a
   href="http://www.trendmicro.com/vinfo/virusencyclo/default5.asp?VName=WORM_PETIK.L">WORM.PETIK.L</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -780,15 +782,15 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W32.Pet_Tick.B <br>
-  <span style="mso-spacerun: yes"> </span></span><span style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span>W32.Pet_Tick.B <br>
+  <span style="mso-spacerun: yes">Â </span></span><span style='font-size:10.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Lucida Console"'><a
   href="http://www.symantec.com/avcenter/venc/data/w32.fiend.worm.html"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>W32.Fiend.Worm</span></a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><br>
-  <span style="mso-spacerun: yes"> </span><br>
-  <span style="mso-spacerun: yes"> </span>AVP : </span><span style='font-size:
+  <span style="mso-spacerun: yes">Â </span><br>
+  <span style="mso-spacerun: yes">Â </span>AVP : </span><span style='font-size:
   10.0pt;mso-bidi-font-size:12.0pt;font-family:"Lucida Console"'><a
   href="http://www.viruslist.com/eng/viruslist.asp?id=4204&amp;key=00001000130000100079"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>I-Worm.PetiK.b</span></a></span><span
@@ -816,11 +818,11 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W95.Pet_Tick.D@mm<br>
-  <span style="mso-spacerun: yes"> </span></span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>W95.Pet_Tick.D@mm<br>
+  <span style="mso-spacerun: yes">Â </span></span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>W95.Wormfix.Worm@mm<br>
   <br>
-  <span style="mso-spacerun: yes"> </span>AVP : I-Worm.PetiK.c</span><span
+  <span style="mso-spacerun: yes">Â </span>AVP : I-Worm.PetiK.c</span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
   </td>
@@ -864,10 +866,10 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W32.Pet_tick.M<br>
-  <span style="mso-spacerun: yes"> </span>TM : <a
+  style="mso-spacerun: yes">Â </span>W32.Pet_tick.M<br>
+  <span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_KEVLAR.A&amp;VSect=T">Worm.Kevlar.A</a><br>
-  <span style="mso-spacerun: yes"> </span>Panda : Worm.PetiK.C<o:p></o:p></span></p>
+  <span style="mso-spacerun: yes">Â </span>Panda : Worm.PetiK.C<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -890,15 +892,15 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W32.Pet_Tick.Intd<br>
+  style="mso-spacerun: yes">Â </span>W32.Pet_Tick.Intd<br>
   <br>
-  <span style="mso-spacerun: yes"> </span>Sophos : <a
+  <span style="mso-spacerun: yes">Â </span>Sophos : <a
   href="http://www.sophos.com/virusinfo/analyses/w32petikk.html">W32/Petik-K</a><br>
   <br>
-  <span style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  <span style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>I-Worm.PetiK.k<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM : <a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_PETIK.K&amp;VSect=T">Worm.PetiK.K</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -922,11 +924,11 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W32.Pet_Tick.A@mm<br>
-  <span style="mso-spacerun: yes"> </span>W32.Salut.Worm@mm<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W32.Pet_Tick.A@mm<br>
+  <span style="mso-spacerun: yes">Â </span>W32.Salut.Worm@mm<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP:<a
+  style="mso-spacerun: yes">Â </span>AVP:<a
   href="http://www.viruslist.com/eng/viruslist.asp?id=4203&amp;key=00001000130000100078">I-Worm.PetiK.a</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -948,13 +950,13 @@ different worms that I create :<br>
   </td>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span><a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w32.pet_tick.g.html">W32.Pet_Tick.G</a><br>
-  <span style="mso-spacerun: yes"> </span>W32.Malot.Int<br>
+  <span style="mso-spacerun: yes">Â </span>W32.Malot.Int<br>
   <br>
-  <span style="mso-spacerun: yes"> </span>AVP : I-Worm.PetiK.f<o:p></o:p></span></p>
+  <span style="mso-spacerun: yes">Â </span>AVP : I-Worm.PetiK.f<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM : <a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_MALOT.A&amp;VSect=T">Worm.Malot.A</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -981,16 +983,16 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span></span><span style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span></span><span style='font-size:10.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Lucida Console"'><a
   href="http://www.symantec.com/avcenter/venc/data/w32.update.worm.html"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>W32.Update.Worm</span></a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><br>
   <br>
-  <span style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  <span style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>I-Worm.PetiK.d<br>
-  <span style="mso-spacerun: yes"> </span>TM : <a
+  <span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_MUSTARD.A&amp;VSect=T">Worm.Mustard.A</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1017,7 +1019,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W95.Pet_Tick.gen<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W95.Pet_Tick.gen<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1041,18 +1043,18 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W95.Pet_Tick.C@mm<br>
-  <span style="mso-spacerun: yes"> </span></span><span style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span>W95.Pet_Tick.C@mm<br>
+  <span style="mso-spacerun: yes">Â </span></span><span style='font-size:10.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Lucida Console"'><a
   href="http://www.symantec.com/avcenter/venc/data/w95.buggy.worm@mm.html"><span
   lang=EN-GB style='mso-ansi-language:EN-GB'>W95.Buggy.Worm@mm</span></a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><br>
   <br>
-  <span style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  <span style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>I-Worm.IEPatch<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM : <a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_PETIK.A&amp;VSect=T">Worm.PetiK.A</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1077,7 +1079,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>TM : <a
+  style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_RUSH.A&amp;VSect=T">Worm.Rush.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1100,7 +1102,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W32.Pet_Tick.AC@mm<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W32.Pet_Tick.AC@mm<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1122,19 +1124,19 @@ different worms that I create :<br>
   </td>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span><a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w32.mineup.worm.html">W32.Mineup.Worm</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>AVP :
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>AVP :
   I-Worm.Petik<br>
   <br>
-  <span style="mso-spacerun: yes"> </span>McAfee:</span><span lang=EN-GB
+  <span style="mso-spacerun: yes">Â </span>McAfee:</span><span lang=EN-GB
   style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:"Lucida Console";
   mso-ansi-language:EN-GB'><a
   href="http://vil.mcafee.com/dispVirus.asp?virus_k=99132&amp;">W32/PetTick@MM</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span></span><span lang=IT style='font-size:10.0pt;
+  style="mso-spacerun: yes">Â </span></span><span lang=IT style='font-size:10.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Lucida Console";mso-ansi-language:
   IT'>Panda : W32/PetTick<o:p></o:p></span></p>
   </td>
@@ -1156,9 +1158,9 @@ different worms that I create :<br>
   </td>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span style='font-size:10.0pt;font-family:"Lucida Console"'><span
-  style="mso-spacerun: yes"> </span>Sophos : W32/Petik-WTC<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>Sophos : W32/Petik-WTC<o:p></o:p></span></p>
   <p><span style='font-size:10.0pt;font-family:"Lucida Console"'><span
-  style="mso-spacerun: yes"> </span></span><span lang=EN-GB style='font-size:
+  style="mso-spacerun: yes">Â </span></span><span lang=EN-GB style='font-size:
   10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>TM : <a
   href="http://www.trendmicro.com/vinfo/virusencyclo/default5.asp?VName=WORM_PET.TICK.Q">WORM.PETTICK.Q</a><o:p></o:p></span></p>
   </td>
@@ -1183,11 +1185,11 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
   mso-ansi-language:EN-GB'><span style="mso-spacerun:
-  yes"> </span>W95.Pet_tick.gen<o:p></o:p></span></p>
+  yes">Â </span>W95.Pet_tick.gen<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM :
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM :
   Trojan.PetiK.XFW<br>
-  <span style="mso-spacerun: yes"> </span></span><span lang=EN-GB
+  <span style="mso-spacerun: yes">Â </span></span><span lang=EN-GB
   style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:"Lucida Console";
   mso-ansi-language:EN-GB'>Panda : Worm.PetiK.D</span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1214,8 +1216,8 @@ different worms that I create :<br>
   Trojan<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : JS.Germinal<br>
-  <span style="mso-spacerun: yes"> </span>TM : JS.Germinal.A<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>AVP : JS.Germinal<br>
+  <span style="mso-spacerun: yes">Â </span>TM : JS.Germinal.A<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1239,7 +1241,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>TM : <a
+  style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.antivirus.com/vinfo/virusencyclo/default5.asp?VName=WORM_CRAZYBOX.A">WORM.CRAZYBOX.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1263,13 +1265,13 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w32.dotor.a@mm.html">W32/W97M.Dotor.Worm</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>McAfee : <a
+  style="mso-spacerun: yes">Â </span>McAfee : <a
   href="http://vil.mcafee.com/dispVirus.asp?virus_k=99533">W32/DoTor</a><br>
-  <span style="mso-spacerun: yes"> </span>Panda : </span><span lang=NL
+  <span style="mso-spacerun: yes">Â </span>Panda : </span><span lang=NL
   style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:"Lucida Console";
   mso-ansi-language:NL'><a
   href="http://service.pandasoftware.es/library/card.jsp?Virus=W32/Dotor.A"><span
@@ -1298,11 +1300,11 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w32.pet_ticky.b@mm.html">W32.Pet_Ticky.B</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>Panda : <a
+  style="mso-spacerun: yes">Â </span>Panda : <a
   href="http://service.pandasoftware.es/library/card.jsp?Virus=W32/Petlil.A">W32/Petlil.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1326,13 +1328,13 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w32.gubed@mm.html">W32.Gubed.Worm</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>McAfee : <a
+  style="mso-spacerun: yes">Â </span>McAfee : <a
   href="http://vil.mcafee.com/dispVirus.asp?virus_k=99534">W32/Gubed</a><br>
-  <span style="mso-spacerun: yes"> </span>TM : <a
+  <span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.trendmicro.com/pc-cillin/vinfo/virusencyclo/default5.asp?VName=WORM_GUBED.A">WORM.GUBED.A</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1355,7 +1357,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w32.pet_ticky.gen.html">W32.Pet_Ticky.gen</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1400,11 +1402,11 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>VBS.Pet_Tick.C@m<br>
-  <span style="mso-spacerun: yes"> </span>VBS.Ketip.C@m<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>VBS.Pet_Tick.C@m<br>
+  <span style="mso-spacerun: yes">Â </span>VBS.Ketip.C@m<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>I-Worm.Petik.h</span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1427,7 +1429,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>VBS.Doublet@mm<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>VBS.Doublet@mm<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1496,7 +1498,7 @@ different worms that I create :<br>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'>Encrypt with my tool
-  “PetiK’s VBS Hex Convert”<o:p></o:p></span></p>
+  â€œPetiKâ€™s VBS Hex Convertâ€<o:p></o:p></span></p>
   </td>
  </tr>
  <tr>
@@ -1514,9 +1516,9 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/vbs.pet_tick.b@mm.html">VBS.Pet_Tick.B@mm</a><br>
-  <span style="mso-spacerun: yes"> </span>VBS.Ketip.B@mm <o:p></o:p></span></p>
+  <span style="mso-spacerun: yes">Â </span>VBS.Ketip.B@mm <o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1563,12 +1565,12 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/vbs.pet_tick.a@mm.html">VBS.Pet_Tick.A@mm</a><br>
-  <span style="mso-spacerun: yes"> </span><a href="mailto:VBS.Ketip.A@mm">VBS.Ketip.A@mm</a><o:p></o:p></span></p>
+  <span style="mso-spacerun: yes">Â </span><a href="mailto:VBS.Ketip.A@mm">VBS.Ketip.A@mm</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>I-Worm.LeeBased</span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1596,15 +1598,15 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/vbs.chism.a@mm.html">VBS.Chism@mm</a><br>
-  <span style="mso-spacerun: yes"> </span>VBS.Copy.A@mm<o:p></o:p></span></p>
+  <span style="mso-spacerun: yes">Â </span>VBS.Copy.A@mm<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>I-Worm.Petik.i<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM : <a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.trendmicro.com/vinfo/virusencyclo/default5.asp?VName=VBS_PETIK.I">VBS.PETIK.I</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1627,10 +1629,10 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:IT'><span style="mso-spacerun:
-  yes"> </span>VBS.ManiaStar.A@mm<o:p></o:p></span></p>
+  yes">Â </span>VBS.ManiaStar.A@mm<o:p></o:p></span></p>
   <p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:IT'><span style="mso-spacerun:
-  yes"> </span>AVP : </span><span lang=IT style='font-size:10.0pt;font-family:
+  yes">Â </span>AVP : </span><span lang=IT style='font-size:10.0pt;font-family:
   "Lucida Console";mso-ansi-language:IT'>IRC-Worm.generic.vbs</span><span
   lang=IT style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:"Lucida Console";
   mso-ansi-language:IT'><o:p></o:p></span></p>
@@ -1678,7 +1680,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>Sophos : W32/Stall-A<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>Sophos : W32/Stall-A<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1721,7 +1723,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : <a
+  style="mso-spacerun: yes">Â </span>AVP : <a
   href="http://www.avp.ch/avpve/worms/email/stopin.stm">I-Worm.Stopin</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1743,13 +1745,13 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : <a
+  style="mso-spacerun: yes">Â </span>AVP : <a
   href="http://www.avp.ch/avpve/worms/email/wargam.stm">I-Worm.WarGam</a><br>
-  <span style="mso-spacerun: yes"> </span>Viruslist : <a
+  <span style="mso-spacerun: yes">Â </span>Viruslist : <a
   href="http://www.viruslist.com/eng/viruslist.html?id=47899">WarGame</a><o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://securityresponse.symantec.com/avcenter/venc/data/w32.wargam.worm.html">W32.WarGam.Worm</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1771,9 +1773,9 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span><a
+  style="mso-spacerun: yes">Â </span><a
   href="http://www.symantec.com/avcenter/venc/data/w97m.comical@mm.html">W97M.Comical</a><br>
-  <span style="mso-spacerun: yes"> </span>Sophos : <a
+  <span style="mso-spacerun: yes">Â </span>Sophos : <a
   href="http://www.sophos.fr/virusinfo/analyses/wm97comicala.html">W97M.Comical</a><o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
@@ -1839,7 +1841,7 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W97M.Apish<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W97M.Apish<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
@@ -1860,12 +1862,12 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W97M.Beko@mm<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W97M.Beko@mm<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'>A large spreading.
-  Export “Sleep” API<o:p></o:p></span></p>
+  Export â€œSleepâ€ API<o:p></o:p></span></p>
   </td>
  </tr>
  <tr>
@@ -1883,11 +1885,11 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W97M.Pet_Tick.Intd<br>
-  <span style="mso-spacerun: yes"> </span>W97M.Ketip.Intd<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W97M.Pet_Tick.Intd<br>
+  <span style="mso-spacerun: yes">Â </span>W97M.Ketip.Intd<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>Embedded</span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1912,10 +1914,10 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W97M.Adok.A<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W97M.Adok.A<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP:</span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>AVP:</span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>Macro.Word97.Adok</span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1940,13 +1942,13 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W97M.OutlookWorm.Gen<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W97M.OutlookWorm.Gen<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>AVP : </span><span lang=EN-GB
+  style="mso-spacerun: yes">Â </span>AVP : </span><span lang=EN-GB
   style='font-size:10.0pt;font-family:"Lucida Console";mso-ansi-language:EN-GB'>Macro.Office.Melissa-based<o:p></o:p></span></p>
   <p><span lang=EN-GB style='font-size:10.0pt;font-family:"Lucida Console";
-  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes"> </span>TM : <a
+  mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">Â </span>TM : <a
   href="http://www.trendmicro.com/vinfo/virusencyclo/default5.asp?VName=W97M_AYAM.A&amp;VSect=T">W97M.AYAM.A</a></span><span
   lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:
   "Lucida Console";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
@@ -1970,12 +1972,12 @@ different worms that I create :<br>
   <td width=190 style='width:142.35pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'><span
-  style="mso-spacerun: yes"> </span>W97M.Droopy.A<o:p></o:p></span></p>
+  style="mso-spacerun: yes">Â </span>W97M.Droopy.A<o:p></o:p></span></p>
   </td>
   <td width=268 style='width:200.8pt;padding:.75pt .75pt .75pt .75pt'>
   <p><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
   font-family:"Lucida Console";mso-ansi-language:EN-GB'>Infect .doc files with
-  the “Wolf” module. Thanx to Walrus<o:p></o:p></span></p>
+  the â€œWolfâ€ module. Thanx to Walrus<o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -1994,8 +1996,8 @@ virii sites :<o:p></o:p></span></p>
 
 <p><span lang=EN-GB style='mso-ansi-language:EN-GB'>VirLinux : <a
 href="http://www.virlinux.fr.fm/">http://www.virlinux.fr.fm</a> <span
-style='mso-tab-count:6'>                                                    </span>A
-French site about virii’s Linux<o:p></o:p></span></p>
+style='mso-tab-count:6'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span>A
+French site about viriiâ€™s Linux<o:p></o:p></span></p>
 
 <p><span lang=EN-GB style='mso-ansi-language:EN-GB'>VIRUS CODERS :<o:p></o:p></span></p>
 
@@ -2011,7 +2013,7 @@ href="http://blackjackvx.cjb.net"><span lang=EN-GB style='mso-ansi-language:
 EN-GB'>http://blackjackvx.cjb.net</span></a></span><span lang=EN-GB
 style='mso-ansi-language:EN-GB'> <br>
 Del_Armg0 : <a href="http://www.delly.fr.st/">http://www.delly.fr.st</a> <span
-style='mso-tab-count:6'>                                                     </span>French
+style='mso-tab-count:6'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span>French
 coder<br>
 FlyShadow : <a href="http://flyshadow.cjb.net/">http://flyshadow.cjb.net</a> <br>
 Gigabyte : </span><span lang=DE style='mso-ansi-language:DE'><a
@@ -2033,7 +2035,7 @@ href="http://www.coderz.net/nucleii/main.html"><span lang=EN-GB
 style='mso-ansi-language:EN-GB'>http://www.coderz.net/nucleii/main.html</span></a></span><span
 lang=EN-GB style='mso-ansi-language:EN-GB'> <br>
 Pointbat : <a href="http://pbat.cjb.net/">http://pbat.cjb.net/</a> <span
-style='mso-tab-count:7'>                                                             </span>French
+style='mso-tab-count:7'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span>French
 coder<br>
 Silvio : </span><span lang=DE style='mso-ansi-language:DE'><a
 href="http://www.big.net.au/~silvio/"><span lang=EN-GB style='mso-ansi-language:
@@ -2049,7 +2051,7 @@ The Walrus : <a href="http://walrus.up.to/">http://walrus.up.to</a> <br>
 Tipiax : </span><span lang=DE style='mso-ansi-language:DE'><a
 href="http://www.multimania.com/tipiax"><span lang=EN-GB style='mso-ansi-language:
 EN-GB'>http://www.multimania.com/tipiax</span></a></span><span lang=EN-GB
-style='mso-ansi-language:EN-GB'> <span style='mso-tab-count:5'>                                            </span>French
+style='mso-ansi-language:EN-GB'> <span style='mso-tab-count:5'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span>French
 coder<br>
 Vecna : <a href="http://www.coderz.net/asm_infamy">http://www.coderz.net/asm_infamy</a>
 <br>
@@ -2062,7 +2064,7 @@ style='mso-ansi-language:EN-GB'> <br>
 ZeMacroKiller98 : </span><span lang=DE style='mso-ansi-language:DE'><a
 href="http://www.crosswinds.net/~zemacrokiller98/index.htm"><span lang=EN-GB
 style='mso-ansi-language:EN-GB'>http://www.crosswinds.net/~zemacrokiller98/index.htm</span></a></span><span
-lang=EN-GB style='mso-ansi-language:EN-GB'> <span style='mso-tab-count:1'>      </span>French
+lang=EN-GB style='mso-ansi-language:EN-GB'> <span style='mso-tab-count:1'>Â Â Â Â Â  </span>French
 coder<br>
 Zulu : </span><span lang=DE style='mso-ansi-language:DE'><a
 href="http://www.coderz.net/zulu"><span lang=EN-GB style='mso-ansi-language:
@@ -2155,14 +2157,14 @@ Symantec&nbsp;: <a href="http://www.symantec.com/avcenter">http://www.symantec.c
 Trend Micro&nbsp;: <a href="http://www.trendmicro.com/">http://www.trendmicro.com</a></p>
 
 <p><span lang=EN-GB style='mso-ansi-language:EN-GB'><br>
-CONTACT&nbsp;:<span style="mso-spacerun: yes">  </span></span><a
+CONTACT&nbsp;:<span style="mso-spacerun: yes">Â  </span></span><a
 href="http://guestbook.cjb.net/cgi-bin/guestbook.cgi?view=petikvx"><span
 lang=EN-GB style='color:white;mso-ansi-language:EN-GB;text-decoration:none;
 text-underline:none'>GuestBook</span></a><span style='mso-ansi-language:EN-GB'>
 <span lang=EN-GB><o:p></o:p></span></span></p>
 
 <p align=center style='text-align:center'><i><span lang=EN-GB style='font-size:
-9.0pt;mso-bidi-font-size:7.5pt;font-family:Verdana;mso-ansi-language:EN-GB'>©
+9.0pt;mso-bidi-font-size:7.5pt;font-family:Verdana;mso-ansi-language:EN-GB'>Â©
 2001-2002 PetiK. All informations on this site is for educational purpose only</span></i><i><span
 lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:7.5pt;font-family:Verdana;
 mso-ansi-language:EN-GB'>.</span></i><span lang=EN-GB style='font-size:8.0pt;
