@@ -90,7 +90,7 @@ call CloseHandle                ; Close the file
 The content written to the file:
 
 ```assembly
-		TXT     db "[PandaKiller]",0dh,0ah
+	TXT     db "[PandaKiller]",0dh,0ah
         db "Contact: Panda34@caramail.com",0dh,0ah
         db "W32.PandaKiller.A by PandaKiller (c)2000",00h
 ```
