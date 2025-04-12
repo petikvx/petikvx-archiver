@@ -4,13 +4,12 @@ This directory contains a collection of archived articles, primarily works compl
 
 ## List of Articles
 
-| Article Title                      | Relative Link                          | Brief Description                              |
-|------------------------------------|----------------------------------------|------------------------------------------------|
-| Article 1 - Project Introduction   | [Articles/article1.md](Articles/article1.md) | Initial overview of the archiving project.    |
-| Article 2 - Malware Analysis       | [Articles/article2.md](Articles/article2.md) | Early study on malware from the period.       |
-| Article 3 - Reverse Engineering    | [Articles/article3.md](Articles/article3.md) | Exploration of reverse engineering techniques.|
-| Article 4 - Conclusion             | [Articles/article4.md](Articles/article4.md) | Summary of findings and future outlook.       |
-
+| Article Title                      | Relative Link                          | Brief Description                              | SHA256 Hash                          | Publication Date |
+|------------------------------------|----------------------------------------|------------------------------------------------|--------------------------------------|------------------|
+| Email-Worm.VBS.Lee-based           | [Articles/article1.md](Articles/article1.md) | Analysis of Email-Worm.VBS.Lee-based.         | `de948672211c3ec874db907a3c36c8896d5f78ae5e7a54fc35ff7b6b9b424e05`                     | `2025-04-12`         |
+| Virus.Win32.Trivial.64.c           | [Articles/article2.md](Articles/article2.md) | Analysis and source code of Virus.Win32.Trivial.64.c. | `3e37a0cd41c753419fa0b05777baa93e02107490249804879b19475a1df2142b`             | `2025-04-12`         |
+| Article 3 - Reverse Engineering    | [Articles/article3.md](Articles/article3.md) | Exploration of reverse engineering techniques.| `<SHA256_HASH>`                     | `2025-04-12`         |
+| Article 4 - Conclusion             | [Articles/article4.md](Articles/article4.md) | Summary of findings and future outlook.       | `<SHA256_HASH>`                     | `<DATE>`         |
 ## Notes
 - Articles are archived in their original format or converted to Markdown/HTML for easy reading.
 - For more details on each article, refer to the individual files.
