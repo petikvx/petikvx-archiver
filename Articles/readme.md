@@ -6,6 +6,7 @@ This directory contains a collection of archived articles, primarily works compl
 
 | Article Title                      | Brief Description                              | Publication Date |
 |------------------------------------|------------------------------------------------|------------------|
+| [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | 8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28 | 2025-04-19    |
 | [Virus.VBS.Monopoly](Virus.VBS.Monopoly/readme.md) | 8a2b52c6c2cc833f3838bfa739d018dd69327941d68b6fed89fedde67ab2b973 | 2025-04-19    |
 | [Email-Worm.VBS.Lubus](Email-Worm.VBS.Lubus/readme.md) | e47c8e572a7856e8def779039aa744e72a7ed900542ad3af64dcdab1bf5c18de | 2025-04-19    |
 | [Virus.DOS.BlackJec.276](Virus.DOS.BlackJec.276/readme.md) | 9c7448159cd16ba85bab1b198cebf8b2dd476693e9593b378998d352808715b7 | 2025-04-19    |
