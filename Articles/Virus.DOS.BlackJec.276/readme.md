@@ -218,3 +218,5 @@ A compact, clean example of a DOS file-infecting virus:
 - FAR JMP installed at memory `0xFFFB` pointing to `0x0100`.
 - Uses DOS INT 21h: 3Dh, 3Fh, 40h, 4Eh, 4Fh, 3Ch, 2Fh.
 - Skips files starting with `"CO"` and avoids `.EXE` format.
+- 
+![screenshot](screenshot.png)
