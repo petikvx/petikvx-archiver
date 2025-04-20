@@ -71,10 +71,10 @@ Detailed studies of worms, viruses, and trojans.
 
 Reverse engineering on legacy systems and old AV tools.
 
-- [2022-05-05 - Retro old AV on Windows XP](malware-retro/2022-05-05-retro-old-av-on-windows-xp.md)
-- [2023-11-24 - Mini-44](malware-retro/2023-11-24-mini-44.md)
-- [2023-11-25 - cspawn](malware-retro/2023-11-25-cspawn.md)
 - [2024-06-13 - Virus DOS 7son](malware-retro/2024-06-13-virus-dos-7son.md)
+- [2023-11-26 - Virus.DOS.Torero.1427](malware-retro/2023-11-26-torero-1427/readme.md)
+- [2023-11-25 - cspawn](malware-retro/2023-11-25-cspawn.md)
+- [2023-11-24 - Mini-44](malware-retro/2023-11-24-mini-44.md)
 
 ---
 
