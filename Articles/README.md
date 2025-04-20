@@ -24,11 +24,12 @@ Welcome to the malware analysis and VX research archive maintained by **petikvx*
 
 Converted from original .txt/.pdf files:
 
-- [2001-09-17 - How to spread a worm](20010917%20-%20How%20to%20spread%20a%20worm.md)
-- [2002-02-10 - Some Practice Technics](20020210%20-%20Some%20Practice%20Technics.md)
-- [2002-05-05 - VBS tutorial](20020505%20-%20VBS%20tutorial.md)
+- [2002-06-02 - What language for which work](<20020602 - What language for which work.md>)
+- [2002-05-05 - VBS tutorial](<20020505 - VBS tutorial.md>)
+- [2002-02-10 - Some Practice Technics](<20020210 - Some Practice Technics.md>)
+- [2001-09-17 - How to spread a worm](<20010917 - How to spread a worm.md>)
 
-Originals in [`origin-pdf/`](origin-pdf) and [`origin-txt/`](origin-txt).
+Originals in [`origin-txt/`](origin-txt) and [`origin-pdf/`](origin-pdf).
 
 ---
 
