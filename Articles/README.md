@@ -24,6 +24,7 @@ Welcome to the malware analysis and VX research archive maintained by **petikvx*
 
 Converted from original .txt/.pdf files:
 
+- [2002-06-19 - VBS-HTML multi-infection](<20020619 - VBS-HTML multi-infection.md>)
 - [2002-06-02 - What language for which work](<20020602 - What language for which work.md>)
 - [2002-05-05 - VBS tutorial](<20020505 - VBS tutorial.md>)
 - [2002-02-10 - Some Practice Technics](<20020210 - Some Practice Technics.md>)
