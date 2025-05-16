@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2025--04--25-blue)
+![Last Update](https://img.shields.io/badge/last_update-2025--05--16-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -73,6 +73,7 @@ Detailed studies of worms, viruses, and trojans.
 
 Reverse engineering on legacy systems and old AV tools.
 
+- [2025-05-16 - Virus.DOS.Dikshev.112.a](malware-retro/Virus.DOS.Trivial.Vootie.66.a/README.md)
 - [2025-04-25 - Virus.DOS.Trivial.Vootie.66.a](malware-retro/Virus.DOS.Trivial.Vootie.66.a/README.md)
 - [2024-06-13 - Virus.DOS.7son](malware-retro/2024-06-13-virus-dos-7son.md)
 - [2023-11-26 - Virus.DOS.Torero.1427](malware-retro/2023-11-26-torero-1427/readme.md)
@@ -108,4 +109,4 @@ If you'd like to contribute, report an issue, or suggest an addition:
 
 ---
 
-**Last updated:** April 20, 2025
+**Last updated:** May 16, 2025
