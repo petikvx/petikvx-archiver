@@ -54,27 +54,27 @@ Examples:
 
 Detailed studies of worms, viruses, and trojans.
 
-| Title | Path | Hash | Date |
-|-------|------|------|------|
-| [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | Trojan-Dropper.Script.Generic | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
-| [Virus.VBS.Monopoly](Virus.VBS.Monopoly/readme.md) | Virus.VBS.Monopoly | `8a2b52c6c2cc833f3838bfa739d018dd69327941d68b6fed89fedde67ab2b973` | 2025-04-19 |
-| [Email-Worm.VBS.Lubus](Email-Worm.VBS.Lubus/readme.md) | Email-Worm.VBS.Lubus | `e47c8e572a7856e8def779039aa744e72a7ed900542ad3af64dcdab1bf5c18de` | 2025-04-19 |
-| [Virus.DOS.BlackJec.276](Virus.DOS.BlackJec.276/readme.md) | Virus.DOS.BlackJec.276 | `c17dc774329fda62b91c2d30034836d5d864540cff128405f6f824d1168058f1` | 2025-04-19 |
-| [Virus.Win32.Aidlot](Virus.Win32.Aidlot/readme.md) | Virus.Win32.Aidlot | `9c7448159cd16ba85bab1b198cebf8b2dd476693e9593b378998d352808715b7` | 2025-04-13 |
-| [Email-Worm.VBS.Newlove](Email-Worm.VBS.Newlove/readme.md) | Email-Worm.VBS.Newlove | `aa14a4bfb1e6de52750cc89b91cacbe8bd318634ccb54fa835f5e2c5d1d2f633` | 2025-04-13 |
-| [Email-Worm.VBS.Guorm.a](Email-Worm.VBS.Guorm.a/readme.md) | Email-Worm.VBS.Guorm.a | `fa312b89f6f212964808e12ddb4d6bc6da736dab766f0b0318ebedbfbced1e5e` | 2025-04-13 |
-| [Virus.Win32.Trivial.64.c](Virus.Win32.Trivial.64.c/readme.md) | Virus.Win32.Trivial.64.c | `3e37a0cd41c753419fa0b05777baa93e02107490249804879b19475a1df2142b` | 2025-04-12 |
-| [Email-Worm.VBS.Lee-based](Email-Worm.VBS.Lee-based/readme.md) | Email-Worm.VBS.Lee-based | `de948672211c3ec874db907a3c36c8896d5f78ae5e7a54fc35ff7b6b9b424e05` | 2025-04-12 |
-| [Worm.Win32.AimVen](Worm.Win32.AimVen/readme.md) | Worm.Win32.AimVen | `398788793486ca262becc9b6a7a1d02c5b12e8981232ceeb01cbde1b13ab4102` | 2025-04-12 |
-
+| Title | Hash | Date |
+|-------|------|------|
+| [Virus.DOS.Dikshev.112.a](malware-retro/Virus.DOS.Dikshev.112.a) | `c0d297b059afc8785f00865dc5686611ec6ffd63f8907d01bf33730f413e7565` | 2025-05-16 |
+| [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
+| [Virus.VBS.Monopoly](Virus.VBS.Monopoly/readme.md) | `8a2b52c6c2cc833f3838bfa739d018dd69327941d68b6fed89fedde67ab2b973` | 2025-04-19 |
+| [Email-Worm.VBS.Lubus](Email-Worm.VBS.Lubus/readme.md) | `e47c8e572a7856e8def779039aa744e72a7ed900542ad3af64dcdab1bf5c18de` | 2025-04-19 |
+| [Virus.DOS.BlackJec.276](Virus.DOS.BlackJec.276/readme.md) | `c17dc774329fda62b91c2d30034836d5d864540cff128405f6f824d1168058f1` | 2025-04-19 |
+| [Virus.Win32.Aidlot](Virus.Win32.Aidlot/readme.md) | `9c7448159cd16ba85bab1b198cebf8b2dd476693e9593b378998d352808715b7` | 2025-04-13 |
+| [Email-Worm.VBS.Newlove](Email-Worm.VBS.Newlove/readme.md) | `aa14a4bfb1e6de52750cc89b91cacbe8bd318634ccb54fa835f5e2c5d1d2f633` | 2025-04-13 |
+| [Email-Worm.VBS.Guorm.a](Email-Worm.VBS.Guorm.a/readme.md) | `fa312b89f6f212964808e12ddb4d6bc6da736dab766f0b0318ebedbfbced1e5e` | 2025-04-13 |
+| [Virus.Win32.Trivial.64.c](Virus.Win32.Trivial.64.c/readme.md) | `3e37a0cd41c753419fa0b05777baa93e02107490249804879b19475a1df2142b` | 2025-04-12 |
+| [Email-Worm.VBS.Lee-based](Email-Worm.VBS.Lee-based/readme.md) | `de948672211c3ec874db907a3c36c8896d5f78ae5e7a54fc35ff7b6b9b424e05` | 2025-04-12 |
+| [Worm.Win32.AimVen](Worm.Win32.AimVen/readme.md) | `398788793486ca262becc9b6a7a1d02c5b12e8981232ceeb01cbde1b13ab4102` | 2025-04-12 |
 ---
 
 ## ♻️ Retro Research
 
 Reverse engineering on legacy systems and old AV tools.
 
-- [2025-05-16 - Virus.DOS.Dikshev.112.a](malware-retro/Virus.DOS.Trivial.Vootie.66.a/README.md)
-- [2025-04-25 - Virus.DOS.Trivial.Vootie.66.a](malware-retro/Virus.DOS.Trivial.Vootie.66.a/README.md)
+- [2025-05-16 - Virus.DOS.Dikshev.112.a](malware-retro/Virus.DOS.Dikshev.112.a)
+- [2025-04-25 - Virus.DOS.Trivial.Vootie.66.a](malware-retro/Virus.DOS.Trivial.Vootie.66.a)
 - [2024-06-13 - Virus.DOS.7son](malware-retro/2024-06-13-virus-dos-7son.md)
 - [2023-11-26 - Virus.DOS.Torero.1427](malware-retro/2023-11-26-torero-1427/readme.md)
 - [2023-11-25 - cspawn](malware-retro/2023-11-25-cspawn.md)
