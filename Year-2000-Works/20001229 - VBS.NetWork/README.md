@@ -8,14 +8,10 @@ VBS.NetWork, created by PetiK on December 29, 2000, is a Visual Basic Script (VB
 
 The worm's emergence highlights vulnerabilities in scripting environments and social engineering tactics prevalent in the late 1990s and early 2000s. By analyzing its source code, we uncover methods for registry manipulation, file operations, and data theft, which informed the development of more advanced spyware. Understanding VBS.NetWork is crucial for recognizing the roots of information-stealing malware, emphasizing the importance of secure coding practices and user awareness in combating evolving cyber threats.
 
-(Word count: 132)
-
 ## Section 1: Overview of the Malware 🐛
 VBS.NetWork is a worm designed to replicate itself, maintain persistence on Windows systems, and steal personal and system data. Its behavior includes copying the script to the Windows directory, modifying the registry for auto-start, infecting mIRC clients to spread via DCC, collecting espionage data into a file, and sending mass emails with itself attached while exfiltrating the stolen info.
 
 Targets are Windows users with Outlook and mIRC installed, common for email and chat in 2000. Infection vectors include opening the VBS file directly or via email attachments. It was part of PetiK's series of VBS worms, contributing to the proliferation of script-based malware. Campaigns exploited curiosity with subjects like "NetWork Game for WINDOWS," leading to privacy breaches and network congestion from email floods.
-
-(Word count: 118)
 
 ## Section 2: Source Code Analysis 🔬
 VBS.NetWork is written in VBScript, leveraging Windows Scripting Host (WSH) objects for file system, shell, and network operations. The full code is below, followed by an in-depth breakdown of each component, including line-by-line explanations, examples of key functions, and their implications for malware behavior.
@@ -206,8 +202,6 @@ Example: `msg.Attachments.Add fso.BuildPath(fso.GetSpecialFolder(0),"\Network.vb
 
 Overall, the code's simplicity relies on WSH's power, with no encryption but effective social engineering and multi-vector spread. It highlights early spyware tactics, combining theft with propagation.
 
-(Word count: 612)
-
 ## Section 3: Mitigation and Defense Strategies 🛡️
 Defend against VBS.NetWork with antivirus detecting VBS worms and script execution blocks. Disable WSH for untrusted sources, monitor registry for RunServices additions, and use email filters for suspicious attachments/subjects.
 
@@ -215,15 +209,5 @@ For mIRC, disable auto-scripts and avoid unknown DCC sends. Educate on not openi
 
 Administrators deploy EDR for file/registry changes, scan for ESPION.txt-like files. Incident response: Remove Network.vbs, reset registry, update systems. Proactive: Zero-trust, regular audits.
 
-(Word count: 88)
-
 ## Conclusion
 VBS.NetWork illustrates early spyware-worm hybrids, using scripts for theft and spread. Its code reveals registry persistence, data exfiltration, and multi-vector propagation, foundational for modern malware. Prioritizing security practices and awareness counters such threats.
-
-(Word count: 48)
-
-## Call to Action
-Stay updated via cybersecurity resources. Share this article to promote digital safety.
-
-## Download the Article
-[Download the article as Markdown](#)
