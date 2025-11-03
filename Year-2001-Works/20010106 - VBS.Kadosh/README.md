@@ -102,6 +102,3 @@ End Sub
 
 ## Conclusion
 VBS.Kadosh is emblematic of early 2000s email worms: minimal code, maximum leverage of default-permissive client automation. It copies itself to trusted-looking locations, changes visible browser settings, and abuses Outlook to blast an attached copy to as many contacts as possible. There is no sophisticated evasion, only simple trickery such as dual file extensions and friendly French-language messages that urge quick action. For defenders, the code underscores the importance of curbing script execution, instrumenting registry and email behaviors, and educating users about risky attachments. The same fundamental controls that defeat Kadosh also blunt contemporary script-based threats that attempt to revive these old playbooks.
-
-## Download the Article
-[Download the article as Markdown](#)
