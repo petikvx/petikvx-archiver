@@ -56,6 +56,7 @@ Detailed studies of worms, viruses, and trojans.
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Virus.DOS.Armen.230.a](malware-retro/Virus.DOS.Armen.230.a) | `c220b2901dc18a59fddacfbf8562e13717233537eef573f5868e6d4596b092d6` | 2025-11-12 |
 | [Virus.DOS.Amz.600](malware-retro/Virus.DOS.Amz.600) | `d625a4b33429debb59c0448f52aa89fa61dc90c49820ef37d8ab3eabc0b20e68` | 2025-11-11 |
 | [Virus.DOS.Dikshev.112.a](malware-retro/Virus.DOS.Dikshev.112.a) | `c0d297b059afc8785f00865dc5686611ec6ffd63f8907d01bf33730f413e7565` | 2025-05-16 |
 | [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
