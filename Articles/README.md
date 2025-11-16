@@ -56,7 +56,7 @@ Detailed studies of worms, viruses, and trojans.
 
 | Title | Hash | Date |
 |-------|------|------|
-| [VBS Ransomware](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
+| [UDS-Trojan-Ransom.Win32.Encoder](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
 | [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
 | [Virus.VBS.Monopoly](Virus.VBS.Monopoly/readme.md) | `8a2b52c6c2cc833f3838bfa739d018dd69327941d68b6fed89fedde67ab2b973` | 2025-04-19 |
 | [Email-Worm.VBS.Lubus](Email-Worm.VBS.Lubus/readme.md) | `e47c8e572a7856e8def779039aa744e72a7ed900542ad3af64dcdab1bf5c18de` | 2025-04-19 |
