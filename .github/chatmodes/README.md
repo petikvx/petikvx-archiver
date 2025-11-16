@@ -1,17 +1,23 @@
-# GitHub Copilot Chat Modes for Malware Analysis
+# Malware Analysis Chat Modes
 
-This directory contains specialized chat modes for analyzing malware with GitHub Copilot.
+This directory contains specialized chat modes for analyzing malware with varying levels of detail and expertise.
+
+## 📚 Documentation
+
+- **[README.md](README.md)** - This file (complete documentation)
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick guide to choose the right mode
+- **[EXPERT_MODES_COMPARISON.md](EXPERT_MODES_COMPARISON.md)** - Detailed comparison of expert modes
 
 ## Available Chat Modes
 
-### 🔬 `analyze-malware-expert.chatmode.md` (Recommended)
+### 🔬 `analyze-malware-asm-expert.chatmode.md`
 
-**Expert-level comprehensive malware analysis**
+**Expert-level assembly malware analysis**
 
 - **Target Audience:** Security researchers, reverse engineers, threat intelligence analysts
 - **Output Length:** 2500-4000 words
 - **Depth:** Publication-grade technical analysis
-- **Code Focus:** Assembly language, low-level system calls, detailed instruction analysis
+- **Code Focus:** Assembly language (x86/x64/ARM), machine code, low-level system calls
 - **Features:**
   - In-depth disassembly analysis with instruction-level comments
   - MITRE ATT&CK technique mapping
@@ -22,15 +28,82 @@ This directory contains specialized chat modes for analyzing malware with GitHub
   
 **Best for:**
 - DOS/legacy malware analysis
-- Assembly language reverse engineering
+- Binary reverse engineering
+- Assembly language analysis
 - Academic research and publications
-- Detailed technical documentation
 - Security conference presentations
 
 **Usage:**
 ```
-@workspace /chatmode analyze-malware-expert
+@workspace /chatmode analyze-malware-asm-expert
 Analyze the malware in [file path or directory]
+```
+
+---
+
+### � `analyze-malware-dotnet-expert.chatmode.md` (NEW)
+
+**Expert-level .NET malware analysis**
+
+- **Target Audience:** .NET security researchers, reverse engineers, incident responders
+- **Output Length:** 2500-4000 words
+- **Depth:** Publication-grade technical analysis
+- **Code Focus:** C#, VB.NET, F#, IL/MSIL, decompiled managed code
+- **Features:**
+  - Complete assembly decompilation and analysis
+  - Obfuscation detection and reversal (ConfuserEx, .NET Reactor, etc.)
+  - P/Invoke and native API interaction documentation
+  - Reflection and dynamic loading analysis
+  - .NET-specific YARA rules
+  - PE metadata and assembly manifest analysis
+  - Anti-debugging and anti-VM technique identification
+  
+**Best for:**
+- Modern .NET RATs (Agent Tesla, AsyncRAT, NanoCore)
+- .NET stealers and keyloggers
+- Ransomware written in C#
+- .NET droppers and loaders
+- Obfuscated .NET assemblies
+- Banking trojans using .NET
+
+**Usage:**
+```
+@workspace /chatmode analyze-malware-dotnet-expert
+Analyze the .NET malware at [file path]
+```
+
+---
+
+### �📜 `analyze-malware-script-expert.chatmode.md` (NEW)
+
+**Expert-level script malware analysis**
+
+- **Target Audience:** SOC analysts, incident responders, script malware researchers
+- **Output Length:** 2500-4000 words
+- **Depth:** Publication-grade technical analysis
+- **Code Focus:** Batch (.bat/.cmd), VBScript (.vbs), PowerShell (.ps1), JavaScript (.js), WSF, HTA
+- **Features:**
+  - Complete deobfuscation of encoded content
+  - COM/ActiveX object analysis
+  - PowerShell cmdlet and .NET method breakdown
+  - Living-off-the-Land binaries (LOLBins) identification
+  - Download cradle and fileless execution analysis
+  - Script-specific YARA rules
+  - Execution policy bypass techniques
+  - AMSI bypass detection
+  
+**Best for:**
+- Modern script-based malware (Emotet, ransomware droppers)
+- PowerShell Empire/Cobalt Strike scripts
+- VBScript worms and macros
+- JavaScript downloaders and stagers
+- Multi-stage script attacks
+- Phishing attachment analysis
+
+**Usage:**
+```
+@workspace /chatmode analyze-malware-script-expert
+Analyze the script malware at [file path]
 ```
 
 ---
@@ -108,18 +181,20 @@ The analysis will be saved as `README.md` in the same directory as the analyzed 
 
 ## Output Structure Comparison
 
-| Section | analyze-malware-expert | analyze-malware-v4 |
-|---------|----------------------|-------------------|
-| Executive Summary | ✅ Detailed metadata | ❌ Basic intro |
-| Table of Contents | ✅ Full navigation | ❌ No ToC |
-| Technical Analysis | ✅ 1500-2500 words | ✅ 400-500 words |
-| Code Excerpts | ✅ 5-8 annotated | ✅ 3-5 annotated |
-| Assembly Analysis | ✅ Instruction-level | ❌ Limited |
-| MITRE ATT&CK | ✅ Technique mapping | ❌ Not included |
-| IoC Generation | ✅ Comprehensive | ✅ Basic |
-| YARA Rules | ✅ Included | ❌ Not included |
-| Mitigation | ✅ Detailed sections | ✅ Brief coverage |
-| References | ✅ Academic citations | ❌ Optional |
+| Section | asm-expert | dotnet-expert | script-expert | v4 |
+|---------|------------|---------------|---------------|-----|
+| Executive Summary | ✅ Detailed | ✅ Detailed + PE info | ✅ Detailed | ❌ Basic |
+| Table of Contents | ✅ Full | ✅ Full | ✅ Full | ❌ No ToC |
+| Technical Analysis | ✅ 1500-2500w | ✅ 1500-2500w | ✅ 1500-2500w | ✅ 400-500w |
+| Code Excerpts | ✅ 5-8 ASM | ✅ 5-8 C#/IL | ✅ 5-8 scripts | ✅ 3-5 |
+| Assembly Analysis | ✅ x86/x64 | ✅ IL/MSIL | ❌ N/A | ❌ Limited |
+| Decompilation | ❌ N/A | ✅ dnSpy/ILSpy | ❌ N/A | ❌ N/A |
+| Deobfuscation | ❌ N/A | ✅ ConfuserEx etc | ✅ Complete | ✅ Basic |
+| P/Invoke Analysis | ❌ N/A | ✅ Detailed | ❌ N/A | ❌ N/A |
+| MITRE ATT&CK | ✅ Mapped | ✅ Mapped | ✅ Mapped | ❌ No |
+| IoC Generation | ✅ Binary | ✅ .NET-specific | ✅ Script | ✅ Basic |
+| YARA Rules | ✅ Binary | ✅ .NET | ✅ Script | ❌ No |
+| Mitigation | ✅ Detailed | ✅ .NET-focused | ✅ Script defenses | ✅ Brief |
 
 ---
 
