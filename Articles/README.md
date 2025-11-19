@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2025--11--16-blue)
+![Last Update](https://img.shields.io/badge/last_update-2025--11--19-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -56,6 +56,7 @@ Detailed studies of worms, viruses, and trojans.
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/ANALYSIS.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-19 |
 | [UDS-Trojan-Ransom.Win32.Encoder](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
 | [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
 | [Virus.VBS.Monopoly](Virus.VBS.Monopoly/readme.md) | `8a2b52c6c2cc833f3838bfa739d018dd69327941d68b6fed89fedde67ab2b973` | 2025-04-19 |
@@ -66,6 +67,7 @@ Detailed studies of worms, viruses, and trojans.
 | [Virus.Win32.Trivial.64.c](Virus.Win32.Trivial.64.c/readme.md) | `3e37a0cd41c753419fa0b05777baa93e02107490249804879b19475a1df2142b` | 2025-04-12 |
 | [Email-Worm.VBS.Lee-based](Email-Worm.VBS.Lee-based/readme.md) | `de948672211c3ec874db907a3c36c8896d5f78ae5e7a54fc35ff7b6b9b424e05` | 2025-04-12 |
 | [Worm.Win32.AimVen](Worm.Win32.AimVen/readme.md) | `398788793486ca262becc9b6a7a1d02c5b12e8981232ceeb01cbde1b13ab4102` | 2025-04-12 |
+
 ---
 
 ## ♻️ Retro Research
@@ -85,6 +87,10 @@ Reverse engineering on legacy systems and old AV tools.
 | [Virus.DOS.Torero.1427](malware-retro/2023-11-26-torero-1427/readme.md) | `1d20410f820b045c5e272ed884f688507d50eb154c5ce9571cca1a2e8a89157c` | 2023-11-26 |
 | [Virus.DOS.Companion.180](malware-retro/2023-11-25-cspawn.md) | `1595635f489d129b6cb2a3f336b00af946eadefc23650493ac4ba4c751bc6eae` | 2023-11-25 |
 | [Virus.DOS.Mini.44](malware-retro/2023-11-24-mini-44.md) | `ad5817a40a07e312c48f3eb3a3f519e0862e1a244ecfeaf961f3a093a34030f5` | 2023-11-24 |
+
+---
+
+## ♻️ Retro Research
 
 ---
 
@@ -115,4 +121,4 @@ If you'd like to contribute, report an issue, or suggest an addition:
 
 ---
 
-**Last updated:** May 16, 2025
+**Last updated:** November 19, 2025
