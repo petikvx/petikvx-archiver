@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2025--11--19-blue)
+![Last Update](https://img.shields.io/badge/last_update-2025--11--22-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -76,6 +76,7 @@ Reverse engineering on legacy systems and old AV tools.
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Virus.DOS.Blin.230](malware-retro/Virus.DOS.Blin.230) | `b49bf5eeae73d07f33ce012d3d5327fd26cdf785673d9c2fec482db256077a48` | 2025-11-22 |
 | [Virus.DOS.Bailey.270](malware-retro/Virus.DOS.Bailey.270) | `445dcfb91224e9122be5d2ce85e2246001a4920768f25f80f3a38a36f05dab98` | 2025-11-15 |
 | [Virus.DOS.Badguy.265](malware-retro/Virus.DOS.Badguy.265) | `76aad860280b056cd760fb11c2ada3b7bd902d21b0e781b0853d7f7d6d58a3ec` | 2025-11-14 |
 | [Virus.DOS.Armen.230.a](malware-retro/Virus.DOS.Armen.230.a) | `c220b2901dc18a59fddacfbf8562e13717233537eef573f5868e6d4596b092d6` | 2025-11-12 |
