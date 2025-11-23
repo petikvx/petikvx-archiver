@@ -11,8 +11,7 @@ Welcome to the malware analysis and VX research archive maintained by **petikvx*
 ## 📑 Table of Contents
 
 - [🧠 Old VX Articles (2000–2002)](#-old-vx-articles-2000-2002)
-- [🔬 Malware Analysis](#-malware-analysis)
-- [🧨 Samples & Analyses](#-samples--analyses)
+- [🔬 Malware Analysis & Samples](#-malware-analysis--samples)
 - [♻️ Retro Research](#-retro-research)
 - [🧪 CTFs and Experiments](#-ctfs-and-experiments)
 - [📄 Original Documents (PDF/TXT)](#-original-documents-pdftxt)
@@ -34,9 +33,9 @@ Originals in [`origin-txt/`](origin-txt) and [`origin-pdf/`](origin-pdf).
 
 ---
 
-## 🔬 Malware Analysis
+## 🔬 Malware Analysis & Samples
 
-Modern ransomware and wiper analysis reports (2023–2025).
+Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–2025).
 
 | Title | Hash | Date |
 |-------|------|------|
@@ -44,28 +43,25 @@ Modern ransomware and wiper analysis reports (2023–2025).
 | [Cry Wiper](malware-analyze/Cry%20Wiper/README.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-23 |
 | [Caddy Wiper](malware-analyze/Caddy%20Wiper/README.md) | `a294620543334a721a2ae8eaaf9680a0786f4b9a216d75b55cfd28f39e9430ea` | 2025-11-23 |
 | [BiBi Wiper](malware-analyze/BiBi%20wiper/README.md) | `40417e937cd244b2f928150cae6fa0eff5551fdb401ea072f6ecdda67a747e17` | 2025-11-23 |
-
-Examples:
-
-- [`hakunamatata-ransomware.md`](malware-analyze/2023-11-25-hakunamatata-ransomware.md)
-- [`caddy-wiper.md`](malware-analyze/2024-02-28-caddy-wiper.md)
-- [`rents-ransomware.md`](malware-analyze/2024-03-09-rents-ransomware.md)
-- [`xorist.md`](malware-analyze/2024-03-17-ransomware-xorist.md)
-- [`malwarehunterteam-ransomware.md`](malware-analyze/2024-03-25-malwarehunterteam-ransomware.md)
-
-👉 Browse all: [`Malware Analyze/`](malware-analyze)
-
----
-
-## 🧨 Samples & Analyses
-
-Detailed studies of worms, viruses, and trojans.
-
-| Title | Hash | Date |
-|-------|------|------|
 | [Nebula Ransomware](malware-analyze/NebulaRansomware/README.md) | `6a3ebc7e04c827188054cf16dc7a3b1546355a3e6cbd67352be4ddb34f0ff3dd` | 2025-11-23 |
 | [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/ANALYSIS.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-19 |
 | [UDS-Trojan-Ransom.Win32.Encoder](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
+| [DarkRace Ransomware](malware-analyze/2024-06-20-darkrace-ransomware.md) | N/A | 2024-06-20 |
+| [MalwareHunterTeam Ransomware](malware-analyze/2024-03-25-malwarehunterteam-ransomware.md) | N/A | 2024-03-25 |
+| [BiBi Wiper (article)](malware-analyze/2024-03-24-bibiwiper.md) | N/A | 2024-03-24 |
+| [Xorist Ransomware](malware-analyze/2024-03-17-ransomware-xorist.md) | N/A | 2024-03-17 |
+| [Rents Ransomware](malware-analyze/2024-03-09-rents-ransomware.md) | N/A | 2024-03-09 |
+| [Diop Trojan Ransomware](malware-analyze/2024-03-05-diop-trojan-ransomware.md) | N/A | 2024-03-05 |
+| [Caddy Wiper (article)](malware-analyze/2024-02-28-caddy-wiper.md) | N/A | 2024-02-28 |
+| [Unpacking HydracCrypt](malware-analyze/2024-01-09-unpacking-hydracrypt.md) | N/A | 2024-01-09 |
+| [Christmas Ransomware](malware-analyze/2023-12-26-christmas-ransomware.md) | N/A | 2023-12-26 |
+| [Neshta Ransomware Family](malware-analyze/2023-12-24-neshta-ransomware-family.md) | N/A | 2023-12-24 |
+| [Dharma Ransomware Family](malware-analyze/2023-12-20-dharma-ransomware-family.md) | N/A | 2023-12-20 |
+| [Phobos Ransomware](malware-analyze/2023-12-09-phobos-ransomware-vxug.md) | N/A | 2023-12-09 |
+| [WannaCry Ransomware Family](malware-analyze/2023-12-02-wannacry-ransomware-family.md) | N/A | 2023-12-02 |
+| [Chaos Ransomware](malware-analyze/2023-11-30-chaos-ransomware.md) | N/A | 2023-11-30 |
+| [Lambda Ransomware](malware-analyze/2023-11-27-lambda-ransomware.md) | N/A | 2023-11-27 |
+| [HakunaMatata Ransomware](malware-analyze/2023-11-25-hakunamatata-ransomware.md) | N/A | 2023-11-25 |
 | [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
 | [Virus.VBS.Monopoly](Virus.VBS.Monopoly/readme.md) | `8a2b52c6c2cc833f3838bfa739d018dd69327941d68b6fed89fedde67ab2b973` | 2025-04-19 |
 | [Email-Worm.VBS.Lubus](Email-Worm.VBS.Lubus/readme.md) | `e47c8e572a7856e8def779039aa744e72a7ed900542ad3af64dcdab1bf5c18de` | 2025-04-19 |
@@ -75,6 +71,9 @@ Detailed studies of worms, viruses, and trojans.
 | [Virus.Win32.Trivial.64.c](Virus.Win32.Trivial.64.c/readme.md) | `3e37a0cd41c753419fa0b05777baa93e02107490249804879b19475a1df2142b` | 2025-04-12 |
 | [Email-Worm.VBS.Lee-based](Email-Worm.VBS.Lee-based/readme.md) | `de948672211c3ec874db907a3c36c8896d5f78ae5e7a54fc35ff7b6b9b424e05` | 2025-04-12 |
 | [Worm.Win32.AimVen](Worm.Win32.AimVen/readme.md) | `398788793486ca262becc9b6a7a1d02c5b12e8981232ceeb01cbde1b13ab4102` | 2025-04-12 |
+| [Trojan.BAT.Agent.cps](Trojan.BAT.Agent.cps/) | N/A | N/A |
+
+👉 Browse all: [`malware-analyze/`](malware-analyze)
 
 ---
 
