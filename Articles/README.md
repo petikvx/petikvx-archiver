@@ -38,9 +38,13 @@ Originals in [`origin-txt/`](origin-txt) and [`origin-pdf/`](origin-pdf).
 
 Modern ransomware and wiper analysis reports (2023–2025).
 
+| Title | Hash | Date |
+|-------|------|------|
+| [Caddy Wiper](malware-analyze/Caddy%20Wiper/README.md) | `a294620543334a721a2ae8eaaf9680a0786f4b9a216d75b55cfd28f39e9430ea` | 2025-11-23 |
+| [BiBi Wiper](malware-analyze/BiBi%20wiper/README.md) | `40417e937cd244b2f928150cae6fa0eff5551fdb401ea072f6ecdda67a747e17` | 2025-11-23 |
+
 Examples:
 
-- [`BiBi-wiper.md`](malware-analyze/BiBi%20wiper/README.md)
 - [`hakunamatata-ransomware.md`](malware-analyze/2023-11-25-hakunamatata-ransomware.md)
 - [`caddy-wiper.md`](malware-analyze/2024-02-28-caddy-wiper.md)
 - [`rents-ransomware.md`](malware-analyze/2024-03-09-rents-ransomware.md)
