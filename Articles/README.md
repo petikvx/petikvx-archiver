@@ -40,6 +40,7 @@ Modern ransomware and wiper analysis reports (2023–2025).
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Hermetic Wiper](malware-analyze/Hermetic%20Wiper/README.md) | `0385eeab00e946a302b24a91dea4187c1210597b8e17cd9e2230450f5ece21da` | 2025-11-23 |
 | [Caddy Wiper](malware-analyze/Caddy%20Wiper/README.md) | `a294620543334a721a2ae8eaaf9680a0786f4b9a216d75b55cfd28f39e9430ea` | 2025-11-23 |
 | [BiBi Wiper](malware-analyze/BiBi%20wiper/README.md) | `40417e937cd244b2f928150cae6fa0eff5551fdb401ea072f6ecdda67a747e17` | 2025-11-23 |
 
