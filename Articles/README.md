@@ -40,6 +40,7 @@ Modern ransomware and wiper analysis reports (2023–2025).
 
 Examples:
 
+- [`BiBi-wiper.md`](malware-analyze/BiBi%20wiper/README.md)
 - [`hakunamatata-ransomware.md`](malware-analyze/2023-11-25-hakunamatata-ransomware.md)
 - [`caddy-wiper.md`](malware-analyze/2024-02-28-caddy-wiper.md)
 - [`rents-ransomware.md`](malware-analyze/2024-03-09-rents-ransomware.md)
