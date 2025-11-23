@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2025--11--22-blue)
+![Last Update](https://img.shields.io/badge/last_update-2025--11--23-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -56,6 +56,7 @@ Detailed studies of worms, viruses, and trojans.
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Nebula Ransomware](malware-analyze/NebulaRansomware/README.md) | `6a3ebc7e04c827188054cf16dc7a3b1546355a3e6cbd67352be4ddb34f0ff3dd` | 2025-11-23 |
 | [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/ANALYSIS.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-19 |
 | [UDS-Trojan-Ransom.Win32.Encoder](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
 | [VBS Ransomware](Trojan-Dropper.Script.Generic/lcryptorx_analysis.md) | `8642cb9e190179e87f01d91201b35264b9d29ce6b3233d1bd9349bcdd94e5d28` | 2025-04-19 |
@@ -119,7 +120,3 @@ Example titles:
 If you'd like to contribute, report an issue, or suggest an addition:
 
 👉 [Open an issue](https://github.com/petikvx/petikvx-archiver/issues) or [submit a pull request](https://github.com/petikvx/petikvx-archiver/pulls).
-
----
-
-**Last updated:** November 19, 2025
