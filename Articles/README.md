@@ -39,12 +39,12 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/README.md) | `afbd82de1c80c8508b0cb6376e248393cc04b5276680c604d7df1e56fb93cd26` | 2025-12-01 |
 | [Hermetic Wiper](malware-analyze/Hermetic%20Wiper/README.md) | `0385eeab00e946a302b24a91dea4187c1210597b8e17cd9e2230450f5ece21da` | 2025-11-23 |
 | [Cry Wiper](malware-analyze/Cry%20Wiper/README.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-23 |
 | [Caddy Wiper](malware-analyze/Caddy%20Wiper/README.md) | `a294620543334a721a2ae8eaaf9680a0786f4b9a216d75b55cfd28f39e9430ea` | 2025-11-23 |
 | [BiBi Wiper](malware-analyze/BiBi%20wiper/README.md) | `40417e937cd244b2f928150cae6fa0eff5551fdb401ea072f6ecdda67a747e17` | 2025-11-23 |
 | [Nebula Ransomware](malware-analyze/NebulaRansomware/README.md) | `6a3ebc7e04c827188054cf16dc7a3b1546355a3e6cbd67352be4ddb34f0ff3dd` | 2025-11-23 |
-| [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/ANALYSIS.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-19 |
 | [UDS-Trojan-Ransom.Win32.Encoder](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
 | [DarkRace Ransomware](malware-analyze/2024-06-20-darkrace-ransomware.md) | N/A | 2024-06-20 |
 | [MalwareHunterTeam Ransomware](malware-analyze/2024-03-25-malwarehunterteam-ransomware.md) | N/A | 2024-03-25 |
