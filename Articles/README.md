@@ -35,10 +35,12 @@ Originals in [`origin-txt/`](origin-txt) and [`origin-pdf/`](origin-pdf).
 
 ## 🔬 Malware Analysis & Samples
 
-Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–2025).
+Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–2026).
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Virus.BAT.Vir94](Virus.BAT.Vir94/Vir94_analysis.md) | `0cbf5b184108695b22aa0ed5f41a463665eeafa353880ac487ca6b4310d23bf5`<br>`cbe2e214736ffc82a5d1a37bf1808ae677d73167af6f6f93b890892264ff6160` | 2026-06-27 |
+| [Virus.DOS.Suburbs.400](Virus.DOS.Suburbs.400/ANALYSE_SUBURBS.md) | `f8a5df1cc021080ad734feb3f7543e0b9814740493e8189f2a2543df45efd331` | 2026-06-27 |
 | [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/README.md) | `afbd82de1c80c8508b0cb6376e248393cc04b5276680c604d7df1e56fb93cd26` | 2025-12-01 |
 | [Hermetic Wiper](malware-analyze/Hermetic%20Wiper/README.md) | `0385eeab00e946a302b24a91dea4187c1210597b8e17cd9e2230450f5ece21da` | 2025-11-23 |
 | [Cry Wiper](malware-analyze/Cry%20Wiper/README.md) | `5d22974322ba4d6adb968e48ec84bc9eb110833d4a4f26b2c778a9d4359baa2f` | 2025-11-23 |
