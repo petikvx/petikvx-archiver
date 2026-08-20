@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2025--11--23-blue)
+![Last Update](https://img.shields.io/badge/last_update-2026--08--20-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [DarkRace Ransomware](DarkRace%20Ransomware/README.md) | `74b5e2d90daaf96657e4d3d800bb20bf189bb2cf487479ea0facaf6182e0d1d3` | 2026-08-20 |
 | [Virus.BAT.Vir94](Virus.BAT.Vir94/Vir94_analysis.md) | `0cbf5b184108695b22aa0ed5f41a463665eeafa353880ac487ca6b4310d23bf5`<br>`cbe2e214736ffc82a5d1a37bf1808ae677d73167af6f6f93b890892264ff6160` | 2026-06-27 |
 | [Virus.DOS.Suburbs.400](Virus.DOS.Suburbs.400/ANALYSE_SUBURBS.md) | `f8a5df1cc021080ad734feb3f7543e0b9814740493e8189f2a2543df45efd331` | 2026-06-27 |
 | [Trojan-Ransom.Win32.Xorist.lk](Trojan-Ransom.Win32.Xorist.lk/README.md) | `afbd82de1c80c8508b0cb6376e248393cc04b5276680c604d7df1e56fb93cd26` | 2025-12-01 |
@@ -48,7 +49,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 | [BiBi Wiper](malware-analyze/BiBi%20wiper/README.md) | `40417e937cd244b2f928150cae6fa0eff5551fdb401ea072f6ecdda67a747e17` | 2025-11-23 |
 | [Nebula Ransomware](malware-analyze/NebulaRansomware/README.md) | `6a3ebc7e04c827188054cf16dc7a3b1546355a3e6cbd67352be4ddb34f0ff3dd` | 2025-11-23 |
 | [UDS-Trojan-Ransom.Win32.Encoder](UDS-Trojan-Ransom.Win32.Encoder/README.md) | `af2a278c76aeb3702c73db10b7081de8e18ca6518c3a2c78a20394f0df9a3359` | 2025-11-16 |
-| [DarkRace Ransomware](malware-analyze/2024-06-20-darkrace-ransomware.md) | N/A | 2024-06-20 |
+| [DarkRace Ransomware (article)](malware-analyze/2024-06-20-darkrace-ransomware.md) | N/A | 2024-06-20 |
 | [MalwareHunterTeam Ransomware](malware-analyze/2024-03-25-malwarehunterteam-ransomware.md) | N/A | 2024-03-25 |
 | [BiBi Wiper (article)](malware-analyze/2024-03-24-bibiwiper.md) | N/A | 2024-03-24 |
 | [Xorist Ransomware](malware-analyze/2024-03-17-ransomware-xorist.md) | N/A | 2024-03-17 |
