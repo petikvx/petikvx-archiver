@@ -1,0 +1,15 @@
+# Cosmu/Zombie infected file layout (from Hex-Rays sub_401340 / WinMain)
+
+After "encryption" of a normal file (a3=0):
+  [ copy of entire malware PE ]
+  [ 56-byte meta: basename (≤48) || uint32 orig_size || uint32 xor_key ]
+  [ scrambled payload: second half then first half, each byte += xor_key ]
+  [ 8-byte footer: uint32 pe_size || uint32 (pe_size + orig_size + 64) ]
+
+xor_key = 5166 + (rand() % 8)   // 5166..5173
+Detection "already infected": last 8 bytes, second dword == filesize (sub_4012B0)
+
+EXE carriers (a3=1): same PE+meta prefix, but original bytes copied WITHOUT xor; xor_key forced 0
+  → running them silently extracts via sub_401800 (no MessageBox)
+
+Normal files renamed to <original>.exe (collision → _.exe variants)

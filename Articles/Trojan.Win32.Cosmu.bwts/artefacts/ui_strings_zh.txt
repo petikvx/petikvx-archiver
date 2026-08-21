@@ -1,0 +1,30 @@
+# Note / UI strings (GBK) extracted from PE .data @ ~0x2254
+
+Drop / path:
+  \Zombie.exe
+
+Messages (Chinese prank / fake-ransom UI):
+  想找回文件-_-
+  联系作者 恢复所有文件
+  流氓不可怕 就怕流氓有文化
+  好吧我承认你中奖了
+  不明真相的群众运行了程序?
+
+Approximate English:
+  Want your files back?-_-
+  Contact the author to restore all files
+  "Hooligans aren't scary — scary is when hooligans are cultured" (Chinese proverb)
+  OK, I admit you "won" (got infected)
+  Did the uninformed masses run the program?
+
+Self-delete helpers:
+  /c del 
+  COMSPEC
+  _.exe / .tmp / > nul
+
+Walk / skip markers:
+  WINNT, WINDOWS, *.*
+  .BAK .bak .GHO gho .EXE
+
+Shell verb:
+  Open

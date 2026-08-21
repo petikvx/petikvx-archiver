@@ -1,0 +1,11 @@
+SHA256: 3b04ee0c12725e4d9d3b3befdef43b9732454a3cb7a03bb6b84f2613f31f47ce
+MD5: e6d94e245a597a9efc9657bc61ae796a
+SHA1: ebfc73a525180a842317f491be2b103c9186278a
+Size: 25266
+Packer: ASPack 2.12-2.xx (DIE)
+Compiler: MSVC 6 / MFC 4.2
+TimeDateStamp: 0x4d7ee5af = 2011-03-15 05:06:07 UTC
+EP: 0x402130 (packer stub)
+NOTE: filename tag elex_wannacry is a MISNOMER — not WannaCry.
+
+Hex-Rays: 2025-12-07_e6d94e245a597a9efc9657bc61ae796a_elex_wannacry.c (16 funcs)

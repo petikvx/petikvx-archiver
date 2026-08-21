@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan.Win32.Cosmu.bwts](Trojan.Win32.Cosmu.bwts/README.md) | `3b04ee0c12725e4d9d3b3befdef43b9732454a3cb7a03bb6b84f2613f31f47ce` | 2026-08-21 |
 | [Trojan-Ransom.Win32.Spora.a](Trojan-Ransom.Win32.Spora.a/README.md) | `7ad9ed23a91643b517e82ad5740d24eca16bcae21cfe1c0da78ee80e0d1d3f02` | 2026-08-21 |
 | [Trojan-Ransom.Win32.Petr.a](Trojan-Ransom.Win32.Petr.a/README.md) | `26b4699a7b9eeb16e76305d843d4ab05e94d43f3201436927e13b3ebafa90739` | 2026-08-20 |
 | [DarkRace Ransomware](DarkRace%20Ransomware/README.md) | `74b5e2d90daaf96657e4d3d800bb20bf189bb2cf487479ea0facaf6182e0d1d3` | 2026-08-20 |
