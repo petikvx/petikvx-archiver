@@ -1,0 +1,9 @@
+Hardcoded AES-256 key (PLAINTEXTKEYBLOB @ VA 0x4011a8 / file 0x5a8)
+Header: 08 02 00 00 10 66 00 00 20 00 00 00  (PLAINTEXTKEYBLOB, CALG_AES_256, 32-byte key)
+Key (hex): 67e8a557a701f60b9c7e7a9833b80b2f30e6afcda8f236e88c7bce10ca4f6977
+Mode used by decrypt helper (0x40502e): AES-CBC, IV = 16 zero bytes
+Blobs decrypted in-place at runtime:
+  VA 0x4011d4 size 0x20  -> sample ID
+  VA 0x4011f8 size 0x120 -> RSA public key (PEM)
+  VA 0x401318 size 0x1d80 -> ransom note HTML
+  VA 0x403098 size 0x20  -> additional 32-byte blob

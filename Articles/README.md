@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2026--08--20-blue)
+![Last Update](https://img.shields.io/badge/last_update-2026--08--21-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan-Ransom.Win32.Spora.a](Trojan-Ransom.Win32.Spora.a/README.md) | `7ad9ed23a91643b517e82ad5740d24eca16bcae21cfe1c0da78ee80e0d1d3f02` | 2026-08-21 |
 | [Trojan-Ransom.Win32.Petr.a](Trojan-Ransom.Win32.Petr.a/README.md) | `26b4699a7b9eeb16e76305d843d4ab05e94d43f3201436927e13b3ebafa90739` | 2026-08-20 |
 | [DarkRace Ransomware](DarkRace%20Ransomware/README.md) | `74b5e2d90daaf96657e4d3d800bb20bf189bb2cf487479ea0facaf6182e0d1d3` | 2026-08-20 |
 | [Virus.BAT.Vir94](Virus.BAT.Vir94/Vir94_analysis.md) | `0cbf5b184108695b22aa0ed5f41a463665eeafa353880ac487ca6b4310d23bf5`<br>`cbe2e214736ffc82a5d1a37bf1808ae677d73167af6f6f93b890892264ff6160` | 2026-06-27 |
