@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2026--08--21-blue)
+![Last Update](https://img.shields.io/badge/last_update-2026--08--22-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -39,6 +39,8 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan-Ransom.Win32.Xorist.ln](Trojan-Ransom.Win32.Xorist.ln/README.md) | `05d0be6bbf2ce6d8b29a257629e071836290cf2a83e16641cf08ba5378317f9a` (UPX) / `e034e30c…ae1287` (unpacked) | 2026-08-22 |
+| [Trojan.Win32.Diztakun.arpg](Trojan.Win32.Diztakun.arpg/README.md) | `4ea1f2ecf7eb12896f2cbf8683dae8546d2b8dc43cf7710d68ce99e127c0a966` | 2026-08-22 |
 | [Trojan.Win32.Cosmu.bwts](Trojan.Win32.Cosmu.bwts/README.md) | `3b04ee0c12725e4d9d3b3befdef43b9732454a3cb7a03bb6b84f2613f31f47ce` | 2026-08-21 |
 | [Trojan-Ransom.Win32.Spora.a](Trojan-Ransom.Win32.Spora.a/README.md) | `7ad9ed23a91643b517e82ad5740d24eca16bcae21cfe1c0da78ee80e0d1d3f02` | 2026-08-21 |
 | [Trojan-Ransom.Win32.Petr.a](Trojan-Ransom.Win32.Petr.a/README.md) | `26b4699a7b9eeb16e76305d843d4ab05e94d43f3201436927e13b3ebafa90739` | 2026-08-20 |

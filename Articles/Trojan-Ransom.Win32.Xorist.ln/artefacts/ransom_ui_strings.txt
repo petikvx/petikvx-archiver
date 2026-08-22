@@ -1,0 +1,14 @@
+HOW TO DECRYPT FILES.txt
+
+UI / note strings (from unpacked .data):
+- Attention! All your files were encrypted!
+- To decrypt files, please enter correct password!
+- You have reached a limit of attempts - your data is irrevocably broken.
+- Password is incorrect!
+- Files have been decrypted successfully!
+- Entered password is correct. Press OK to start decrypting...
+- Banner: 0p3nSOurc3 X0r157, motherfucker!
+- Persistence Run value: Alcmeter
+- Marker: CRYPTED!
+- Self-delete: ComSpec /c del "..." >> NUL
+- Wallpaper/icon: .bmp association / DefaultIcon / shell\open\command

@@ -1,0 +1,20 @@
+# Trojan-Ransom.Win32.Xorist.ln
+
+## UPX (on-disk packed)
+SHA256: 05d0be6bbf2ce6d8b29a257629e071836290cf2a83e16641cf08ba5378317f9a
+MD5:    33755784b9128aabea98a2d4f0bebb86
+Size:   7168
+Packer: UPX 3.07 (NRV)
+
+## Unpacked (analysis target)
+SHA256: e034e30ce286d730eb6338ef5626a8e15ba7d6b9a7f1158b2d2883005bae1287
+SHA1:   ec415649644c4f449739fa795a24dca01eeacb43
+MD5:    805242256e678b3b8a05aee3a997d0f1
+Size:   12288
+TimeDateStamp: 0x4F25949F = 2012-01-29 18:49:03 UTC
+EP: 0x4021D1
+ImageBase: 0x400000
+
+## Sibling
+Code+.rdata+.data identical to Trojan-Ransom.Win32.Xorist.lk
+(SHA256 afbd82de…fb93cd26) — only PE resources / password blob differ (~840 bytes).

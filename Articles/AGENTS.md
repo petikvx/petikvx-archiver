@@ -8,8 +8,10 @@ Instructions pour un agent qui reverse / documente des samples (VirusShare, dump
 |---------|----------------------------|
 | `DarkRace Ransomware/` | Config XOR, overlay Conti, bat reconstruit, § crypto **ligne à ligne** |
 | `Trojan-Ransom.Win32.Spora.a/` | Hex-Rays croisé, blobs AES extraits, ID / `.KEY` / footer **expliqués pour non-experts** + code net |
+| `Trojan.Win32.Diztakun.arpg/` | Scareware .NET/WPF : décompil C#, bat reconstruit, chaîne multi-étages **lisible non-expert** |
+| `Trojan.Win32.Cosmu.bwts/` | Packer ASPack + Hex-Rays, faux ransomware XOR, script IR de recovery |
 
-Les deux ont `README.md` + `README_EN.md` bilingues.
+Tous ont `README.md` + `README_EN.md` bilingues.
 
 ---
 
