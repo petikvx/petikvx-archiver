@@ -1,0 +1,6 @@
+file: MEMZ.exe.bin
+size: 12800
+md5: a7bcf7ea8e9f3f36ebfb85b823e39d91
+sha1: 761168201520c199dba68add3a607922d8d4a86e
+sha256: 3ff64f10603f0330fa2386ff99471ca789391ace969bd0ec1c1b8ce1b4a6db42
+TimeDateStamp: 0x5be181bc (2018-11-06 11:57:48 UTC)

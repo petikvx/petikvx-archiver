@@ -1,0 +1,11 @@
+idx,delay_ms,delay_s,va,description
+0,30000,30.0,0x4014ca,browser_spam (ShellExecuteA open URL/app)
+1,30000,30.0,0x40153b,cursor_jitter (SetCursorPos)
+2,20000,20.0,0x40176c,keyboard_spam (SendInput)
+3,50000,50.0,0x401667,play_sounds (PlaySoundA)
+4,30000,30.0,0x4015a2,screen_invert (BitBlt NOTSRCCOPY)
+5,20000,20.0,0x4015f8,msgbox_hook (MessageBoxW + WH_CBT)
+6,10000,10.0,0x40182d,draw_icons (DrawIcon)
+7,40000,40.0,0x401656,reverse_window_text (EnumWindows)
+8,60000,60.0,0x4017b0,screen_tunnel (StretchBlt)
+9,15000,15.0,0x401694,screen_copy_blocks (BitBlt SRCCOPY)
