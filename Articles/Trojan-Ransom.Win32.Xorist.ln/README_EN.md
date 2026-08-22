@@ -6,7 +6,7 @@ Language: English | French version: [README.md](README.md)
 **Analysis target:** `…-unpacked.exe` (**already decompressed**)  
 **Family:** Xorist / “X0r157” (2012-era ransomware builder)  
 **Detection:** Kaspersky `Trojan-Ransom.Win32.Xorist.ln`  
-**Sources:** unpacked PE + **Hex-Rays 9.4** (`….i64.c`) + decrypted builder config + sibling `Xorist.lk`
+**Sources:** unpacked PE + **Hex-Rays 9.4** via `~/ida-pro-9.4/idat` → `artefacts/ida_export/` (`.c`/`.asm`/`.lst`) + builder config + sibling `Xorist.lk`
 
 > **Defensive / IR** only. No host execution outside a third-party sandbox.
 
@@ -93,7 +93,7 @@ Public **Xorist decryptors** apply to this family.
 
 ## 5. Persistence & UI traces
 
-`Alcmeter` Run key, `HKCR\.EnCiPhErEd` → `CRYPTED!`, wallpaper BMP, `HOW TO DECRYPT FILES.txt`, self-delete via `cmd`.
+`Alcmeter` Run key, `HKCR\.EnCiPhErEd` → `CRYPTED!`, wallpaper attempt (`pussylicker` BMP missing here), `HOW TO DECRYPT FILES.txt`, self-delete via `cmd`.
 
 Password window class: `0p3nSOurc3 X0r157, motherfucker!`.
 
@@ -105,7 +105,7 @@ Password window class: `0p3nSOurc3 X0r157, motherfucker!`.
 t0  Unpacked PE runs
 t1  Decode config resource
 t2  %TEMP% copy + Alcmeter
-t3  Register extension + wallpaper
+t3  Register extension (+ wallpaper if BMP present)
 t4  Drive walk / TEA (filtered by PathMatchSpec)
 t5  Notes + self-delete
 u0  Password UI on relaunch (9 tries)
@@ -155,6 +155,8 @@ No Any.RUN for this hash. PathMatchSpec list looks mis-built. Hex-Rays covers un
 | `artefacts/config_readable.txt` | Readable config |
 | `artefacts/ransom_note_config.txt` | RU note |
 | `artefacts/hashes.txt` | Hashes |
+| `artefacts/wallpaper_1x1_placeholder.bmp` | Only BMP in PE (1×1) — not a real wallpaper |
+| `artefacts/wallpaper_README.txt` | Wallpaper extraction notes |
 
 ---
 

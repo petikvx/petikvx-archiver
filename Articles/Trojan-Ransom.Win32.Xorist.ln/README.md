@@ -6,7 +6,7 @@ Langue : Français | English version: [README_EN.md](README_EN.md)
 **Cible d’analyse :** `…-unpacked.exe` (**UPX déjà retiré**)  
 **Famille :** Xorist / « X0r157 » (ransomware builder open-source style 2012)  
 **Détection :** Kaspersky `Trojan-Ransom.Win32.Xorist.ln`  
-**Sources :** PE unpacked + **Hex-Rays 9.4** (`….i64.c`) + config builder déchiffrée + sibling `Xorist.lk`  
+**Sources :** PE unpacked + **Hex-Rays 9.4** via `~/ida-pro-9.4/idat` → `artefacts/ida_export/` (`.c`/`.asm`/`.lst`) + config builder + sibling `Xorist.lk`  
 
 > Analyse **défensive / IR**. Pas d’exécution hors sandbox tierce.
 
@@ -34,7 +34,7 @@ Petit ransomware **2012** (souvent livré en **UPX**) : il se copie dans `%TEMP%
 | Algo **TEA** | `byte_40752C==1` → `sub_40177A` / `sub_4017EC` |
 | Mot de passe | MD5 chaîné (`sub_401F15` ×5) vs hash config |
 | Self-delete | `ComSpec /c del "…" >> NUL` (`sub_40214B`) |
-| Wallpaper | Drop `.bmp` aléatoire + `SystemParametersInfoA(SPI_SETDESKWALLPAPER)` |
+| Wallpaper | `sub_4010FC` cherche `pussylicker` (BMP) — **pas dans ce PE** (échec silencieux) ; artefact `wallpaper_1x1_placeholder.bmp` |
 
 **Sibling :** `.text` / `.rdata` / `.data` **identiques** à `Trojan-Ransom.Win32.Xorist.lk` (SHA256 `afbd82de…`) ; seuls les **ressources** (mot de passe / note / extension) changent (~840 octets).
 
@@ -133,7 +133,7 @@ C’est très probablement une **mauvaise config du builder** (au lieu de `*.doc
 Deux modes selon le flag builder :
 
 - **XOR 32-bit** (`sub_401748`) — faible  
-- **TEA** (`sub_4017EC` encrypt / `sub_4018B0` decrypt) — toujours « hobbyist », mais plus costaud que XOR
+- **TEA** (`sub_4017EC` encrypt / `sub_4018B0` decrypt), constante delta **`0x9E3779B9`** (`1640531527`) — hobbyist, plus costaud que XOR
 
 Clé de session : **RDTSC** (horloge CPU) → 16 octets (`sub_40124F` / buffers `0x406DB9`).  
 Par fichier : dérivation avec le **1ᵉʳ caractère du nom** (XOR + rotations) → clé TEA/XOR locale (`0x406585…`).
@@ -169,7 +169,7 @@ MoveFileA(path, path + "." + "EnCiPhErEd");
 | Association | `HKCR\.EnCiPhErEd` → classe `MQISXQQKMIDJKVK` / affichage `CRYPTED!` |
 | Icône | `DefaultIcon` → bmp droppé en TEMP |
 | Open | `shell\open\command` → copie TEMP du malware |
-| Wallpaper | BMP ressource `pussylicker` + `SystemParametersInfoA(20, …)` |
+| Wallpaper | Cherche ressource BMP `pussylicker` — **manquante** ici (placeholder 1×1 uniquement) |
 | Note | `HOW TO DECRYPT FILES.txt` (et éventuellement variante localisée) |
 | Cleanup self | `ShellExecute(ComSpec, /c del "<self>" >> NUL)` |
 
@@ -253,11 +253,14 @@ u0  Relance / double-clic association → UI Password (9 essais)
 |---------|------|
 | `README.md` / `README_EN.md` | Rapports FR / EN |
 | `…-upx` / `…-unpacked.exe` | Packé / cible |
-| `…-unpacked.exe.i64.c` | Hex-Rays 9.4 |
+| `…-unpacked.exe.i64` / `.i64.c` | IDB + export GUI |
+| `artefacts/ida_export/xorist_ln_unpacked.{c,asm,lst}` | Export batch `idat -S export_asm_c.py` |
 | `artefacts/extract_config.py` | Decode config |
 | `artefacts/config_readable.txt` | Config lisible |
 | `artefacts/ransom_note_config.txt` | Note RU |
 | `artefacts/hashes.txt` | Hashes |
+| `artefacts/wallpaper_1x1_placeholder.bmp` | Seul BMP (1×1) — `pussylicker` absent |
+| `artefacts/wallpaper_README.txt` | Détail wallpaper |
 | `artefacts/rsrc_*.bin` | Ressources brutes |
 
 ---
