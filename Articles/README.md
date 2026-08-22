@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [UDS-Trojan-Ransom.Win32.Blocker.gen](UDS-Trojan-Ransom.Win32.Blocker.gen/README.md) | `a1858f5e497309fb46acd71e0dbdc6959975ece7345fe7b565484547253677f9` (devoir dropper+keylogger ; tag fichier `f9a97d0e…`) | 2026-08-22 |
 | [Trojan-Ransom.Win32.Xorist.ln](Trojan-Ransom.Win32.Xorist.ln/README.md) | `05d0be6bbf2ce6d8b29a257629e071836290cf2a83e16641cf08ba5378317f9a` (UPX) / `e034e30c…ae1287` (unpacked) | 2026-08-22 |
 | [Trojan.Win32.Diztakun.arpg](Trojan.Win32.Diztakun.arpg/README.md) | `4ea1f2ecf7eb12896f2cbf8683dae8546d2b8dc43cf7710d68ce99e127c0a966` | 2026-08-22 |
 | [Trojan.Win32.Cosmu.bwts](Trojan.Win32.Cosmu.bwts/README.md) | `3b04ee0c12725e4d9d3b3befdef43b9732454a3cb7a03bb6b84f2613f31f47ce` | 2026-08-21 |

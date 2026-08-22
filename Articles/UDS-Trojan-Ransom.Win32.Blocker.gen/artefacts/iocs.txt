@@ -1,0 +1,37 @@
+# UDS-Trojan-Ransom.Win32.Blocker.gen — IoCs (defensive)
+# Content SHA256 differs from filename hash in dossier name.
+
+## Hashes — dropper (malware_assignment)
+SHA256: a1858f5e497309fb46acd71e0dbdc6959975ece7345fe7b565484547253677f9
+SHA1:   09bc2b7399499093f0ed36bfeab458846213689c
+MD5:    f70b586e3306cd84c29e123a65226196
+Filename-tag (NOT content hash): f9a97d0e6d8e8129f62f47b652d26ea7a27f1996760a41c6c9730062a601ac94
+
+## Hashes — embedded keylogger (RCDATA #101)
+SHA256: f74483530cc72874f5d10ebab521ea2ef47f3b319d1986b99dcf355384d35b9c
+MD5:    ab971710cf5ea9d60010ade57c831b6f
+Size:   10240 bytes
+
+## Network
+URL:  http://210.125.101.75/payload.dll
+IP:   210.125.101.75 (KR — Sungshin Women's University / KREONet range 210.125.96.0/21)
+Drop: C:\payload.dll
+
+## Persistence / paths
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+  Value: Persistence (REG_SZ)
+  Data:  %ProgramData%\app_data.exe   (CSIDL_COMMON_APPDATA + \app_data.exe)
+Self-copy: %ProgramData%\app_data.exe
+Keylogger drop: %APPDATA%\keylogger_hook.exe
+Keylog file: C:\Program Files (x86)\note.txt
+Hidden attribute on original EXE (FILE_ATTRIBUTE_HIDDEN)
+
+## Process / injection
+Target process name: x32dbg.exe
+Technique: VirtualAllocEx + WriteProcessMemory("C:\payload.dll") + CreateRemoteThread(LoadLibraryW)
+
+## PDB / build
+C:\Users\aaa\source\repos\malware_assignment\Release\malware_assignment.pdb
+C:\Users\aaa\source\repos\keylogger_hook\Release\keylogger_hook.pdb
+TimeDateStamp: 2024-11-21 05:14:45 UTC (0x673ec1c5)
+Linker: MSVC 14.41 / VS2022 17.11 LTCG
