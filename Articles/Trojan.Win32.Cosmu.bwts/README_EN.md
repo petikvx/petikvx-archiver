@@ -168,6 +168,20 @@ Recursive `*.*` with `CFileFind`; skip paths containing `WINDOWS` / `WINNT`; fil
 
 ---
 
+
+### Extra details (Hex-Rays)
+
+| Topic | Code detail |
+|-------|-------------|
+| Name collisions | If `file.ext.exe` exists → try `file.ext_.exe`, etc. (`"_.exe"`) |
+| Hidden attribute | `SetFileAttributesA(..., FILE_ATTRIBUTE_HIDDEN)` on `Zombie.exe` / restore path |
+| Priorities | During self-delete: `cmd` **HIGH**, malware **IDLE**, thread **TIME_CRITICAL** |
+| Size caps | Docs ≤ **32 MiB**; EXE ≤ **16 MiB** — larger files skipped |
+| Files vs dirs | `sub_401180`: exists and is **not** a directory |
+| Autorun.inf | **Not** in this build (unlike some `Worm:Win32/Cosmu.C` write-ups) |
+| Tiny files | If `size < key`, `half = 0` → no swap, only `byte + key` |
+
+
 ## 7. Timeline
 
 ```text
@@ -210,9 +224,18 @@ v0  User runs parasitized exe → drop Zombie.exe + restore original
 
 ---
 
-## 10. Defensive recovery idea
+## 10. Defensive recovery (IR)
 
-Crypto is **reversible without paying**: parse footer/meta, subtract `key`, un-swap halves, write `orig_size` bytes under the stored basename. Method only — no offensive kit shipped here.
+Crypto is **reversible without paying** (additive XOR + half-swap).
+
+Script: [`artefacts/recover_cosmu.py`](artefacts/recover_cosmu.py)
+
+```bash
+python3 artefacts/recover_cosmu.py report.doc.exe --info
+python3 artefacts/recover_cosmu.py report.doc.exe -o report.doc
+```
+
+Manual equivalent: validate footer → read meta → if `key != 0` subtract and un-swap (`half = orig_size/key`); if `key == 0` copy plaintext carrier payload → restore basename from meta.
 
 ---
 
@@ -223,6 +246,7 @@ Crypto is **reversible without paying**: parse footer/meta, subtract `key`, un-s
 | `README.md` / `README_EN.md` | FR / EN report |
 | `….c` | Hex-Rays 9.4 |
 | `artefacts/*` | UI, format, hashes |
+| `artefacts/recover_cosmu.py` | Defensive IR recovery |
 
 ---
 

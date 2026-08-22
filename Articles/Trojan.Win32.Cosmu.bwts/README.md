@@ -245,6 +245,20 @@ SHChangeNotify(...);  // rafraîchir l'icône explorateur
 
 ---
 
+
+### Détails supplémentaires (Hex-Rays)
+
+| Sujet | Détail code |
+|-------|-------------|
+| Collision de noms | Si `fichier.ext.exe` existe déjà → essai `fichier.ext_.exe`, etc. (`aExe_1 = "_.exe"`) |
+| Attribut hidden | `SetFileAttributesA(..., 2)` sur `Zombie.exe` et le restaure `_nom` |
+| Priorités | Pendant le self-delete : `cmd` en **HIGH**, malware en **IDLE**, thread en **TIME_CRITICAL** (pour laisser `del` gagner) |
+| Limites taille | Docs ≤ **32 MiB** (`0x1F40000`) ; EXE ≤ **16 MiB** (`0xFA0000`) — au-delà : ignorés |
+| Fichiers vs dossiers | `sub_401180` : existe et **n’est pas** un répertoire |
+| Autorun.inf | **Absent** de ce build (contrairement à certaines fiches `Worm:Win32/Cosmu.C`) |
+| Clé si fichier ≪ 5166 o | `half = size/key = 0` → pas d’inversion, seulement `byte + key` sur tout le fichier |
+
+
 ## 7. Timeline
 
 ```text
@@ -291,16 +305,24 @@ v2  Restaure et exécute l'original sous "_nom"
 
 ---
 
-## 10. Déchiffrement défensif (idée)
+## 10. Déchiffrement défensif (IR)
 
-La « crypto » est **réversible sans payer** :
+La « crypto » est **réversible sans payer** (XOR additif + demi-fichiers).
 
-1. Identifier fichiers avec footer `sub_4012B0`.  
-2. Lire `pe_size`, meta (`orig_size`, `key`).  
-3. Si `key != 0` : retirer `key` à chaque octet, recombiner les deux moitiés (`half = orig_size/key`).  
-4. Écrire `orig_size` octets vers le nom stocké dans la meta.
+Script : [`artefacts/recover_cosmu.py`](artefacts/recover_cosmu.py)
 
-Pas d’implémentation offensive livrée ici ; la méthode suffit pour un script IR interne.
+```bash
+python3 artefacts/recover_cosmu.py rapport.doc.exe --info
+python3 artefacts/recover_cosmu.py rapport.doc.exe -o rapport.doc
+```
+
+Étapes équivalentes à la main :
+
+1. Vérifier footer (`dword1 == filesize`).  
+2. Lire `pe_size`, puis meta 56 o (`orig_size`, `key`).  
+3. Si `key != 0` : `byte -= key`, puis recombiner (`half = orig_size/key` ; payload = première_moitié ∥ seconde).  
+4. Si `key == 0` (porteur exe) : copier les `orig_size` octets post-meta tels quels.  
+5. Renommer selon le basename stocké dans la meta.
 
 ---
 
@@ -312,6 +334,7 @@ Pas d’implémentation offensive livrée ici ; la méthode suffit pour un scrip
 | `….c` | Hex-Rays 9.4 (16 fonctions) |
 | `artefacts/ui_strings_zh.txt` | UI chinoise |
 | `artefacts/file_format.txt` | Layout fichier infecté |
+| `artefacts/recover_cosmu.py` | Récupération défensive IR |
 | `artefacts/hashes.txt` | Hashes / méta |
 
 ---
