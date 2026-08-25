@@ -52,7 +52,8 @@ Repérer : binaire (natif vs CLR/`mscoree` vs **PyInstaller**/`MEI`/`pyiboot`), 
 **Pas d’exécution** locale du malware (`wine` sur le sample, `./`, sandbox hôte non demandée).  
 - PE **natif** → §2 (`idat` + Hex-Rays)  
 - PE **.NET** → §2a (`dotnet ilspycmd … -p -o source`)  
-- PE **PyInstaller** → §2b (`pyinstxtractor` + `pycdc`)
+- PE **PyInstaller** → §2b (`pyinstxtractor` + `pycdc`)  
+- Si déjà **actif dans x64dbg/x32dbg** (MCP) → §2c en parallèle (approfondir + enrichir le rapport en cours)
 
 ### 1. Triage binaire (statique)
 
@@ -92,7 +93,7 @@ Sorties attendues dans `artefacts/ida_export/` :
 - Réutiliser un `.i64` déjà ouvert si présent (plus rapide).  
 - PE32 : `idat` + decompiler x86 (`hexx64` côté IDA 9 gère aussi le 32-bit).  
 - Lier ces fichiers dans les README (sources + tableau livrables).  
-- Ensuite seulement : croiser le `.c` avec le triage (ci-dessous).
+- Ensuite seulement : croiser le `.c` avec le triage (§2d). Si le sample est déjà actif sous x64dbg/x32dbg → §2c en parallèle.
 
 ### 2a. Décompil .NET (obligatoire si assembly CLR / WPF / etc.)
 
@@ -161,7 +162,22 @@ Notes :
 - Sorties à versionner / lier : `*_extracted/` (brut) + `source_py/*.py` (lisible) dans les README.  
 - Chercher ensuite dans le Python : C2, crypto, stealer, droppers, configs (souvent clair ou base64 trivial).
 
-### 2c. Croisement avec le décompil (`.c` / `.cs` / `.py`)
+### 2c. Debug live x64dbg / x32dbg (si le sample est déjà actif)
+
+Serveurs MCP : `x64dbg`, `x32dbg` (`~/.grok/config.toml`).  
+**Ne pas** lancer le malware sur l’hôte agent. En revanche, si l’utilisateur a **déjà** le sample (ou un unpack) ouvert / en cours d’exécution **sous x64dbg/x32dbg** sur la machine de debug :
+
+1. **Vérifier via MCP** que le module / processus actif correspond au sample analysé (nom, chemin, image).
+2. **Si actif** — approfondir **immédiatement** l’analyse et le **rapport en cours** (`README.md` / `README_EN.md`) :
+   - Registres, pile, mémoire (blobs déchiffrés, config en clair, clés session, buffers note/C2…).
+   - Breakpoints / pas-à-pas sur les routines critiques déjà repérées dans le `.c` / `.cs` (crypto, walk, anti-recovery, init).
+   - Corréler VA / `sub_XXXX` Hex-Rays ↔ comportement live ; noter ce qui n’est visible qu’au runtime.
+   - Intégrer ces faits dans les § concernés (pas un dump debugger orphelin en annexe seule).
+3. **Si inactif / MCP down** : poursuivre le workflow statique (+ Any.RUN si URL). Ne pas démarrer le sample depuis l’agent.
+
+x32dbg pour PE32, x64dbg pour PE64. Toute observation live reste **défensive / IR** : documenter, extraire artefacts déjà en mémoire utiles au rapport — pas d’aide au déploiement ni de decryptor offensif.
+
+### 2d. Croisement avec le décompil (`.c` / `.cs` / `.py`)
 
 Prioriser (adapter à la famille) :
 
