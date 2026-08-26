@@ -1,0 +1,27 @@
+StormAttack dropper embedded config (VA .data)
+================================================
+dword_404120 (mode)     = 3   ; Active Setup path in WinMain
+byte_404124  (dir type) = 0   ; 0=WindowsDir, 1=SystemDir, 2=IE Program Files prefix
+byte_404125  (inject)   = 0   ; 0=iexplore.exe, 1=notepad.exe, 2=calc.exe
+
+ServiceName   @ 0x404128 = "Storm ddos Server"
+DisplayName   @ 0x404148 = "Welcome to use storm ddos"
+Thank you     @ 0x4041C8 = "Thank you"
+Caption       @ 0x4042C8 = "123"   (first MessageBoxA text+caption)
+DLL name      @ 0x404020 = "StormServer.dll"
+LoadLibraryA  via strings Kernel32 / LoadLibraryA @ 0x404318 / 0x404324
+
+Resource: type "DLL", id 101, lang 2052 (zh-CN) -> StormServer.dll (39936 bytes)
+
+Active Setup GUID (hardcoded in this build):
+  {B85D5274-6F7B-4154-A7E1-CF9117522E1F}
+  HKLM\SOFTWARE\Microsoft\Active Setup\Installed Components\{GUID}\stubpath
+
+LanmanServer ServiceDLL hijack (mode 1 helper sub_401260):
+  HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\ServiceDLL
+  -> %SystemRoot%\System32\StormServer.dll
+
+TimeDateStamp dropper: 0x4C540F4E = 2010-07-31 11:55:58 UTC
+TimeDateStamp DLL:     0x4C540E10 = 2010-07-31 11:50:40 UTC
+
+Linker: MSVC 6.00 / MFC 4.2
