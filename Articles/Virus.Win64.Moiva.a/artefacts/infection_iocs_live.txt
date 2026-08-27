@@ -1,0 +1,61 @@
+# Live infection IoCs (x64dbg session)
+
+## Drop / open
+CreateFileW GENERIC_READ | FILE_SHARE_READ
+  C:\Users\petik\AppData\Roaming\fc36b5aa2a51efca.bin
+Caller: stage2 RWX @ 0x1BC1EA (region ~0x1A0000)
+  after call: cmp rax,-1 / mov rbx,rax
+
+Thread TID=1144 (worker, not main) — Moiva stage2 activity
+CreateFileW OPEN_EXISTING (disp=3) GENERIC_READ SHARE_READ
+  path: C:\Users\petik\AppData\Roaming\fc36b5aa2a51efca.bin
+  ret: 0x1BC1EA in RWX ~0x1A0000
+Stack nearby ascii: "RNS" "KE" (partial)
+
+
+## Correlation littérature Expiro/Moiva (Quick Heal / Trend Micro)
+
+Drop typique: %AppData%\<hex16>.bin
+  → OBSERVÉ: C:\Users\petik\AppData\Roaming\fc36b5aa2a51efca.bin
+  Contenu attendu (littérature): store chiffré credentials/certs navigateur
+
+Mutex typiques:
+  Global\Multiarch.m0yv-<hex>-inf
+  Global\Multiarch.m0yv-<hex>-b
+  → CONFIRMÉ live: Global\Multiarch.m0yv-fc36b5aa2a51efca-inf
+
+Infection .EXE:
+  - Append dernière section + patch CALL (exactement notre hook CRT → 0xF02000)
+  - Évite noms contenant: windefend, UIODetect, svchost, TrustedInstaller, ntsvcs
+  - Peut infecter lecteurs réseau mappés (worm-like)
+
+Stage2 en mémoire: tests MZ / PE / PNG sur cibles (ReadMemory 0x1F03Cxx)
+
+
+## Mutex LIVE (CreateMutexW)
+TID=1692 (nouveau worker stage2)
+  Global\Multiarch.m0yv-fc36b5aa2a51efca-inf
+  retaddr stage2 RWX @ 0x1C0DE9
+  ID hex = même que le .bin AppData (fc36b5aa2a51efca)
+
+Attendu aussi (littérature): Global\Multiarch.m0yv-<id>-b
+
+## Walk fichiers (session)
+FindFirstFileExW observés surtout côté **hôte** chrome_cleaner :
+  C:\Users\petik\Desktop\*.lnk
+  C:\Users\petik\Public\Desktop\*.lnk
+(BP conditionnels stage2 [rsp]<0x2000000 posés pour isoler infection .exe)
+
+PE infection walk (.exe) : non capturé dans la fenêtre d'observation ;
+mécanisme confirmé en statique (hook CALL + tests MZ/PE/PNG en stage2)
++ littérature Expiro (append last section, exclusions windefend/svchost/…).
+
+
+## Store file hashes (artefacts/fc36b5aa2a51efca.bin)
+size: 12320 bytes
+type: data (NOT PE) — high entropy ~7.99, no cleartext browser strings
+MD5:    203abd8d4d7291451f4de2c1592dd282
+SHA256: 938a3dd5bf351db830a96791ff7dd38d20d9bd4e61f191d9cc520883c5d48568
+head: a9975b58b60d624041e1c8b052cee7e3478637c56bfa7c58cad53e5644497a18
+→ encrypted store (Expiro literature: browser certs/passwords). Decrypt at runtime in stage2; do NOT load as x64dbg debuggee.
+

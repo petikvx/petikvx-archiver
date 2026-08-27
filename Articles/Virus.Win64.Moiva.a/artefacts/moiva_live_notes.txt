@@ -1,0 +1,42 @@
+Moiva live x64dbg session notes
+================================
+
+Session: software_reporter_tool.exe on Desktop, ImageBase 0x140000000
+
+1) Decrypt stub @ 0x140F02000 HIT
+   - After loop, CIP=0x140F02915 call 0x140F00D06
+   - RCX (body base) = 0x140E75400
+   - Header in memory matches static decrypt:
+     +0x00=0x46110 +0x04=0x3D362 +0x08=0x284 +0x10=0x4A1A4 +0x14=0x8B906 +0x18=0x8C000
+
+2) CAUTION: software BP on 0x140F00D06 BEFORE decrypt corrupts that dword
+   (decrypt mutates the INT3). Restore from static or use hardware BP after decrypt.
+
+3) VirtualAlloc @ 0x140F00E55 LIVE args:
+   rcx=NULL
+   rdx=0xB7A26 (= 0x3D362 * 3)
+   r8=0x3000 (MEM_COMMIT|MEM_RESERVE)
+   r9=4 (PAGE_READWRITE)
+   rdi=0x3D362 (blob2 size)
+   r14=0x140E75400 (body)
+   r15=0x4A1A4 (blob2 offset) → later 0x140EBF5A4 absolute
+   Return buffer: 0x1F00000
+
+4) Unpacker call @ 0x140F00E75 (body+0x8ACA6):
+   rdx=rsi=0x1F00000
+   Buffer pre-seeded with PNG magic (blob2 without 3-byte prefix)
+   Return rax=0x400000 (non-zero → success path)
+   Post-unpack: code at 0x1F01000+ with Moiva opaque predicates + ROR13 (rol edi,13)
+   → layer2 is RAW PIC/shellcode-style code, not a classic MZ PE in-place
+
+5) After virus returns to CRT/WinMain:
+   CreateFileW opens host log:
+   C:\Users\petik\AppData\Local\Google\Software Reporter Tool\software_reporter_tool.log
+   (GENERIC_READ, OPEN_EXISTING) — legitimate chrome_cleaner, retaddr 0x14010C2D9
+
+6) Threads: main 2628 + 2 ntdll workers; no obvious extra infection thread yet at this pause.
+
+7) Memory of interest:
+   0x1F00000 size ~0xB8000 RW  — stage2 workspace
+   0x1A0000 size 0x60000 RWX — also PNG-stubbed (related staging)
+   .reloc RCX (r+x) — viral body

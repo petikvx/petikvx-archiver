@@ -1,0 +1,25 @@
+Yano / INDICATOR_EXE_Packed_Yano — FAUX POSITIF sur ce sample
+==============================================================
+
+La règle YARA cherche :
+  - "YanoAttribute"
+  - "StripAfterObfuscation"
+
+Ces chaînes SONT présentes, mais uniquement dans la section .rsrc
+(catalogue de détection ESET / Chrome Cleanup embarqué), à côté de :
+
+  BabelAttribute
+  DotfuscatorAttribute
+  SmartAssembly.Attributes
+  PoweredByAttribute
+  Confuser.Core
+  runtime.GOROOT / Go build ID
+
+Le PE lui-même n'est PAS un binaire .NET (CLR Data Directory = 0,
+pas d'import mscoree pour l'exécution). DIE/exeinfo : MSVC + Chromium
+chrome_cleaner. Le vrai packer/infection est Virus.Win64.Moiva
+(famille Expiro) : corps chiffré dans .reloc (RWX).
+
+Offsets (file) :
+  YanoAttribute         @ 0xD265A0 (.rsrc)
+  StripAfterObfuscation @ 0xD65867 (.rsrc)

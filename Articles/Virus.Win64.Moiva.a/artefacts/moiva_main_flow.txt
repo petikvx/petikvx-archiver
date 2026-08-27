@@ -1,0 +1,50 @@
+# Moiva post-decrypt main (VA 0x140F00D06) — cleaned flow
+
+Input: RCX = body base (0x140E75400), pushed by decrypt stub then popped into RCX.
+
+Header (at RCX):
+  +0x00 dword  size_blob1 (0x46110)   // x86 stage
+  +0x04 dword  size_blob2 (0x3D362)   // x64 stage  << used on this PE64 host
+  +0x08 dword  off_blob1  (0x284)
+  +0x0C dword  code_meta  (0x49F54)
+  +0x10 dword  off_blob2  (0x4A1A4)   << used
+  +0x14 dword  entry_off  (0x8B906)
+  +0x18 dword  body_size  (0x8C000)
+
+Main (opaque predicates collapsed to JMP):
+  1. edi = *(u32*)(rcx+4)           // compressed/encrypted x64 blob size
+  2. r15d = *(u32*)(rcx+0x10)       // offset of blob2
+  3. Resolve VirtualAlloc via PEB/LDR export walk (sub @ body+0x87CB6)
+     - gs:[0x60] → PEB → Ldr → InMemoryOrderModuleList
+     - Parse PE32+ export dir at [module+e_lfanew+0x88]
+     - Case-normalize DLL/API names (add al,0xE0 / range checks)
+  4. rbx = edi * 3                  // decompress workspace
+     VirtualAlloc(NULL, rbx, MEM_COMMIT|MEM_RESERVE=0x3000, PAGE_READWRITE=4)
+  5. call unpacker @ body+0x8ACA6 (0x140F000A6)
+     - uses resolved APIs; copies/decompresses blob into allocated buffer
+     - references PE fields (e.g. [rbp+0x50], [rbp+0x30]) → maps a PE image
+     - also VirtualAlloc(..., 0x1000, ...) for section pages
+  6. Build/walk unicode paths (toLower/toUpper), likely infection targets
+  7. Return success to CRT stub → host WinMain continues
+
+Layer-2 blobs (still packed inside body):
+  blob1 @ +0x284:  prefix d0b900 + fake PNG + markers Machine=0x14C (x86), OH magic 0x10B
+  blob2 @ +0x4A1A4: prefix e7b900 + fake PNG + markers Machine=0x8664 (x64), OH magic 0x20B
+
+
+## Live confirmation (x64dbg) — layer-2 workspace @ 0x1F00000
+
+VirtualAlloc(NULL, 0x3D362*3=0xB7A26, 0x3000, PAGE_READWRITE) → 0x1F00000
+
+After unpacker (body+0x8ACA6):
+- Offset +0x00: PNG camouflage `89 50 4E 47 0D 0A 1A 0A`
+- Offset ~+0x118: PE64 FILE/OH rebuilt in place:
+  - Machine **0x8664**
+  - OptionalHeader Magic **0x20B** (PE32+)
+  - Sections: `.text`, `.rdata`, `.data`, `.pdata`, `.gfids`, `.reloc`
+- Code region (~+0x400 / +0x1000): same opaque je/jne + **ROR13** (`rol reg, 13`) API hashing
+- PEB walk: `mov rax, gs:[0x60]`
+- Infection helpers compare markers: **MZ** (`0x5A4D`), **PE** (`0x4550`), and PNG sig `0D 0A 1A 0A` when parsing targets
+
+Return value of unpacker observed: rax=0x400000 (non-zero → continue). Host then resumes; CreateFileW seen for
+`%LOCALAPPDATA%\Google\Software Reporter Tool\software_reporter_tool.log` (legitimate chrome_cleaner).
