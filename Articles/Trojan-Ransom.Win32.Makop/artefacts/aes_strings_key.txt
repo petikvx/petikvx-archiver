@@ -1,0 +1,4 @@
+AES-256 for string table (.ndata @ VA 0x41B000)
+hex: a91da6d2be9a4ce8d66176a3063c2b43dd2d3c24d66a095f48d5cf03caca70bc
+mode: CBC, IV=0 (CryptoAPI default after CryptImportKey)
+source: sub_402980 hardcoded PLAINTEXTKEYBLOB

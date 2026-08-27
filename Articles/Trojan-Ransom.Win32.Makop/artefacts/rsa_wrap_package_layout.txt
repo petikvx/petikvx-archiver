@@ -1,0 +1,22 @@
+Makop RSA-wrapped AES session package (before CryptEncrypt, 117 bytes used / 128 buf)
+Live x32dbg sample @ CryptEncrypt (sub_4028C0 / sub_4016E0):
+
+Offset  Size  Field
+0       4     magic = 0xA12BADAD (bytes AD AD 2B A1)  [string id 11]
+4       4     victim_id (CRC32 ProductId-"%08X" serial)
+8       4     volume serial (GetVolumeInformationW)
+12      4     drive type (GetDriveTypeW) e.g. 3 = FIXED
+16      32    AES-256 raw key (from PLAINTEXTKEYBLOB+12)
+48      4     CRC32(bytes[0:48], poly 0xEDB88320)  [sub_4041D0]
+52..116 pad zeros
+→ CryptEncrypt with embedded RSA-1024 pubkey (id 10), output 128 bytes stored per volume (+36 / +44)
+
+Volume key_slot at vol+48 starts at 1 and ALTERNATES 1↔2 after each file:
+  slot==1 → use aes_blob/wrap at +32/+36
+  else    → use +40/+44
+  then slot = (slot==1)? 2 : 1
+
+Size thresholds (LE dwords in .ndata):
+  id13 0x00180000 = 1.5 MiB  → full if size <= this (sub_403600) else partial (sub_403C00)
+  id14 0x00040000 = 256 KiB → partial window size
+  id15 0x00100000 = 1 MiB   → full-mode read/encrypt chunk

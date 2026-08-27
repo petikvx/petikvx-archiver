@@ -1,0 +1,12 @@
+MD5: 1d71f0bef3fba293a0d43bffb6941f21
+SHA1: 60096b25d6865258e24cd313fabfff821af7a228
+SHA256: d86cacc391d3a515870a28dec4b2f33e90ae000848a23d32f488a0ae96e82262
+Mutex: m23071644
+Email: netback@inboxhub.net
+Email(note): translog@420blaze.it
+Extension: .makop
+Rename: .[%08X].[email].makop
+Note: readme-warning.txt
+Run key: HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+Beacon: iplogger.org/1aWsr7 (HTTPS 443)
+AES-strings key: a91da6d2be9a4ce8d66176a3063c2b43dd2d3c24d66a095f48d5cf03caca70bc

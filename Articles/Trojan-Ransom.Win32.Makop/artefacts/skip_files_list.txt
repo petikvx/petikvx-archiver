@@ -1,0 +1,7 @@
+boot.ini
+bootfont.bin
+ntldr
+ntdetect.com
+io.sys
+readme-warning.txt
+desktop.ini

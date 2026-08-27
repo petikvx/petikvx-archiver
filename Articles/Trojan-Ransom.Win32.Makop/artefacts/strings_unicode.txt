@@ -1,0 +1,9 @@
+jjjj
+jjjj
+jjjj
+\\.\%c:
+%c:\
+\*.*
+File
+"%s" n%u
+%s\%s

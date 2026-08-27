@@ -1,0 +1,1 @@
+windows;winnt;\system32;\regedit.exe;
