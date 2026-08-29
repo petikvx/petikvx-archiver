@@ -1,0 +1,19 @@
+FOX footer (sub_140011D70) — size 0x298 (664) bytes appended
+Stream: ChaCha20 ("expand 32-byte k"); KDF/hash: BLAKE2s (sub_14000C8E0)
+
+Offset  Size  Field
+0x00    8     Magic ASCII "2XOF6202" (FOX2 branding)
+0x08    8     Timestamp-like via sub_140019FA0(0)
+0x10    32    Curve25519 public (file ephemeral) from X25519(priv, basepoint=9)
+0x30    12    BLAKE2s-derived key material (v20+v21)
+0x3C    16    Stream state / nonce remnant (v16)
+0x4C    8     Original file size (QUAD)
+0x54    4     Flag = 1
+0x58    512   RSA-4096 wrap of session Curve private (UserAssist copy)
+0x258   32    BLAKE2s over first 0x258 bytes of footer
+
+Rename: <file>.FOX
+Note: <dir>\see hello.txt
+
+Babuk-style path (sub_140012570) — footer 0x48 bytes, SOSEMANUK
+("chong dug to dog!!"-style constants), ECDH pointer "curvpattern" (ASCII placeholder)

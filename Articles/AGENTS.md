@@ -10,6 +10,7 @@ Instructions pour un agent qui reverse / documente des samples (VirusShare, dump
 | `Trojan-Ransom.Win32.Spora.a/` | Hex-Rays croisé, blobs AES extraits, ID / `.KEY` / footer **expliqués pour non-experts** + code net |
 | `Trojan.Win32.Diztakun.arpg/` | Scareware .NET/WPF : décompil C#, bat reconstruit, chaîne multi-étages **lisible non-expert** |
 | `Trojan.Win32.Cosmu.bwts/` | Packer ASPack + Hex-Rays, faux ransomware XOR, script IR de recovery |
+| `Ransomware.babuk-btcware/` | Schémas Mermaid (flux + crypto), footer live x64dbg, **§13 livrables compact** (libellés courts) |
 
 Tous ont `README.md` + `README_EN.md` bilingues.
 
@@ -31,9 +32,10 @@ Analyse **défensive / IR / recherche** uniquement :
 
 ## Contexte workspace
 
-- Racines typiques : `/home/petik/Downloads/petikvx-archiver/Articles/` (rapports archivés) et `/home/petik/Downloads/virusshare/` (samples bruts).
+- **Racine Articles** = dossier parent de **ce** `AGENTS.md` (ne pas hardcoder `Downloads/` vs `Documents/` : vérifier avec `pwd` / chemin réel du workspace).
+- Samples bruts typiques : `…/virusshare/` (ou chemin fourni par l’utilisateur).
 - Chaque famille / sample a **son propre sous-dossier**. Travailler **dedans** (ne pas mélanger avec DarkRace / Spora / un autre sample).
-- S’il n’y a qu’un PE à la racine : créer un sous-dossier (famille ou SHA256 court), y placer le sample, y écrire les livrables.
+- S’il n’y a qu’un PE à la racine Articles : créer un sous-dossier (famille ou SHA256 court), y placer le sample, y écrire les livrables. **Ne pas** créer de doublon si le sample est déjà dans un sous-dossier dédié.
 - Mettre à jour `Articles/README.md` (section Malware Analysis) quand un **nouvel** article est livré, sauf si l’utilisateur dit le contraire.
 
 ---
@@ -92,7 +94,7 @@ Sorties attendues dans `artefacts/ida_export/` :
 
 - Réutiliser un `.i64` déjà ouvert si présent (plus rapide).  
 - PE32 : `idat` + decompiler x86 (`hexx64` côté IDA 9 gère aussi le 32-bit).  
-- Lier ces fichiers dans les README (sources + tableau livrables).  
+- Lier ces fichiers dans les README (sources + tableau livrables §6.1).  
 - Ensuite seulement : croiser le `.c` avec le triage (§2d). Si le sample est déjà actif sous x64dbg/x32dbg → §2c en parallèle.
 
 ### 2a. Décompil .NET (obligatoire si assembly CLR / WPF / etc.)
@@ -119,63 +121,55 @@ Outils locaux :
 | Extracteur | `~/petikvx-ressources/work/pyinstxtractor.py` (copie aussi dans `~/sandbox/python/`) |
 | Décompil bytecode | `~/sandbox/python/pycdc.x86_64` (+ `pycdas.x86_64` pour disasm) |
 
+**Minimum viable :**
+
 ```bash
 SAMPLE="/chemin/vers/malware.exe"
 WORKDIR="$(dirname "$SAMPLE")"
 cd "$WORKDIR"
-
-# 1) Extraire l’archive PyInstaller (ne pas « lancer » le malware : lecture du PE seulement)
 python3 ~/petikvx-ressources/work/pyinstxtractor.py "$(basename "$SAMPLE")"
-# → dossier : <sample.exe>_extracted/
-
-EXT="${SAMPLE}.exe_extracted"
-# si le nom du fichier n’a pas .exe : le dossier est "<basename>_extracted"
 EXT="$(ls -d "$WORKDIR"/*_extracted 2>/dev/null | head -1)"
-
-# 2) Repérer le point d’entrée (souvent sans extension, ou *.pyc)
-#    pyiboot*.pyc / pyi_rth_*.pyc = runtime ; le vrai code = modules + éventuel main sans suffixe
 mkdir -p "$WORKDIR/source_py"
-ls -la "$EXT"
-
-# 3) Décompiler les .pyc intéressants (entrypoint + modules métier)
 PYCDC=~/sandbox/python/pycdc.x86_64
-chmod +x "$PYCDC" 2>/dev/null
+# Décompiler entrypoint + modules métier (*.pyc / PYZ) ; ignorer échecs non bloquants
 for f in "$EXT"/*.pyc "$EXT"/PYZ.pyz_extracted/*.pyc ; do
   [ -f "$f" ] || continue
-  base=$(basename "$f" .pyc)
-  "$PYCDC" "$f" > "$WORKDIR/source_py/${base}.py" 2>/dev/null || true
-done
-
-# Parfois le entrypoint n’a pas d’extension : essayer quand même
-for f in "$EXT"/* ; do
-  [ -f "$f" ] || continue
-  case "$f" in *.pyc|*.pyz|*.dll|*.so|*.zip) continue ;; esac
-  base=$(basename "$f")
-  "$PYCDC" "$f" > "$WORKDIR/source_py/${base}.py" 2>/dev/null || true
+  "$PYCDC" "$f" > "$WORKDIR/source_py/$(basename "$f" .pyc).py" 2>/dev/null || true
 done
 ```
 
 Notes :
 
-- Idéalement **même version majeure de Python** que celle du freeze (sinon unmarshal PYZ peut râler) ; tenter quand même.  
-- Si `pycdc` échoue (Python très récent) : noter la limite ; fallback possible `decompyle3` / `uncompyle6` si installés, ou analyse du `.pyc` au bytecode (`pycdas`).  
-- Sorties à versionner / lier : `*_extracted/` (brut) + `source_py/*.py` (lisible) dans les README.  
-- Chercher ensuite dans le Python : C2, crypto, stealer, droppers, configs (souvent clair ou base64 trivial).
+- Même version majeure de Python que le freeze si possible ; tenter quand même.  
+- Si `pycdc` échoue : noter la limite ; fallback `decompyle3` / `uncompyle6` / `pycdas`.  
+- Livrer / lier : `*_extracted/` + `source_py/*.py`.  
+- Chercher ensuite : C2, crypto, stealer, droppers, configs (souvent clair ou base64 trivial).
 
 ### 2c. Debug live x64dbg / x32dbg (si le sample est déjà actif)
 
 Serveurs MCP : `x64dbg`, `x32dbg` (`~/.grok/config.toml`).  
 **Ne pas** lancer le malware sur l’hôte agent. En revanche, si l’utilisateur a **déjà** le sample (ou un unpack) ouvert / en cours d’exécution **sous x64dbg/x32dbg** sur la machine de debug :
 
-1. **Vérifier via MCP** que le module / processus actif correspond au sample analysé (nom, chemin, image).
+1. **Vérifier via MCP** que le module / processus actif correspond au sample analysé (nom, chemin, image, ImageBase).
 2. **Si actif** — approfondir **immédiatement** l’analyse et le **rapport en cours** (`README.md` / `README_EN.md`) :
    - Registres, pile, mémoire (blobs déchiffrés, config en clair, clés session, buffers note/C2…).
    - Breakpoints / pas-à-pas sur les routines critiques déjà repérées dans le `.c` / `.cs` (crypto, walk, anti-recovery, init).
    - Corréler VA / `sub_XXXX` Hex-Rays ↔ comportement live ; noter ce qui n’est visible qu’au runtime.
    - Intégrer ces faits dans les § concernés (pas un dump debugger orphelin en annexe seule).
+   - Extraire les artefacts utiles dans `artefacts/` (ex. `x64dbg_session_*.bin`, `sample_footer_live.bin`, notes `x64dbg_*.txt`).
 3. **Si inactif / MCP down** : poursuivre le workflow statique (+ Any.RUN si URL). Ne pas démarrer le sample depuis l’agent.
 
-x32dbg pour PE32, x64dbg pour PE64. Toute observation live reste **défensive / IR** : documenter, extraire artefacts déjà en mémoire utiles au rapport — pas d’aide au déploiement ni de decryptor offensif.
+**Règles pratiques (VM de debug) :**
+
+| Sujet | Règle |
+|-------|--------|
+| Fichiers de test | **Disque local VM** (`C:\Windows\Temp\…`, `C:\Windows\System32\…`, etc.). **Éviter** Desktop redirigé / dossier partagé / chemin réseau. |
+| Création de fichier | Préférer un fichier **déjà présent** sur la VM, ou créé à la main (Notepad). Se méfier de `DumpMemory` MCP (handles / chemins ambigus). |
+| Breakpoints | Privilégier **software BP**. Après session sale : `bphwc`, `bplc`, `bpmc` + `DeleteAllBreakpoints`. Se méfier des **HW BP collants**. |
+| Portée | Stop avant walk / chiffrement massif sauf demande explicite (« VM OK » ≠ chiffrer tout le disque). |
+| Artefacts | Dumps + notes dans `artefacts/` **et** prose dans le § technique concerné. |
+
+x32dbg pour PE32, x64dbg pour PE64. Toute observation live reste **défensive / IR** : documenter, extraire — pas d’aide au déploiement ni de decryptor offensif.
 
 ### 2d. Croisement avec le décompil (`.c` / `.cs` / `.py`)
 
@@ -216,6 +210,16 @@ Verdict, process tree, drops, cmdline ; screenshots → `anyrun_screenshots/` ; 
 Note, bat/cmd, IoCs (hashes, mutex, ext, chemins, emails, onion…). Scripts Python de decode/extract quand ça aide la relecture (ex. ID victime Spora).  
 **Wallpaper** : voir §3bis — extraction fichier dès que présent.
 
+**Convention de noms (recommandée) sous `artefacts/` :**
+
+| Zone | Exemples |
+|------|----------|
+| IDA | `artefacts/ida_export/*.{c,asm,lst}` |
+| Scripts | `extract_*.py`, `decode_*.py` |
+| Crypto | `rsa_pubkey.pem`, `*_README.txt`, `footer_*_layout.txt` |
+| Live debug | `x64dbg_*.bin`, `x64dbg_*.txt`, `sample_footer_live.bin` |
+| Strings / listes | `strings_ascii.txt`, `services.txt`, `skip_names.txt` |
+
 ### 6. Livrables (dossier du sample)
 
 | Fichier | Contenu |
@@ -237,13 +241,64 @@ Langue : Français | English version: [README_EN.md](README_EN.md)
 Language: English | French version: [README.md](README.md)
 ```
 
+#### 6.1 Tableau « Fichiers produits » (§13) — format compact (obligatoire)
+
+Les viewers / TUI tronquent souvent les **chemins longs** (`/home/.../artefacts/...`) → affichage coupé avec `…`.  
+**Règle :** dans §13 FR **et** EN, utiliser un tableau **compact** à 3 colonnes :
+
+| Groupe | Fichier | Rôle |
+|--------|---------|------|
+
+- **Groupe** : catégorie courte (`Rapport`, `Sample`, `IDA`, `Note`, `Crypto`, `Listes`, `Live`, `Strings`, `Screenshots`…).  
+- **Fichier** : lien Markdown dont le **texte visible = nom court** (basename), et la **cible = chemin relatif** depuis le dossier du sample.  
+- **Rôle** : une ligne factuelle, sans chemin absolu.  
+- **Pas** de chemins absolus (`/home/petik/...`) dans le libellé du lien.  
+- **Pas** de globs morts (`path_excl_*.txt`, `strings_*.txt`) : une ligne **par fichier réel**.  
+- Une courte phrase d’intro OK : *« Libellés courts (cliquables) ; chemins sous \`artefacts/\`. »*
+
+**Bon :**
+
+```markdown
+| Groupe | Fichier | Rôle |
+|--------|---------|------|
+| IDA | [FOX_V2_FINAL.c](artefacts/ida_export/FOX_V2_FINAL.c) | Hex-Rays |
+| Live | [sample_footer_live.bin](artefacts/sample_footer_live.bin) | Footer `2XOF6202` |
+| Listes | [path_excl_windows.txt](artefacts/path_excl_windows.txt) | Excl. Windows |
+| Listes | [path_excl_cloud.txt](artefacts/path_excl_cloud.txt) | Excl. cloud |
+```
+
+**Mauvais (à éviter) :**
+
+```markdown
+| [artefacts/ida_export/FOX_V2_FINAL.c](artefacts/ida_export/FOX_V2_FINAL.c) | … |
+| [/home/petik/.../artefacts/foo.bin](/home/petik/.../artefacts/foo.bin) | … |
+| [artefacts/path_excl_*.txt](artefacts/path_excl_windows.txt) | … |
+```
+
+Référence d’exemple : `Ransomware.babuk-btcware/README.md` §13.
+
+#### 6.2 Checklist fin de livrable (avant de dire « done »)
+
+- [ ] `README.md` + `README_EN.md` — **même** niveau de détail  
+- [ ] §13 compact (Groupe \| Fichier \| Rôle) — pas de chemins absolus / globs  
+- [ ] Hashes MD5 + SHA1 + SHA256  
+- [ ] Export selon type : IDA / `ilspycmd` / pyinst+pycdc  
+- [ ] Listes exhaustives (ext / whitelist / services…) — pas de `…`  
+- [ ] Wallpaper extrait **ou** absence explicitement dite  
+- [ ] §14 : non-vérifié listé (pas d’exec hôte, pas de privkey absente, etc.)  
+- [ ] `Articles/README.md` mis à jour si **nouvel** article  
+- [ ] §0 synthèse en **liste empilée** (pas tableau 2 colonnes large)  
+- [ ] Si flux non trivial : schémas Mermaid (voir structure 0bis)  
+- [ ] Si x64dbg/x32dbg actif : faits live intégrés + artefacts sous `artefacts/`
+
 ---
 
 ## Structure de rapport (adapter les titres à la famille)
 
 Numérotation claire ; **ne pas survoler**. Ordre type :
 
-0. Synthèse sandbox ↔ code  
+0. Synthèse sandbox ↔ code (**liste empilée**, pas un tableau 2 colonnes large — voir ci-dessous)  
+0bis. **Schémas** (Mermaid) — si flux non trivial (ransomware, multi-étages, crypto conditionnelle)  
 1. PE / point d’entrée (+ machine d’états si reprise)  
 2. Init (mutex, blobs, pubkey…) — `2.1`, `2.2`…  
 3. Effets collatéraux (registre, shortcuts, icône, **wallpaper extrait**…)  
@@ -256,8 +311,49 @@ Numérotation claire ; **ne pas survoler**. Ordre type :
 10. IoCs  
 11. ATT&CK  
 12. Captures  
-13. Fichiers produits  
+13. Fichiers produits (**format compact** §6.1)  
 14. Références + ce qui n’a **pas** été vérifié  
+
+### Schémas Mermaid (recommandé)
+
+Dès que le comportement n’est pas trivial (ransomware, dropper multi-étages, crypto par taille/catégorie) :
+
+| Schéma | Contenu typique |
+|--------|-----------------|
+| **S1** | Flux global : entry → anti-analyse → init → impact → cleanup |
+| **S2** | Opération critique : chiffrement fichier / drop / C2 |
+| **S3** | Branches conditionnelles (taille fichier, catégories, états de reprise) |
+
+Les placer tôt (après la synthèse). Référence : `Ransomware.babuk-btcware/README.md` (S1–S4).
+
+### §0 Synthèse — format empilé (obligatoire en TUI / largeur étroite)
+
+Les tableaux **2 colonnes** (Observation | Confirmation) sont souvent **coupés** (`…`) dans les viewers étroits.  
+**Préférer une liste empilée** : observation en gras, confirmation **en dessous** (préfixe `→`), liens courts vers artefacts.
+
+```markdown
+- **Mutex** `NomDuMutex`
+  → `CreateMutexA` dans `start`
+
+- **Note USDT** dans `.data`
+  → [ransom_note.txt](artefacts/ransom_note.txt)
+```
+
+Référence : `Ransomware.babuk-btcware/README.md` §0.
+
+### §10 IoCs — format tableau (obligatoire)
+
+Éviter les IoCs « en prose ». Utiliser des tableaux copiables (cellules **courtes** ; sinon passer en liste empilée comme §0) :
+
+```markdown
+| Type | Valeur |
+|------|--------|
+| SHA256 | `…` |
+| MD5 | `…` |
+| Mutex | `…` |
+| Note / extension / magic | `…` |
+| Chemins / GUIDs / CLI | `…` |
+```
 
 Quand l’utilisateur dit « détail le §X » : enrichir **ce** § dans **FR et EN** sans alléger le reste.
 
@@ -275,6 +371,16 @@ Objectif : un lecteur IR **non expert reverse** doit comprendre *ce qu’il voit
 4. **Exemple concret** si possible (ID Any.RUN, chemin drop, taille footer…).  
 5. **Pourquoi** le malware fait ça (pas seulement le quoi) + note IR si utile (quoi collecter).
 
+### Crypto / ransomware (si pertinent)
+
+Exiger explicitement dans le rapport :
+
+- Primitive(s) + wrap (RSA/ECC/…)  
+- Footer / magic / taille  
+- Rename / extension  
+- **Politique taille / partial encrypt** si présente (seuils + schéma)  
+- Pubkey extraite (PEM/DER) + phrase claire : **pas de clé privée auteurs dans le sample**
+
 ### Style
 
 - FR dans `README.md`, EN dans `README_EN.md` — **même niveau de détail** des deux côtés  
@@ -290,7 +396,10 @@ Objectif : un lecteur IR **non expert reverse** doit comprendre *ce qu’il voit
 - Listes tronquées (`…`) pour whitelists / extensions  
 - FR riche / EN résumé (ou l’inverse)  
 - Decryptor offensif ou clé privée absente du sample  
-- Mentionner un wallpaper / `SPI_SETDESKWALLPAPER` **sans** extraire l’image (ou sans expliquer l’absence)
+- Mentionner un wallpaper / `SPI_SETDESKWALLPAPER` **sans** extraire l’image (ou sans expliquer l’absence)  
+- §13 livrables avec **chemins absolus** / libellés trop longs / globs `*` (affichage coupé `…`) — utiliser le **format compact** (§6.1)  
+- §0 synthèse en **tableau 2 colonnes large** (tronqué en TUI) — utiliser la **liste empilée**  
+- Test encrypt / drops sous x64dbg via **Desktop partagé** alors qu’un chemin **local VM** suffit  
 
 ---
 
@@ -298,12 +407,13 @@ Objectif : un lecteur IR **non expert reverse** doit comprendre *ce qu’il voit
 
 - Sample = **malware**. Pas d’exec sur l’hôte.  
 - Any.RUN / sandbox tierce = OK si fournie.  
-- Pubkey seule ≠ déchiffrement victimes.
+- Pubkey seule ≠ déchiffrement victimes.  
+- Debug live x64dbg/x32dbg = OK seulement si **déjà** lancé par l’utilisateur sur la machine de debug.
 
 ---
 
 ## Exemple de prompt utilisateur
 
-> Analyse le sample dans `./NomFamille/` (binaire + `.c` IDA). Any.RUN : \<url\>. Qualité Spora/DarkRace ; README FR + EN.
+> Analyse le sample dans `./NomFamille/` (binaire + `.c` IDA). Any.RUN : \<url\>. Qualité Spora/DarkRace ; README FR + EN. Schémas Mermaid si utile ; §13 compact. Si x64dbg actif → corréler live ; fichiers test sur **disque local VM**.
 
-L’agent enchaîne 0→6 sans redemander la méthodo ; ne bloque que sur un choix réel (nom de dossier, tri screenshots).
+L’agent enchaîne 0→6 (+ checklist §6.2) sans redemander la méthodo ; ne bloque que sur un choix réel (nom de dossier, tri screenshots, portée du walk live).

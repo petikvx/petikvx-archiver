@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Ransomware.babuk-btcware (FOX V2)](Ransomware.babuk-btcware/README.md) | `b54fac5e1433492ab96c5486cd854bf0ddf4446d0d96720feea780516d40450c` | 2026-08-29 |
 | [Virus.Win64.Moiva.a](Virus.Win64.Moiva.a/README.md) | `9e3e4c146d9a45099c57b7a038b870fceeba8ab44f43bece994622a02cc77834` | 2026-08-27 |
 | [Trojan-Ransom.Win32.Makop](Trojan-Ransom.Win32.Makop/README.md) | `d86cacc391d3a515870a28dec4b2f33e90ae000848a23d32f488a0ae96e82262` | 2026-08-27 |
 | [Trojan-DDoS.Win32.StormAttack.a](Trojan-DDoS.Win32.StormAttack.a/README.md) | `5bb61248f62945cd4933f00375c77eb094d22c55e33d6e57bbcf2127c19727b5` | 2026-08-26 |

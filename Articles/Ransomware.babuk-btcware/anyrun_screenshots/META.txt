@@ -1,0 +1,16 @@
+Any.RUN task: 01fbad0b-d6a8-49ad-9773-59097242301d
+Public report: https://any.run/report/b54fac5e1433492ab96c5486cd854bf0ddf4446d0d96720feea780516d40450c/01fbad0b-d6a8-49ad-9773-59097242301d
+App: https://app.any.run/tasks/01fbad0b-d6a8-49ad-9773-59097242301d
+File: FOX_V2_FINAL.exe
+Verdict: Malicious activity
+Threats: Ransomware
+Tags: babuk, ransomware, evasion
+Date: 2026-08-29 17:43:09
+OS: Windows 10 Professional build 19044 x64
+Duration: 240s
+UAC autoconfirm: on
+PID main: 1096
+Mutex signature: BABUK mutex found
+VSS: cmd 5560 -> vssadmin 6212 delete shadows /all /quiet (exit 2)
+Note opened: notepad 7152 -> Desktop\see hello.txt
+Encrypted sample opened: notepad++ 484 -> Desktop\dvdpopulation.rtf.FOX

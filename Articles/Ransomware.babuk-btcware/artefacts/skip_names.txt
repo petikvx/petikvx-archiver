@@ -1,0 +1,27 @@
+(slot0: overwritten by -debug logfile path)
+$Recycle.Bin
+autorun.inf
+boot.ini
+bootfont.bin
+bootsect.bak
+bootmgr
+bootmgr.efi
+bootmgfw.efi
+desktop.ini
+iconcache.db
+ntldr
+ntuser.dat
+ntuser.dat.log
+ntuser.ini
+thumbs.db
+#recycle
+..
+.
+BCD
+BCD.LOG
+BCD.LOG1
+BCD.LOG2
+BOOTSTAT.DAT
+hiberfil.sys
+pagefile.sys
+swapfile.sys

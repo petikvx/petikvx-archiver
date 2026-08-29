@@ -1,0 +1,6 @@
+C:\Users\*\AppData\Local\Microsoft\Windows\FileHistory
+C:\Windows.old
+C:\Users\*\OneDrive
+C:\Users\*\Dropbox
+C:\Users\*\Google Drive
+C:\System Volume Information

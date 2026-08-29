@@ -1,0 +1,49 @@
+x64dbg controlled encrypt test (FOX_V2_FINAL) — 2026-08-29
+
+Goal: encrypt a single file under -paths / forced call, dump footer 0x298 with magic 2XOF6202.
+
+What worked
+-----------
+- Session init (sub_140016470): Curve25519 pub + RSA-4096 wrap observed; UserAssist persistence reused across restarts.
+- Forced call site at start+0x14345: mov rcx, L"...\fox_ir_test\note_ir.dat"; call encrypt_FOX (sub_140011D70); int3
+- Entered encrypt_FOX with correct LPCWSTR path (x64dbg comment showed full path).
+- Hit kernel32.CreateFileW with:
+    access = 0xC0000000 (GENERIC_READ|GENERIC_WRITE)
+    share  = 0 (patched live to 3) 
+    disposition = OPEN_EXISTING (3)
+    flags  = 0x8000000 FILE_FLAG_BACKUP_SEMANTICS (patched on-disk to 0x80 in one attempt)
+- Anti-debug / sandbox / service-kill / VSS stubs patched (xor eax,eax; ret).
+
+What failed
+-----------
+- encrypt_FOX returned 0 (failure) before WriteFile footer (BP at 0x12157 never hit).
+- Likely CreateFileW / GetFileSizeEx / CryptGenRandom early exit on files created via MCP DumpMemory
+  (possible empty/locked/invalid artifact). Not fully root-caused (GetLastError not reliably captured).
+- Sticky hardware BP on encrypt entry (0x11D70) persisted across DeleteAllBreakpoints in this MCP build.
+
+Code correction vs earlier report
+--------------------------------
+- sub_140012570 is a THUNK: jmp sub_140011D70 (workers use FOX/ChaCha path only).
+- sub_140012580 (SOSEMANUK / "chong dug to dog!!") only has DATA xrefs — not on the normal worker call path.
+
+Files on VM Desktop
+-------------------
+C:\Users\petik\Desktop\fox_ir_test\  (sample.txt / note_ir.dat may exist from DumpMemory)
+
+Next step to finish footer capture
+----------------------------------
+Create a real file with Notepad:
+  C:\Users\petik\Desktop\fox_ir_test\note_ir.dat
+Then re-run forced encrypt_FOX under x64dbg (same patches) and break on 0x12157.
+
+
+SUCCESS (hosts) — 2026-08-29
+----------------------------
+Target (local VM disk): C:\Windows\System32\drivers\etc\hosts
+Forced call encrypt_FOX (sub_140011D70) after session init.
+CreateFileW OK (share forced to 3); WriteFile footer 0x298 hit.
+Magic: 2XOF6202
+Artefacts:
+  artefacts/sample_footer_live.bin (664 bytes)
+  C:\Windows\Temp\hosts_FOX_footer.bin (on VM)
+Expected on disk: C:\Windows\System32\drivers\etc\hosts.FOX

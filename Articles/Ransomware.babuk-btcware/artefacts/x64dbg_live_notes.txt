@@ -1,0 +1,11 @@
+x64dbg live session (defensive) — FOX_V2_FINAL.bin
+PID 1996, ImageBase 0x7FF6971F0000
+Path: C:\Users\petik\Desktop\FOX_V2_FINAL.bin
+State: paused at system breakpoint → patched anti-debug (sub_14000B540) and sandbox score (sub_14000BCF0) to ret 0
+Hit session_key_init_RSA_wrap (sub_140016470)
+CryptGenRandom(32) → clamp Curve25519 private
+X25519(priv, basepoint=9) → public @ VA image+0x27190
+CryptImportKey(RSA-4096 PUBLICKEYBLOB pbData) + CryptEncrypt → wrap private @ image+0x271B0 (512 bytes)
+Flag dword_1400273DC set to 1
+STOPPED before worker CreateThread / filesystem walk (AV observed later in start; process terminated deliberately)
+Patches: xor eax,eax; ret at anti_debug and sandbox_score
