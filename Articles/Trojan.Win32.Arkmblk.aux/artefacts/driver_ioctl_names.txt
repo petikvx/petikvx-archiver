@@ -1,0 +1,28 @@
+DeviceControl-Version
+DeviceControl-Set Eproc Off
+DeviceControl-PidName
+DeviceControl-SysProcInfo Beg
+DeviceControl-SysProcInfo End
+DeviceControl-GetDupPidHandle
+DeviceControl-GetPortNumber
+DeviceControl-FileHandleCount
+DeviceControl-FileHandle
+DeviceControl-FileHandleName
+DeviceControl-Get Pid Dll Count
+DeviceControl-Get EPROCESS
+DeviceControl-Get Pid Dlls
+DeviceControl-PidMemory
+DeviceControl-UnhideProc
+DeviceControl-HideProc
+DeviceControl-KillProc
+DeviceControl-DriverInfo
+DeviceControl-DeleteFile
+DeviceControl-DeleteService
+DeviceControl-PidTokenSid
+DeviceControl-DriverName
+DeviceControl-SCAN-KMEM
+DeviceControl-OpenPhysicalMemory
+DeviceControl-ClosePhysicalMemory
+DeviceControl-ReadPhyicalMemory
+DeviceControl-GetVadList
+DeviceControl-GetPageDataList

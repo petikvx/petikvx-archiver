@@ -1,0 +1,23 @@
+Sample: 2026-03-03_8582d0ff9b225dd3322e7a631f17bde5_cobalt-strike_icedid_satacom_stealc
+AKA Huntress: svchost.exe EDR killer
+MD5:    8582d0ff9b225dd3322e7a631f17bde5
+SHA1:   bf0acc28d1b1652c6418231f9820abfe985af764
+SHA256: 6a6aaeed4a6bbe82a08d197f5d40c2592a461175f181e0440e0ff45d5fb60939
+Size:   666112
+Type:   PE32+ GUI x86-64
+EP RVA: 0x107E0
+ImageBase: 0x140000000
+TimeDateStamp: 0x6968992E (2026-01-15 07:37:18 UTC)
+Sections: .text .rdata .data .pdata .fptable .rsrc .reloc
+.rdata entropy ~4.59 (wordlist-encoded driver)
+Overlay: 0
+
+Driver decoded OemHwUpd_decoded.sys (= EnPortv.sys / EnCase Driver)
+MD5:    6aa2ed7241d3f00d75baf68572e0ed7b
+SHA1:   d39a79ccfa41ec4a2c4cb9073721e299eee778ad
+SHA256: 3111f4d7d4fac55103453c4c8adb742def007b96b7c8ed265347df97137fbee0
+Size:   66112
+TimeDateStamp: 0x4913955D (2008-11-07)
+Company: Guidance Software Inc.
+InternalName/OriginalFilename: EnPortv.sys
+ProductName: EnCase Driver

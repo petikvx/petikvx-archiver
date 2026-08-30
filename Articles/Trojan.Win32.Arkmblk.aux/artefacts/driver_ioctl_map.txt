@@ -1,0 +1,49 @@
+EnPortv / OemHwUpd.sys — IOCTL / DeviceControl map (defensive)
+======================================================================
+Device type (IoCreateDevice): 0x22 (FILE_DEVICE_UNKNOWN)
+Device/symlink built from service name via registry ImagePath
+  (\Device\… and \DosDevices\…); usermode opens \\.\OemHwUpd
+
+Primary IOCTL used by this EDR killer (confirmed Hex-Rays + usermode):
+  0x223078  DeviceControl-KillProc
+    dispatch → sub_16BA8 @ 0x16BA8
+    KeAttachProcess → ZwOpenProcess(0x40 PROCESS_TERMINATE)
+    → ZwTerminateProcess → ZwClose → KeDetachProcess
+
+Neighbor codes in same switch region:
+  0x22307C  DeviceControl-HideProc
+  0x223068  DeviceControl-PidMemory (approx from cascade)
+
+Other DeviceControl-* capabilities in the driver
+(NOT all invoked by this usermode sample):
+
+  - DeviceControl-Version
+  - DeviceControl-Set Eproc Off
+  - DeviceControl-PidName
+  - DeviceControl-SysProcInfo Beg
+  - DeviceControl-SysProcInfo End
+  - DeviceControl-GetDupPidHandle
+  - DeviceControl-GetPortNumber
+  - DeviceControl-FileHandleCount
+  - DeviceControl-FileHandle
+  - DeviceControl-FileHandleName
+  - DeviceControl-Get Pid Dll Count
+  - DeviceControl-Get EPROCESS
+  - DeviceControl-Get Pid Dlls
+  - DeviceControl-PidMemory
+  - DeviceControl-UnhideProc
+  - DeviceControl-HideProc
+  - DeviceControl-KillProc
+  - DeviceControl-DriverInfo
+  - DeviceControl-DeleteFile
+  - DeviceControl-DeleteService
+  - DeviceControl-PidTokenSid
+  - DeviceControl-DriverName
+  - DeviceControl-SCAN-KMEM
+  - DeviceControl-OpenPhysicalMemory
+  - DeviceControl-ClosePhysicalMemory
+  - DeviceControl-ReadPhyicalMemory
+  - DeviceControl-GetVadList
+  - DeviceControl-GetPageDataList
+
+Signing: see driver_certs_README.txt (Guidance leaf expired 2010-01-31).

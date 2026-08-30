@@ -1,0 +1,21 @@
+CreateDirectoryW #1: C:\ProgramData\OEM
+Sun Aug 30 03:58:08 PM UTC 2026
+CreateFileW DROP: C:\ProgramData\OEM\Firmware\OemHwUpd.sys
+  access=GENERIC_WRITE(0x40000000) disposition=CREATE_ALWAYS(2) flags=0x80
+SetFileAttributesW(OemHwUpd.sys, 6=HIDDEN|SYSTEM)
+CreateFileW ntdll.dll GENERIC_READ (timestomp source)
+CreateFileW OemHwUpd.sys FILE_WRITE_ATTRIBUTES=0x100 (timestomp target)
+HIT sub_14000BC20 start_oem_service — will stop before StartServiceW
+==== STOP at StartServiceW (BYOVD load NOT executed) ====
+CreateDirectoryW: C:\ProgramData\OEM
+CreateDirectoryW: C:\ProgramData\OEM\Firmware
+CreateFileW probe: \\.\OemHwUpd (OPEN_EXISTING) — absent
+HIT sub_14000AAF0 decode_and_drop
+CreateFileW DROP: C:\ProgramData\OEM\Firmware\OemHwUpd.sys GENERIC_WRITE CREATE_ALWAYS
+SetFileAttributesW(..., 6) HIDDEN|SYSTEM
+HIT sub_14000DD60 timestomp
+CreateFileW: C:\Windows\System32\ntdll.dll GENERIC_READ
+CreateFileW: OemHwUpd.sys FILE_WRITE_ATTRIBUTES
+HIT sub_14000BC20 start_oem_service
+CreateServiceW: name=OemHwUpd display='OEM Hardware HAL Service' access=0x10030 type=1 start=3 path=C:\ProgramData\OEM\Firmware\OemHwUpd.sys
+StartServiceW: PAUSED — intentional stop (no kernel load / no kill loop)

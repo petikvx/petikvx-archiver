@@ -1,0 +1,59 @@
+msmpeng.exe	Microsoft Defender
+nissrv.exe	Microsoft Defender
+mssense.exe	Microsoft Defender
+sensendr.exe	Microsoft Defender
+csfalconservice.exe	CrowdStrike
+csagent.exe	CrowdStrike
+sentinelagent.exe	SentinelOne
+sentinelstaticengine.exe	SentinelOne
+sentinelhelper.exe	SentinelOne
+sentinelservice.exe	SentinelOne
+cb.exe	Carbon Black
+cbdefense.exe	Carbon Black
+repmgr.exe	Carbon Black
+xagt.exe	FireEye/Trellix
+cyveraservice.exe	Palo Alto Cortex
+traps.exe	Palo Alto Cortex
+cyserver.exe	Palo Alto Cortex
+elastic-endpoint.exe	Elastic
+elastic-agent.exe	Elastic
+cybereason.exe	Cybereason
+minionhost.exe	Cybereason
+crsensor.exe	Cybereason
+cylancesvc.exe	Cylance
+cylanceui.exe	Cylance
+ccsvchst.exe	Symantec/Broadcom
+smc.exe	Symantec/Broadcom
+symcorpui.exe	Symantec/Broadcom
+mcshield.exe	McAfee/Trellix
+mfevtps.exe	McAfee/Trellix
+mfeesp.exe	McAfee/Trellix
+mfevtp.exe	McAfee/Trellix
+tmntsrv.exe	Trend Micro
+ntrtscan.exe	Trend Micro
+pccntmon.exe	Trend Micro
+tmlisten.exe	Trend Micro
+savservice.exe	Sophos
+sophoshealth.exe	Sophos
+sophossps.exe	Sophos
+sophosfilescanner.exe	Sophos
+sophosclean.exe	Sophos
+sophososquery.exe	Sophos
+avp.exe	Kaspersky
+kavsvc.exe	Kaspersky
+ekrn.exe	ESET
+egui.exe	ESET
+bdagent.exe	Bitdefender
+vsserv.exe	Bitdefender
+bdservice.exe	Bitdefender
+sfc.exe	Windows SFC
+forticlient.exe	Fortinet
+fortiesnac.exe	Fortinet
+mbam.exe	Malwarebytes
+mbamservice.exe	Malwarebytes
+avastsvc.exe	Avast
+avgsvc.exe	AVG
+taniumclient.exe	Tanium
+qualysagent.exe	Qualys
+ir_agent.exe	Rapid7
+splunkd.exe	Splunk

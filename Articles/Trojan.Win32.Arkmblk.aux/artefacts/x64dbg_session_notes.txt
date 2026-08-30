@@ -1,0 +1,64 @@
+Session x64dbg (MCP) — 2026-08-30
+=================================
+PID: 4336
+ImagePath: C:\Users\petik\Desktop\2026-03-03_8582d0ff9b225dd3322e7a631f17bde5_cobalt-strike_icedid_satacom_stealc
+ImageBase (PEB): 0x7FF75EE20000
+MZ at ImageBase: confirmed
+
+Phase 1 (static corr.):
+- System BP ntdll → EP 0x7FF75EE307E0 → main 0x7FF75EE2EE30
+- STOP initial avant drop
+
+Phase 2 (live drop / service — suite):
+Breakpoints: sub_14000AAF0, sub_14000BC20, sub_14000DD60,
+  CreateDirectoryW, CreateFileW (cond OemHw|Firmware|ntdll|ProgramData),
+  SetFileAttributesW, CreateServiceW, StartServiceW
+
+Observed order:
+1. CreateDirectoryW → C:\ProgramData\OEM
+2. CreateDirectoryW → C:\ProgramData\OEM\Firmware
+3. CreateFileW \\.\OemHwUpd OPEN_EXISTING GENERIC_READ|WRITE — probe (absent)
+4. HIT decode_and_drop sub_14000AAF0 @ 0x7FF75EE2AAF0
+5. CreateFileW again \\.\OemHwUpd (re-probe inside AAF0)
+6. CreateFileW DROP:
+     C:\ProgramData\OEM\Firmware\OemHwUpd.sys
+     access=GENERIC_WRITE (0x40000000)
+     disposition=CREATE_ALWAYS (2)
+     flags=FILE_ATTRIBUTE_NORMAL (0x80)
+7. SetFileAttributesW(same path, 6) = HIDDEN|SYSTEM
+8. HIT timestomp sub_14000DD60 @ 0x7FF75EE2DD60
+9. CreateFileW C:\Windows\System32\ntdll.dll GENERIC_READ (0x80000000)
+10. CreateFileW OemHwUpd.sys FILE_WRITE_ATTRIBUTES (0x100)
+11. HIT start_oem_service sub_14000BC20 @ 0x7FF75EE2BC20
+12. CreateServiceW live args:
+      ServiceName = OemHwUpd
+      DisplayName = OEM Hardware HAL Service
+      DesiredAccess = 0x10030
+      ServiceType = 1 (SERVICE_KERNEL_DRIVER)
+      StartType = 3 (SERVICE_DEMAND_START)
+      BinaryPath = C:\ProgramData\OEM\Firmware\OemHwUpd.sys
+13. *** PAUSED at StartServiceW (hService=0x1D096E050D0, argc=0) ***
+    BYOVD kernel load NOT executed
+    Kill loop NOT entered
+
+Scope:
+- Drop + service registration observed
+- No StartServiceW completion → no KillProc IOCTL
+- Dropped .sys remains on VM at ProgramData (Hidden|System)
+- Offline decode already matches Huntress SHA256 3111f4d7…bee0
+  (live file copy to Linux host not available via share)
+
+IR note: after this session, VM may have orphan service OemHwUpd
+and file under ProgramData\OEM\Firmware — clean manually if needed
+(sc delete OemHwUpd; del file) WITHOUT starting the service.
+
+Phase 3 — dump live .sys WITHOUT StartServiceW
+----------------------------------------------
+- At StartServiceW: set RAX=0, CIP=return 0x7FF75EE2BE13, RSP+=8 (skip service start)
+- Alloc RWX @ 0x1D098820000; injected CreateFileW+ReadFile+CloseHandle stub
+- Read C:\ProgramData\OEM\Firmware\OemHwUpd.sys → buffer 0x1D098820400
+- BytesRead=66112; MZ OK
+- DumpMemory → C:\Windows\Temp\OemHwUpd_live.sys and Desktop\OemHwUpd_live.sys
+- Linux: artefacts/OemHwUpd_live.sys (+ README provenance); ≥45 KiB live windows
+  byte-identical to offline decode SHA256 3111f4d7…bee0
+- Debugger left paused after stub INT3 (driver NEVER loaded / no kill loop)

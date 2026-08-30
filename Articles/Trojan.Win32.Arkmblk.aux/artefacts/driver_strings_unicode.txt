@@ -1,0 +1,38 @@
+\DosDevices\
+\Device\NamedPipe
+ImagePath
+\Device
+\DosDevices
+ENDTRACE
+VADTRACE
+VADPRINT
+ObReferenceObjectByHandle
+\REGISTRY\Machine\System\CurrentControlSet\Services\
+Device
+\REGISTRY\Machine\System\CurrentControlSet\Services\_root_
+\REGISTRY\Machine\System\CurrentControlSet\Services
+_root_
+\device\physicalmemory
+VS_VERSION_INFO
+StringFileInfo
+040904B0
+CompanyName
+Guidance Software Inc.
+FileDescription
+EnCase Driver
+FileVersion
+    
+InternalName
+EnPortv.sys
+LegalCopyright
+Copyright (C) Guidance Software, Inc.2005-2006
+OriginalFilename
+EnPortv.sys
+ProductName
+EnCase Driver
+ProductVersion
+    
+VarFileInfo
+Translation
+<<<Obsolete>>
+CrossC
