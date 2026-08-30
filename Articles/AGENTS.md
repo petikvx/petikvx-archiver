@@ -75,13 +75,19 @@ Sur le binaire **à analyser** (souvent l’**unpacked** si UPX/ASPack déjà re
 ```bash
 export TVHEADLESS=1
 IDA=~/ida-pro-9.4
-SAMPLE="/chemin/vers/sample-unpacked.exe"   # ou le .i64 existant
+SAMPLE="/chemin/vers/sample-unpacked.exe"
 OUT="$(dirname "$SAMPLE")/artefacts/ida_export"
 mkdir -p "$OUT"
 
 "$IDA/idat" -A \
   "-S$IDA/scripts/export_asm_c.py --outdir $OUT --prefix $(basename "$SAMPLE")" \
   "$SAMPLE"
+
+# Par défaut : ne pas conserver les bases IDA (lourdes, non livrables)
+rm -f "$SAMPLE".i64 "$SAMPLE".id0 "$SAMPLE".id1 "$SAMPLE".id2 \
+      "$SAMPLE".nam "$SAMPLE".til "$SAMPLE".idb 2>/dev/null || true
+find "$(dirname "$SAMPLE")" -maxdepth 2 \( -name '*.i64' -o -name '*.id0' -o -name '*.id1' \
+  -o -name '*.id2' -o -name '*.nam' -o -name '*.til' \) -delete 2>/dev/null || true
 ```
 
 Sorties attendues dans `artefacts/ida_export/` :
@@ -92,7 +98,8 @@ Sorties attendues dans `artefacts/ida_export/` :
 | `*.asm` | Listing assembleur |
 | `*.lst` | Listing désassemblage |
 
-- Réutiliser un `.i64` déjà ouvert si présent (plus rapide).  
+- **Par défaut : supprimer les `.i64`** (et sidecars IDA `.id0`/`.id1`/`.id2`/`.nam`/`.til`/`.idb`) après l’export Hex-Rays — **ne pas** les livrer ni les laisser traîner dans le dossier sample. Les livrables IDA restent `artefacts/ida_export/*.{c,asm,lst}`.  
+- Ne garder un `.i64` que si l’utilisateur le demande explicitement (session IDA interactive en cours).  
 - PE32 : `idat` + decompiler x86 (`hexx64` côté IDA 9 gère aussi le 32-bit).  
 - Lier ces fichiers dans les README (sources + tableau livrables §6.1).  
 - Ensuite seulement : croiser le `.c` avec le triage (§2d). Si le sample est déjà actif sous x64dbg/x32dbg → §2c en parallèle.
@@ -283,6 +290,7 @@ Référence d’exemple : `Ransomware.babuk-btcware/README.md` §13.
 - [ ] §13 compact (Groupe \| Fichier \| Rôle) — pas de chemins absolus / globs  
 - [ ] Hashes MD5 + SHA1 + SHA256  
 - [ ] Export selon type : IDA / `ilspycmd` / pyinst+pycdc  
+- [ ] **Bases IDA `.i64` (+ sidecars) effacées** dans le dossier sample (sauf demande contraire)  
 - [ ] Listes exhaustives (ext / whitelist / services…) — pas de `…`  
 - [ ] Wallpaper extrait **ou** absence explicitement dite  
 - [ ] §14 : non-vérifié listé (pas d’exec hôte, pas de privkey absente, etc.)  

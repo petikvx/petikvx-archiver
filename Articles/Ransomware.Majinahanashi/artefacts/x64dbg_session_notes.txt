@@ -1,0 +1,23 @@
+x64dbg live session notes (defensive) — 2026-08-30
+
+Sample path on VM: C:\Users\petik\Desktop\bd91d786841f5259430c1c90b454d9f8bf510186fe4d32a0998bd9b5a7916467
+ASLR ImageBase: 0x7FF67E850000 (PE preferred 0x140000000)
+PID (session): 320 after Init with args
+
+Command line used:
+  ...\bd91d7… --dry-run --verbose --nopf --path C:\Windows\Temp\majin_ir_test
+
+Breakpoints hit:
+- EP / start @ base+0x3870
+- MajinRun sub_140001000 @ base+0x1000
+
+Observations:
+- Early first-chance EXCEPTION_ACCESS_VIOLATION in ntdll (rcx~0x340) during MajinRun init under debugger
+- Followed by first-chance exception 0x6AB in kernelbase; continued with erun
+- Process remained RUNNING (likely console/--verbose wait or dry-run work); MCP PauseDebug did not break; session StopDebug'd
+- RSA load BP (base+0x86F0) and encrypt/footer BPs not observed before stop
+- No mass encryption performed; --dry-run --nopf --path Temp intended
+
+Correlation:
+- Confirms PE64 mapping and entry → MajinRun transfer matches Hex-Rays
+- Static RSA/footer/lists remain primary evidence for crypto layout

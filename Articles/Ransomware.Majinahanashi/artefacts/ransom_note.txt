@@ -1,0 +1,62 @@
+MAJINAHANASHI
+
+We entered. We looked around. We took what was there.
+
+This is the report.
+
+--------------------------------------------------------------------------
+
+WHAT WE DID
+
+Files were encrypted where they sat. A unique key per
+file, wrapped under an offline key that leaves with us
+when this is over. Backups and shadow copies were
+removed because they get in the way.
+
+No files were deleted. No data was corrupted. Every
+byte can be recovered.
+
+--------------------------------------------------------------------------
+
+WHAT WE TOOK
+
+A copy of your internal data was extracted during the
+process. This is not a threat - it is a statement of
+fact. We have it. You do not.
+
+If an agreement is reached, all copies are destroyed
+and you receive written confirmation. If no agreement
+is reached, the data finds new owners.
+
+--------------------------------------------------------------------------
+
+NEXT MOVE
+
+Contact us via qTOX: 59DE03AE55C400954D0973FFB90C251A7FDCEB3079A42DF6A6DB93E7D1915F5C47B238A2A99E
+Contact us via EMAIL: thedoctorcame@protonmail.com
+Case:    873F5435
+
+Download qTOX: https://qtox.github.io/
+
+Send 2 files. We decrypt them. This is not a
+negotiation tactic - it is verification that we
+hold the keys and that recovery is possible.
+Once you have proof, we talk.
+
+No intermediaries. No recovery consultants. No law
+enforcement liaison. Every person you add to this
+conversation is another person who knows what
+happened here.
+
+--------------------------------------------------------------------------
+
+TIMELINE
+
+Day 7 - the full dataset is released. Regulators,
+clients, and affected parties are notified directly.
+
+Disclosure site (Tor): http://lthicpjqc7gkn5eq3epxndc2uig3yngvcbdya4u3m3byjod5km4yuwqd.onion/
+
+--------------------------------------------------------------------------
+
+This message is your copy. We do not send reminders.

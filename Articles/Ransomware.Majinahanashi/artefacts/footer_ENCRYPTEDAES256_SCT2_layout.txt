@@ -1,0 +1,28 @@
+Majinahanashi file footer (272 bytes) — sub_140008450
+
+On-disk footer (appended after file content):
+Offset  Size  Field
+------  ----  -----
+0       256   RSA-2048 ciphertext (CryptEncrypt of 64-byte clear SCT2 header)
+256     16    Magic ASCII written with length 16: "ENCRYPTEDAES256!"
+              (source string literal is "ENCRYPTEDAES256!SCT2" but only 16 bytes copied)
+
+Clear header (64 bytes) before RSA wrap:
+Offset  Size  Field
+------  ----  -----
+0       4     Magic "SCT2"
+4       1     Mode: 0 = full file encrypt; 2 = striped partial (code passes 2*partial_flag)
+5       3     unused / zero padding in write path
+8       8     Stripe length in bytes (0 if full)
+16      8     Stripe count (0 if full)
+24      32    AES-256 key (CryptGenRandom)
+56      8     AES-CTR nonce (CryptGenRandom)
+
+Partial policy (sub_140005590):
+- Full encrypt if size <= 300 MiB (314572800) OR --full
+- Else striped: default 5 stripes ~3% (min 30 MiB); --fast 3 stripes ~1% (max stripe 300 MiB)
+- Per-stripe CTR nonce: low byte XORed with stripe index
+
+Rename: append ".majin"
+Note per directory: README.txt
+RSA: PUBLICKEYBLOB Base64 in sample; private key buffer empty (not patched)

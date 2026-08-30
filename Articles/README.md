@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Ransomware.Majinahanashi](Ransomware.Majinahanashi/README.md) | `bd91d786841f5259430c1c90b454d9f8bf510186fe4d32a0998bd9b5a7916467` | 2026-08-30 |
 | [Ransomware.CRPX0 (standalone EXE stager)](Ransomware.CRPX0/README.md) | `28685dff00aa1752b62a8580955b2530d63092bdcc0528b872a668cddad78c11` | 2026-08-30 |
 | [Trojan.Win32.Arkmblk.aux (EnCase BYOVD EDR killer)](Trojan.Win32.Arkmblk.aux/README.md) | `6a6aaeed4a6bbe82a08d197f5d40c2592a461175f181e0440e0ff45d5fb60939` | 2026-08-30 |
 | [Trojan-Ransom.Python.Agent.gen](Trojan-Ransom.Python.Agent.gen/README.md) | `4f65a221a77931568ee8f66285e074b7faa1902a0591a6ee3081c389eb00ba2b` | 2026-08-30 |

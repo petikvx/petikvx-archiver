@@ -1,0 +1,34 @@
+[KERNEL32.dll]
+  GetCurrentProcess
+  SetPriorityClass
+  GetProcAddress
+  lstrcmpiW
+  GetGeoInfoW
+  GetUserGeoID
+  WaitForMultipleObjects
+  lstrcatW
+  GetFileAttributesExA
+  GetTempPathA
+  TerminateProcess
+  CreateProcessA
+  lstrcatA
+  AllocConsole
+  SetStdHandle
+[GDI32.dll]
+  StretchBlt
+[USER32.dll]
+  wsprintfW
+  GetKeyboardLayoutList
+[ole32.dll]
+  CoCreateGuid
+  CoSetProxyBlanket
+  CoCreateInstance
+  CoUninitialize
+  CoInitializeSecurity
+  CoInitializeEx
+[OLEAUT32.dll]
+  ordinal#8
+  ordinal#4
+  ordinal#9
+IAT RVA 0x0
+ExportRVA 0x0

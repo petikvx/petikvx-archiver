@@ -1,0 +1,27 @@
+Windows
+System32
+WinSxS
+Boot
+EFI
+Recovery
+System Volume Information
+$Recycle.Bin
+$RECYCLE.BIN
+ProgramData
+tmp
+winnt
+temp
+thumb
+perflogs
+Microsoft
+Windows Defender
+Config.Msi
+MSOCache
+$Windows.~BT
+$Windows.~WS
+$WinREAgent
+Windows.old
+WindowsApps
+Documents and Settings
+Windows Kits
+EBWebView

