@@ -1,0 +1,20 @@
+/System
+/Library
+/Applications
+/private
+/dev
+/usr
+/bin
+/sbin
+/var
+/opt
+/Volumes
+~/Library/Application Support
+~/Library/Caches
+~/Library/Logs
+~/.Trash
+~/.cache
+~/.npm
+*/Python.framework/*
+~/.pyenv
+/Library/Frameworks/Python.framework

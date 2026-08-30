@@ -1,0 +1,19 @@
+CRPx0 encrypted file layout (stage2_encrypt)
+============================================
+Output path: <original_path> + ".crpx0"  (extension APPENDED, original name kept)
+Original file deleted after write.
+
+Offset  Size     Field
+------  -------  -----
+0       4        len(rsa_blob) as uint32 little-endian
+4       N        rsa_blob = RSA-OAEP(SHA-256) wrap of Fernet session key
+                 using embedded RSA public key (4096-bit PEM in this build)
+4+N     8        len(encrypted_data) as uint64 little-endian
+12+N    M        encrypted_data = Fernet.encrypt(first 1 MiB of original)
+12+N+M  rest     plaintext remainder of original file (if size > 1 MiB)
+
+Notes:
+- Fernet = AES-128-CBC + HMAC-SHA256 (cryptography library)
+- Ransom note text claims "AES-256 + RSA-2048" — marketing; code uses Fernet + RSA-4096 PEM
+- Per-victim Fernet key is also sent to C2 in key_handshake (decryption_key) before encrypt
+- Timestamps (atime/mtime) preserved on the .crpx0 file

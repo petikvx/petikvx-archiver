@@ -1,0 +1,23 @@
+Windows
+Program Files
+Program Files (x86)
+$Recycle.Bin
+System Volume Information
+ProgramData
+Boot
+pagefile.sys
+hiberfil.sys
+C:\\\\Temp
+C:\\\\Windows\\\\Temp
+AppData\\\\Local\\\\Temp
+AppData\\\\Local\\\\History
+AppData\\\\Local\\\\Programs\\\\Python
+AppData\\\\Roaming\\\\Python
+AppData\\\\Roaming\\\\bin
+Temp
+Temporary Internet Files
+venv
+node_modules
+__pycache__
+.git
+.svn

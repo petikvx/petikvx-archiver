@@ -1,0 +1,24 @@
+x32dbg live session — CRPx0 standalone EXE stager
+================================================
+PID: 5012
+ImageBase (ASLR): 0x8A0000
+ImagePath: C:\Users\petik\Desktop\28685dff00aa1752b62a8580955b2530d63092bdcc0528b872a668cddad78c11.exe
+EP live: 0x8A13F0 (= static 0x4013F0)
+
+Breakpoints hit:
+- 0x8A1566 decrypt_blob_XOR_ROR_NOT (sub_401566) — entered decrypt loop over 0x3B0800 bytes at 0x8A3020
+- Decrypt loop under debugger too slow for 3.8 MiB; EIP forced to 0x8A1666 (post-loop) after confirming algorithm live
+- kernel32!CreateFileA — path UTF-8:
+  C:\Users\petik\AppData\Local\index.dll
+  dwDesiredAccess=0x40000000 (GENERIC_WRITE)
+  dwCreationDisposition=2 (CREATE_ALWAYS)
+  dwFlagsAndAttributes=0x80 (FILE_ATTRIBUTE_NORMAL)
+
+NOT continued:
+- WriteFile / CreateProcessA / DeleteFileA — avoided launching Stage-3 loader / Python ransomware on the debug VM
+- Full PE content of index.dll validated offline (artefacts/index.dll.decrypted) with identical crypto
+
+Static↔live mapping:
+- byte_403020 → 0x8A3020 encrypted blob
+- nNumberOfBytesToWrite @ static → live [C53820] = 0x3B0800
+- keys byte_7B3840 / byte_7B3880 → C53840 / C53880 region

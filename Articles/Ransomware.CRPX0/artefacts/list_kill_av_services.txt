@@ -1,0 +1,57 @@
+WinDefend
+Sense
+WdNisSvc
+SecurityHealthService
+wscsvc
+MpsSvc
+avast! Antivirus
+AVG Antivirus
+avast! Firewall
+AVP
+KAVFS
+KES
+ekrn
+eamon
+eProxy
+Symantec AntiVirus
+Norton Security
+ccEvtMgr
+ccSetMgr
+rtvscan
+McAfee McShield
+McAfeeFramework
+McAfeeEngineService
+McAfeeAP
+bdagent
+BitDefender_ScanServer
+BitDefender_UpdateServer
+Sophos Anti-Virus
+SavService
+SophosClean
+SophosConsole
+swi_service
+TmCCSF
+TmProxy
+TMMyWeb
+TmPfw
+MBAMService
+MBAMAgent
+S1Management
+SentinelService
+CSAgent
+CSFalcon
+CylanceSvc
+WRCoreService
+WRSA
+cmdagent
+F-Secure Software
+F-Secure Network
+FSGK32
+EmsisoftSecurityService
+EmsisoftProtectionService
+FortiEDR
+FortiClient
+Traps
+PaloAltoEDR
+VipreSvc
+VipreEndpoint

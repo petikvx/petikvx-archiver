@@ -1,0 +1,10 @@
+.kdbx
+.keychain
+.pem
+.pfx
+.p12
+.p12
+.env
+.key
+.ovpn
+.keystore

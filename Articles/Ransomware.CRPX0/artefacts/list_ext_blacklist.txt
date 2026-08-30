@@ -1,0 +1,6 @@
+.exe
+.dll
+.sys
+.ini
+.lnk
+.crpx0
