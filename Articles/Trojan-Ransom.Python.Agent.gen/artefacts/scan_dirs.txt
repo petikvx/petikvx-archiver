@@ -1,0 +1,10 @@
+SCAN_DIRS (relative to Path.home())
+Desktop
+Documents
+Downloads
+Pictures
+Music
+Videos
+OneDrive\Desktop
+OneDrive\Documents
+OneDrive\Pictures

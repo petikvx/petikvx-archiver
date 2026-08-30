@@ -1,0 +1,14 @@
+SKIP_NAMES
+HOW_TO_DECRYPT.txt
+
+SKIP_SUFFIXES
+.dll
+.exe
+.log
+.pyc
+.sys
+.locked
+
+Also skipped:
+- directories whose name starts with '.'
+- the ransomware binary itself (sys.executable if frozen, else __file__)

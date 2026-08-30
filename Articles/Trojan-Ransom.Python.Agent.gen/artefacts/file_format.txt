@@ -1,0 +1,19 @@
+Encrypted file layout (intended by encrypt_file / decrypt_file)
+================================================================
+
+Algorithm : ChaCha20 (PyCryptodome Crypto.Cipher.ChaCha20)
+Key       : ENCRYPTION_KEY (hardcoded; see encryption_key.txt)
+Nonce     : 8 bytes, random (ChaCha20.new(key=...) default when nonce omitted)
+Rename    : original_path.with_suffix(original.suffix + ".locked")
+            Example: photo.jpg  ->  photo.jpg.locked
+
+On-disk layout of *.locked:
+  offset 0..7   : nonce (8 bytes)
+  offset 8..EOF : ciphertext (same length as plaintext)
+
+decrypt_file reads nonce = read(8), then remaining as ciphertext.
+decrypt_file is present in the module but never called from __main__
+(only run_ransom() -> encrypt_file).
+
+This sample build cannot create valid *.locked files because the key
+is 44 bytes (ChaCha20 rejects it). Notes are still dropped.

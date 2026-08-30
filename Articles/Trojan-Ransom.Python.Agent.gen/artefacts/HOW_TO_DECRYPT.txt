@@ -1,0 +1,16 @@
+
+============================================
+       YOUR FILES HAVE BEEN ENCRYPTED!
+============================================
+
+All files in this directory (and subdirectories) have been encrypted.
+
+To decrypt your files you need the encryption key:
+
+    WDdrOW1QMnZROHdSNHRZNnVJMG9BM3NENWZHN2hKMWxaeEN2Qm5NcVdlUnM=
+
+If you deleted or lost the key, your files are gone forever.
+You have 72 hours — after that the key will be destroyed!
+
+Contact: decrypt@ransomware.example.com
+============================================

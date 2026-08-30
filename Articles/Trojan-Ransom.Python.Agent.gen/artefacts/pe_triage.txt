@@ -1,0 +1,35 @@
+Sample: ransom.exe.bin
+Type: PE32+ GUI x86-64 (MS Windows 6.00)
+Size: 12916731 bytes (~12.3 MiB)
+
+MD5:    1d07220ed5c5b162e3e2a75d953ff222
+SHA1:   4314cdc7a16b126c47e551717f56f349e92b1cec
+SHA256: 4f65a221a77931568ee8f66285e074b7faa1902a0591a6ee3081c389eb00ba2b
+
+Machine:        0x8664 (AMD64)
+Characteristics: 0x22
+Subsystem:      2 (WINDOWS_GUI)
+ImageBase:      0x140000000
+EP RVA:         0xdfc0
+TimeDateStamp:  1787832137 = 2026-08-27 12:02:17 UTC
+
+Sections (entropy):
+  .text    vsize=181392 raw=181760 ent=6.47
+  .rdata   vsize=80744  raw=80896  ent=5.75
+  .data    vsize=20656  raw=3584   ent=1.82
+  .pdata   vsize=9228   raw=9728   ent=5.32
+  .fptable vsize=256    raw=512    ent=0.00
+  .rsrc    vsize=62492  raw=62976  ent=7.55
+  .reloc   vsize=1908   raw=2048   ent=5.26
+
+Packer / freeze:
+  PyInstaller 2.1+ cookie MEI at file offset 0xc517a3
+  Embedded CArchive ~12574203 bytes
+  Python runtime: python312.dll (CPython 3.12)
+  Entry script: ransom.pyc
+  PYZ: 459 TOC entries (~454 .pyc extracted)
+
+Imports (bootloader PE — not malware logic):
+  USER32, COMCTL32, KERNEL32, ADVAPI32, GDI32
+  (SystemParametersInfoW present on USER32 — PyInstaller GUI bootloader;
+   malware Python source does NOT set wallpaper)

@@ -1,0 +1,16 @@
+# Hardcoded ChaCha20 key from ransom.pyc (ENCRYPTION_KEY)
+# WARNING: length = 44 bytes. PyCryptodome ChaCha20 requires exactly 32 bytes.
+# With this build, ChaCha20.new(key=ENCRYPTION_KEY) raises:
+#   ValueError: ChaCha20/XChaCha20 key must be 32 bytes long
+# so encrypt_file() fails for every target; HOW_TO_DECRYPT.txt notes are still written.
+
+ASCII / bytes literal:
+X7k9mP2vQ8wR4tY6uI0oA3sD5fG7hJ1lZxCvBnMqWeRs
+
+Length: 44
+
+Base64 (as embedded in HOW_TO_DECRYPT.txt):
+WDdrOW1QMnZROHdSNHRZNnVJMG9BM3NENWZHN2hKMWxaeEN2Qm5NcVdlUnM=
+
+First 32 bytes only (what a corrected build would need):
+X7k9mP2vQ8wR4tY6uI0oA3sD5fG7hJ1lZ
