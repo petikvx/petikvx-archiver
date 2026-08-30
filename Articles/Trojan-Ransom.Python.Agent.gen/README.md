@@ -105,9 +105,10 @@ Extraction (Python **3.12** requis pour unmarshaller le PYZ) :
 
 ```bash
 python3.12 pyinstxtractor.py ransom.exe.bin
-# → ransom.exe.bin_extracted/ransom.pyc + PYZ.pyz_extracted/
-pycdc ransom.pyc -o source_py/ransom.py   # partiel (opcodes 3.12)
+# → ransom.exe.bin_extracted/ (régénérable, non versionné) + ransom.pyc
+pycdc ransom.exe.bin_extracted/ransom.pyc -o source_py/ransom.py   # partiel (opcodes 3.12)
 # reconstruction complète : source_py/ransom_reconstructed.py (via dis)
+# copie conservée : artefacts/ransom.pyc
 ```
 
 ---
@@ -320,8 +321,7 @@ Libellés courts (cliquables) ; chemins sous `artefacts/` / `source_py/` / extra
 | Rapport | [README.md](README.md) | Rapport FR |
 | Rapport | [README_EN.md](README_EN.md) | Rapport EN |
 | Sample | [ransom.exe.bin](ransom.exe.bin) | PE PyInstaller |
-| Extract | [ransom.pyc](ransom.exe.bin_extracted/ransom.pyc) | Entry bytecode |
-| Extract | [ransom.exe.bin_extracted/](ransom.exe.bin_extracted/) | CArchive + PYZ |
+| Bytecode | [ransom.pyc](artefacts/ransom.pyc) | Entry PyInstaller (copie) |
 | Source | [ransom.py](source_py/ransom.py) | Sortie pycdc (partielle) |
 | Source | [ransom_reconstructed.py](source_py/ransom_reconstructed.py) | Source net aligné `dis` |
 | Crypto | [encryption_key.txt](artefacts/encryption_key.txt) | Clé + bug 44 B |
