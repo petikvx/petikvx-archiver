@@ -1,0 +1,32 @@
+Umbra trailer layout (defensive / IR)
+
+PE overlay (this sample)
+  offset 0xbe600, size 1805 = 1793 + 12
+  [config blob 1793 bytes]
+  RBMU          4 bytes  (UMBR reversed, like FOX / 2XOF)
+  uint32le size 4 bytes  = 0x00000701 = 1793
+  !DNE          4 bytes  (END! reversed)
+
+Config blob
+  [0:272]     RSA-2048 public-key material (see rsa_pubkey_README.txt)
+  [272:301]   29-byte flags (bools / feature bits)
+  [301:]      u32le-prefixed UTF-8 strings:
+                extension   ".umbra"
+                skip_dirs   semicolon list
+                skip_files  semicolon list
+                skip_ext    semicolon list (no dots)
+                empty       (likely onion / portal URL — empty in this build)
+                kill_proc   semicolon list
+                kill_svc    semicolon list
+                empty
+                empty
+                ransom note (placeholder {DECRYPTION_ID})
+
+Encrypted victim file (from engine.rs strings + Hex-Rays)
+  original payload, then a 272-byte key blob (RSA-OAEP wrap of the
+  per-file session key; "Key blob too small (need 272)"), then the
+  same RBMU / size / !DNE marker searched in the last 64 KiB.
+  Magic check: dword == 'RBMU' (0x554D4252), dword+8 == '!DNE'.
+  Large-file branch: size >= 0x10000000 (256 MiB) in sub around
+  0x14001xxxx. Live footer dump of a victim file was NOT taken
+  (walk skipped under x64dbg).

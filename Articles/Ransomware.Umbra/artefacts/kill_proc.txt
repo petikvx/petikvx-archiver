@@ -1,0 +1,17 @@
+sql
+oracle
+ocssd
+dbsnmp
+synctime
+agntsvc
+isqlplussvc
+xfssvccon
+mydesktopservice
+ocautoupds
+encsvc
+firefox
+thunderbird
+excel
+outlook
+word
+notepad

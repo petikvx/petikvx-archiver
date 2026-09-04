@@ -1,0 +1,20 @@
+$recycle.bin
+config.msi
+$windows.~bt
+$windows.~ws
+windows
+boot
+program files
+program files (x86)
+programdata
+system volume information
+tor browser
+windows.old
+intel
+msocache
+perflogs
+x64dbg
+public
+all users
+default
+microsoft

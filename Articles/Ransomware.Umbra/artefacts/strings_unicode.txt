@@ -1,0 +1,27 @@
+0006f124: \??\
+0007cf20: \\\\\\\\
+000b3728: \\?\\\?\UNC\
+000b4130: \??\
+000b4858: main
+000b4bd8: NTDLL.DLL
+000bd8a6: VS_VERSION_INFO
+000bd902: StringFileInfo
+000bd926: 040904B0
+000bd93e: CompanyName
+000bd958: Microsoft Corporation
+000bd98a: FileDescription
+000bd9ac: Windows System Resource Monitor
+000bd9f2: FileVersion
+000bda0c: 14.0.23107.0
+000bda2e: InternalName
+000bda48: srmscan
+000bda5e: LegalCopyright
+000bda7c: Microsoft Corporation. All rights reserved.
+000bdada: OriginalFilename
+000bdafc: srmscan.exe
+000bdb1a: ProductName
+000bdb34: Microsoft Windows Operating System
+000bdb82: ProductVersion
+000bdba0: 14.0.23107.0
+000bdbc2: VarFileInfo
+000bdbe2: Translation
