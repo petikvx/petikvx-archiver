@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2026--09--04-blue)
+![Last Update](https://img.shields.io/badge/last_update-2026--09--05-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Ransomware.Win64.IOCPCrypt](Ransomware.Win64.IOCPCrypt/README.md) | `f65ad9d7dbd48baebb28ac6415f15f09279db1039cfe9e2dc58147baf1620412` | 2026-09-05 |
 | [Ransomware.Umbra (UmbraLock)](Ransomware.Umbra/README.md) | `976ea6c54c8eea1b7c3d1d5227c50fd16f301518fd659a9ee4a770568850f553` | 2026-09-04 |
 | [Ransomware.Majinahanashi](Ransomware.Majinahanashi/README.md) | `bd91d786841f5259430c1c90b454d9f8bf510186fe4d32a0998bd9b5a7916467` | 2026-08-30 |
 | [Ransomware.CRPX0 (standalone EXE stager)](Ransomware.CRPX0/README.md) | `28685dff00aa1752b62a8580955b2530d63092bdcc0528b872a668cddad78c11` | 2026-08-30 |
