@@ -1,0 +1,40 @@
+# x32dbg live session — CRPx0 stager (store.dll variant)
+# Date: 2026-09-08
+
+## Target
+Path: C:\Users\petik\Desktop\bac340524549410f51b060f21abb7db30c0c5378edd2e3ac15b526e141417e89
+PID: 3968
+ImageBase (ASLR): 0x770000
+Preferred ImageBase (PE): 0x400000
+
+## PEB
+BeingDebugged: 1
+NtGlobalFlag: 0x70
+NumberOfProcessors: 1
+
+## Live chain (hit order)
+1. 0x7716AA — drop routine (RVA 0x16AA = sub_4016AA)
+2. 0x771572 — decrypt blob in-place (RVA 0x1572 = sub_401572)
+3. kernel32!CreateFileA
+   path = C:\Users\petik\AppData\Local\store.dll
+   access = GENERIC_WRITE (0x40000000), disposition = CREATE_ALWAYS (2)
+4. kernel32!WriteFile
+   lpBuffer = 0x773020 (ImageBase+0x3020), size = 0x3B0800
+   buffer head = MZ (PE32 Stage-3 decrypted in .data)
+5. kernel32!CreateProcessA
+   app = C:\Users\petik\AppData\Local\store.dll
+   flags = CREATE_NO_WINDOW (0x08000000)
+6. kernel32!DeleteFileA
+   path = C:\Users\petik\AppData\Local\store.dll
+
+## Mapping live ↔ Hex-Rays (preferred base 0x400000)
+| Live VA   | RVA    | Role                          |
+|-----------|--------|-------------------------------|
+| 0x7713F0  | 0x13F0 | entry                         |
+| 0x771572  | 0x1572 | decrypt (XOR/ROL6/NOT/XOR)    |
+| 0x7716AA  | 0x16AA | drop + CreateProcess + delete |
+| 0x773020  | 0x3020 | payload blob (in-place decrypt)|
+
+## Stop
+Session stopped after DeleteFileA. Stage-3 anti-analysis would hang on this VM
+(1 CPU / BeingDebugged / NtGlobalFlag) — no mass encrypt performed.

