@@ -88,20 +88,23 @@ rm -f "$SAMPLE".i64 "$SAMPLE".id0 "$SAMPLE".id1 "$SAMPLE".id2 \
       "$SAMPLE".nam "$SAMPLE".til "$SAMPLE".idb 2>/dev/null || true
 find "$(dirname "$SAMPLE")" -maxdepth 2 \( -name '*.i64' -o -name '*.id0' -o -name '*.id1' \
   -o -name '*.id2' -o -name '*.nam' -o -name '*.til' \) -delete 2>/dev/null || true
+# Par défaut : jeter les gros listings asm/lst (garder le .c) — seuil ~20 Mo
+find "$OUT" -type f \( -name '*.asm' -o -name '*.lst' \) -size +20M -delete 2>/dev/null || true
 ```
 
 Sorties attendues dans `artefacts/ida_export/` :
 
-| Fichier | Contenu |
-|---------|---------|
-| `*.c` | Hex-Rays **toutes** les fonctions |
-| `*.asm` | Listing assembleur |
-| `*.lst` | Listing désassemblage |
+| Fichier | Contenu | Garder ? |
+|---------|---------|----------|
+| `*.c` | Hex-Rays **toutes** les fonctions | **Oui** — livrable principal |
+| `*.asm` | Listing assembleur | Non par défaut si gros (voir ci-dessous) |
+| `*.lst` | Listing désassemblage | Non par défaut si gros (voir ci-dessous) |
 
-- **Par défaut : supprimer les `.i64`** (et sidecars IDA `.id0`/`.id1`/`.id2`/`.nam`/`.til`/`.idb`) après l’export Hex-Rays — **ne pas** les livrer ni les laisser traîner dans le dossier sample. Les livrables IDA restent `artefacts/ida_export/*.{c,asm,lst}`.  
+- **Par défaut : supprimer les `.i64`** (et sidecars IDA `.id0`/`.id1`/`.id2`/`.nam`/`.til`/`.idb`) après l’export Hex-Rays — **ne pas** les livrer ni les laisser traîner dans le dossier sample.  
+- **Par défaut : ne pas garder les gros `.asm` / `.lst`.** Le `.c` Hex-Rays suffit pour le rapport et le git. Les listings asm/lst d’un PE volumineux (souvent **dizaines / centaines de Mo**) saturent le disque et **cassent `git push`** (limite GitHub ~100 Mo/fichier). Dès l’export : garder le `.c` ; **effacer** `*.asm` / `*.lst` s’ils dépassent ~20 Mo, ou systématiquement pour les stages secondaires / PE « data-heavy » (ex. loader avec gros `.data`). Ne les conserver que si l’utilisateur le demande ou s’ils restent modestes (quelques Mo) et utiles.  
 - Ne garder un `.i64` que si l’utilisateur le demande explicitement (session IDA interactive en cours).  
 - PE32 : `idat` + decompiler x86 (`hexx64` côté IDA 9 gère aussi le 32-bit).  
-- Lier ces fichiers dans les README (sources + tableau livrables §6.1).  
+- Lier dans les README surtout le `.c` (+ `.asm`/`.lst` **seulement s’ils sont encore présents**).  
 - Ensuite seulement : croiser le `.c` avec le triage (§2d). Si le sample est déjà actif sous x64dbg/x32dbg → §2c en parallèle.
 
 ### 2a. Décompil .NET (obligatoire si assembly CLR / WPF / etc.)
@@ -221,7 +224,7 @@ Note, bat/cmd, IoCs (hashes, mutex, ext, chemins, emails, onion…). Scripts Pyt
 
 | Zone | Exemples |
 |------|----------|
-| IDA | `artefacts/ida_export/*.{c,asm,lst}` |
+| IDA | `artefacts/ida_export/*.c` (+ `.asm`/`.lst` seulement s’ils sont petits / demandés) |
 | Scripts | `extract_*.py`, `decode_*.py` |
 | Crypto | `rsa_pubkey.pem`, `*_README.txt`, `footer_*_layout.txt` |
 | Live debug | `x64dbg_*.bin`, `x64dbg_*.txt`, `sample_footer_live.bin` |
@@ -235,7 +238,7 @@ Note, bat/cmd, IoCs (hashes, mutex, ext, chemins, emails, onion…). Scripts Pyt
 | `README_EN.md` | **Même** fond en anglais + liens croisés FR/EN en tête |
 
 Selon pertinence : config déchiffrée, `extract_*.py`, pubkey, note HTML/txt, `anyrun_screenshots/README_captures.md`.  
-**PE natif :** `artefacts/ida_export/*.{c,asm,lst}` (voir §2).  
+**PE natif :** `artefacts/ida_export/*.c` obligatoire ; `.asm`/`.lst` optionnels et **pas les gros** (voir §2).  
 **.NET :** `source/` ou `analysis/decompiled/` via `dotnet ilspycmd … -p -o …` (voir §2a).  
 **PyInstaller :** `*_extracted/` + `source_py/*.py` via `pyinstxtractor` + `pycdc` (voir §2b).  
 **Si wallpaper trouvé :** fichier image dans `artefacts/` + entrée dans le tableau des fichiers produits (FR et EN).
@@ -291,6 +294,7 @@ Référence d’exemple : `Ransomware.babuk-btcware/README.md` §13.
 - [ ] Hashes MD5 + SHA1 + SHA256  
 - [ ] Export selon type : IDA / `ilspycmd` / pyinst+pycdc  
 - [ ] **Bases IDA `.i64` (+ sidecars) effacées** dans le dossier sample (sauf demande contraire)  
+- [ ] **Gros `.asm` / `.lst` IDA effacés** (garder le `.c` ; pas de fichiers qui bloqueraient un push GitHub)  
 - [ ] Listes exhaustives (ext / whitelist / services…) — pas de `…`  
 - [ ] Wallpaper extrait **ou** absence explicitement dite  
 - [ ] §14 : non-vérifié listé (pas d’exec hôte, pas de privkey absente, etc.)  
