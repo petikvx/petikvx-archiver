@@ -1,0 +1,11 @@
+Windows
+System32
+SysWOW64
+Program Files
+Program Files (x86)
+ProgramData
+$Recycle.Bin
+AppData
+node_modules
+.git
+__pycache__

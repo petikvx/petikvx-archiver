@@ -1,0 +1,10 @@
+list.dat (UTF-8), one mapping per line:
+
+  <path_to_encrypted>.ker|<original_path>
+
+Example:
+
+  C:\Users\victim\Documents\report.docx.ker|C:\Users\victim\Documents\report.docx
+
+Written after the walk finishes, in %AppData%\.cache_<8hex>\list.dat
+Hidden directory (FILE_ATTRIBUTE_HIDDEN = 2).

