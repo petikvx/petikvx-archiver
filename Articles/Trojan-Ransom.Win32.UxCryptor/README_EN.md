@@ -8,7 +8,7 @@ Language: English | French version: [README.md](README.md)
 **Contact shown on screen:** Telegram `@sex` (a form literal; this build does not resolve it)
 **Extension on touched files:** `.crypto`
 **Dropped note:** `info-Locker.txt`
-**Any.RUN / sandbox for this hash:** no URL was provided
+**Any.RUN:** [task 301f9b73](https://app.any.run/tasks/301f9b73-2d57-47bc-b312-b5fc39904dad) (26 Sep 2026, 660 s, Win10 19044 x64, UAC autoconfirm, no elevation)
 
 > **Defensive / IR** analysis. The binary was not executed on the host. Behavior below is read from the ILSpy tree already in this folder (`ns0/GForm1.cs`, `ns0/GForm2.cs`).
 
@@ -30,6 +30,8 @@ Language: English | French version: [README.md](README.md)
 
 - **Files are not AES/RSA ciphertext.** Under Desktop, Documents, Program Files and ProgramData, each file ≤ 100 MiB (except `.exe` / `.dll` / `.sys` / `.crypto`) is written to `name.crypto` after a per-byte XOR with `0xAA`, then the original is deleted
   → `GForm1.method_10` … `method_13`
+  → Any.RUN: `Desktop\approvedspecial.jpg.crypto`, `speciesfunctional.rtf.crypto`, `animplementation.png.crypto`, `desktop.ini.crypto`
+  → restore: [recover_crypto.py](recover_crypto.py) (same XOR, suffix stripped)
 
 - **The note’s MBR claim has no matching code.** The text threatens to wipe the MBR and burn the CPU. Nothing opens a physical drive. The “you tried to cheat” reaction is a red banner
   → `GForm2.method_12`
@@ -295,6 +297,14 @@ byte[] Transform(byte[] data)
 
 `method_12` writes `path + ".crypto"`, then `File.Delete`s the original. No header, no footer, no per-file key, no content rename. The inverse is the same XOR; unlock strips the `.crypto` suffix.
 
+[recover_crypto.py](recover_crypto.py) repeats that step on files that are already `.crypto`. It does not encrypt. Without `--apply` it only lists. `--strict` skips a file whose restored header is not a known type (jpeg, png, rtf, pdf, zip, …).
+
+```text
+python3 recover_crypto.py /path/to/folder
+python3 recover_crypto.py --apply /path/to/folder
+python3 recover_crypto.py --apply --remove-encrypted file.jpg.crypto
+```
+
 IR limit: the encrypt thread is still running when `method_14` walks the same trees. A file can be caught mid-way. Deleted originals are not in the Recycle Bin. Files over 100 MiB and the skipped binary extensions are untouched: a victim looking only at the lock screen can believe the whole disk is encrypted while a lot of data is merely **hidden** by `attrib` (and, on Windows 10/11, only at the top of each targeted folder).
 
 No wallpaper is installed. The “ВАС ЗАМЕТИЛИ” image stays a form resource.
@@ -407,7 +417,13 @@ On a machine that already ran: stopping the process stops the format loop and th
 
 ## 12. Pictures
 
-No sandbox capture for this hash. Form image extracted from the `.resx` (splash, not a system wallpaper):
+Any.RUN, 26 Sep 2026, 21:23. The public screenshots show the desktop before impact, the sample dropped on the Desktop, then a `cmd` window. The ransom form is not readable in these four images (encryption still runs, PID 7520). `schtasks /create` exits with code **1** (MEDIUM integrity, no elevation). `ReAgentc.exe` (PID 6764) does start. The report’s “xor-url” hits are Adobe/XML namespaces inside the PNG, not a C2.
+
+![Desktop before](anyrun_screenshots/screen_01.jpeg)
+
+![Sample on the Desktop](anyrun_screenshots/screen_03.jpeg)
+
+Form image extracted from the `.resx` (splash, not a system wallpaper):
 
 ![ВАС ЗАМЕТИЛИ](artefacts/art_Image.png)
 
@@ -429,6 +445,11 @@ Short labels (clickable). Paths sit under `artefacts/` or at the sample folder r
 | Code | [Class6.cs](ns0/Class6.cs) | .NET Reactor runtime |
 | Code | [Class11.cs](ns0/Class11.cs) | IL interpreter + virtualized resource |
 | Note | [info-Locker.txt](artefacts/info-Locker.txt) | Dropped sentence (without the `[%RANDOM%]` prefix) |
+| Script | [recover_crypto.py](recover_crypto.py) | Restores a `.crypto` file with XOR `0xAA` |
+| Screenshots | [screen_01.jpeg](anyrun_screenshots/screen_01.jpeg) | Any.RUN desktop before impact |
+| Screenshots | [screen_02.jpeg](anyrun_screenshots/screen_02.jpeg) | PowerShell window (sandbox capture) |
+| Screenshots | [screen_03.jpeg](anyrun_screenshots/screen_03.jpeg) | Sample dropped, one jpg icon gone |
+| Screenshots | [screen_04.jpeg](anyrun_screenshots/screen_04.jpeg) | `cmd.exe` during `attrib` |
 | Splash | [art_Image.png](artefacts/art_Image.png) | `art` label image, 282×179 |
 | Icon | [form.ico](artefacts/form.ico) | 16×16 form icon |
 | Resource | [pdutjyre4.b2v5db78j](pdutjyre4.b2v5db78j) | VM blob, 10,190 bytes, 0 strings |
@@ -442,7 +463,7 @@ Family: .NET locker **UX-Cryptor**, marker `%TEMP%\$unlocker_id.ux-cryptobytes`,
 Left unchecked on purpose:
 
 - no execution on the host, no x32dbg session (MCP was down, and the sample must not be started from here)
-- no Any.RUN report for `a46830c5…`
+- public Any.RUN report [301f9b73](https://app.any.run/tasks/301f9b73-2d57-47bc-b312-b5fc39904dad) read as a static page: `.crypto` drops, `schtasks` exit 1, `reagentc`; the public registry section is empty (`0` events), so the HKCU/HKLM keys are not re-checked from the sandbox here
 - the `attrib /S` thread on non-Windows-10/11 hosts was not timed
 - the XOR / reverse-XOR race was not observed at runtime
 - `Class2` is not called, so its VM behavior stays theoretical
