@@ -1,0 +1,8 @@
+-path
+-pass
+-safe
+-wall
+-gspd
+-psex
+-gdel
+-del

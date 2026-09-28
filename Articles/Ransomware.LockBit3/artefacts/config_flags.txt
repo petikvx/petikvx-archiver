@@ -1,0 +1,29 @@
+offset 160, 24 bytes after aPLib of .pdata config:
+
+ 00  01  encrypt / main enable
+ 01  00
+ 02  01  byte_425122 (post-init branch)
+ 03  00
+ 04  00  byte_425124 language killswitch = OFF in this build
+ 05  01
+ 06  01
+ 07  01
+ 08  01
+ 09  01
+ 0A  01
+ 0B  01
+ 0C  01  byte_42512C icon / DefaultIcon
+ 0D  00
+ 0E  01  byte_42512E
+ 0F  01
+ 10  00
+ 11  01  byte_425131
+ 12  00  byte_425132
+ 13  01
+ 14  00
+ 15  01
+ 16  00  word_425136 low
+ 17  00  word_425136 high
+
+CIS locale check (sub_408088, LANGID 1049 / ru-RU + CIS) is present in code
+but skipped because flag[4] == 0.
