@@ -1,0 +1,16 @@
+Footer bincode écrit par sub_27100 @ 0x27100 (83 octets, little-endian).
+Appendu par sub_15B00 @ 0x15b00 via FileExt::write_at à l'offset Metadata::len
+(avant la boucle, après chaque bloc, puis une dernière fois). Les enregistrements
+s'empilent après la taille d'origine. Le dernier est celui en fin de fichier.
+
+Décalage  Taille  Champ
+0         32      clé publique éphémère X25519 (to_bytes)
+32        32      SHA-256(clé publique éphémère) : 8 octets de nonce Salsa20 + 24 octets stockés
+64        4       u32 : 1 si Salsa20 a été choisi, 0 si AES-128-CTR
+68        4       u32 taille de bloc (≈ 1 Mio, multiple de f_frsize)
+72        4       u32 paramètre de pas : 12 fast, 4 medium, 2 slow
+76        4       u32 compteur de blocs (0 au premier enregistrement)
+80        3       octets 49 4e 43 ("INC")
+
+La clé privée des auteurs n'est pas dans le sample.
+Le secret partagé X25519 n'est pas écrit dans le footer.

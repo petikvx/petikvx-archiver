@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Ransom.Linux.INC](Ransom.Linux.INC/README.md) | `86d04474459f2b0df01eb59e37e26a0c5eff5c48b359fb662bf0ea513f0f7d13` | 2026-09-29 |
 | [Ransomware.LockBit3 (LockBit Black)](Ransomware.LockBit3/README.md) | `8f87c47d2cd49eb5d0cc2dbcedf9822c74dcb8e87670ed3f1ec9f5a0d0a74844` | 2026-09-28 |
 | [Trojan-Ransom.Win32.UxCryptor (BIBORAN)](Trojan-Ransom.Win32.UxCryptor/README.md) | `a46830c5f0f09c4d211cc2bc8879b513885998d98cbcb6a05a124ba404bc7085` | 2026-09-26 |
 | [Ransomware.KerRansom](Ransomware.KerRansom/README.md) | `d78530edbd145e6ab5daf2b68f5260dc51b279d0552a8092da0b018eeeb2fe64` | 2026-09-15 |
