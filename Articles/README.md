@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2026--09--28-blue)
+![Last Update](https://img.shields.io/badge/last_update-2026--10--02-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Ransomware.Win64.Akira](Ransomware.Win64.Akira/README.md) | `25508a6c37856b4b093071776256d7b304fac94400ffd192859e609ecc41b5a8` | 2026-10-02 |
 | [Ransom.Linux.INC](Ransom.Linux.INC/README.md) | `86d04474459f2b0df01eb59e37e26a0c5eff5c48b359fb662bf0ea513f0f7d13` | 2026-09-29 |
 | [Ransomware.LockBit3 (LockBit Black)](Ransomware.LockBit3/README.md) | `8f87c47d2cd49eb5d0cc2dbcedf9822c74dcb8e87670ed3f1ec9f5a0d0a74844` | 2026-09-28 |
 | [Trojan-Ransom.Win32.UxCryptor (BIBORAN)](Trojan-Ransom.Win32.UxCryptor/README.md) | `a46830c5f0f09c4d211cc2bc8879b513885998d98cbcb6a05a124ba404bc7085` | 2026-09-26 |

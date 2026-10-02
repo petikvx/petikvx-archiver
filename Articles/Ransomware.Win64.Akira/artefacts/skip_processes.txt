@@ -1,0 +1,20 @@
+spoolsv.exe
+fontdrvhost.exe
+cmd.exe
+explorer.exe
+sihost.exe
+SearchUI.exe
+lsass.exe
+dwm.exe
+LogonUI.exe
+winlogon.exe
+services.exe
+csrss.exe
+smss.exe
+System Idle Process
+Secure System
+conhost.exe
+System
+wininit.exe
+Registry
+Memory Compression

@@ -1,0 +1,11 @@
+rtmp
+winnt
+.Bin
+.BIN
+temp
+thumb
+Windows
+Trend Micro
+System Volume Information
+Boot
+ProgramData

@@ -1,0 +1,34 @@
+Dump Any.RUN / VirusShare-style filename
+========================================
+
+  2026-09-24_eea2ed4cc2d882fd0b19a96f9eab294b_akira_cobalt-strike_icedid_njrat_satacom_vidar
+
+Layout: YYYY-MM-DD _ MD5 _ tag1 _ tag2 _ ... (alphabetical family labels)
+
+The folder `new/` holds ONE file. Same bytes as akira.bin
+  MD5    eea2ed4cc2d882fd0b19a96f9eab294b
+  SHA256 25508a6c37856b4b093071776256d7b304fac94400ffd192859e609ecc41b5a8
+  size   1092096
+  nested PE / overlay: none (single MZ at offset 0)
+
+The suffix after the MD5 is NOT a list of dropped payloads.
+It is the concatenation of sandbox / AV family tags. The same
+suffix `akira_cobalt-strike_icedid_njrat_satacom_vidar` is reused
+on many other ~1 MB Akira lockers with different hashes (tria.ge).
+
+Tag          In this PE?  Typical role elsewhere              Why the tag often fires
+-----------  -----------  ----------------------------------  --------------------------------
+akira        YES          Windows locker (this sample)        .akira / akira_readme.txt / RSA+ChaCha
+cobalt-strike NO          C2 beacon (post-exploit)            WTS enum, unsigned PE64 GUI, "post-exploit" YARA
+icedid       NO           banking loader / BokBot             WMI + PowerShell spawn heuristics
+njrat        NO           Delphi RAT                          ShellExecuteW powershell -ep bypass
+satacom      NO           loader (often over-tagged)          generic loader / stealer ML
+vidar        NO           infostealer                         generic "credential access" ML
+
+ASCII/UTF-16 search in akira.bin: no cobalt, icedid, njrat, satacom,
+vidar, beacon, license.dat, PhotoViewer.dll, [endof], LimeRAT.
+
+IR: treat this file as the encryption stage only. Cobalt Strike (and
+other pre-lock tools) appear in public Akira affiliate playbooks
+(CISA AA24-109A) as earlier intrusion stages — they are not embedded
+here. Do not hunt Vidar/njRAT/IcedID C2 from this binary.

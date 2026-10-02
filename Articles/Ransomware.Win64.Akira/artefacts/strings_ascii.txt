@@ -1,0 +1,2310 @@
+!This program cannot be run in DOS mode.
+RichF7
+`.rdata
+@.data
+.pdata
+@_RDATA
+@.rsrc
+@.reloc
+fB9<@u
+|$ UATAUAVAWH
+A_A^A]A\]
+fB9<@u
+\$ UVWH
+UVATAVAWH
+A_A^A\^]
+@SUVWAVH
+ A^_^][
+ A^_^][
+@SUVAVH
+(A^^][
+(A^^][
+@SVATAUAWH
+0A_A]A\^[
+L$ SUVWH
+@SUVWAVH
+@A^_^][
+l$ VWATAVAWH
+A_A^A\_^
+H9qHt&H
+l$ VWAVH
+UVWATAUAVAWH
+A_A^A]A\_^]
+l$ VWAVH
+\$ UVWH
+H9z t)H
+VWATAVAWH
+ A_A^A\_^
+t$ AVH
+t$ AVH
+@SUVWAVH
+ A^_^][
+ A^_^][
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+@USVWATAUAVAWH
+A_A^A]A\_^[]
+@SUWAVAWH
+ A_A^_][
+ A_A^_][
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+)D$0M+
+A_A^A]A\_^]
+|$ AVH
+@SUATAVAWH
+@A_A^A\][
+l$ VWATH
+l$ VWAVH
+tySUVH
+fB9<@u
+SVAUAWH
+HA_A]^[
+@SUVAWH
+(A_^][
+(A_^][
+@SUVATH
+8A\^][
+@SVATH
+@USVWAVH
+A^_^[]
+SVWAVAWH
+A_A^_^[
+SVWAVAWH
+A_A^_^[
+|$ AVH
+t$ WATAUAVAWH
+A_A^A]A\_
+l$ VAVAWH
+@SVATAUAVH
+0A^A]A\^[
+\$ UVWAVAWH
+pA_A^_^]
+\$pH9CPt#H
+|$ AVH
+UVWATAUAVAWH
+pA_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UWAUAVAWH
+A_A^A]_]
+t H9shu
+t$ UWAVH
+@SUVWAVH
+L90u"H
+0A^_^][
+l$ VWAVH
+@SVAVH
+|$ tiI
+@SVAVAWH
+(A_A^^[
+UVWATAUAVAWH
+ A_A^A]A\_^]
+UVWATAUAVAWH
+ A_A^A]A\_^]
+t$ WATAUAVAWH
+A_A^A]A\_
+@SVATAWH
+8A_A\^[
+L$ SVWH
+l$ VWATAVAWH
+A_A^A\_^
+\$ UVWH
+\$ UVWH
+@SVWAVH
+HA^_^[
+WAVAWH
+UVWATAUAVAWH
+PA_A^A]A\_^]
+WATAUAVAWD
+t$HA_A^A]A\_
+UWATAVAWH
+D$HH;w
+D$HH;_
+A_A^A\_]
+UVWATAUAVAWH
+ A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+t$ UWAVH
+K SUVWH
+[ VWAVH
+\$ UVWAVAWH
+A_A^_^]
+|$ AVD
+r9u+Hc
+r:u,Hc
+@SUVWAVH
+A^_^][
+L9l$8t:H
+l$ VWAUAVAWH
+A_A^A]_^
+UWATAVAWH
+A_A^A\_]
+\$ UVWAVAWH
+A_A^_^]
+t$@H;Q8v
+\$PH;W
+@SUVWAVH
+PA^_^][
+l$ VWAVH
+UVWATAUAVAWH
+A_A^A]A\_^]
+H;YxtZ
+@SVWAVH
+HA^_^[
+HA^_^[
+HA^_^[
+t$ WATAUAVAWH
+A_A^A]A\_
+UVWAVAWH
+U0H+U(H
+@A_A^_^]
+@SVWAVAWH
+@A_A^_^[
+t$ WAVAWH
+UATAUAVAWH
+A_A^A]A\]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+|$ UATAUAVAWH
+?.txtF
+A_A^A]A\]
+UATAUAVAWH
+gfffffffH
+A_A^A]A\]
+gfffffffH
+@SVATL
+t$ WATAUAVAWH
+0A_A^A]A\_
+\$ VAVAWH
+ A_A^^
+\$ VAVAWH
+ A_A^^
+@USVWATAVAWH
+A_A^A\_^[]
+@SWAVH
+\$ UWAVH
+8{}u}I
+@SUVWATAVAWH
+@A_A^A\_^][
+t$ UWATAVAWH
+A_A^A\_]
+********************
+ !"#*$%&'(*
+t$ UWATAVAWH
+A_A^A\_]
+********************
+ !"#*$%&'(*
+\$ UVWATAUAVAWH
+fE9,Qu
+F0H;F8t
+A_A^A]A\_^]
+\$ UVWATAUAVAWH
+0A_A^A]A\_^]
+\$ UVWAVAWH
+ A_A^_^]
+ A_A^_^]
+ A_A^_^]
+\$ UVWATAUAVAWH
+@A_A^A]A\_^]
+\$ UVWATAUAVAWH
+@A_A^A]A\_^]
+@SVWAWH
+(A__^[
+@SVAVAWH
+8A_A^^[
+l$ VATAUAWL
+l$@A_A]A\^
+l$@A_A]A\^
+@SVAVAWH
+8A_A^^[
+gfffffffH
+gfffffffLi
+UVWAVAWH
+`A_A^_^]
+UVWAVAWH
+`A_A^_^]
+UVWAVAWH
+gfffffffH
+`A_A^_^]
+UVWAVAWH
+`A_A^_^]
+WATAUAVAWH
+A_A^A]A\_
+VWAUAVAWH
+A_A^A]_^
+WATAUAVAWH
+A_A^A]A\_
+UVWATAUAVAWH
+PA_A^A]A\_^]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+WAVAWH
+UVWATAUAVAWH
+PA_A^A]A\_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+WAVAWH
+PA_A^_
+WAVAWH
+PA_A^_
+WAVAWH
+PA_A^_
+WAVAWH
+gfffffffI
+PA_A^_
+WAVAWH
+PA_A^_
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+VWATAVAWH
+t$0IcF
+A_A^A\_^
+VWATAVAWH
+A_A^A\_^
+VWATAVAWH
+A_A^A\_^
+VWATAVAWH
+A_A^A\_^
+VWATAVAWH
+A_A^A\_^
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+`A_A^_^]
+VWATAVAWH
+A_A^A\_^
+UVWAVAWH
+PA_A^_^]
+UVWAVAWH
+PA_A^_^]
+D$0HcH
+D$0HcH
+D$0HcH
+D$0HcH
+SVWAVAWH
+A_A^_^[
+SVWAVAWH
+A_A^_^[
+SUAVAWH
+HA_A^][
+@USVWAVH
+A^_^[]
+\$ UVWH
+<+tT<-
+\$ UVWAVAWH
+`A_A^_^]
+UVWAVAWH
+1<}u-I;
+ A_A^_^]
+ A_A^_^]
+ A_A^_^]
+UVWAVAWH
+F(L9F0
+A_A^_^]
+l$ VWAVH
+\$ UVWATAUAVAWH
+A_A^A]A\_^]
+@SUVAVH
+8A^^][
+WAVAWH
+PA_A^_
+|$ ATAVAWH
+0A_A^A\
+@WATAVAWH
+8A_A^A\_
+t$ WATAUAVAWH
+A_A^A]A\_
+UVWAVAWH
+D$PH9D$8t
+A_A^_^]
+@SUVWAVH
+H9L$pt
+A^_^][
+@SUVWATAVAWH
+L$PH9L$8t
+A_A^A\_^][
+@SUVWATAVAWH
+L$PH9L$8t
+A_A^A\_^][
+UVWAVAWH
+D$PH9D$8t
+A_A^_^]
+UVWAVAWH
+D$PH9D$8t
+A_A^_^]
+UVWAVAWH
+D$PH9D$8t
+A_A^_^]
+UVWAVAWH
+D$PH9D$8t
+A_A^_^]
+D$xH9D$`t
+UVWATAUAVAWH
+H9|$8t
+A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+t$ UWAVH
+VWATAVAWH
+A_A^A\_^
+|$ AVH
+<<t <>t
+t$(<}t9<:t5L
+@UVWAWH
+@SVWATAUAVAWH
+PA_A^A]A\_^[
+@SUVWATAVAWH
+`A_A^A\_^][
+\$ UVWATAUAVAWH
+fD9#udH
+fD9#udH
+fD9+udH
+A_A^A]A\_^]
+UVWATAUAVAWH
+fD93u`H
+f;D$Hu_A
+f;D$JuUA
+D$8f9G
+A_A^A]A\_^]
+D;|$L|
+fD93u`H
+H;D$psv
+L$(;L$L|
+APD90~
+fD9+u_H
+A8L90t
+APD90~
+fD9+ugI
+D;|$L}
+f;D$HuWH
+f;D$JuUA
+D$8f9G
+gfffffff
+@SUVWATAUAVAWH
+A_A^A]A\_^][
+UVWAVAWH
+@A_A^_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWAVAWH
+A_A^_^]
+\$ UVWATAUAVAWH
+d$8E8b
+PA_A^A]A\_^]
+@UVWATAUAVAWH
+t$0D9m
+A_A^A]A\_^]
+t$ WATAUAVAWH
+A_A^A]A\_
+@SUVWAVH
+PA^_^][
+@USAVAWH
+A_A^[]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+SVATAUH
+)D$0H;S
+A]A\^[
+A]A\^[
+USVWATAUAVAWH
+A_A^A]A\_^[]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWAVAWH
+PA_A^_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+l$ VWATAVAWH
+0A_A^A\_^
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+l$ VWATAVAWH
+0A_A^A\_^
+USVWATAUAVAWH
+A_A^A]A\_^[]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+0A_A^A]A\_^]
+\$ UVWAVAWH
+d$`H;S
+ A_A^_^]
+|$ AVH
+@SVWAVH
+xA^_^[
+t$ WAVAWH
+UVWAVAWH
+PA_A^_^]
+t$ WAVAWH
+UVWAVAWH
+@A_A^_^]
+@SVAVAWH
+HA_A^^[
+HA_A^^[
+l$HH;S
+@USVWATAVAWH
+H;T$Hv
+A_A^A\_^[]
+@SUVWH
+@USVWATAVAWH
+H;T$Hv
+A_A^A\_^[]
+VWAUAVAWH
+PA_A^A]_^
+UVWAVAWH
+@A_A^_^]
+@USVWATAVAWH
+H;T$Hv
+A_A^A\_^[]
+UVWATAUAVAWH
+H;T$hv
+A_A^A]A\_^]
+00000000H
+L$ UVWAVAWH
+A_A^_^]
+t$ WATAUAVAWH
+D$8D;4(u-
+A_A^A]A\_
+@SVATAWH
+XA_A\^[
+XA_A\^[
+@SVATAWH
+XA_A\^[
+XA_A\^[
+@SVATAWH
+XA_A\^[
+XA_A\^[
+@SATAUAWH
+hA_A]A\[
+hA_A]A\[
+@VATAVH
+PA^A\^
+@VATAVH
+@A^A\^
+@VAVAWH
+@A_A^^
+@VATAVH
+@A^A\^
+@VATAVH
+PA^A\^
+@VAVAWH
+@A_A^^
+@SUVWATAVAWH
+@A_A^A\_^][
+t$ UWATAVAWH
+A_A^A\_]
+fB94Bu
+t$ WATAUAVAWH
+UPH;UXt
+|$|.u/
+|$|.u2
+A_A^A]A\_
+udH;~ u^
+SUVWAVH
+A^_^][
+SUVWAVAWH
+A_A^_^][
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWAVAWH
+A_A^_^]
+t$ UWAVH
+@SVAVH
+l$ VWAVH
+t$ WATAUAVAWH
+A_A^A]A\_
+@SUVAWH
+8A_^][
+t$ WATAUAVAWH
+0A_A^A]A\_
+@UWAVH
+|$ UATAUAVAWH
+A_A^A]A\]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+|$ y+H
+@SVAVH
+t$ UWATAVAWH
+A_A^A\_]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+0A_A^A]A\_^]
+UVWATAUAVAWH
+0A_A^A]A\_^]
+@SUVWH
+@SUWAVH
+(A^_][
+(A^_][
+(A^_][
+@SUWAVAWH
+ A_A^_][
+ A_A^_][
+ A_A^_][
+]0H+](H
+@SUVWAVH
+@A^_^][
+@A^_^][
+@A^_^][
+t$ UWAVH
+UVWATAUAVAWH
+A9~ ~.H
+A_A^A]A\_^]
+uiM;J ucA
+@UWAUAWH
+(A_A]_]
+Cx<bueH
+{|^u^H
+C$9C w
+@VWAUAVAWH
+ A_A^A]_^
+{x\ucH
+\$ UVWH
+;~ s@H
+VWATAVAWH
+ A_A^A\_^
+|$ AVH
+{|]ukH
+\$ UVWH
+L;D$`u
+l$ VWAWH
+@SUVWAVH
+pA^_^][
+WAVAWH
+fF94Bu
+@SVAVH
+@UVAWH
+|$ UATAUAVAWH
+A_A^A]A\]
+VWATAVAWH
+@A_A^A\_^
+|$ AVH
+WAVAWH
+@A_A^_
+UVWAVAWH
+A_A^_^]
+l$ VWAVH
+H98t4H
+|$ @8o(tRH
+@SUVWATAUAVAWH
+A_A^A]A\_^][
+I9uxtSH
+t$ WATAUAVAWH
+A_A^A]A\_
+\$ UVWAVAWH
+0A_A^_^]
+SVWATAUAVAWH
+C<;C4|*
+C<;C4}
+A_A^A]A\_^[
+SUVWATAVAWH
+A_A^A\_^][
+\$ H9t$Pt#H
+SVWATAUAVAWH
+C8;C0|
+C8;C0}
+A_A^A]A\_^[
+SUVWATAVAWH
+A_A^A\_^][
+SVWATAUAVAWH
+C8;C0|*
+C8;C0}
+A_A^A]A\_^[
+SUVWAVAWH
+A_A^_^][
+9i4t:H
+|$ AVH
+EGH9GPt H
+H9GPt H
+H9Y t H
+H9Y t H
+UWATAVAWH
+A_A^A\_]
+\$ UVWH
+\$ UVWH
+@SVWATAUAVAWH
+gfffffffH
+fffffff
+gfffffffH
+`A_A^A]A\_^[
+D#L$`3
+SVWATAUAVAWH
+\$HLc@
+pA_A^A]A\_^[
+WAVAWH
+@A_A^_
+WAVAWH
+t$ UWAVH
+t$ WAVAWH
+@A_A^_
+l$ VWAVH
+x ATAVAWH
+0A_A^A\
+T$`A9r
+WAVAWH
+0A_A^_
+SUVWATAUAVAWH
+H+L$(x<H
+8A_A^A]A\_^][
+f#D$@H
+SUVWATAUAVAWH
+H+L$ xFH
+8A_A^A]A\_^][
+x ATAVAWH
+@A_A^A\
+@UAVAWH
+@USVWATAUAVH
+e0A^A]A\_^[]
+UVWATAUAVAWH
+A_A^A]A\_^]
+@SAVAWH
+@A_A^[
+@A_A^[
+@A_A^[
+UAVAWH
+0A_A^]
+0A_A^]
+0A_A^]
+|$ UAVAWH
+3r 3z$3Z(D3Z,D3R0D3B83J<
+l$PD3j
+@SUVWATAUAVAWH
+(A_A^A]A\_^][
+|$ AVAW
+SUVWATAUAVAWH
+l$ A9)v@H
+8A_A^A]A\_^][
+t$ WAVE3
+t$0A^_
+t$0A^_
+SUVWATAUAVAWH
+HA_A^A]A\_^][
+SUVWATAUAVAWH
+XA_A^A]A\_^][
+l$ WATAVH
+@A^A\_
+SVWATAVH
+0A^A\_^[
+0A^A\_^[
+|$ AVA
+t$ WHc\$03
+D;\$0~CE3
+D+\$0ff
+|$ AVA
+WAVAWH
+ A_A^_
+|$ AVH
+|$ AVH
+~jA;9~ 
+WAVAWH
+0A_A^_
+@SWAUAVH
+8A^A]_[
+t$0;/~
+8A^A]_[
+UWATAWH
+A_A\_]
+USVWAVAWH
+A_A^_^[]
+A_A^_^[]
+Hc\$<A;
+L$4|?L
+A_A^_^[]
+UAUAVH
+0A^A]]
+@SVWAVH
+HA^_^[H
+HA^_^[
+@SUVATAUH
+ A]A\^][
+ A]A\^][
+SUVAWH
+l$@A9F
+|$@A9T
+|$ ATAVAWH
+ A_A^A\
+\$ UVWAVAWH
+PA_A^_^]
+t$ WATAUAVAWH
+A_A^A]A\_
+L$ SVWH
+@UVAWH
+|$ AVH
+H AUAWH
+\$ UVWAVAWH
+D$Tfff
+A_A^_^]
+SVWAVH
+8A^_^[
+WAVAWH
+u/HcH<H
+e A^_]
+D8L$0u`
+VWATAVAWH
+ A_A^A\_^
+WATAUAVAWH
+A_A^A]A\_
+H;xXu5
+WATAUAVAWH
+A_A^A]A\_
+fffffff
+fffffff
+fffffff
+ffffff
+vKfffff
+AUAVAWH
+u4I9}(
+;I9}(tiH
+0A_A^A]
+AUAVAWH
+u4I9}(
+;I9}(tiH
+0A_A^A]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+@USVWATAUAVAWH
+A_A^A]A\_^[]
+@USVWATAUAVAWH
+d$dD;d$ltY
+A_A^A]A\_^[]
+UVWATAUAVAWH
+A_A^A]A\_^]
+@USVWATAUAVAWH
+A_A^A]A\_^[]
+WAVAWH
+@SVWATAUAVAWH
+L!|$(L!
+D$0HcH
+pA_A^A]A\_^[
+SVWATAUAWH
+L!d$(L!d$@D
+D$HL9gXt
+A_A]A\_^[
+B(I9A(
+SVWATAUAVAWH
+0A_A^A]A\_^[
+SVWATAUAVAWH
+A_A^A]A\_^[
+t$ WATAUAVAWH
+ A_A^A]A\_
+UVWATAUAVAWH
+ A_A^A]A\_^]
+D$ I;R
+D$ I9P
+WATAUAVAWH
+ A_A^A]A\_
+x AUAVAWH
+@A_A^A]
+VWATAVAWH
+?D8d$8t
+D8d$8t
+t'D8d$8t
+%D8d$8t
+A_A^A\_^
+\$ VWATAUAVH
+D!l$xA
+@A^A]A\_^
+@USVWATAVAWH
+D8d$Xt
+A_A^A\_^[]
+@USVWATAVAWH
+D8d$Xt
+A_A^A\_^[]
+D8t$8t
+D$@H;G
+ t(<#t
+ t(<#t
+ t(<#t
+<htl<jt\<lt4<tt$<wt
+<htl<jt\<lt4<tt$<wt
+t$ WAVAWH
+<Ct-<D
+<StW@:
+<g~{<itd<ntY<ot7<pt
+<utT@:
+D<P0@:
+k4+kP+
+0A_A^_
+t$ WAVAWH
+<Ct-<D
+<StW@:
+<g~{<itd<ntY<ot7<pt
+<utT@:
+D<P0@:
+k(+sPL
+0A_A^_
+x ATAVAWH
+ A_A^A\
+WATAWH
+0A_A\_
+L$ VWAVH
+t$ WATAUAVAWH
+ A_A^A]A\_
+;D$Xs;
+L$ UVWATAUAVAWH
+0A_A^A]A\_^]
+T$ D)s
+UVWATAUAVAWH
+ A_A^A]A\_^]
+UVWATAUAVAWH
+0A_A^A]A\_^]
+t$ WATAUAVAWH
+t$HA_A^A]A\_
+UVWATAUAVAWH
+L$<;L$P
+L$4+L$8
+l$0D+ D9
+L$4+L$H
+A_A^A]A\_^]
+SUVWATAVAWH
+A_A^A\_^][
+D$@H=@W
+w`HcE H
+Hc;9E0t
+HcE H+
+u"8Z(t
+uF8Z(t
+vC8_(t
+u"8Z(t
+UATAUAVAWH
+A_A^A]A\]
+|$ AVH
+s WATAUAVAWH
+D$h9t$P
+A_A^A]A\_
+t$ UWAUAVAWH
+A_A^A]_]
+|$ UATAUAVAWH
+9^ t"H
+A_A^A]A\]
+x AVAW
+|$0A_A^
+@UVWATAUAVAWH
+e0A_A^A]A\_^]
+|$ UATAUAVAWH
+A_A^A]A\]
+u3HcH<H
+x ATAVAWH
+ A_A^A\
+UVWAVAWH
+0A_A^_^]
+WAVAWH
+0A_A^_
+WAVAWH
+fA94@u
+fA94nu
+0A_A^_
+t$ WAVAWH
+ A_A^_
+WAVAWH
+ A_A^_
+WAVAWH
+fE98t'
+0A_A^_
+@USVWATAUAVAWH
+A_A^A]A\_^[]
+9Cu,fD9y
+fB9<{u
+fD9,pu
+t$`fD9+t$I
+L$ SUVWH
+WATAUAVAWH
+0A_A^A]A\_
+\$ UVWATAUAVAWH
+fD9,Au
+A_A^A]A\_^]
+\$ UVWATAUAVAWH
+f9t$bu
+A_A^A]A\_^]
+H9L$Ht?H
+UVWATAUAVAWH
+fE9,Fu
+A_A^A]A\_^]
+WATAUAVAWH
+ A_A^A]A\_
+u9!\$0
+@8l$Ht
+L$ UVWH
+WATAUAVAWH
+gfffffffH
+D8t$ht
+A_A^A]A\_
+x ATAVAWH
+ A_A^A\
+fD9t$b
+u1!D$0H
+UVWATAUAVAWH
+0A_A^A]A\_^]
+D$0H9D$8
+UVWATAUAVAWH
+D8\0>t
+L$@D8]
+A_A^A]A\_^]
+VWATAVAW
+A_A^A\_^
+WATAUAVAWH
+ A_A^A]A\_
+\$ UVWATAUAVAWH
+H!D$ H
+`A_A^A]A\_^]
+UVWATAUAVAWH
+ A_A^A]A\_^]
+t$ WATAUAVAW
+A_A^A]A\_
+@SUVWATAUAVAWH
+8A_A^A]A\_^][
+L$ SUVWATAUAVAWH
+8A_A^A]A\_^][
+AUAVAWH
+ A_A^A]
+UVWATAUAVAWH
+@8t$HtsL
+`A_A^A]A\_^]
+WATAUAVAWH
+ A_A^A]A\_
+p WATAUAVAWH
+A_A^A]A\_
+T$xD;D$x
+UVWATAUAVAWH
+fD9,Nu
+fD9,~u
+uHfD9/A
+0A_A^A]A\_^]
+\$ UVWH
+@UAVAWH
+e0A_A^]
+@SUVWATAVAWH
+A_A^A\_^][
+@UATAUAVAWH
+e0A_A^A]A\]
+@UATAUAVAWH
+H!T$0D
+ue!T$(H!T$ 
+A_A^A]A\]
+UWATAVAWH
+D8&t4H
+A_A^A\_]
+ATAVAWH
+D8d$8t
+@A_A^A\
+@USVWATAVAWH
+A_A^A\_^[]
+WAVAWH
+@A_A^_
+u"8Z(t
+uF8Z(t
+vB8_(t
+UVWATAUAVAWH
+`A_A^A]A\_^]
+WATAUAVAWH
+0A_A^A]A\_
+H97u+A
+\$ UVWATAUAVAWH
+@8|$Ht
+@8|$Ht
+@8|$Ht
+D$XD9x
+@8|$ht
+@8|$ht
+@8|$ht
+A_A^A]A\_^]
+UVWATAUAVAWH
+L$&8\$&t,8Y
+@A_A^A]A\_^]
+fD94Fu
+WATAUAVAWH
+fB94ht
+xXI96tSI
+fC94wu
+0A_A^A]A\_
+ATAVAWH
+0A_A^A\
+UATAUAVAWH
+A_A^A]A\]
+WATAUAVAWH
+A_A^A]A\_
+UATAUAVAWH
+A_A^A]A\]
+fB9<Hu
+fB9<@u
+fB9<Bu
+fB9,Nu
+fB9,Nu
+fB9,Nu
+fA9,Au
+f9)u:H
+fB94Ou
+x ATAVAWH
+ A_A^A\
+x ATAVAWH
+fG9$Ou
+0A_A^A\
+fB9<Hu
+fB9<@u
+fB9<Bu
+fD94Au
+fD94iu
+tSf91tNH
+tU;\$0tH
+WAVAWH
+ A_A^_
+@USVWATAVAWH
+tyfD9 tsH
+tQfD9 tK
+fD9$Hu
+@A_A^A\_^[]
+WAVAWH
+ A_A^_
+WATAUAVAWH
+ A_A^A]A\_
+WAVAWH
+ A_A^_
+@USVWATAVAWH
+D8|$0A
+A_A^A\_^[]
+x ATAVAWH
+@A_A^A\
+s WAVAWH
+0A_A^_
+u~9t$Xt
+UATAUAVAWH
+A_A^A]A\]
+UVWATAUAVAWH
+@A_A^A]A\_^]
+ATAUAVH
+L$ fff
+L$ |+L;
+A^A]A\
+WAVAWH
+D8|$`t
+ A_A^_
+UVWAVAWH
+@A_A^_^]
+ffffff
+fffffff
+x ATAVAWH
+ A_A^A\
+ATAVAWH
+ A_A^A\
+USVWAVH
+A^_^[]
+LcA<E3
+ATAVAWH
+A_A^A\
+WATAUAVAWH
+8H9wPt-H
+A_A^A]A\_
+WATAUAVAWH
+8L9wPt-H
+A_A^A]A\_
+ATAVAWH
+0tYH91tT
+A_A^A\
+ATAVAWH
+GIHcOQI
+0tYI90tT
+A_A^A\
+WAVAWH
+WAVAWH
+WATAUAVAWH
+8L9gPt1H
+A_A^A]A\_
+WATAUAVAWH
+A_A^A]A\_
+l$ VWAVH
+ATAVAWH
+A_A^A\
+SVATAUAVAWH
+XA_A^A]A\^[
+SVWATAUAVAWH
+`A_A^A]A\_^[
+success
+address family not supported
+address in use
+address not available
+already connected
+argument list too long
+argument out of domain
+bad address
+bad file descriptor
+bad message
+broken pipe
+connection aborted
+connection already in progress
+connection refused
+connection reset
+cross device link
+destination address required
+device or resource busy
+directory not empty
+executable format error
+file exists
+file too large
+filename too long
+function not supported
+host unreachable
+identifier removed
+illegal byte sequence
+inappropriate io control operation
+interrupted
+invalid argument
+invalid seek
+io error
+is a directory
+message size
+network down
+network reset
+network unreachable
+no buffer space
+no child process
+no link
+no lock available
+no message available
+no message
+no protocol option
+no space on device
+no stream resources
+no such device or address
+no such device
+no such file or directory
+no such process
+not a directory
+not a socket
+not a stream
+not connected
+not enough memory
+not supported
+operation canceled
+operation in progress
+operation not permitted
+operation not supported
+operation would block
+owner dead
+permission denied
+protocol error
+protocol not supported
+read only file system
+resource deadlock would occur
+resource unavailable try again
+result out of range
+state not recoverable
+stream timeout
+text file busy
+timed out
+too many files open in system
+too many files open
+too many links
+too many symbolic link levels
+value too large
+wrong protocol type
+unknown error
+regex_error(error_collate): The expression contained an invalid collating element name.
+regex_error(error_ctype): The expression contained an invalid character class name.
+regex_error(error_escape): The expression contained an invalid escaped character, or a trailing escape.
+regex_error(error_backref): The expression contained an invalid back reference.
+regex_error(error_brack): The expression contained mismatched [ and ].
+regex_error(error_paren): The expression contained mismatched ( and ).
+regex_error(error_brace): The expression contained mismatched { and }.
+regex_error(error_badbrace): The expression contained an invalid range in a { expression }.
+regex_error(error_range): The expression contained an invalid character range, such as [b-a] in most encodings.
+regex_error(error_space): There was insufficient memory to convert the expression into a finite state machine.
+regex_error(error_badrepeat): One of *?+{ was not preceded by a valid regular expression.
+regex_error(error_complexity): The complexity of an attempted match against a regular expression exceeded a pre-set level.
+regex_error(error_stack): There was insufficient memory to determine whether the regular expression could match the specified character sequence.
+regex_error(error_parse)
+regex_error(error_syntax)
+regex_error
+bad exception
+GetTempPath2W
+0123456789abcdefghijklmnopqrstuvwxyz
+0123456789abcdefghijklmnopqrstuvwxyz
+GetCurrentPackageId
+GetSystemTimePreciseAsFileTime
+expand 32-byte kexpand 16-byte k 
+gmp_default_alloc: Virtual memory exhausted.
+gmp_default_realloc: Virtual memory exhausted.
+mpz_div_qr: Divide by zero.
+mpz_powm: Zero modulo.
+mpz_powm: Negative exponent and non-invertible base.
+mpz_import: Nails not supported.
+L&&jl66Z~??A
+Oh44\Q
+sb11S*
+uB!!c 
+D""fT**~;
+;d22Vt::N
+J%%o\..r8
+gg}V++
+jL&&Zl66A~??
+Sb11?*
+tX,,.4
+RRMv;;a
+MMUf33
+PPDx<<
+cB!!0 
+~~Gz==
+fD""~T**
+Vd22Nt::
+xxoJ%%r\..$8
+ppB|>>
+aa_j55
+UUxP((z
+&jL&6Zl6?A~?
+~=Gz=d
+"fD"*~T*
+2Vd2:Nt:
+x%oJ%.r\.
+a5_j5W
+=&&jL66Zl??A~
+g99KrJJ
+==Gzdd
+""fD**~T
+22Vd::Nt
+$$lH\\
+77Ynmm
+%%oJ..r\
+55_jWW
+__based(
+__cdecl
+__pascal
+__stdcall
+__thiscall
+__fastcall
+__vectorcall
+__clrcall
+__eabi
+__swift_1
+__swift_2
+__swift_3
+__ptr64
+__restrict
+__unaligned
+restrict(
+ delete
+operator
+`vftable'
+`vbtable'
+`vcall'
+`typeof'
+`local static guard'
+`string'
+`vbase destructor'
+`vector deleting destructor'
+`default constructor closure'
+`scalar deleting destructor'
+`vector constructor iterator'
+`vector destructor iterator'
+`vector vbase constructor iterator'
+`virtual displacement map'
+`eh vector constructor iterator'
+`eh vector destructor iterator'
+`eh vector vbase constructor iterator'
+`copy constructor closure'
+`udt returning'
+`local vftable'
+`local vftable constructor closure'
+ new[]
+ delete[]
+`omni callsig'
+`placement delete closure'
+`placement delete[] closure'
+`managed vector constructor iterator'
+`managed vector destructor iterator'
+`eh vector copy constructor iterator'
+`eh vector vbase copy constructor iterator'
+`dynamic initializer for '
+`dynamic atexit destructor for '
+`vector copy constructor iterator'
+`vector vbase copy constructor iterator'
+`managed vector copy constructor iterator'
+`local static thread guard'
+operator "" 
+operator co_await
+operator<=>
+ Type Descriptor'
+ Base Class Descriptor at (
+ Base Class Array'
+ Class Hierarchy Descriptor'
+ Complete Object Locator'
+`anonymous namespace'
+FlsAlloc
+FlsFree
+FlsGetValue
+FlsSetValue
+InitializeCriticalSectionEx
+(null)
+[aOni*{
+~ $s%r
+@b;zO]
+v2!L.2
+IND)ind)
+ !"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~
+CorExitProcess
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+January
+February
+August
+September
+October
+November
+December
+MM/dd/yy
+dddd, MMMM dd, yyyy
+HH:mm:ss
+AreFileApisANSI
+CompareStringEx
+EnumSystemLocalesEx
+GetDateFormatEx
+GetLocaleInfoEx
+GetTimeFormatEx
+GetUserDefaultLocaleName
+IsValidLocaleName
+LCMapStringEx
+LCIDToLocaleName
+LocaleNameToLCID
+RoInitialize
+RoUninitialize
+AppPolicyGetProcessTerminationMethod
+AppPolicyGetThreadInitializationType
+NAN(SNAN)
+nan(snan)
+NAN(IND)
+nan(ind)
+_hypot
+_nextafter
+UTF-16LEUNICODE
+1#QNAN
+1#SNAN
+UUUUUU
+UUUUUU
+=imb;D
+/>58d%
+>jtm}S
+)>6{1n
++f)>0'
+;H9>&X
+*StO9>T
+n03>Pu
+K~Je#>!
+bp(=>?g
+BC?>6t9^
+K&>.yC
+.xJ>Hf
+y\PD>!
+|b=})>
+c [1>H'
+uzKs@>
+3>N;kU
+kE>fvw
+V6E>`"(5
+?UUUUUU
+?7zQ6$
+Unknown exception
+bad array new length
+string too long
+generic
+system
+asio.system
+asio.system error
+asio.misc
+Already open
+End of file
+Element not found
+The descriptor does not fit into the select call's fd_set
+asio.misc error
+warning
+critical
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+January
+February
+August
+September
+October
+November
+December
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+argument not found
+empty buffer
+n is too large
+n is too large
+warning
+critical
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+January
+February
+August
+September
+October
+November
+December
+async_all_write failed:
+Create auto save file failed! (
+asio::create_auto_save_file error:
+write_encrypt_info error:
+(Full begin) Cipher is not initialize!
+(Full begin) Encrypt exception:
+(Full begin) Cipher error:
+(Full) Cipher is not initialize!
+(Full) Encrypt exception:
+(Full) Cipher error:
+(Part) Cipher is not initialize!
+(Part) Encrypt exception:
+(Part) Cipher error:
+Crypt context not found! (
+File handle not found! (
+Get file size failed! (
+File size invalid! (
+asio::random_access_handle error:
+Init cipher failed! (
+get auto save file name failed! (
+Encrypt pack id failed! (
+create auto save file failed! (
+get auto hash file name failed:
+Failed to make full encrypt! (
+Failed to make spot encrypt! (
+Failed to make part encrypt! (
+file rename failed. System error:
+Failed to write header! (
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+argument not found
+empty buffer
+n is too large
+n is too large
+warning
+critical
+Monday
+Sunday
+Wednesday
+Tuesday
+Friday
+Thursday
+Saturday
+January
+February
+September
+August
+November
+October
+December
+Error shared file : 
+Error message file : 
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+argument not found
+empty buffer
+n is too large
+n is too large
+warning
+critical
+Monday
+Sunday
+Wednesday
+Tuesday
+Friday
+Thursday
+Saturday
+January
+February
+September
+August
+November
+October
+December
+Log-%d-%m-%Y-%H-%M-%S
+Command line to argvW failed!
+No cpu available!
+List of drives
+Number of thread to folder parsers = 
+Init crypto failed!
+Number of threads to encrypt = 
+Number of thread to root folder parsers = 
+Failed to read share files!
+ShellExecute failed: 
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+argument not found
+empty buffer
+n is too large
+n is too large
+critical
+warning
+Monday
+Tuesday
+Sunday
+Friday
+Saturday
+Wednesday
+Thursday
+January
+February
+August
+November
+December
+September
+October
+init filtering error:
+need filter file error:
+search files error:
+search_files_recursive failed:
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+argument not found
+n is too large
+n is too large
+empty buffer
+warning
+critical
+Sunday
+Wednesday
+Thursday
+Monday
+Tuesday
+Friday
+Saturday
+January
+February
+September
+October
+August
+November
+December
+powershell.exe -Command "Get-WmiObject Win32_Shadowcopy | Remove-WmiObject"
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+argument not found
+n is too large
+n is too large
+empty buffer
+critical
+warning
+Tuesday
+Wednesday
+Sunday
+Monday
+Saturday
+Thursday
+Friday
+January
+February
+August
+September
+December
+October
+November
+enqueueRecursiveSearchFiles failed:
+enqueueEncrypt failed:
+enqueueSearchFiles failed:
+nan(ind)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(snan)
+argument not found
+empty buffer
+n is too large
+n is too large
+critical
+warning
+Wednesday
+Tuesday
+Monday
+Sunday
+Saturday
+Friday
+Thursday
+January
+February
+September
+August
+December
+November
+October
+nan(ind)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(ind)
+nan(snan)
+nan(snan)
+argument not found
+empty buffer
+n is too large
+n is too large
+vector too long
+unknown error
+iostream stream error
+bad allocation
+iostream
+bad cast
+bad locale name
+ios_base::badbit set
+ios_base::failbit set
+ios_base::eofbit set
+bad executor
+thread.entry_event
+thread.exit_event
+thread
+co_await
+invalid string position
+assign
+./?\]_
+)147:;=IJ]
+)14:;EFIJ^de
+)EIWde
+INOWY^_
+FGNOXZ\^~
+no7=?BE
+0123456789ABCDEFabcdef-+Xx
+)14:EFIJNOde\
+ #%&(38:HJLPSUVXZ\^`cefksx}
+0123456789ABCDEFabcdef-+XxPp
+error 
+invalid stoi argument
+stoi argument out of range
+00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+number is too big
+unmatched '}' in format string
+invalid format string
+unknown format specifier
+missing '}' in format string
+argument not found
+cannot switch from manual to automatic argument indexing
+Failed getting timezone info. 
+invalid type specifier
+invalid fill character '{'
+format specifier requires numeric argument
+                                                                
+{} [{}({})]
+Rethrowing unknown exception in logger
+%Y-%m-%d %H:%M:%S
+[*** LOG ERROR #%04zu ***] [%s] [%s] %s
+' already exists
+logger with name '
+ for writing
+Failed opening file 
+Failed flush to file 
+Failed writing to file 
+file_logger
+map/set too long
+format specifier requires signed argument
+invalid fill
+cannot switch from automatic to manual argument indexing
+string pointer is null
+invalid format specifier for char
+missing precision specifier
+precision not allowed for this argument type
+unordered_map/set too long
+invalid hash bucket count
+0123456789ABCDEF
+0123456789abcdef
+negative width
+negative precision
+width is not integer
+precision is not integer
+directory_entry::status
+directory_iterator::operator++
+directory_iterator::directory_iterator
+exists
+vector<bool> too long
+xdigit
+()$^.*+?[]|\-{},:=!
+bad_weak_ptr
+multiple exceptions
+Invalid service owner.
+Service already exists.
+thread pool size
+.text$di
+.text$mn
+.text$mn$00
+.text$x
+.text$yd
+.idata$5
+.00cfg
+.CRT$XCA
+.CRT$XCAA
+.CRT$XCC
+.CRT$XCL
+.CRT$XCU
+.CRT$XCZ
+.CRT$XIA
+.CRT$XIAA
+.CRT$XIAC
+.CRT$XIC
+.CRT$XIZ
+.CRT$XLA
+.CRT$XLZ
+.CRT$XPA
+.CRT$XPX
+.CRT$XPXA
+.CRT$XPZ
+.CRT$XTA
+.CRT$XTZ
+.rdata
+.rdata$T
+.rdata$r
+.rdata$voltmd
+.rdata$zzzdbg
+.rtc$IAA
+.rtc$IZZ
+.rtc$TAA
+.rtc$TZZ
+.tls$ZZZ
+.xdata
+.xdata$x
+.idata$2
+.idata$3
+.idata$4
+.idata$6
+.data$r
+.data$rs
+.pdata
+_RDATA
+.rsrc$01
+.rsrc$02
+.&0 2Q
+B(D F&H
+@d: N P.R&T.V%
+*>hj*>pZ*>`
+0&2,4(2
+> @,B-
+,@.,0B.
+:P<,>M
+EnterCriticalSection
+WaitForMultipleObjects
+LeaveCriticalSection
+WaitForSingleObject
+PostQueuedCompletionStatus
+GetLastError
+SetEvent
+TerminateThread
+TlsAlloc
+CloseHandle
+QueueUserAPC
+LocalFree
+DeleteCriticalSection
+TlsFree
+FormatMessageA
+ReadFile
+GetFileSizeEx
+SetWaitableTimer
+TlsSetValue
+SetLastError
+WriteFile
+InitializeCriticalSectionAndSpinCount
+GetQueuedCompletionStatus
+GetCurrentThreadId
+CreateEventW
+SetFileInformationByHandle
+DeleteFileW
+CancelIoEx
+SleepEx
+TlsGetValue
+CreateIoCompletionPort
+CreateFileW
+GetFileAttributesW
+SetFileAttributesW
+GetDriveTypeW
+GetConsoleScreenBufferInfo
+SetConsoleTextAttribute
+GetCommandLineW
+GetStdHandle
+WriteConsoleA
+GetDynamicTimeZoneInformation
+GetConsoleMode
+GetFileAttributesA
+GetSystemInfo
+GetCurrentProcessId
+GetCurrentProcess
+GetProcessId
+OpenProcess
+ResetEvent
+GetLogicalDriveStringsW
+MultiByteToWideChar
+WideCharToMultiByte
+KERNEL32.dll
+ShellExecuteW
+CommandLineToArgvW
+SHELL32.dll
+CoUninitialize
+CoCreateInstance
+CoSetProxyBlanket
+CoInitializeEx
+ole32.dll
+OLEAUT32.dll
+WS2_32.dll
+PathIsNetworkPathW
+SHLWAPI.dll
+WNetGetConnectionW
+MPR.dll
+WTSFreeMemory
+WTSEnumerateProcessesW
+WTSAPI32.dll
+RmRegisterResources
+RmGetList
+RmStartSession
+RmShutdown
+RmEndSession
+RstrtMgr.DLL
+GetLocaleInfoEx
+RtlPcToFileHeader
+RaiseException
+CreateDirectoryW
+FindClose
+FindFirstFileW
+FindFirstFileExW
+FindNextFileW
+GetFileAttributesExW
+AreFileApisANSI
+GetModuleHandleW
+GetProcAddress
+GetFileInformationByHandleEx
+QueryPerformanceCounter
+QueryPerformanceFrequency
+ReleaseSRWLockExclusive
+AcquireSRWLockExclusive
+TryAcquireSRWLockExclusive
+InitializeConditionVariable
+WakeConditionVariable
+WakeAllConditionVariable
+SleepConditionVariableSRW
+GetStringTypeW
+WaitForSingleObjectEx
+GetExitCodeThread
+InitializeCriticalSectionEx
+GetSystemTimeAsFileTime
+EncodePointer
+DecodePointer
+LCMapStringEx
+CompareStringEx
+GetCPInfo
+RtlCaptureContext
+RtlLookupFunctionEntry
+RtlVirtualUnwind
+UnhandledExceptionFilter
+SetUnhandledExceptionFilter
+TerminateProcess
+IsProcessorFeaturePresent
+IsDebuggerPresent
+GetStartupInfoW
+InitializeSListHead
+RtlUnwindEx
+FreeLibrary
+LoadLibraryExW
+CreateThread
+ExitThread
+FreeLibraryAndExitThread
+GetModuleHandleExW
+ExitProcess
+GetModuleFileNameW
+HeapAlloc
+HeapReAlloc
+HeapSize
+HeapFree
+GetDateFormatW
+GetTimeFormatW
+CompareStringW
+LCMapStringW
+GetLocaleInfoW
+IsValidLocale
+GetUserDefaultLCID
+EnumSystemLocalesW
+GetFileType
+SetFilePointerEx
+FlushFileBuffers
+GetConsoleOutputCP
+ReadConsoleW
+GetTimeZoneInformation
+IsValidCodePage
+GetACP
+GetOEMCP
+GetCommandLineA
+GetEnvironmentStringsW
+FreeEnvironmentStringsW
+SetEnvironmentVariableW
+GetProcessHeap
+SetStdHandle
+WriteConsoleW
+SetEndOfFile
+RtlUnwind
+$=a\}x
+4+(wbrm
+                          
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                          
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+.akira
+.arika
+akira_readme.txt
+0873-IX-JWVF-OXQN
+Hi friends,
+Whatever who you are and what your title is, if you're reading this it means the internal infrastructure of your company is fully or partially dead, all your backups - virtual, physical - everything that we managed to reach - are completely removed. Moreover, we have taken a great amount of your corporate data prior to encryption.
+ATTENTION! Strictly prohibited:
+- Deleting files with .arika extension;
+- Replacing or renaming .arika and .akira files;
+- Using third party software to recover your systems.
+If you violate these rules, we cannot guarantee a successful recovery.
+Well, for now let's keep all the tears and resentment to ourselves and try to build a constructive dialogue. We're fully aware of what damage we caused by locking your internal sources. At the moment, you have to know:
+1. Dealing with us you will save A LOT due to we are not interested in ruining you financially. We will study in depth your finance, bank & income statements, your savings, investments etc. and present our reasonable demand to you. If you have an active cyber insurance, let us know and we will guide you how to properly use it. Also, dragging out the negotiation process will lead to failing of the deal.
+2. Paying us you save your TIME, MONEY, EFFORTS and be back on track within 24 hours approximately. Our decryptor works properly on any files or systems, so you will be able to check it by requesting a test decryption service from the beginning of our conversation. If you decide to recover on your own, keep in mind that you can permanently lose access to some files or accidentally corrupt them - in this case we won't be able to help.
+3. The security report or the exclusive first-hand information that you will receive upon reaching an agreement is of great value, since NO full audit of your network will show you the vulnerabilities that we've managed to detect and use in order to get into, identify backup solutions and download your data.
+4. As for your data, if we fail to agree, we will try to sell personal information/trade secrets/databases/source codes - generally speaking, everything that has a value on the darkmarket - to multiple threat actors at once. Then all of this will be published in our blog - akiral2iz6a7qgd3ayp3l6yub7xx2uep76idk3u2kollpj5z3z636bad[.]onion.
+5. We're more than negotiable and will definitely find a way to settle this quickly and reach an agreement which will satisfy both of us.
+If you're indeed interested in our assistance and the services we provide you can reach out to us following simple instructions:
+1. Install TOR Browser to get access to our chat room - torproject[.]org/download/.
+2. Paste this link - https://akiralkzxzq2dsrzsrvbr2xgbbu2wgsmxryd4csgfameg52n7efvr2id.onion/d/6772719682-XQSPZ .
+3. Use this code - 0873-IX-JWVF-OXQN - to log into our chat.
+Keep in mind that the faster you will get in touch, the less damage we cause.
+.?AVinvalid_argument@std@@
+.?AVlength_error@std@@
+.?AVregex_error@std@@
+.?AVbad_exception@std@@
+.?AV_com_error@@
+.?AVruntime_error@std@@
+.?AVbad_alloc@std@@
+.?AVsystem_error@std@@
+.?AV_System_error@std@@
+.?AVexception@std@@
+.?AVbad_array_new_length@std@@
+.?AVfailure@ios_base@std@@
+.?AVbad_executor@execution@asio@@
+.?AV?$basic_executor_type@V?$allocator@X@std@@$0A@@io_context@asio@@
+.?AVbad_cast@std@@
+.?AV?$typeid_wrapper@Vwin_iocp_io_context@detail@asio@@@detail@asio@@
+.?AV?$typeid_wrapper@Vwin_iocp_handle_service@detail@asio@@@detail@asio@@
+.?AVformat_error@v9@fmt@@
+.?AVspdlog_ex@spdlog@@
+.?AVfilesystem_error@filesystem@std@@
+.?AVmultiple_exceptions@asio@@
+.?AV?$basic_executor_type@V?$allocator@X@std@@$07@thread_pool@asio@@
+.?AVservice_already_exists@asio@@
+.?AVlogic_error@std@@
+.?AV?$typeid_wrapper@Vnull_reactor@detail@asio@@@detail@asio@@
+.?AV?$typeid_wrapper@Vscheduler@detail@asio@@@detail@asio@@
+.?AVout_of_range@std@@
+.?AVinvalid_service_owner@asio@@
+.?AV?$basic_executor_type@V?$allocator@X@std@@$0A@@thread_pool@asio@@
+.?AVbad_weak_ptr@std@@
+.?AV_ExceptionPtr_normal@?A0x6e02efe5@@
+.?AV?$_ExceptionPtr_static@Vbad_alloc@std@@@?A0x6e02efe5@@
+.?AV?$_ExceptionPtr_static@Vbad_exception@std@@@?A0x6e02efe5@@
+.?AV_Locimp@locale@std@@
+.?AVstl_critical_section_interface@details@Concurrency@@
+.?AVstl_critical_section_win7@details@Concurrency@@
+.?AVstl_condition_variable_interface@details@Concurrency@@
+.?AVstl_condition_variable_win7@details@Concurrency@@
+.?AVtype_info@@
+.?AVmisc_category@detail@error@asio@@
+.?AVerror_category@std@@
+.?AV_System_error_category@std@@
+.?AV_Generic_error_category@std@@
+.?AVsystem_category@detail@asio@@
+.?AV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+.?AVfunc_base@win_thread@detail@asio@@
+.?AV?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@
+.?AVios_base@std@@
+.?AV?$ctype@D@std@@
+.?AV?$basic_iostream@DU?$char_traits@D@std@@@std@@
+.?AV_Facet_base@std@@
+.?AU_Crt_new_delete@std@@
+.?AVwin_iocp_handle_service@detail@asio@@
+.?AV?$_Iosb@H@std@@
+.?AV_Iostream_error_category2@std@@
+.?AV?$numpunct@D@std@@
+.?AVwin_iocp_io_context@detail@asio@@
+.?AV?$basic_streambuf@DU?$char_traits@D@std@@@std@@
+.?AVcancellation_handler_base@detail@asio@@
+.?AV?$func@Uthread_function@win_iocp_io_context@detail@asio@@@win_thread@detail@asio@@
+.?AUctype_base@std@@
+.?AV?$_Ref_count_obj2@V?$basic_random_access_handle@Vany_io_executor@asio@@@windows@asio@@@std@@
+.?AV?$basic_istream@DU?$char_traits@D@std@@@std@@
+.?AV?$basic_ios@DU?$char_traits@D@std@@@std@@
+.?AVfacet@locale@std@@
+.?AV_Ref_count_base@std@@
+.?AVthread_context@detail@asio@@
+.?AV?$cancellation_handler@Viocp_op_cancellation@win_iocp_handle_service@detail@asio@@@detail@asio@@
+.?AV?$execution_context_service_base@Vwin_iocp_handle_service@detail@asio@@@detail@asio@@
+.?AV?$basic_ostream@DU?$char_traits@D@std@@@std@@
+.?AVnoncopyable@detail@asio@@
+.?AV?$buffer@D@detail@v9@fmt@@
+.?AV?$execution_context_service_base@Vwin_iocp_io_context@detail@asio@@@detail@asio@@
+.?AVservice@execution_context@asio@@
+.?AV?$num_put@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@
+.?AV?$basic_memory_buffer@D$0PK@V?$allocator@D@std@@@v9@fmt@@
+.?AV?$basic_filebuf@DU?$char_traits@D@std@@@std@@
+.?AV?$codecvt@DDU_Mbstatet@@@std@@
+.?AV?$basic_ifstream@DU?$char_traits@D@std@@@std@@
+.?AVcodecvt_base@std@@
+.?AV?$basic_ofstream@DU?$char_traits@D@std@@@std@@
+.?AV?$e_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AVfull_formatter@details@spdlog@@
+.?AV?$basic_file_sink@Vmutex@std@@@sinks@spdlog@@
+.?AV?$basic_stringbuf@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@
+.?AV?$short_filename_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$C_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$b_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AVlogger@spdlog@@
+.?AV?$short_level_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$elapsed_formatter@Unull_scoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$0PECEA@@std@@@chrono@std@@@details@spdlog@@
+.?AV?$H_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$e_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AVformatter@spdlog@@
+.?AV?$r_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AVcolor_stop_formatter@details@spdlog@@
+.?AV?$r_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$D_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$t_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$_Ref_count_obj2@V?$basic_file_sink@Vmutex@std@@@sinks@spdlog@@@std@@
+.?AV?$_Ref_count_obj2@V?$wincolor_stdout_sink@Uconsole_mutex@details@spdlog@@@sinks@spdlog@@@std@@
+.?AV?$name_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$elapsed_formatter@Vscoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$0DOI@@std@@@chrono@std@@@details@spdlog@@
+.?AV?$A_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$T_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$source_linenum_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$p_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AVch_formatter@details@spdlog@@
+.?AV?$elapsed_formatter@Unull_scoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$0DOI@@std@@@chrono@std@@@details@spdlog@@
+.?AV?$source_location_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$source_funcname_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$M_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$short_filename_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$level_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$f_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$Y_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$a_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$a_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$I_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$E_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$basic_memory_buffer@H$0BPE@V?$allocator@H@std@@@v9@fmt@@
+.?AV?$elapsed_formatter@Vscoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$00@std@@@chrono@std@@@details@spdlog@@
+.?AVaggregate_formatter@details@spdlog@@
+.?AV?$z_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$wincolor_stdout_sink@Uconsole_mutex@details@spdlog@@@sinks@spdlog@@
+.?AV?$S_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AVcolor_start_formatter@details@spdlog@@
+.?AV?$p_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$elapsed_formatter@Unull_scoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$00@std@@@chrono@std@@@details@spdlog@@
+.?AV?$C_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$elapsed_formatter@Unull_scoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@@details@spdlog@@
+.?AV?$base_sink@Vmutex@std@@@sinks@spdlog@@
+.?AV?$v_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$R_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$c_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$source_filename_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$F_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$numpunct@_W@std@@
+.?AV?$num_get@_WV?$istreambuf_iterator@_WU?$char_traits@_W@std@@@std@@@std@@
+.?AV?$name_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$basic_memory_buffer@D$0BPE@V?$allocator@D@std@@@v9@fmt@@
+.?AV?$B_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$source_location_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$source_filename_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$A_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$elapsed_formatter@Vscoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$0PECEA@@std@@@chrono@std@@@details@spdlog@@
+.?AV?$_Ref_count_obj2@Vlogger@spdlog@@@std@@
+.?AV?$basic_ios@_WU?$char_traits@_W@std@@@std@@
+.?AV?$_Ref_count_obj2@VThreadPool@@@std@@
+.?AV?$elapsed_formatter@Vscoped_padder@details@spdlog@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@@details@spdlog@@
+.?AV?$m_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$S_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$source_funcname_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$basic_memory_buffer@I$0CA@V?$allocator@I@std@@@v9@fmt@@
+.?AV?$source_linenum_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$F_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$wincolor_sink@Uconsole_mutex@details@spdlog@@@sinks@spdlog@@
+.?AV?$z_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$R_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$D_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AVpattern_formatter@spdlog@@
+.?AV?$H_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$m_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$E_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$buffer@I@detail@v9@fmt@@
+.?AV?$basic_istream@_WU?$char_traits@_W@std@@@std@@
+.?AV?$ctype@_W@std@@
+.?AV?$M_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$d_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AVsink@sinks@spdlog@@
+.?AV?$pid_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$pid_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$basic_istringstream@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@
+.?AV?$short_level_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@
+.?AV?$b_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$d_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$T_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$f_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$t_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$c_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$v_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$Y_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$level_formatter@Unull_scoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$buffer@H@detail@v9@fmt@@
+.?AV?$B_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AVflag_formatter@details@spdlog@@
+.?AV?$I_formatter@Vscoped_padder@details@spdlog@@@details@spdlog@@
+.?AV?$iterator_buffer@V?$back_insert_iterator@V?$basic_memory_buffer@D$0PK@V?$allocator@D@std@@@v9@fmt@@@std@@DUbuffer_traits@detail@v9@fmt@@@detail@v9@fmt@@
+.?AV_Node_if@std@@
+.?AV?$collate@D@std@@
+.?AV?$_Node_str@D@std@@
+.?AV_Node_end_rep@std@@
+.?AV_Node_end_group@std@@
+.?AV_Node_back@std@@
+.?AV_Node_base@std@@
+.?AV_Root_node@std@@
+.?AV_Node_assert@std@@
+.?AV?$_Ref_count_obj2@U_Recursive_dir_enum_impl@filesystem@std@@@std@@
+.?AV?$_Ref_count_obj2@V?$basic_regex@DV?$regex_traits@D@std@@@std@@@std@@
+.?AV_Node_rep@std@@
+.?AV?$_Node_class@DV?$regex_traits@D@std@@@std@@
+.?AV_Node_capture@std@@
+.?AV_Node_endif@std@@
+.?AV?$_Ref_count_obj2@U_Dir_enum_impl@filesystem@std@@@std@@
+.?AV?$func@Uthread_function@thread_pool@asio@@@win_thread@detail@asio@@
+.?AV?$_Ref_count_obj2@Vthread_pool@asio@@@std@@
+.?AV?$execution_context_service_base@Vnull_reactor@detail@asio@@@detail@asio@@
+.?AVscheduler@detail@asio@@
+.?AVscheduler_task@detail@asio@@
+.?AV?$execution_context_service_base@Vscheduler@detail@asio@@@detail@asio@@
+.?AVnull_reactor@detail@asio@@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<assembly xmlns='urn:schemas-microsoft-com:asm.v1' manifestVersion='1.0'>
+  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+    <security>
+      <requestedPrivileges>
+        <requestedExecutionLevel level='asInvoker' uiAccess='false' />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+</assembly>
+PADPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPAD
