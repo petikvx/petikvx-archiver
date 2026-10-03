@@ -1,0 +1,13 @@
+x64dbg live — PID 472, ImageBase 0x730000
+Paused at system breakpoint ntdll, then OptionalHeader.AddressOfEntryPoint 0x7A3BA0
+(jmp 0x7A02A0, Go runtime entry). RVA EP 0x73BA0.
+
+First CreateProcessW hit (no CLI password, usage path only):
+
+lpApplicationName:
+  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+lpCommandLine (UTF-16 at 0xC000006500):
+  powershell -NoProfile -Command "Write-Host \"♤ The Gentlemen \" -BackgroundColor DarkGray -ForegroundColor White -NoNewline"
+
+Session left PAUSED on kernel32.CreateProcessW. No file walk / encrypt executed from this agent.

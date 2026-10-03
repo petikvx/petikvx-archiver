@@ -11,8 +11,14 @@ Instructions pour un agent qui reverse / documente des samples (VirusShare, dump
 | `Trojan.Win32.Diztakun.arpg/` | Scareware .NET/WPF : décompil C#, bat reconstruit, chaîne multi-étages **lisible non-expert** |
 | `Trojan.Win32.Cosmu.bwts/` | Packer ASPack + Hex-Rays, faux ransomware XOR, script IR de recovery |
 | `Ransomware.babuk-btcware/` | Schémas Mermaid (flux + crypto), footer live x64dbg, **§13 livrables compact** (libellés courts) |
+| `Ransomware.Gentlemen/` | **Enveloppe éditoriale** type article RE ANY.RUN : titre outcome, TL;DR, chaîne numérotée, hunting SOC, IoCs **highest-value** d’abord + densité lab (Hex-Rays, artefacts, bilingue) |
 
 Tous ont `README.md` + `README_EN.md` bilingues.
+
+**Barre à égaler sur le fond :** Spora / DarkRace / Babuk (lab).  
+**Barre à égaler sur la lecture SOC :** Gentlemen + articles RE [ANY.RUN cybersecurity-blog](https://any.run/cybersecurity-blog/) (CastleLoader, Raccoon, FunkLocker) — **sans** CTA produit, **sans** inventer de télémétrie de corpus.
+
+**Rédaction (obligatoire, pas optionnel) :** section **Enveloppe éditoriale** ci-dessous (titre outcome, TL;DR, chaîne numérotée, hunting, IoCs highest-value). Modèle : `Ransomware.Gentlemen/`. La checklist §6.2 refuse un livrable sans cette enveloppe.
 
 ---
 
@@ -23,7 +29,7 @@ Analyse **défensive / IR / recherche** uniquement :
 1. Identifier le sample (hashes, type PE/ELF, sections, imports)
 2. Croiser **binaire** + **décompil Hex-Rays / IDA** (fichier `.c` si présent — le demander si absent et utile)
 3. Optionnel : enrichir avec rapport **Any.RUN** (URL fournie) + screenshots
-4. Produire un rapport bilingue + artefacts extraits (config, clés pub, scripts, note…)
+4. Produire un rapport bilingue (**enveloppe Gentlemen / article RE ANY.RUN** + artefacts extraits : config, clés pub, scripts, note…)
 5. **Stop** : livrer en local. **Ne pas** exécuter le malware hors sandbox tierce. **Ne pas** `git commit` / `git push` sauf demande explicite.
 
 **Interdit :** améliorer le malware, aider au déploiement, écrire un encryptor/decryptor offensif, fournir une clé privée absente du sample, exécuter le binaire sur la machine hôte.
@@ -215,6 +221,8 @@ Ne pas attendre une demande utilisateur : dès que c’est là, on sort le fichi
 
 Verdict, process tree, drops, cmdline ; screenshots → `anyrun_screenshots/` ; corréler sandbox ↔ `sub_XXXX`.
 
+La sandbox, **si fournie**, sert de **colonne narrative** (comme CastleLoader sur le blog ANY.RUN) : process tree → drops → réseau → puis le `.c`. Légender chaque capture. Ne pas inventer une session. Sans URL : dire « pas d’Any.RUN fourni » et s’appuyer sur x64dbg / statique.
+
 ### 5. Artefacts runtime
 
 Note, bat/cmd, IoCs (hashes, mutex, ext, chemins, emails, onion…). Scripts Python de decode/extract quand ça aide la relecture (ex. ID victime Spora).  
@@ -234,7 +242,7 @@ Note, bat/cmd, IoCs (hashes, mutex, ext, chemins, emails, onion…). Scripts Pyt
 
 | Fichier | Contenu |
 |---------|---------|
-| `README.md` | Rapport **français** (structure + barre qualité) |
+| `README.md` | Rapport **français** (enveloppe éditoriale + structure + barre qualité) |
 | `README_EN.md` | **Même** fond en anglais + liens croisés FR/EN en tête |
 
 Selon pertinence : config déchiffrée, `extract_*.py`, pubkey, note HTML/txt, `anyrun_screenshots/README_captures.md`.  
@@ -290,6 +298,10 @@ Référence d’exemple : `Ransomware.babuk-btcware/README.md` §13.
 #### 6.2 Checklist fin de livrable (avant de dire « done »)
 
 - [ ] `README.md` + `README_EN.md` — **même** niveau de détail  
+- [ ] Titre **outcome** (pas « Analyse du sample »)  
+- [ ] Accroche 1 paragraphe + **TL;DR 5–8 puces** (FR **et** EN)  
+- [ ] Flux non trivial : chaîne **numérotée** + Mermaid S1–S3  
+- [ ] **Hunting** : tableau signaux actionnables (FR **et** EN)  
 - [ ] §13 compact (Groupe \| Fichier \| Rôle) — pas de chemins absolus / globs  
 - [ ] Hashes MD5 + SHA1 + SHA256  
 - [ ] Export selon type : IDA / `ilspycmd` / pyinst+pycdc  
@@ -297,11 +309,103 @@ Référence d’exemple : `Ransomware.babuk-btcware/README.md` §13.
 - [ ] **Gros `.asm` / `.lst` IDA effacés** (garder le `.c` ; pas de fichiers qui bloqueraient un push GitHub)  
 - [ ] Listes exhaustives (ext / whitelist / services…) — pas de `…`  
 - [ ] Wallpaper extrait **ou** absence explicitement dite  
+- [ ] §10 : **highest-value** puis tableau exhaustif  
+- [ ] §11 ATT&CK : colonne **comportement observé**  
 - [ ] §14 : non-vérifié listé (pas d’exec hôte, pas de privkey absente, etc.)  
 - [ ] `Articles/README.md` mis à jour si **nouvel** article  
 - [ ] §0 synthèse en **liste empilée** (pas tableau 2 colonnes large)  
-- [ ] Si flux non trivial : schémas Mermaid (voir structure 0bis)  
-- [ ] Si x64dbg/x32dbg actif : faits live intégrés + artefacts sous `artefacts/`
+- [ ] Si x64dbg/x32dbg actif : faits live intégrés + artefacts sous `artefacts/`  
+- [ ] Pas de CTA produit, pas de stats de corpus inventées
+
+---
+
+## Enveloppe éditoriale (qualité article RE ANY.RUN)
+
+Objectif : un SOC lit le rapport **comme un article de blog RE** (CastleLoader / Raccoon / FunkLocker sur any.run/cybersecurity-blog) **et** un reverse retrouve encore les `sub_XXXX` / artefacts.  
+Ce n’est **pas** un article intel de campagne (CSuite) : on n’invente pas de stats de corpus, de graphes TI Lookup, ni de CTA produit.
+
+Référence livrable : `Ransomware.Gentlemen/README.md` + `README_EN.md`.
+
+### Titre
+
+Titre **outcome** (ce que le sample fait / ce que l’IR voit), pas seulement le nom de famille :
+
+- Bon : `Gentlemen (Hapvida) : locker Go à mot de passe opérateur, wrap X25519 et marqueur GENTLEMEN`
+- Mauvais : `Analyse du sample` / `Ransomware.Gentlemen`
+
+Sous-titre meta (3–6 lignes) : hashes courts ou SHA256, famille, note / ext / magic, sources (PE + IDA + x64dbg / Any.RUN).
+
+### Accroche (1 court paragraphe avant le TL;DR)
+
+Qui a regardé, **ce** binaire, ce qui a été trouvé, **pourquoi un SOC s’en soucie** (porte d’exécution, marqueur fichier, persistance, latéral). Ton affirmatif. Disclaimer défensif **une** phrase (pas de roman).
+
+### TL;DR / Key takeaways (obligatoire, **avant** le PE)
+
+5–8 puces. Chaque puce = **un fait** en **gras** en tête, puis une ligne. Pas un plan de §, pas de « nous allons voir ».
+
+Couvrir au minimum (adapter à la famille) :
+
+- Identité (famille, langage/packer, campagne si connue)
+- Porte d’exécution / condition (password, mutex, locale…)
+- Impact (crypto + footer + rename **ou** C2 + vol)
+- Artefact visible (note, wallpaper, ext)
+- Persistance / latéral / anti-recovery s’ils existent
+- Limite de **ce** build (flags absents, packer, non-exécuté)
+- Phrase claire si pubkey seule / **pas de clé privée auteurs**
+
+### Chaîne d’attaque numérotée (obligatoire si flux non trivial)
+
+Après le TL;DR (et souvent avec les Mermaid) : **étapes 1…N** en prose courte, comme ANY.RUN CSuite/CastleLoader.
+
+Modèle ransomware / locker :
+
+1. Entry / parse CLI  
+2. Gate (password, mutex, anti-VM…)  
+3. Préparation hôte (Defender, VSS, kill)  
+4. Persistance  
+5. Walk  
+6. Encrypt / drop  
+7. Note + wallpaper  
+8. Cleanup / self-delete  
+
+Chaque étape : **verbe + artefact** (commande, fichier, `sub_XXXX`). Dire explicitement ce qui a été **observé live** vs **lu dans le code**.
+
+### Hunting / ce que le SOC collecte (obligatoire)
+
+Section dédiée (après la chaîne ou près des IoCs). 6–12 signaux **actionnables**, cellules courtes :
+
+| Signal | Où le chercher |
+|--------|----------------|
+| Footer / magic / ext | EDR fichier, YARA |
+| Note / wallpaper | Bureau, `%TEMP%` |
+| CLI / mutex / tâche | cmdline, schtasks, Run |
+| C2 / email / onion | DNS, mail, proxy |
+
+Pas de query inventée pour un produit qu’on n’a pas. Si Any.RUN / Splunk / Sigma est **réellement** dérivable des IoCs, une ou deux lignes OK.
+
+### IoCs : highest-value d’abord
+
+Dans §10 : d’abord **3–8 indicateurs qui suffisent à chasser ce build**, puis le tableau exhaustif (hashes, chemins, CLI…).  
+Highest-value = magic/footer, note, mutex, pubkey, C2, tâche nommée, password **de porte** (pas une clé fichiers).  
+Éviter de noyer le lecteur sous SHA256 avant le marqueur `GENTLEMEN` / la note.
+
+### ATT&CK : comportement observé
+
+Tableau **ID | Technique | Comportement dans ce sample** (colonne « notes » obligatoire). Une ligne = un fait du binaire / de la sandbox, pas le nom MITRE recopié.
+
+### Visuels
+
+- Mermaid S1–S3 si flux non trivial (déjà exigé).  
+- Captures sandbox / debugger **commentées** (une légende = ce qu’on voit).  
+- Wallpaper **extrait** (§3bis).  
+- Pas d’infographie marketing. Pas de stats « N sessions ANY.RUN » sans URL / export réel.
+
+### Interdit dans l’enveloppe
+
+- CTA produit (sandbox vendor, « Strengthen Your SOC »).  
+- Inventer une géographie victimes / un volume de campagnes.  
+- TL;DR qui répète le sommaire.  
+- FR riche / EN résumé (les **deux** ont TL;DR + chaîne + hunting).
 
 ---
 
@@ -309,8 +413,11 @@ Référence d’exemple : `Ransomware.babuk-btcware/README.md` §13.
 
 Numérotation claire ; **ne pas survoler**. Ordre type :
 
+**Avant §0 :** titre outcome + accroche + **TL;DR** (enveloppe ci-dessus)
+
 0. Synthèse sandbox ↔ code (**liste empilée**, pas un tableau 2 colonnes large — voir ci-dessous)  
-0bis. **Schémas** (Mermaid) — si flux non trivial (ransomware, multi-étages, crypto conditionnelle)  
+0bis. **Schémas** (Mermaid) + **chaîne d’attaque numérotée** — si flux non trivial  
+0ter. **Hunting / collecter** (tableau signaux) — si IoCs actionnables  
 1. PE / point d’entrée (+ machine d’états si reprise)  
 2. Init (mutex, blobs, pubkey…) — `2.1`, `2.2`…  
 3. Effets collatéraux (registre, shortcuts, icône, **wallpaper extrait**…)  
@@ -320,8 +427,8 @@ Numérotation claire ; **ne pas survoler**. Ordre type :
 7. Crypto — **sous-sections détaillées** (payload, ID, `.KEY`/config, encrypt fichier…)  
 8. Note de rançon  
 9. Timeline  
-10. IoCs  
-11. ATT&CK  
+10. IoCs (**highest-value** puis tableau exhaustif)  
+11. ATT&CK (**comportement observé**)  
 12. Captures  
 13. Fichiers produits (**format compact** §6.1)  
 14. Références + ce qui n’a **pas** été vérifié  
@@ -353,11 +460,20 @@ Les tableaux **2 colonnes** (Observation | Confirmation) sont souvent **coupés*
 
 Référence : `Ransomware.babuk-btcware/README.md` §0.
 
-### §10 IoCs — format tableau (obligatoire)
+### §10 IoCs — highest-value puis tableau (obligatoire)
 
-Éviter les IoCs « en prose ». Utiliser des tableaux copiables (cellules **courtes** ; sinon passer en liste empilée comme §0) :
+Éviter les IoCs « en prose ». **D’abord** une liste / petit tableau **highest-value** (3–8 lignes : magic, note, mutex, C2, tâche, pubkey…). **Ensuite** le tableau exhaustif copiable (cellules **courtes** ; sinon passer en liste empilée comme §0) :
 
 ```markdown
+**Highest-value**
+
+| Signal | Valeur |
+|--------|--------|
+| Magic / footer | `GENTLEMEN` |
+| Note | `README-GENTLEMEN.txt` |
+
+**Exhaustif**
+
 | Type | Valeur |
 |------|--------|
 | SHA256 | `…` |
@@ -369,11 +485,21 @@ Référence : `Ransomware.babuk-btcware/README.md` §0.
 
 Quand l’utilisateur dit « détail le §X » : enrichir **ce** § dans **FR et EN** sans alléger le reste.
 
+### §11 ATT&CK — comportement observé (obligatoire)
+
+```markdown
+| ID | Technique | Comportement observé |
+|----|-----------|----------------------|
+| T1486 | Data Encrypted for Impact | ChaCha20/AES, wrap X25519, footer `GENTLEMEN`, seuil 1 MiB |
+```
+
+Pas une matrice vide. Chaque ligne doit citer un fait de **ce** sample.
+
 ---
 
 ## Barre qualité rédactionnelle (obligatoire)
 
-Objectif : un lecteur IR **non expert reverse** doit comprendre *ce qu’il voit* ; un reverse doit quand même retrouver les `sub_XXXX`.
+Objectif : un lecteur IR **non expert reverse** doit comprendre *ce qu’il voit* (qualité **article RE ANY.RUN**) ; un reverse doit quand même retrouver les `sub_XXXX` (qualité **lab Spora/DarkRace**). Les deux, dans **FR et EN**.
 
 ### Pour chaque § technique important (surtout crypto / ID / artefacts)
 
@@ -395,11 +521,13 @@ Exiger explicitement dans le rapport :
 
 ### Style
 
-- FR dans `README.md`, EN dans `README_EN.md` — **même niveau de détail** des deux côtés  
+- FR dans `README.md`, EN dans `README_EN.md` — **même niveau de détail** des deux côtés (y compris TL;DR, chaîne, hunting)  
 - Tableaux pour IoCs, mappings, listes d’extensions  
 - Affirmatif ; écrire explicitement le non-vérifié (pas d’exec locale, pas de privkey auteurs…)  
 - Pas de jargon inventé ; termes établis (VSS, overlay, footer, wrap RSA…)  
-- Éviter les § qui ne sont que des listes d’API sans prose
+- Éviter les § qui ne sont que des listes d’API sans prose  
+- Phrases courtes ; « on voit / le code fait / le SOC collecte » — pas « nous allons analyser »  
+- Distinguer **observé live** (x64dbg / Any.RUN) et **lu dans le binaire**
 
 ### Anti-patterns (à éviter)
 
@@ -412,6 +540,12 @@ Exiger explicitement dans le rapport :
 - §13 livrables avec **chemins absolus** / libellés trop longs / globs `*` (affichage coupé `…`) — utiliser le **format compact** (§6.1)  
 - §0 synthèse en **tableau 2 colonnes large** (tronqué en TUI) — utiliser la **liste empilée**  
 - Test encrypt / drops sous x64dbg via **Desktop partagé** alors qu’un chemin **local VM** suffit  
+- Titre plat (`Analyse du sample`) sans outcome  
+- Sauter le TL;DR / la chaîne numérotée / le hunting  
+- IoCs = uniquement des hashes, magic/note/mutex noyés en bas  
+- ATT&CK = liste d’IDs sans comportement de **ce** sample  
+- CTA vendor / stats de campagnes inventées (« 351 sessions ») sans source  
+- Enveloppe blog **sans** Hex-Rays / artefacts (l’inverse de la mission : les deux)  
 
 ---
 
@@ -426,6 +560,6 @@ Exiger explicitement dans le rapport :
 
 ## Exemple de prompt utilisateur
 
-> Analyse le sample dans `./NomFamille/` (binaire + `.c` IDA). Any.RUN : \<url\>. Qualité Spora/DarkRace ; README FR + EN. Schémas Mermaid si utile ; §13 compact. Si x64dbg actif → corréler live ; fichiers test sur **disque local VM**.
+> Analyse le sample dans `./NomFamille/` (binaire + `.c` IDA). Any.RUN : \<url\>. Qualité Spora/DarkRace **et** enveloppe Gentlemen / article RE ANY.RUN (TL;DR, chaîne numérotée, hunting, IoCs highest-value). README FR + EN. Schémas Mermaid si utile ; §13 compact. Si x64dbg actif → corréler live ; fichiers test sur **disque local VM**.
 
-L’agent enchaîne 0→6 (+ checklist §6.2) sans redemander la méthodo ; ne bloque que sur un choix réel (nom de dossier, tri screenshots, portée du walk live).
+L’agent enchaîne 0→6 (+ checklist §6.2 + enveloppe éditoriale) sans redemander la méthodo ; ne bloque que sur un choix réel (nom de dossier, tri screenshots, portée du walk live).

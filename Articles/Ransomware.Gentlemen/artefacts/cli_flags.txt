@@ -1,0 +1,29 @@
+This build (SHA256 3ab9575225e00a83…c5c9235) — Go flag set in sub_4FAB60
+
+Required:
+  --password PASS     Access password (hardcoded G7Vz9eyG)
+
+Optional:
+  --path DIR1,DIR2,...   Comma-separated targets
+  --T MIN                Delay before start, minutes
+  --silent               Do not rename after encrypt (also skips wallpaper in later docs)
+
+Mode (mutually exclusive):
+  --system               Local drives as SYSTEM (schtasks gentlemen_system)
+  --shares               Mapped / UNC shares in session
+  --full                 Two-phase: --system then --shares (2 min delay messages)
+
+Speed (mutually exclusive; files > 1 MiB):
+  --fast                 help: Encrypt 3% only   / usage: 9 percent crypt
+  --superfast            help: Encrypt 1% only   / usage: 3 percent crypt
+  --ultrafast            help: Encrypt 0.3% only / usage: 1 percent crypt
+
+Errors:
+  Error: --shares and --system cannot be used together.
+  Error: --shares and --path cannot be used together.
+  Error: --full cannot be combined with --system, --shares or --path.
+  Error: --fast, --superfast, and --ultrafast cannot be used together.
+  bad args               wrong / missing password
+
+NOT present in this build (later Gentlemen Go variants):
+  --spread, --gpo, --keep, --wipe, --no-admin

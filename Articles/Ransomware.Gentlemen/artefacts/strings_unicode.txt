@@ -1,0 +1,8 @@
+00257770	ntdll.dll
+00257790	winmm.dll
+00257890	powrprof.dll
+00257b20	bcryptprimitives.dll
+00257ee8	 0@P`p
+00258440	 !"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\]^_`ABCDEFGHIJ
+002584d8	LMNOPQR
+002584e8	TUVWXYZ{|}~

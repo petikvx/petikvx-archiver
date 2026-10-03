@@ -1,0 +1,18 @@
+windows
+System32
+system volume information
+perflogs
+msocache
+appdata
+microsoft
+mozilla
+intel
+tor browser
+windows.old
+.~ws
+.~bt
+.Bin
+#recycle
+config.msi
+msstyles
+themepack

