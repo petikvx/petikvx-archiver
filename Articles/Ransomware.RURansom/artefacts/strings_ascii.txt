@@ -1,0 +1,18 @@
+.NET Framework 4.7.2
+AES_Encrypt
+AesCrypter
+BuildPassword
+ChangeExtension
+C:\Users\Admin1\source\repos\RURansom\RURansom\obj\Debug\RURansom.pdb
+EncryptFile
+Rfc2898DeriveBytes
+RijndaelManaged
+RURansom
+RURansom.exe
+encryptAllDirectoryAndSubDirectoryFiles
+getEncryptedAesKey
+spread
+mscoree.dll
+_CorExeMain
+requireAdministrator
+5bbfe247-2ef9-439c-a474-6afd304a2ba7

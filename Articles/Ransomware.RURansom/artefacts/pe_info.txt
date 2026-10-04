@@ -1,0 +1,28 @@
+RURansom sample.bin PE triage
+
+size            12288
+MD5             6cb4e946c2271d28a4dee167f274bb80
+SHA1            0bea48fcf825a50f6bf05976ecbb66ac1c3daa6b
+SHA256          979f9d1e019d9172af73428a1b3cbdff8aec8fdbe0f67cba48971a36f5001da9
+machine         0x14c (i386)
+TimeDateStamp   0xdc13e9e0 -> 2087-01-01 20:49:36 UTC (dummy / non-authoritative)
+characteristics 0x22
+optional magic  0x10b (PE32)
+EP RVA          0x38da (_CorExeMain stub)
+ImageBase       0x400000
+subsystem       3 (WINDOWS_CUI)
+CLR dir         RVA 0x2008 size 72
+overlay         none
+
+sections:
+  .text    VA=0x2000 VSz=0x18e8 raw=0x200+0x1a00 ent=5.50 chars=0x60000020
+  .rsrc    VA=0x4000 VSz=0x1114 raw=0x1c00+0x1200 ent=4.95 chars=0x40000040
+  .reloc   VA=0x6000 VSz=0xc raw=0x2e00+0x200 ent=0.08 chars=0x42000040
+
+CLR header      cb=72 runtime=2.5 metadata RVA 0x2554 size 4764
+CLR flags       0x20003 (ILONLY|32BITREQUIRED|32BITPREFERRED)
+EntryPointToken 0x6000001 (MethodDef 0x00000001 = Program.Main)
+assembly        RURansom 1.0.0.0
+target         .NET Framework 4.7.2 / mscorlib v4.0.30319
+PDB            C:\Users\Admin1\source\repos\RURansom\RURansom\obj\Debug\RURansom.pdb
+GUID           5bbfe247-2ef9-439c-a474-6afd304a2ba7
