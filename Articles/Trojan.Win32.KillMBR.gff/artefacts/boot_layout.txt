@@ -1,0 +1,24 @@
+RedBoot MBR (boot.bin) — 512 bytes, assembled NASM 2.07 -f bin
+
+ORG 0x7C00, 16-bit real mode.
+
+Offset  Size  Content
+0x000   ~0x36  stub: jmp, clear_screen (int 10h AH=07 BH=0x4F red-on-white), print loop (int 10h AH=0E)
+0x036   211    ASCII ransom text + NUL (msg at file offset 54 / 0x36)
+0x109   317    padding zeros (NASM `times 510-($-$$) db 0`)
+0x1BE   64     partition table — ALL ZEROS (this is the wiper effect)
+0x1FE   2      55 AA
+
+Ransom text (placeholder ID = 40 ASCII 'x'):
+This computer and all of it's files have been locked! Send an email to
+redboot@memeware.net containing your ID key for instructions on how to
+unlock them. Your ID key is xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Live: AutoIt _REPLACESTRINGINFILE replaces the 40 x with IDKEY
+(SHA1 hex of SHA1(@UserName) hex, AutoIt Binary string without 0x prefix)
+before NASM runs. boot.bin hash on disk therefore differs per victim.
+
+overwrite.exe WriteFile()s the whole 512-byte file to \\.\PhysicalDrive0
+at offset 0 (no SetFilePointer). Sector 0 including the partition table
+is replaced. There is no restore stub and no key prompt on the boot screen
+(jmp $ infinite loop after printing).

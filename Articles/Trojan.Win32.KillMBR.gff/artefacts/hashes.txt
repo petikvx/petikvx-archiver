@@ -1,0 +1,47 @@
+# Hashes — Trojan.Win32.KillMBR.gff / RedBoot
+
+## Launcher (packed UPX, Kaspersky folder name)
+file    sample.bin
+size    1246725
+md5     e0340f456f76993fc047bc715dfdae6a
+sha1    d47f6f7e553c4bc44a2fe88c2054de901390b2d7
+sha256  1001a8c7f33185217e6e1bdbb8dba9780d475da944684fb4bf1fc04809525887
+
+## Launcher unpacked (UPX 5.2.1 -d)
+file    sample_unpacked.exe
+size    1723397
+md5     f22dd2313b3485c0254f73568883543b
+sha1    5c66acc7d85585e6b5981011a99d3a86ac014345
+sha256  f2d0720af6402e3857ccabde8204a6f231c120d76d39750c09dab3acbe145fee
+
+## Drops (FileInstall / FileMove names on host)
+
+overwrite.exe  (FileInstall from C:\Users\Kitty\Desktop\shared2\mbrover.exe)
+size    295900
+md5     bc160318a6e8dadb664408fb539cd04b
+sha1    4b5eb324eebe3f84e623179a8e2c3743ccf32763
+sha256  f2bc5886b0f189976a367a69da8745bf66842f9bba89f8d208790db3dad0c7d2
+
+assembler.exe  (NASM 2.07, Jul 19 2009 — non-malicious assembler)
+size    603648
+md5     7e3cea1f686207563c8369f64ea28e5b
+sha1    a1736fd61555841396b0406d5c9ca55c4b6cdf41
+sha256  2a5305369edb9c2d7354b2f210e91129e4b8c546b0adf883951ea7bf7ee0f2b2
+
+protect.exe  (FileInstall from ...\TMkill.exe, AutoIt)
+size    857600
+md5     fd414666a5b2122c3d9e3e380cf225ed
+sha1    de139747b42a807efa8a2dcc1a8304f9a29b862d
+sha256  e61a8382f7293e40cb993ddcbcaa53a4e5f07a3d6b6a1bfe5377a1a74a8dcac6
+
+boot.asm  (placeholder ID = 40 x)
+size    825
+md5     c94da88713cc468a21507e4d9fb401a6
+sha1    9ef1b4ea92d4ac0768b0eb8af37caca43a06bef5
+sha256  7e4ad580a97fe3642e9ad6f9803debfbd16562b92c1fbbd730bbc82aed37704a
+
+boot.bin  (NASM -f bin of the placeholder boot.asm; live copy has IDKEY patched)
+size    512
+md5     f3d953693e8d2fbc6f844c06f43b0ef2
+sha1    f51c4dba3c16a37e60458d31baf305463ded3007
+sha256  b8e7aa2e13c7638e218be74b63c818e4d4a5502f4d92f6901d65f557e687ec94

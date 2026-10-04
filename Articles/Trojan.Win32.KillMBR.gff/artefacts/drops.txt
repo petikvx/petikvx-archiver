@@ -1,0 +1,20 @@
+Host working directory:
+  %HOMEDRIVE%%HOMEPATH%\<8-digit Random 10000000-99999999>\
+  example: C:\Users\victim\12345678\
+
+Dropped / renamed:
+  overwrite.exe   FileInstall  mbrover.exe     MBR writer (MinGW/TDM-GCC 4.9.2)
+  assembler.exe   FileInstall  NASM 2.07       deleted after use
+  boot.asm        FileInstall  mbr.asm         patched then deleted
+  boot.bin        nasm -f bin boot.asm -o boot.bin
+  protect.exe     FileInstall  TMkill.exe      loop kill Taskmgr / ProcessHacker
+  main.exe        FileMove     self (RedBoot.exe)
+
+CLI:
+  assembler.exe -f bin "<WD>\boot.asm" -o "<WD>\boot.bin"
+  overwrite.exe "<WD>\boot.bin"
+  protect.exe   (no args, infinite loop)
+
+Developer gate:
+  If @UserName == "Kitty" Then Exit
+  Compile-time paths: C:\Users\Kitty\Desktop\...

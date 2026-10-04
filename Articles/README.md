@@ -1,6 +1,6 @@
 # 🗂️ Articles Index - petikvx-archiver
 
-![Last Update](https://img.shields.io/badge/last_update-2026--10--03-blue)
+![Last Update](https://img.shields.io/badge/last_update-2026--10--04-blue)
 ![Total Articles](https://img.shields.io/badge/articles-30%2B-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -39,6 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
+| [Trojan.Win32.KillMBR.gff (RedBoot)](Trojan.Win32.KillMBR.gff/README.md) | `1001a8c7f33185217e6e1bdbb8dba9780d475da944684fb4bf1fc04809525887` | 2026-10-04 |
 | [Ransomware.Gentlemen (Hapvida)](Ransomware.Gentlemen/README.md) | `3ab9575225e00a83a4ac2b534da5a710bdcf6eb72884944c437b5fbe5c5c9235` | 2026-10-03 |
 | [Ransomware.Win64.Akira](Ransomware.Win64.Akira/README.md) | `25508a6c37856b4b093071776256d7b304fac94400ffd192859e609ecc41b5a8` | 2026-10-02 |
 | [Ransom.Linux.INC](Ransom.Linux.INC/README.md) | `86d04474459f2b0df01eb59e37e26a0c5eff5c48b359fb662bf0ea513f0f7d13` | 2026-09-29 |

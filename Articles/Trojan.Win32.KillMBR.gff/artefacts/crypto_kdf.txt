@@ -1,0 +1,25 @@
+RedBoot file crypto (AutoIt Crypt.au3 / Windows CAPI)
+
+ENCKEY = hex(SHA1(@UserName)) with AutoIt Binary "0x" prefix stripped
+IDKEY  = hex(SHA1(ENCKEY_ascii)) same stripping   → 40 hex chars in MBR note
+
+ENCRYPTDIRECTORY:
+  folders: %USERPROFILE%\Desktop, Documents, Downloads, Pictures, Videos, Music
+  recursive, all names ("*")
+  skip if size >= 52428800 (50 MiB)
+  _CRYPT_ENCRYPTFILE(src, src & ".locked", ENCKEY, CALG_AES_256=26128)
+  FileDelete(src)
+
+_CRYPT_ENCRYPTFILE → _CRYPT_DERIVEKEY(ENCKEY, CALG_AES_256)
+  default hash CALG_MD5
+  CryptDeriveKey on MS AES CSP
+  then CryptEncrypt in 1 MiB chunks, last chunk Final=True
+
+No per-file IV stored in a footer. No RSA wrap. No author private key
+in the sample. The file key is a function of the Windows username.
+
+Extension: original name kept, ".locked" appended
+  example: photo.jpg → photo.jpg.locked
+
+This documents the KDF for IR / backup recovery. It is not a decryptor.
+MBR / partition table damage is independent of this AES layer.

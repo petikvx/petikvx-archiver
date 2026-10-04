@@ -1,0 +1,20 @@
+Packed launcher (UPX, before -d)
+
+size            1246725
+md5             e0340f456f76993fc047bc715dfdae6a
+sha1            d47f6f7e553c4bc44a2fe88c2054de901390b2d7
+sha256          1001a8c7f33185217e6e1bdbb8dba9780d475da944684fb4bf1fc04809525887
+machine         PE32 0x14c
+TimeDateStamp   0x59bdf65a = 2017-09-17 04:13:14 UTC
+ImageBase       0x400000
+EP RVA          0x1b2ae0 (UPX stub)
+subsystem       2 GUI
+sections        UPX0 VA 0x1000 VSz 0x15c000 raw 0
+                UPX1 VA 0x15d000 VSz 0x56000 raw 0x55e00 ent ~7.94
+                .rsrc VA 0x1b3000 VSz 0xdb000 raw 0xda400 ent ~7.98
+UPX magic       UPX! at file 0x3e0  version bytes 0d 09 (need UPX >= 3.x)
+overlay         5 bytes leftover
+manifest        requireAdministrator
+AutoIt product  3.3.14.2  (VERSION resource after unpack)
+wrapper outfile RedBoot.exe  (#AutoIt3Wrapper_Outfile)
+UPX unpack      UPX 5.2.1 -d → sample_unpacked.exe 1723397 bytes
