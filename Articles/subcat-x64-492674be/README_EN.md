@@ -1,6 +1,6 @@
 Language: English | French version: [README.md](README.md)
 
-# subcat-x64-Windows-MSVC.bin: an x64 crypter-loader buried under 2,596 decoy functions that decrypts a WinHTTP implant in memory (host fingerprint, hidden desktop, screen capture)
+# subcat-x64-Windows-MSVC.bin: an x64 crypter-loader buried under 2,596 decoy functions that decrypts an infostealer in memory (browser credentials and cookies, Steam, Roblox, C2 resolved through an Ethereum smart contract)
 
 - **Sample**: `subcat-x64-Windows-MSVC.bin` (PE64, 933,888 bytes, file name mimicking the legitimate `subcat` tool)
 - **SHA256**: `492674be56b26138effec402b77ec26388a1da5df111ccb404c941005c96e808`
@@ -8,7 +8,7 @@ Language: English | French version: [README.md](README.md)
 - **Family**: not identified (no attribution attempted without evidence)
 - **Sources**: PE + IDA/Hex-Rays (2 databases) + Unicorn emulation of the decryption routine + x64dbg session on a VM (2026-10-07, [notes](artefacts/x64dbg_session_notes.txt)). No Any.RUN report provided.
 
-We opened this binary in IDA and pulled a second, encrypted PE out of `.data`. What matters for a SOC: the file looks like a boring tool (364 game-style exports, 2,596 decoy functions, hundreds of fake dialogs) yet it maps, without ever writing it to disk, an implant that fingerprints the machine and handles Windows desktops. Defensive analysis only: the sample was never executed on the host; decryption ran in a CPU emulator.
+We opened this binary in IDA and pulled a second, encrypted PE out of `.data`. What matters for a SOC: the file looks like a boring tool (364 game-style exports, 2,596 decoy functions, hundreds of fake dialogs) yet it maps, without ever writing it to disk, an implant that fingerprints the machine, handles Windows desktops and, judging by its decrypted strings (§9.8), targets browser passwords, cookies and extensions, Steam tokens, Roblox cookies and Outlook files, with a C2 read from an Ethereum smart contract. No string mentions GitHub, `.git` or a GitHub token. Defensive analysis only: the sample was never executed on the host; decryption ran in a CPU emulator.
 
 ## TL;DR
 
@@ -18,12 +18,15 @@ We opened this binary in IDA and pulled a second, encrypted PE out of `.data`. W
 - **Encrypted stage 2 in `.data`** (entropy 7.91): 0x3B400 bytes at `0x140070100`, 0x80-byte key at `0x140070000`, home-made stream cipher (1,024-byte state, `sub_140069F50`). Decrypts cleanly to a valid PE64.
 - **Reflective loading.** `VirtualAlloc` RW → copy → decrypt → manual mapping (relocations, imports via `LoadLibraryA`/`GetProcAddress`, `RtlAddFunctionTable`, TLS, `VirtualProtect`) → jump to the entry point. Stage 1 imports no API at all: everything goes through export-name hashing.
 - **Stage 2 is a heavily obfuscated implant** (MBA, opaque predicates, computed jump tables, encrypted strings). Observed imports: `CreateDesktopW`/`OpenDesktopW`, GDI (`BitBlt`, `GetDIBits`), `GetComputerNameA`, `GetUserNameA`, `GetKeyboardLayoutNameW`, `EnumDisplaySettingsW`, COM/WMI, `LookupPrivilegeValueW("SeImpersonatePrivilege")`. It loads `winhttp.dll` at startup.
+- **Stage 2 strings decrypted: it is an infostealer** (read from strings, §9.8). Targets: `Login Data`, `Network\Cookies`, browser extensions (`\Local Extension Settings\`), Firefox (`logins.json`, `cookies.sqlite`), Chrome app-bound key (`app_bound_encrypted_key`), Steam (`config.vdf`, `local.vdf`), Roblox (`RobloxCookies.dat`), Outlook folder. Named outputs `Applications/Steam/Tokens.txt`, `Applications/Roblox/Cookies.txt`.
+- **C2 resolved through an Ethereum smart contract** (read from strings). JSON-RPC `eth_call` to `https://rpc.mevblocker.io`, contract `0x999941b74F6bbc921D5174A5b29911562cd2D7CF`, selector `0xc2fb26a6`. The contract was not queried: the final C2 URL is unknown.
+- **No GitHub in stage 2.** No decoded string (nor any in stage 1) contains `github`, `.git`, `.ssh`, `GITHUB_TOKEN` or a `ghp_`/`gho_` token prefix. Browser-credential theft could still expose GitHub sessions: an **indirect, unverified** link. Only 66 strings out of 206 candidates are readable; the rest is not decoded.
 - **Named object** `\BaseNamedObjects\28f78af408eeef7df2e43016843788b6` built in `sub_140006BA0` : it is a named **semaphore** (`NtCreateSemaphore`, syscall number `0xC0`), an instance lock. Observed live.
 - **Confirmed live (x64dbg, VM).** Gates passed, decrypted buffer identical to the emulation result (SHA256 `83f1a309…9c81`), stage 2 mapped at `0x140000000`, EP `0x1400020D0` reached, guards 2 and 3 passed, `sub_140006BA0` reached.
 - **Early exit on the debug VM.** On replay, `winhttp.dll` is indeed loaded (`LoadLibraryExW`, flags `0x800`), then `sub_140006BA0` returns quickly and stage 2 calls `ExitProcess(0)`: no `winhttp` call, no hidden desktop observed.
 - **Direct syscalls (read in code).** `sub_14002F100` holds a `syscall` instruction (`0x14002F133`) fed by a hash → syscall-number table (`qword_14003BB58`). `sub_140006BA0` creates a named semaphore this way (`NtCreateSemaphore`, `OBJ_OPENIF`, counts 0 / 1): **no breakpoint on an `Nt*` API can see it**. This explains why nothing fired on `NtCreateMutant`/`NtCreateEvent` live. Earlier I had labelled it an "event" from its arguments; the syscall number corrected that (§9.7).
 - **CPUID anti-VM: confirmed live.** `sub_14002BC70` reads `CPUID(1)` (hypervisor bit) and `CPUID(0x40000000)` (vendor), computes a CRC32 of the vendor and returns true for Xen, VirtualBox, VMware, QEMU-TCG or KVM, or when a hypervisor is present and is not `Microsoft Hv`. On the debug VM (VirtualBox, 1 CPU) it returns `AL = 1` and stage 2 exits with code 0.
-- **Limits of this report.** The stage 2 C2, protocol, commands and persistence are **not** captured: on the debug VM stage 2 stops at the VM detection, and I did not bypass the test. Family and exact purpose remain to be confirmed in an environment the sample does not exclude (a third-party sandbox, for example).
+- **Limits of this report.** The final C2 URL, protocol, commands and persistence of stage 2 are **not** captured: on the debug VM stage 2 stops at the VM detection, and I did not bypass the test. Family and exact purpose remain to be confirmed in an environment the sample does not exclude (a third-party sandbox, for example).
 
 ## 0. Sandbox ↔ code summary
 
@@ -52,6 +55,9 @@ No Any.RUN report provided: static analysis and emulation stand in for it.
 
 - **Gates and guards passed**
   → `sub_14006C400` returns 0; guard 2 (`sub_14002BE60`) returns 0; guard 3 (`sub_14002A7B0`) passes; details in [x64dbg_session_notes.txt](artefacts/x64dbg_session_notes.txt)
+
+- **Stage 2 strings (infostealer, Ethereum C2)**
+  → stage 2 `.rdata` (`0x140033000`); decoded by [decode_stage2_strings.py](artefacts/decode_stage2_strings.py) → [stage2_strings_decoded.txt](artefacts/stage2_strings_decoded.txt); details §9.8
 
 - **No wallpaper**
   → no wallpaper API nor image resource in either stage
@@ -126,6 +132,13 @@ flowchart TD
 | `syscall` instruction executed from an image mapped at `0x140000000` (outside `ntdll`) | syscall ETW, kernel EDR |
 | `CPUID` leaves `1` and `0x40000000` just before a clean exit (code 0) | behavioral EDR |
 | Immediate exit code `-1` on a ru/be-locale host | sandbox triage |
+| HTTPS request to `rpc.mevblocker.io` with body `{"jsonrpc":"2.0","id":1,"method":"eth_call",…}` and `"to":"0x999941b74F6bbc921D5174A5b29911562cd2D7CF"` from a process that is not an Ethereum client | proxy, DNS, TLS SNI |
+| Non-browser process reading `Login Data`, `Network\Cookies`, `logins.json`, `cookies.sqlite`, `\Local Extension Settings\` | file EDR |
+| Access to `%LocalAppData%\Steam\local.vdf`, `…\config\config.vdf`, `%LocalAppData%\Roblox\LocalStorage\RobloxCookies.dat` | file EDR |
+| Read of `%UserProfile%\Documents\Outlook Files` (a `.pst` named `honey@pot.com.pst` is looked for there, inferred as an anti-sandbox bait) | file EDR |
+| WMI: `SELECT * FROM AntiVirusProduct` in `ROOT\SecurityCenter2`; `SELECT * FROM Win32_VideoController` | WMI log |
+| `powershell -exec bypass -f "…"`, `msiexec.exe /i "…"`, `rundll32 "…"` launches with `__COMPAT_LAYER=RunAsInvoker` in the environment | cmdline, EDR |
+| HTTP `multipart/form-data` upload with `name="file"`, parameters `access_token=` and `type=ping`, user-agent `Chrome/117.0.0.0` | proxy |
 
 No SIEM query invented: no product name is assumed.
 
@@ -291,7 +304,7 @@ No network import: the C2 goes through APIs resolved at runtime (`winhttp.dll` l
 | `sub_1400211B6` | `EnumDisplaySettingsW`: resolution |
 | `sub_14002A090…14002A690` | COM/WMI queries (`SysAllocString`, `CoCreateInstance`) |
 
-Together they point to a screen-control / spying implant. **This remains an inference**: no C2, no command, no runtime behavior was collected.
+Together they point to a screen-control / spying implant. **This remains an inference from imports**: no runtime behavior was collected. The decrypted strings (§9.8) add a credential-theft side and a C2 read from the blockchain.
 
 ### 9.4 Stage 2 obfuscation
 
@@ -379,12 +392,65 @@ return h in {XenVMM, VBox, VMware, TCG, KVM(9 chars)}
 
 The debug VM is a VirtualBox (`innotek GmbH`, 1 CPU, hypervisor present). The exact vendor returned by `CPUID(0x40000000)` was not read, so we do not know which clause (the `VBoxVBoxVBox` hash or "hypervisor ≠ Microsoft Hv") fired. Both observed behaviors (no network, no hidden desktop, `ExitProcess(0)`) are explained. I did not alter the test result; no bypass is described here.
 
+### 9.8 Decrypted stage 2 strings: an infostealer (read from strings)
+
+#### What is it for?
+
+Stage 2 hides its texts (browser paths, URLs, commands) so that `strings` shows nothing. Each text is scrambled with a key that depends on the letter's position: letter 1 is XORed with `C`, letter 2 with `2×C`, letter 3 with `3×C`, and so on, where `C` is a number specific to each text. The long "MBA" expressions Hex-Rays prints (for example `(x&0x580C)*(x&0xA7F3^0xA7F3)+…`) actually reduce to `C×x`: they are noise. Anyone with the file can therefore recover everything. What it reveals: stage 2 is not only screen spying; it steals credentials.
+
+#### Clean code
+
+```c
+// general shape, seen in sub_140006BA0 (14897 = 0x3A31) and sub_140011CA0 (18834 = 0x4992)
+void decode(uint16_t *s, int n, uint16_t C) {
+    for (int i = 0; i < n; i++)
+        s[i] ^= C * (i + 1);          // 16-bit; 8-bit variant for ASCII texts
+}
+```
+
+Cross-check: the decoder recovers `C = 0x3A31` (14897) for `\BaseNamedObjects\` and `C = 0x4992` (18834) for `SeImpersonatePrivilege`, the two constants already read by hand in Hex-Rays (§4, §9.5). [decode_stage2_strings.py](artefacts/decode_stage2_strings.py) does not know `C`: it derives it from the first (printable) character and keeps readable runs of 9 characters or more.
+
+#### What we see
+
+66 readable strings out of 206 candidates in `.rdata` (`0x140033000`, 0x2400 bytes); full list in [stage2_strings_decoded.txt](artefacts/stage2_strings_decoded.txt) (offset `.rdata+0x…`, width, `C`, text).
+
+| Theme | Decoded strings |
+|-------|-----------------|
+| Chromium | `\Login Data`, `\Login Data For Account`, `Login Data`, `Login Data For Account`, `\Web Data`, `Network\Cookies`, `\Local Storage\leveldb`, `\Local Extension Settings\`, `\Sync Extension Settings\`, `_0.indexeddb.leveldb`, `\IndexedDB\chrome-extension_`, `\Last Browser`, `\Last Version`, `\Application\`, `%ProgramW6432%\` |
+| Chrome app-bound key | `app_bound_encrypted_key`, `Google Chromekey1`, `Microsoft Software Key Storage Provider`, `SeImpersonatePrivilege` |
+| Firefox | `cookies.sqlite`, `logins.json`, `extensions.webextensions.uuids`, `^userContextId=4294967295\idb`, `\moz-extension+++` |
+| Roblox | `%LocalAppData%\Roblox\LocalStorage\RobloxCookies.dat`, `Applications/Roblox/Cookies.txt` |
+| Steam | `\REGISTRY\MACHINE\SOFTWARE\Valve\Steam`, `\config\config.vdf`, `%LocalAppData%\Steam\local.vdf`, `"ConnectCache"`, `Applications/Steam/Tokens.txt`, base64 `eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0` (= `{ "typ": "JWT", "alg": "EdDSA" }`) |
+| Outlook | `%UserProfile%\Documents\Outlook Files`, `honey@pot.com.pst` |
+| C2 / network | `https://rpc.mevblocker.io`, `{"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"to":"0x999941b74F6bbc921D5174A5b29911562cd2D7CF","data":"0xc2fb26a6"},"latest"]}`, `Content-Type: application/json`, `Content-Type: multipart/form-data; boundary=`, `; name="file"; filename="`, `Content-Type: application/x-www-form-urlencoded` (2 occurrences), `Transfer-Encoding: chunked`, `access_token=`, `&type=ping`, user-agent `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36` |
+| Payload execution | `powershell -exec bypass -f "`, `powershell -exec bypass `, `msiexec.exe /i "`, `rundll32 "`, `__COMPAT_LAYER=RunAsInvoker` |
+| Reconnaissance | `SELECT * FROM Win32_OperatingSystem`, `LocalDateTime`, `CurrentTimeZone`, `SELECT * FROM Win32_VideoController`, `ROOT\SecurityCenter2`, `SELECT * FROM AntiVirusProduct`, `displayName`, `productState` |
+| Anti-VM / anti-sandbox | `\REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall` (two variants), `DisplayName`, `vmware tools`, `virtualbox guest`, `THIS COUNTRY IS NOT ALLOWED`, `CANCEL THE RUN TO PREVENT MALWARE FROM EXECUTING` |
+| Named object | `\BaseNamedObjects\` |
+
+#### Reading
+
+- **Account theft.** The browser, Firefox, Steam and Roblox paths are where passwords, session cookies and tokens live. `Applications/<name>/…` looks like file names inside the exfiltration package (inferred). The extension paths (`Local Extension Settings`, `chrome-extension_`) probably target crypto wallets (inferred: no extension name was decoded).
+- **App-bound key.** `app_bound_encrypted_key` + `Google Chromekey1` + `Microsoft Software Key Storage Provider` + `SeImpersonatePrivilege`: the code prepares to defeat Chrome's "app-bound" protection, which needs SYSTEM rights. The exact sequence was not followed.
+- **Blockchain C2.** Instead of a fixed URL, stage 2 queries an Ethereum smart contract (`eth_call`, selector `0xc2fb26a6`) through a public RPC (`rpc.mevblocker.io`); the returned value most likely gives the real server address (inferred, a pattern known as "EtherHiding"). Attacker benefit: the address changes without touching the binary. IR benefit: the contract and the request are stable IoCs. I neither called the RPC nor read the response.
+- **Refusal messages.** `THIS COUNTRY IS NOT ALLOWED` and `CANCEL THE RUN TO PREVENT MALWARE FROM EXECUTING` look like texts shown or logged when execution is refused; their trigger condition was not traced. The `honey@pot.com.pst` file looks like a bait to detect (inferred).
+- **Registry anti-VM.** Stage 2 walks installed programs looking for `vmware tools` and `virtualbox guest`, on top of the CPUID test (§9.7). This is not the cause of the observed exit (CPUID, confirmed live).
+
+#### Limits
+
+- **Static** decoding; I did not link each string to the function that uses it, nor observe their use live.
+- The other 140 candidates are noise or strings this scheme does not decode (another key shape, or runtime assembly from constants in the code); I did not triage them one by one. The absence of `github` among the 66 readable strings does not prove its absence elsewhere.
+- The Ethereum contract's response (hence the C2 URL) is unknown.
+
 ## 10. IoCs
 
 **Highest-value**
 
 | Signal | Value |
 |--------|-------|
+| Ethereum contract (C2) | `0x999941b74F6bbc921D5174A5b29911562cd2D7CF`, selector `0xc2fb26a6` |
+| RPC | `https://rpc.mevblocker.io` (`eth_call` from a process unrelated to Ethereum) |
+| Exfiltration outputs | `Applications/Steam/Tokens.txt`, `Applications/Roblox/Cookies.txt` |
 | Stage 1 SHA256 | `492674be56b26138effec402b77ec26388a1da5df111ccb404c941005c96e808` |
 | Stage 2 SHA256 (in memory) | `83f1a309692966fa64fc6456cbc9579ef2a97b932870996dd5077df233e69c81` |
 | Named object | `\BaseNamedObjects\28f78af408eeef7df2e43016843788b6` |
@@ -405,7 +471,13 @@ The debug VM is a VirtualBox (`innotek GmbH`, 1 CPU, hypervisor present). The ex
 | Compile time | 2026-10-06 11:50:41 UTC / 2026-10-04 18:08:21 UTC |
 | Decoy table | `funcs_140068462`, 0xA24 entries |
 | Resources | `IDD_DIALOG396`…`IDD_DIALOG411` |
-| C2 / email / onion | not recovered |
+| C2 request | `{"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"to":"0x999941b74F6bbc921D5174A5b29911562cd2D7CF","data":"0xc2fb26a6"},"latest"]}` |
+| User-agent | `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36` |
+| HTTP parameters | `access_token=`, `&type=ping`, `multipart/form-data` with `name="file"` |
+| Targeted files | `Login Data`, `Network\Cookies`, `logins.json`, `cookies.sqlite`, `RobloxCookies.dat`, `local.vdf`, `config.vdf`, `Outlook Files`, `honey@pot.com.pst` |
+| Launches | `powershell -exec bypass -f "`, `msiexec.exe /i "`, `rundll32 "`, `__COMPAT_LAYER=RunAsInvoker` |
+| Messages | `THIS COUNTRY IS NOT ALLOWED`, `CANCEL THE RUN TO PREVENT MALWARE FROM EXECUTING` |
+| Final C2 URL / email / onion | not recovered (contract response unknown) |
 
 ## 11. ATT&CK: observed behavior
 
@@ -424,8 +496,20 @@ The debug VM is a VirtualBox (`innotek GmbH`, 1 CPU, hypervisor present). The ex
 | T1113 | Screen Capture | stage 2: GDI `BitBlt` / `GetDIBits` (import, inferred) |
 | T1134 | Access Token Manipulation | stage 2: `SeImpersonatePrivilege` looked up (use unconfirmed) |
 | T1047 | WMI | stage 2: COM + `CoSetProxyBlanket` (import, inferred) |
+| T1555.003 | Credentials from Web Browsers | `Login Data`, `Login Data For Account`, `logins.json`, `app_bound_encrypted_key` (decoded strings, use not observed) |
+| T1539 | Steal Web Session Cookie | `Network\Cookies`, `cookies.sqlite`, `Applications/Roblox/Cookies.txt`, `RobloxCookies.dat` (decoded strings) |
+| T1528 | Steal Application Access Token | `Applications/Steam/Tokens.txt`, `local.vdf`, `config.vdf`, `EdDSA` JWT, `access_token=` (decoded strings) |
+| T1114.001 | Local Email Collection | `%UserProfile%\Documents\Outlook Files` (decoded string) |
+| T1005 | Data from Local System | browser, Steam and Roblox profile paths |
+| T1102.001 | Dead Drop Resolver | `eth_call` to contract `0x9999…D7CF` via `rpc.mevblocker.io`; the response would give the C2 (inferred) |
+| T1071.001 | Web Protocols | JSON-RPC over HTTPS, `multipart/form-data`, Chrome 117 user-agent |
+| T1041 | Exfiltration Over C2 Channel | multipart `name="file"`, `&type=ping` (decoded strings, protocol not observed) |
+| T1059.001 | PowerShell | `powershell -exec bypass -f "…"` (decoded string) |
+| T1218.007 / T1218.011 | Msiexec / Rundll32 | `msiexec.exe /i "…"`, `rundll32 "…"` (decoded strings) |
+| T1518.001 | Security Software Discovery | WMI `ROOT\SecurityCenter2` / `AntiVirusProduct` (decoded string) |
+| T1012 | Query Registry | `…\Uninstall` (`DisplayName`: `vmware tools`, `virtualbox guest`), `\REGISTRY\MACHINE\SOFTWARE\Valve\Steam` |
 
-The "stage 2" rows rest on imports and decoded strings, not on observed execution.
+The "stage 2" rows rest on imports and decoded strings, not on observed execution. Only `NtCreateSemaphore` and the CPUID VM detection are confirmed live.
 
 ## 12. Screenshots
 
@@ -445,6 +529,8 @@ Short labels (clickable); paths under `artefacts/`.
 | Live | [x64dbg_session_notes.txt](artefacts/x64dbg_session_notes.txt) | x64dbg session notes (live addresses ↔ VA) |
 | Script | [extract_stage2.py](artefacts/extract_stage2.py) | Extraction + decryption via Unicorn |
 | Script | [resolve_api_hashes.py](artefacts/resolve_api_hashes.py) | API and locale hash resolution |
+| Script | [decode_stage2_strings.py](artefacts/decode_stage2_strings.py) | Decodes stage 2 `.rdata` strings (XOR `C×(i+1)`) |
+| Strings | [stage2_strings_decoded.txt](artefacts/stage2_strings_decoded.txt) | 66 readable strings (offset, width, `C`, text) |
 
 ## 14. References and what was not verified
 
@@ -452,8 +538,9 @@ Short labels (clickable); paths under `artefacts/`.
 
 - The sample was executed only by the user, under x64dbg, on their debug VM (software breakpoints set by the agent). No execution on the agent machine. No Any.RUN.
 - The session ended when I let the sample run freely after `sub_140006BA0`: exit code, DLLs loaded after that point, network traffic and the cause of the exit are not captured; if the VM had network access, contact with a C2 is neither confirmed nor excluded.
-- The stage 2 C2, protocol, commands, persistence and family identity are unknown.
-- `sub_14002A7B0` (53 KB), guards 1 and 3, and most of the stage 2 encrypted strings are not decoded.
+- The final C2 URL, protocol, commands, persistence and family identity of stage 2 are unknown. The `rpc.mevblocker.io` RPC and the Ethereum contract were not queried (the contract's response is unknown).
+- `sub_14002A7B0` (53 KB) and guards 1 and 3 are unresolved. Of the stage 2 strings, 66 out of 206 candidates are decoded (§9.8); the other 140 are noise or undecoded. Decoding is static: I did not xref each string to its code, and credential theft is not observed live.
+- No GitHub link was found in the readable strings nor in stage 1. Whether this malware infected GitHub repos is neither established nor excluded: the source of that claim was not checked. A possible indirect path: GitHub credentials or sessions stolen from browsers (not demonstrated).
 - The use of `SeImpersonatePrivilege` is unconfirmed. The VM's exact CPUID vendor and anything stage 2 does after the VM detection are not observed (test not bypassed).
 - No authors' private key: the cipher is symmetric and its key is in the file. No link established with the legitimate `subcat` tool.
 - TimeDateStamps may be forged.

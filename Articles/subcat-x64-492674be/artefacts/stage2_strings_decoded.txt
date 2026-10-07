@@ -1,0 +1,66 @@
+﻿.rdata+0x0458 W C=0xecb1 len=44: Content-Type: multipart/form-data; boundary=
+.rdata+0x05e0 W C=0xca52 len=111: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36
+.rdata+0x06e2 W C=0xa2d0 len=26: Transfer-Encoding: chunked
+.rdata+0x0722 W C=0x3bb3 len=30: Content-Type: application/json
+.rdata+0x0760 B C=0x18 len=136: {"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"to":"0x999941b74F6bbc921D5174A5b29911562cd2D7CF","data":"0xc2fb26a6"},"latest"]}
+.rdata+0x07f4 W C=0xa7f3 len=25: https://rpc.mevblocker.io
+.rdata+0x0848 W C=0x2c52 len=47: Content-Type: application/x-www-form-urlencoded
+.rdata+0x0918 W C=0x3a31 len=18: \BaseNamedObjects\
+.rdata+0x0950 W C=0x6331 len=47: Content-Type: application/x-www-form-urlencoded
+.rdata+0x09ce B C=0x27 len=13: access_token=
+.rdata+0x0aa5 B C=0x40 len=10: &type=ping
+.rdata+0x0b43 B C=0x39 len=23: app_bound_encrypted_key
+.rdata+0x0b5c W C=0x4992 len=22: SeImpersonatePrivilege
+.rdata+0x0bb8 W C=0xcdef len=39: Microsoft Software Key Storage Provider
+.rdata+0x0c08 W C=0x840e len=17: Google Chromekey1
+.rdata+0x0d44 W C=0xa7f3 len=11: \Login Data
+.rdata+0x0d5c W C=0x5e12 len=23: \Login Data For Account
+.rdata+0x0d8c W C=0x1431 len=9: \Web Data
+.rdata+0x0daa W C=0xb5d2 len=13: \Last Browser
+.rdata+0x0dc6 W C=0x6bf1 len=70: \REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\
+.rdata+0x0e94 W C=0xfa90 len=13: \Application\
+.rdata+0x0ed0 W C=0xd30e len=13: \Application\
+.rdata+0x0f0c W C=0x524e len=13: \Last Version
+.rdata+0x0f46 W C=0x74ad len=10: Login Data
+.rdata+0x0f5c W C=0x2ad0 len=22: Login Data For Account
+.rdata+0x0f9c W C=0x9710 len=15: Network\Cookies
+.rdata+0x0fbc W C=0x4d2f len=22: \Local Storage\leveldb
+.rdata+0x1000 W C=0x6f8e len=26: \Local Extension Settings\
+.rdata+0x1042 W C=0xdbce len=25: \Sync Extension Settings\
+.rdata+0x1076 W C=0x4810 len=20: _0.indexeddb.leveldb
+.rdata+0x10a0 W C=0x91ed len=28: \IndexedDB\chrome-extension_
+.rdata+0x110e W C=0xad12 len=14: cookies.sqlite
+.rdata+0x112c W C=0x6331 len=11: logins.json
+.rdata+0x119a B C=0x5d len=30: extensions.webextensions.uuids
+.rdata+0x11dc W C=0x5e12 len=29: ^userContextId=4294967295\idb
+.rdata+0x1218 W C=0xa7f3 len=17: \moz-extension+++
+.rdata+0x12a8 W C=0xa2d0 len=10: rundll32 "
+.rdata+0x12be W C=0x58f3 len=28: powershell -exec bypass -f "
+.rdata+0x12f8 W C=0xc533 len=16: msiexec.exe /i "
+.rdata+0x131a W C=0x3171 len=24: powershell -exec bypass 
+.rdata+0x134c B C=0x5a len=27: __COMPAT_LAYER=RunAsInvoker
+.rdata+0x13c4 W C=0x8ab3 len=69: \REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+.rdata+0x1450 W C=0xad12 len=11: DisplayName
+.rdata+0x1468 W C=0x6331 len=12: vmware tools
+.rdata+0x1482 W C=0x1954 len=16: virtualbox guest
+.rdata+0x14fc W C=0x8071 len=52: %LocalAppData%\Roblox\LocalStorage\RobloxCookies.dat
+.rdata+0x158a B C=0x6a len=31: Applications/Roblox/Cookies.txt
+.rdata+0x15be B C=0x79 len=43: eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0
+.rdata+0x15ea B C=0x6d len=29: Applications/Steam/Tokens.txt
+.rdata+0x1620 W C=0x1954 len=38: \REGISTRY\MACHINE\SOFTWARE\Valve\Steam
+.rdata+0x166e W C=0x8594 len=18: \config\config.vdf
+.rdata+0x16a0 W C=0xf1d0 len=30: %LocalAppData%\Steam\local.vdf
+.rdata+0x16de B C=0x49 len=14: "ConnectCache"
+.rdata+0x1706 B C=0x41 len=29: Applications/Steam/Tokens.txt
+.rdata+0x17e6 W C=0x8071 len=35: SELECT * FROM Win32_OperatingSystem
+.rdata+0x183e W C=0xa2d0 len=13: LocalDateTime
+.rdata+0x185a W C=0x9f3 len=15: CurrentTimeZone
+.rdata+0x1892 W C=0x2733 len=35: SELECT * FROM Win32_VideoController
+.rdata+0x1990 W C=0x6bf1 len=20: ROOT\SecurityCenter2
+.rdata+0x19ba W C=0xd831 len=30: SELECT * FROM AntiVirusProduct
+.rdata+0x19f8 W C=0x8e50 len=11: displayName
+.rdata+0x1a10 W C=0x446f len=12: productState
+.rdata+0x1bd8 W C=0x40d2 len=27: THIS COUNTRY IS NOT ALLOWED
+.rdata+0x1c20 W C=0x6331 len=48: CANCEL THE RUN TO PREVENT MALWARE FROM EXECUTING
+.rdata+0x1c8e W C=0xa7f3 len=37: %UserProfile%\Documents\Outlook Files
+.rdata+0x1cda W C=0xca52 len=17: honey@pot.com.pst

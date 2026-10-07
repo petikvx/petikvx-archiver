@@ -39,7 +39,7 @@ Complete analysis of ransomware, wipers, trojans, worms, and viruses (2023–202
 
 | Title | Hash | Date |
 |-------|------|------|
-| [subcat-x64 (crypter-loader x64 + implant WinHTTP)](subcat-x64-492674be/README.md) | `492674be56b26138effec402b77ec26388a1da5df111ccb404c941005c96e808` | 2026-10-07 |
+| [subcat-x64 (crypter-loader x64 + infostealer, C2 via contrat Ethereum)](subcat-x64-492674be/README.md) | `492674be56b26138effec402b77ec26388a1da5df111ccb404c941005c96e808` | 2026-10-07 |
 | [RURansom (wiper .NET)](Ransomware.RURansom/README.md) | `979f9d1e019d9172af73428a1b3cbdff8aec8fdbe0f67cba48971a36f5001da9` | 2026-10-04 |
 | [Trojan.Win32.KillMBR.gff (RedBoot)](Trojan.Win32.KillMBR.gff/README.md) | `1001a8c7f33185217e6e1bdbb8dba9780d475da944684fb4bf1fc04809525887` | 2026-10-04 |
 | [Ransomware.Gentlemen (Hapvida)](Ransomware.Gentlemen/README.md) | `3ab9575225e00a83a4ac2b534da5a710bdcf6eb72884944c437b5fbe5c5c9235` | 2026-10-03 |
