@@ -1,0 +1,62 @@
+x64dbg live session (VM, PID 5596) - 2026-10-07
+Sample loaded by the user; agent only set software breakpoints and resumed.
+Image base (ASLR): 0x7FF758D80000  (static 0x140000000, delta 0x7FF618D80000)
+PEB: BeingDebugged=1, NtGlobalFlag=0x70, NumberOfProcessors=1
+
+Step  Live address          Static VA     Observation
+1     0x7FF758DEBF00        0x14006BF00   start (entry breakpoint), code matches IDA
+2     0x7FF758DEBF0E        0x14006BF0E   after sub_14006C400: EAX=0 -> locale gate passed (VM locale not RU/BY)
+3     0x7FF758DEC500        0x14006C500   reached (time gate sub_14006CDE0 passed, no breakpoint inside it)
+4     0x7FF758DEC800        0x14006C800   RCX=0x1E7B1090000 = decrypted stage 2 (VirtualAlloc'd, RW)
+      first 0x3B400 (242688) bytes == emulated stage2_decrypted.bin
+      SHA256 83f1a309692966fa64fc6456cbc9579ef2a97b932870996dd5077df233e69c81 (0 differing bytes)
+      note: DumpMemory wrote 2,369,160 bytes (oversized); only the first 242,688 compared/kept
+5     0x7FF758DECD01        0x14006CD01   call rax -> RAX=0x1400020D0, RSI=0x140000000 (stage 2 mapped at preferred base, 0x3E000 bytes)
+      (EXE branch: the DLL branch call at 0x7FF758DECCFD is skipped, test of IMAGE_FILE_DLL 0x2000 fails)
+6     0x1400020D0           stage2 start  reached
+7     0x14002BE60           guard 2 entered; return at 0x14002C256 with EAX=0 -> passed
+8     0x14002A7B0           guard 3 entered; did not call GetSystemMetrics / EnumDisplaySettingsW /
+                            GetComputerNameExA / CoCreateInstance (breakpoints set, not hit before 0x140006BA0)
+9     0x140006BA0           stage 2 main reached; qword[0x140036A00] = 0x140006E26 (internal jump, flattened control flow)
+10    free run              process exited (TARGET_EXITED). Event log: ~15 DLL loads, 2 thread creations, then
+                            thread/process exit. Breakpoints set on NtCreateMutant / NtCreateEvent / NtOpenMutant /
+                            kernelbase LoadLibraryExW / LoadLibraryA did not stop the target (hits unknown, not logged).
+                            Exit code, DLL names loaded and any network activity were NOT captured.
+Not done: stop at winhttp APIs, capture exit code, decode runtime strings, packet capture.
+
+=== Session 2 (PID 6056, same image base 0x7FF758D80000), breakpoints reset, user relaunched ===
+Persisted breakpoints from session 1 were deleted (one on ntdll!NtCreateEvent fired during OS loader init = noise).
+Breakpoints used: 0x7FF758DECD01 (EP call), kernelbase!LoadLibraryExW, 0x140006BA0, ntdll!RtlExitUserProcess,
+ntdll!NtTerminateProcess, winhttp!WinHttpOpen/Connect/OpenRequest/SendRequest, ntdll!NtCreateMutant/NtOpenMutant/
+NtCreateThreadEx, user32!CreateDesktopW, ole32!CoInitializeSecurity.
+a  0x7FF758DECD01       call rax, RAX=0x1400020D0 (same as session 1)
+b  kernelbase!LoadLibraryExW  lpLibFileName = L"winhttp.dll", hFile=0, dwFlags(R8)=0x800  (confirms static decode)
+   returned module base 0x7FFAC7C20000
+c  0x140006BA0           stage 2 main reached
+d  ntdll!RtlExitUserProcess  ECX=0 (exit code 0); stack return address 0x140002250 = after ExitProcess call in stage 2 start
+   -> none of the winhttp / mutant / thread / CreateDesktopW / CoInitializeSecurity breakpoints fired between
+      0x140006BA0 and the exit. sub_140006BA0 returned quickly without observable API activity.
+Cause of the early return NOT determined (candidates, unverified: debugger present, 1 CPU VM, missing config/argument).
+Process left paused at RtlExitUserProcess; no network call seen through the winhttp APIs (other network paths not monitored).
+
+Static follow-up (IDA, stage 2) explaining the empty API log:
+- sub_14002F100 = direct syscall gateway (syscall @ 0x14002F133); Nt* API breakpoints cannot fire for those calls.
+- 0x140006F66: call sub_14002F100 -> NtCreateEvent(\BaseNamedObjects\28f78af4..., OBJ_OPENIF); status checked at 0x140007003 (cmp eax,ecx).
+- 0x14000703F: call sub_14002BC70 = CPUID hypervisor/vendor check (CRC32 poly 0xEDB88320, seed 1772650887).
+Hypothesis to test in the next session (software breakpoints): 0x140006F6B (event status in EAX), 0x140007003 (EAX vs ECX),
+0x14000703F / 0x140007044 (read AL = anti-VM verdict). Expected: AL=1 on this VM.
+
+=== Session 3 (PID 1280, base 0x7FF758D80000) - hypothesis test, result: CONFIRMED ===
+Breakpoints: 0x7FF758DECD01, ntdll!RtlExitUserProcess, 0x140006F66, 0x140006F6B, 0x140007003, 0x14000703F, 0x140007044.
+0x140006F66  call sub_14002F100: RCX=0xC0 (SSN), RDX=5, R8=&handle, R9=0x1F0003.
+             ntdll on this VM: NtCreateSemaphore=0xC0, NtCreateEvent=0x48, NtCreateMutant=0xB4
+             -> the object is a SEMAPHORE (earlier static label "event" was wrong, corrected here).
+             OBJECT_ATTRIBUTES @0x8AAD8FF520: Length 0x30, Attributes 0x80 (OBJ_OPENIF),
+             ObjectName -> \BaseNamedObjects\28f78af408eeef7df2e43016843788b6 (Length 0x64).
+             Stack args 4/5 = 0 / 1 (InitialCount 0, MaximumCount 1).
+0x140006F6B  EAX=0 (STATUS_SUCCESS)
+0x140007003  EAX=0 vs ECX=0x40000000 (STATUS_OBJECT_NAME_EXISTS): not equal, flow continues
+0x140007044  AL=1 after sub_14002BC70 = VM DETECTED
+Debug VM: Win32_ComputerSystem = innotek GmbH / VirtualBox, 1 logical CPU, HypervisorPresent=True.
+CPUID(0x40000000) vendor string not read, so the exact clause is unknown.
+No patching of the verdict was done; process left paused at 0x140007044.
